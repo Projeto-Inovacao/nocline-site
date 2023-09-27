@@ -7,6 +7,23 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif    ;
 }
 
+::-webkit-scrollbar {
+    width: 13px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #18272F;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #10181d;
+  }
+
+
 .navbar_login{
     padding: 2.5rem;
     width: 50%;
