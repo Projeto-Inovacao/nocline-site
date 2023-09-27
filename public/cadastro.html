@@ -35,38 +35,54 @@
                 <div class="inputs_login_esquerda">
 
                     <div class="input">
-                        <input type="text" name="" id="input_razao_social" class="input_login"
-                            placeholder="Razão Social"></input>
-                        <img src="./assets/icons8-video-id-verification-50.png" alt=""
-                            class="material-symbols-outlined">
+                        <input class="input__field" id="input_cep" type="text" required />
+                        <label for="input_cep" class="input__label">CEP</label>
+                        <img src="./assets/codigo-postal.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                        <div class="input">
+
+                            <input class="input__field input_mini" id="input_pais" type="text" required />
+                        <label for="input_pais" class="input__label">País</label>
+                        <img src="./assets/icons8-country-50.png" alt="" class="material-symbols-outlined">
+
+                            <input class="input__field input_size" id="input_estado" type="text" required />
+                        <label for="input_estado" class="input__label3">Estado</label>
+                        <img src="./assets/icons8-region-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_estado">
+
                     </div>
 
                     <div class="input">
-                        <input type="text" name="" id="input_cnpj" class="input_login" placeholder="CNPJ">
-                        <img src="./assets/icons8-empresa-cliente-50.png" alt="" class="material-symbols-outlined">
+                        <input class="input__field" id="input_cidade" type="text" required />
+                        <label for="input_cidade" class="input__label">Cidade</label>
+                        <img src="./assets/icons8-city-50.png" alt="" class="material-symbols-outlined">
                     </div>
 
                     <div class="input">
-                        <input type="email" name="" id="input_email" class="input_login"
-                            placeholder="Email da Empresa"></input>
-                        <img src="./assets/icons8-email-64.png" alt="" class="material-symbols-outlined">
-                    </div>
-                    
-                    <div class="input">
-                        <input type="text" name="" id="input_tel_cel" class="input_login"
-                            placeholder="Telefone Celular"></input>
-                        <img src="./assets/icons8-phone-50 (1).png" alt="" class="material-symbols-outlined">
+                        <input class="input__field" id="input_bairro" type="text" required />
+                        <label for="input_bairro" class="input__label">Bairro</label>
+                        <img src="./assets/icons8-neighborhood-50.png" alt="" class="material-symbols-outlined">
                     </div>
 
                     <div class="input">
-                        <input type="text" name="" id="input_tel_fixo" class="input_login"
-                            placeholder="Telefone Fixo"></input>
-                        <img src="./assets/icons8-phone-50.png" alt="" class="material-symbols-outlined">
+                        <input class="input__field" id="input_rua" type="text" required />
+                        <label for="input_rua" class="input__label">Rua</label>
+                        <img src="./assets/icons8-street-50.png" alt="" class="material-symbols-outlined">
                     </div>
 
                     <div class="input">
-                        <input type="password" name="" id="input_senha" class="input_login" placeholder="Senha"></input>
-                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
+
+                            <input class="input__field input_size" id="input_numero" type="text" required />
+                        <label for="input_numero" class="input__label">Número</label>
+                        <img src="./assets/icons8-10mph-speed-sign-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_numero">
+
+                            <input class="input__field input_mini" id="input_complemento" type="text" required />
+                        <label for="input_complemento" class="input__label2">Complemento</label>
+                        <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_complemento">
+
                     </div>
 
                 </div>
@@ -74,46 +90,42 @@
                 <div class="inputs_login_direita">
 
                     <div class="input">
-                        <input type="text" name="" id="input_pais" class="input_login input_size"
-                            placeholder="País"></input>
-                        <img src="./assets/icons8-country-50.png" alt="" class="material-symbols-outlined">
-                        <input type="text" name="" id="input_estado" class="input_login input_mini"
-                            placeholder="Estado">
-                        <img src="./assets/icons8-region-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_estado">
-                    </div>
+                        <input class="input__field" id="input_razao_social" type="text" required />
+                        <label for="password" class="input__label">Razão Social</label>
+                    <img src="./assets/icons8-video-id-verification-50.png" alt=""
+                        class="material-symbols-outlined">
+                </div>
 
-                    <div class="input">
-                        <input type="text" name="" id="input_cidade" class="input_login" placeholder="Cidade"></input>
-                        <img src="./assets/icons8-city-50.png" alt="" class="material-symbols-outlined">
-                    </div>
+                <div class="input">
+                    <input class="input__field" id="input_cnpj" type="text" required />
+                    <label for="input_cnpj" class="input__label">CNPJ</label>
+                    <img src="./assets/icons8-empresa-cliente-50.png" alt="" class="material-symbols-outlined">
+                </div>
 
-                    <div class="input">
-                        <input type="text" name="" id="input_bairro" class="input_login" placeholder="Bairro"></input>
-                        <img src="./assets/icons8-neighborhood-50.png" alt="" class="material-symbols-outlined">
-                    </div>
+                <div class="input">
+                        <input class="input__field" id="input_email" type="text" required />
+                        <label for="input_email" class="input__label">Email da Empresa</label>
+                    <img src="./assets/icons8-email-64.png" alt="" class="material-symbols-outlined">
+                </div>
+                
+                <div class="input">
+                        <input class="input__field" id="input_tel_cel" type="text" required />
+                        <label for="input_tel_cel" class="input__label">Telefone Celular</label>
+                    <img src="./assets/icons8-phone-50 (1).png" alt="" class="material-symbols-outlined">
+                </div>
 
-                    <div class="input">
-                        <input type="text" name="" id="input_rua" class="input_login" placeholder="Rua"></input>
-                        <img src="./assets/icons8-street-50.png" alt="" class="material-symbols-outlined">
-                    </div>
+                <div class="input">
+                    <input class="input__field" id="input_senha" type="password" required />
+                        <label for="input_senha" class="input__label">Senha</label>
+                    <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
+                </div>
 
-                    <div class="input">
-                        <input type="text" name="" id="input_numero" class="input_login input_mini"
-                            placeholder="Número"></input>
-                        <img src="./assets/icons8-10mph-speed-sign-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_numero">
-                        <input type="text" name="" id="input_complemento" class="input_login input_size"
-                            placeholder="Complemento"></input>
-                        <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_complemento">
-                    </div>
+                <div class="input">
+                    <input class="input__field" id="input_confirma_senha" type="text" required />
+                <label for="input_confirma_senha" class="input__label">Confirmação de Senha</label>
+                <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
+            </div>
 
-                    <div class="input">
-                        <input type="password" name="" id="input_confirma_senha" class="input_login"
-                            placeholder="Confirmação de Senha"></input>
-                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
-                    </div>
                 </div>
             </div>
 
@@ -125,4 +137,19 @@
             <span class="span_copyright">2023 copyright by nocline ©</span>
         </footer>
 </body>
+
+<script>
+
+const inputIcon = document.querySelector('.input__icon')
+            const inputPassword = document.querySelector('.input__field')
+
+            inputIcon.addEventListener('click', () => {
+                inputIcon.classList.toggle('ri-eye-off-line')
+                inputIcon.classList.toggle('ri-eye-line')
+                inputPassword.type =
+                    inputPassword.type === 'password' ? 'text' : 'password'
+            })
+
+</script>
+
 </html>

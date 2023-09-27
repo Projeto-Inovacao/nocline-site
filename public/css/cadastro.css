@@ -65,44 +65,85 @@ body{
 }
 
 .inputs_login{
-    /* padding: 2.5rem; */
+    padding: 2.5rem; 
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
-    /* height: 30rem; */
+    align-items: center; 
+    height: 30rem;
 }
 
-.inputs_login_esquerda, .inputs_login_direita{
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 25rem;
-}
 
-.input_login{
-    padding: 1rem 1rem 1rem 3rem;
+.input {
+    position: relative;
+}
+.input__field {
+    padding: 1rem 1rem 0.3rem 3rem;
     width: 16.5rem;
-    background-color: #43537DBD;
-    border-radius: 20px;
     border: none;
-    display: flex;
-    color: white;
+    border-radius: 4px;
+    font: inherit;
+    color: #ffffff;
+    background-color: transparent;
+    outline: 2px solid #25049b;
+}
+.input__label {
+    position: absolute;
+    top: 0;
+    left: 7vh;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform 0.25s;
 }
 
-.input_login::placeholder{
-    color: white;
+.input__label2{
+    position: absolute;
+    top: 0;
+    left: 28vh;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+
+.input__label3{
+    position: absolute;
+    top: 0;
+    left: 38vh;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+
+.input__field:focus-visible ~ .input__label,
+.input__field:valid ~ .input__label {
+    transform: translate(-7vh, -25px) scale(0.8);
+    color: #ffffff;
+}
+
+.input__field:focus-visible ~ .input__label2,
+.input__field:valid ~ .input__label2 {
+    transform: translate(-6vh, -25px) scale(0.8);
+    color: #ffffff;
+}
+
+.input__field:focus-visible ~ .input__label3,
+.input__field:valid ~ .input__label3 {
+    transform: translate(-6vh, -25px) scale(0.8);
+    color: #ffffff;
+}
+
+.input__field:is(:focus-visible, :valid) {
+    outline-color: #4021af;
 }
 
 .input_size{
-    width: 8rem;
+    width: 4rem;
+    position: relative;
 }
 
 .input_mini{
-    padding: 1rem 1rem 1rem 3rem;
-    width: 3rem;
+    padding: 1rem 1rem 0.3rem 3rem;
+    width: 8rem;
 }
 
 .btn_login{
@@ -141,9 +182,13 @@ footer{
 }
 
 .material-symbols-outlined{
-    width: 2rem;
-    height: 1.5rem;
+    width: 2rem;    
+    height: fit-content;
+    position: relative;
+    top: 1vh;    
 }
+
+
 
 .input {
     position: relative;
@@ -163,7 +208,7 @@ footer{
 
 #logo_estado{
     position: absolute;
-    left: 14.1rem;
+    left: 13rem;
 }
 
 #logo_complemento{
