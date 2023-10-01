@@ -59,6 +59,17 @@ body{
     cursor: pointer;
 }
 
+.inputs_login{
+    padding: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 12.5rem;
+    position: relative;
+    left: 5vh;
+}
+
 .input {
     position: relative;
 }
@@ -68,7 +79,7 @@ body{
     border: none;
     border-radius: 4px;
     font: inherit;
-    color: #ffffff;
+    color: #fafafa;
     background-color: transparent;
     outline: 2px solid #25049b;
 }
@@ -76,6 +87,7 @@ body{
     position: absolute;
     top: 0;
     left: 7vh;
+    color: #ffffff;
     transform: translate(10px, 10px);
     transform-origin: left;
     transition: transform 0.25s;
@@ -103,6 +115,8 @@ body{
     font-weight: 800;
     letter-spacing: 0.2rem;
     border: solid 3px #5A78C4;
+    position: relative;
+    right: 1.5vw;
 }
 
 .btn_login:hover{
@@ -113,6 +127,14 @@ body{
     border: solid 3px #5A78C4;
     transform: scale(1.02);
 }
+
+.material-symbols-outlined{
+    width: 2rem;    
+    height: fit-content;
+    position: relative;   
+    right: 24vw;
+}
+
 
 footer{
     padding-top: 2rem;

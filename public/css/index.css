@@ -13,7 +13,6 @@
   
   ::-webkit-scrollbar-thumb {
     background-color: #18272F;
-    border-radius: 5px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -28,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #ffffff;
 }
 
 .filhoCabecalho {
@@ -152,8 +152,18 @@ a {
     display: flex;
     width: 100%;
     height: 450px;
-    background-image: url(..//assets/banner4.jpg);
+    /* background-image: url(..//assets/zyro-image\ \(2\).png); */
     background-size: 100%;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    z-index: -9999;
+    object-fit: cover; 
 }
 
 .divBoxTextoBanner {
@@ -187,6 +197,9 @@ a {
     justify-content: center;
     color: white;
     font-size: 13px;
+    width: 70%;
+    position: relative;
+    left: 9vw;
 }
 
 .divBoxBotaoBanner {
@@ -274,243 +287,88 @@ a {
 /* Começo do Entenda Como trabalhamos */
 .fundoEntenda {
     background-color: white;
-    height: 30rem;
+    height: 37rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-.paiEntenda{
+.sobrenos{
+
+    width: 20%;
+    position: relative;
+    left: 2vw;
+    top: 10vh;
+    
+}
+
+.subtitulo{
+
+    width: 20%;
+    position: relative;
+    left: 2vw;
+    top: 10vh;
+}
+
+.fundoEntenda img{
+
+width: 4rem;
+height: 4rem;
+position: relative;
+right: 6vw;
+top: 10vh;
+
+}
+
+.main-div {
     display: flex;
-    justify-content: center;
+    
+}
+
+.right-side {
+    flex: 1; 
+    display: flex;
     flex-direction: column;
-    height: 50vh;
+    justify-content: space-between;
+    padding: 30px;
+    
 }
 
-.textoEntenda{
+
+.right-side > div {
+
+    width: 90%;
+    position: relative;
+    bottom: 10vh;
+    left: 5vw;
+    
+}
+
+.left-side {
     display: flex;
+    flex: 1; 
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
+    justify-content: space-around;
+    text-align: justify;
+    padding: 30px;
+      
 }
 
-.tituloEntenda {
-    display: flex;
-    justify-content: center;
-    height: 5vh;
+.left-side p {
+
+width: 80%;
+
 }
 
-.tituloEntenda p {
-    color: black;
-    font-size: large;
-    height: 5vh;
-}
-
-.subtituloEntenda {
-    border-color: black;
-}
-
-.linhaPreta {
-    position: relative;
-    top: 60%;
-    left: 10%;
-    width: 80%;
-    height: 0.4vh;
-    background-color: black;
-}
-
-.divQuadrados {
-    margin-top: 5%;
-    background-color: white;
-    width: 100%;
-    height: 45vh;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.idDetalhes {
-    font-size: 13px;
-    position: relative;
-    top: -20%;
-    font-weight: bold;
-    color: white;
-}
-
-.botaoSaibaMais {
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 8vw;
-    height: 6vh;
-    font-size: 12px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0);
-    border: 3px #ffffff solid;
-    font-weight: bold;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-.botaoSaibaMais:hover {
-    background-color: #ffffff;
-    box-shadow: 0px 5px 20px rgb(0, 0, 0);
-    color: black;
-    transform: translateY(-7px);
-    border-radius: 30px;
-}
-
-.QuadradoEsquerda {
-    background-image: url(../assets/trabalhadores-de-escritorio-usando-graficos-de-financas.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 45vh ;
-    width: 18%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    display: flex;
-    justify-content: center;
-}
-
-.expanding-div {
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-}
-
-.hidden-text {
-    padding: 10px;
-    margin: 0;
-}
-
-.imagemEntenda {
-    height: 45vh;
-    width: 100%;
-}
-
-.QuadradoMeio {
-    background-image: url(../assets/conceito-de-gerenciamento-de-dados-de-computacao-em-nuvem.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    height: 45vh ;
-    width: 18%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-}
-
-.expanding-divM {
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-}
-
-.hidden-textM {
-    padding: 10px;
-    margin: 0;
-    color: white;
-}
-
-.QuadradoDireita {
-    background-image: url(../assets/pexels-fauxels-3184357.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 45vh ;
-    width: 18%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-}
-
-.expanding-divD {
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-}
-
-.hidden-textD {
-    padding: 10px;
-    margin: 0;
-    color: white;
-}
-
-.faixapreta {
-    position: relative;
-    top: 67%;
-    width: 100%;
-    background-color: rgb(0, 0, 0, 0.8);
-    height: 15vh;
-    display: flex;
-    align-items: center;
-}
-
-.faixapretaM {
-    position: relative;
-    top: 67%;
-    width: 100%;
-    background-color: rgb(0, 0, 0, 0.8);
-    height: 15vh;
-    display: flex;
-    align-items: center;
-}
-
-.faixapretaD {
-    position: relative;
-    top: 67%;
-    width: 100%;
-    background-color: rgb(0, 0, 0, 0.8);
-    height: 15vh;
-    display: flex;
-    align-items: center;
-}
-
-.expanded {
-    height: 200px;
-}
-
-.faixapreta p {
-    color: white;
-    align-self: center;
-    margin-bottom: 3%;
-}
-
-.faixapreta button {
-    color: white;
-    border-color: white;
-    background-color: black;
-    width: 40%;
-}
-
-.filhofaixa {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 8vh;
-    width: 100%;
-}
 /* Fim do Entenda Contexto */
 
 /* Inicio Pq nos escolher*/
 .Div_PqNosEscolher {
-    background-image: url(../assets/banner45.jpg);
+    background-image: url(../assets/Porque.png);
     background-repeat: no-repeat;
     background-size: 100% 39rem;
     width: 100%;
-    height: 39rem;
+    height: 40rem;
     z-index: 0;
     position: relative;
 }
@@ -522,7 +380,6 @@ a {
     font-family: Inter;
     font-size: 0.75rem;
     text-align: center;
-    /* background-color: aqua; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -536,33 +393,29 @@ a {
 }
 
 .Tit_PNE h1 {
-    margin-top: 1rem;
-    margin-top: 40px;
-}
-
-.Tit_PNE h3 {
-    margin-top: 1rem;
-    margin-top: 20px;
+   
+    position: relative;
+    bottom: 4vh;
 }
 
 .Cards_PNE {
     width: 100%;
     height: 31rem;
-    margin-top: -2%;
+    position: relative;
+    bottom: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .Cards_PNE .card {
-    width: 20rem;
-    height: 22rem;
+    width: 18rem;
+    height: 20rem;
     background-color: #fff;
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
-    border-radius: 0.2rem;
+    border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
@@ -616,7 +469,7 @@ a {
     margin-bottom: 60px;
     z-index: 999;
     position: relative;
-    border-radius: 0.2rem;
+    border-radius: 1rem;
 }
 
 .titulo h4 {
@@ -628,7 +481,7 @@ a {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;  
@@ -657,28 +510,28 @@ a {
     margin-top: 18px;
 }
 
-#anthony {
-    background-image: url('../assets/tonyv3.jpeg');
+#gyulia {
+    background-image: url('../assets/gyulia.jpeg');
 }
 
-#yasmin {
-    background-image: url('../assets/yasmin.jpeg');
+#jonathan {
+    background-image: url('../assets/jonathan.jpeg');
 }
 
-#davi {
-    background-image: url('../assets/davi.jpeg');
+#luize {
+    background-image: url('../assets/luize.jpeg');
 }
 
-#nunes {
-    background-image: url('../assets/nunes.jpeg');
+#marcos {
+    background-image: url('../assets/marcos.jpeg');
 }
 
-#sanchez {
-    background-image: url('../assets/sanchez.jpeg');
+#rita {
+    background-image: url('../assets/rita.jpeg');
 }
 
-#maria {
-    background-image: url('../assets/maria.jpeg');
+#miguel {
+    background-image: url('../assets/miguel.jpeg');
 }
 
 .txt {
@@ -702,9 +555,9 @@ a {
 .paiComeceConosco {
     display: flex;
     width: 100%;
-    height: 300px;
+    height: 60vh;
     background-size: 100%;
-    background-image: url(../assets/pitua-sutanto-Bh0d5ZdA5is-unsplash.jpg);
+    background-image: url(../assets/Cadastre-se.png);
     background-repeat: no-repeat;
     justify-content: center;
 }
@@ -723,8 +576,10 @@ a {
 }
 
 .boxTextoComeceConosco {
-    width: 45%;
-    margin-top: 10%;
+    width: 55%;
+    position: relative;
+    top: 10vh;
+    left: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -778,11 +633,11 @@ a {
 /* fim do comece conosco */
 
 /* começo do rodape */
-.maps {
-    z-index: 0;
-    height: 19rem;
-    width: 100%;   
-    object-fit: cover;
+
+.rodape {
+    display: flex;
+    width: 100%;
+    height: 40rem;
 }
 
 .notes {
@@ -799,36 +654,36 @@ a {
 
 }
 
-
-#input_group {
+.container {
     display: flex;
-    align-items: center;
-    background-color: var(--color-neutral-0);
-    border-radius: 4px;
+    width: 60vw;
+    position: relative;
+    left: 2vw;
 }
 
-#input_group input {
-    all: unset;
-    padding: 0.75rem;
-    width: 100%;
+.lista {
+
+    flex: 1;
+    padding: 10px;
+    
 }
 
-#input_group button {
-    background-color: #efe8fa;
-    border: none;
-    color: var(--color-neutral-40);
-    padding: 0px 1.25rem;
-    font-size: 1.125rem;
-    height: 100%;
-    border-radius: 0px 4px 4px 0px;
-    cursor: pointer;
-    transition: all 0.4s;
+.lista li {
+
+padding: 10px;
+list-style: none;
+text-decoration: none;
+position: relative;
+right: 3.8vw;
+
 }
 
-#input_group button:hover {
-    opacity: 0.8;
-}
+.lista li:hover {
 
+transform: scale(1.03);
+transition: 0.5s ease-in-out;
+
+}
 
 .feedbackForm {
     display: flex;
@@ -839,22 +694,67 @@ a {
     right: 4%;
     height: 25.5rem;
     width: 24rem;
-    bottom: -171.86rem;
+    bottom: -179.86rem;
     justify-content: space-around;
     padding: 70px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
 }
 
-.feedbackForm input {
-    border-bottom: 2px solid black;
-    border-top: white;
-    border-right: white;
-    border-left: white;
-    outline: none;
-}  
+
 
 .feedbackForm ::placeholder {
     padding-left: 0.5rem;
+}
+
+.input-group {
+
+    position: relative;
+
+}
+
+.input-group__input {
+
+   
+    
+    padding: 5px;
+    margin: 20px 0;
+    width: 100%;
+    outline: none;
+    height: 20px;
+    border: 0;
+    border-bottom: 2px solid rgb(33, 32, 32);
+    text-align: start;
+    font-size: medium;
+    background-color: transparent;
+    transition: border-bottom 500ms;
+
+
+}
+
+.input-group__input:is(:focus, :valid) {
+
+    border-bottom: 2px solid rgb(0, 0, 0);
+
+}
+
+.input-group__label {
+
+    position: absolute;
+    top: 3vh;
+    left: 0;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform 0.25s;
+
+}
+
+.input-group__input:focus+.input-group__label,
+.input-group__input:valid+.input-group__label {
+
+    transform: translate(0, -14px) scale(0.9);
+    color: #000000;
+
+
 }
 
  .enviarMensagem {
@@ -863,13 +763,10 @@ a {
     background-color: black;
     position:absolute;
     top: 31rem;
-    left:24rem;
-    z-index:3;
     height:2rem;
     width: 10rem;
-    text-transform: uppercase;
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -880,22 +777,26 @@ a {
     transform: translateY(-7px);
 }
 
-.footer_contatos {
-    display:flex;
-    padding: 0.3%;
-}
-
-.rodape {
-    display: flex;
-    width: 100%;
-    height: 18rem;
-}
-
 .faleConosco {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 40px;
+}
+
+.material-symbols-outlined{
+
+position: relative;
+top: 1vh;
+
+
+}
+
+#iconFaleConosco{
+
+    position: relative;
+    top: 1vh;
+
 }
 
 .links {
@@ -921,7 +822,14 @@ a {
     display: flex;
     width: 2rem;
     height: 2rem;
-    padding: 2px;
+    padding: 7px;
+    transition: 0.2s ease-in-out;
+}
+
+.icon:hover{
+
+transform: scale(1.1);
+
 }
 
 .links a:hover {

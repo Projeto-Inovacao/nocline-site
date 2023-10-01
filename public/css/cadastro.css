@@ -73,6 +73,15 @@ body{
     height: 30rem;
 }
 
+.inputs_login_esquerda, .inputs_login_direita{
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 28rem;
+}
+
 
 .input {
     position: relative;
