@@ -2,7 +2,7 @@ var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
+    var email = req.body.emailEmpresaServer;
     var senha = req.body.senhaServer;
 
     if (email == undefined) {
