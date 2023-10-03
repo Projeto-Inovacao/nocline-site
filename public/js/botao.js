@@ -14,7 +14,7 @@ function login() {
   }
 }
 
-function cadastro() {
+function cadastrar() {
   var razao_social = input_razao_social.value
   var cnpj = input_cnpj.value
   var email = input_email.value

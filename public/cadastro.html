@@ -129,7 +129,7 @@
                 </div>
             </div>
 
-            <button class="btn_login" onclick="cadastro()">Cadastrar</button>
+            <button class="btn_login" onclick="cadastrar()">Cadastrar</button>
 
         </div>
 
@@ -170,9 +170,10 @@
         var rua = input_rua.value;
         var numero = input_numero.value;
         var complemento = input_complemento.value;
+        var nome = input_nome.value;
 
 
-        var razaoSocial = input__field.value
+        var razaoSocial = input_razao_social.value
         var cnpj = input_cnpj.value;
         var emailEmpresa = input_email.value;
         var telefoneCelular = input_tel_cel.value;
@@ -180,7 +181,7 @@
         var confirmaSenha = input_confirma_senha.value;
 
 
-        if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" || complemento == "" || razaoSocial || cnpj == "" || emailEmpresa == "" || telefoneCelular == "" || senha == "" || confirmaSenha == "") {
+        if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" || complemento == "" || razaoSocial || cnpj == "" || emailEmpresa == "" || telefoneCelular == "" || senha == "" || confirmaSenha == ""||nome=="") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
 
@@ -263,9 +264,10 @@
                 telefoneCelularServer: telefoneCelular,
                 senhaServer: senha,
                 confirmaSenhaServer: confirmaSenha,
+                nomeServer: nome,
 
   
-
+                
             })
         }).then(function (resposta) {
 
