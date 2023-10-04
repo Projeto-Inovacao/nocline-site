@@ -14,16 +14,4 @@ function login() {
   }
 }
 
-function cadastrar() {
-
-
-  if (razao_social != '' && cnpj != '' && email != '' && senha != '') {
-    Swal.fire({ icon: 'success', title: 'Cadastro realizado com sucesso!' })
-  } else {
-    Swal.fire({ icon: 'error', title: 'Cadastro inválido!' })
-  }
-
-  
-
-}
 

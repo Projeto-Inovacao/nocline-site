@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -319,34 +319,35 @@
             <span class="span_copyright">2023 copyright by nocline ©</span>
         </footer>
 </body>
-
+<script src="../public/js/script_cadastro.js"></script>
 </html>
 <script>
-    function cadastrarEmpresa() {
-console.log("Entrei na funcao")
+    function cadastro(){
+        cadastrarEmpresa()
+        cadastrarEndereco()
+    }
 
+    function cadastrarEmpresa() {
+    console.log("Entrei na funcao")
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
-    
-
-
       var razaoSocial = input_razao_social.value
       var cnpj = input_cnpj.value;
       var emailEmpresa = input_email.value;
       var celularEmpresa = input_tel_cel.value;
       var senhaEmpresa = input_senha.value;
       var confirmaSenha = input_confirma_senha.value;
-
-
+      var cpfRepresentante = input_cpf_representante.value;
+     
     //   if (razaoSocial=="" || cnpj == "" || emailEmpresa == "" || celularEmpresa == "" || senhaEmpresa == "" || confirmaSenha == "") {
         
     //       // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
-
+    
     //       console.log("entrei validacao1")
     //       return false;
 
     //   } else {
-    //       setInterval(sumirMensagem, 5000);
+        //       setInterval(sumirMensagem, 5000);
     //   }
 
     //   // Validação do email para saber se tem @
@@ -379,10 +380,6 @@ console.log("Entrei na funcao")
     //       console.log("entrei validacao4")
     //       return false;
     //   }
-
-
-   
-
       // Validação de CEP para saber se ele possui 9 caracteres
     //   if (cep.length > 8) {
     //       setInterval(sumirMensagem, 5000)
@@ -392,126 +389,115 @@ console.log("Entrei na funcao")
     //       console.log("entrei validacao6")
     //       return false;
     //   }
-
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrarEmpresa", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-             
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarEmpresa", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+              
               razaoSocialServer: razaoSocial,
               cnpjServer: cnpj,
               emailEmpresaServer: emailEmpresa,
               celularEmpresaServer: celularEmpresa ,
-              senhaEmpresaServer: senhaEmpresa
-            
-        
-
-
+              senhaEmpresaServer: senhaEmpresa,
+              cpfRepresentanteServer: cpfRepresentante
               
-          })
-      }).then(function (resposta) {
-
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
+            })
+        }).then(function (resposta) {
             
-
+          console.log("resposta: ", resposta);
+          
+          if (resposta.ok) {
+              console.log("cadastrei empresa")
               // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+              
               // setTimeout(() => {
-              //     window.location = "login.html";
-              // }, "2000")
-
+                  //     window.location = "login.html";
+                  // }, "2000")
+                  
              
-          } else {
-              throw ("Houve um erro ao tentar realizar o cadastro!");
-          }
-      }).catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                
+            });
+
+            return false;
+        }
         
-      });
-
-      return false;
-  }
-      function sumirMensagem() {
-       console.log("ok")
-    }
-
-    // ENDEREÇO
-    function cadastrarEndereco() {
-console.log("Entrei na funcao")
-
-
-
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var cep = input_cep.value;
-      var pais = input_pais.value;
-      var estado = input_estado.value;
-      var cidade = input_cidade.value;
-      var bairro = input_bairro.value;
-      var rua = input_rua.value;
-      var numero = input_numero.value;
-      var complemento = input_complemento.value;
-    
-
-
-      if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" ) {
+        // ENDEREÇO
+        function cadastrarEndereco() {
+            console.log("Entrei na funcao endereco")
+            
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var cnpj = input_cnpj.value;
+            var cep = input_cep.value;
+            var pais = input_pais.value;
+            var estado = input_estado.value;
+            var cidade = input_cidade.value;
+            var bairro = input_bairro.value;
+            var rua = input_rua.value;
+            var numero = input_numero.value;
+            var complemento = input_complemento.value;
+            
+            
+      
+    //   if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" ) {
         
-          // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
+    //       // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
 
-          console.log("entrei validacao1")
-          return false;
-
-      } else {
-          setInterval(sumirMensagem, 5000);
-      }
-
-
-
-
+    //       console.log("entrei validacao1")
+    //       return false;
+          
+    //     } else {
+    //         setInterval(sumirMensagem, 5000);
+    //     }
 
       // Validação de CEP para saber se ele possui 9 caracteres
-      if (cep.length > 8) {
-          setInterval(sumirMensagem, 5000)
-      } else {
-          
-          // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
-          console.log("entrei validacao6")
-          return false;
-      }
+    //   if (cep.length > 8) {
+    //       setInterval(sumirMensagem, 5000)
+    //     } else {
+            
+    //       // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
+    //       console.log("entrei validacao6")
+    //       return false;
+    //   }
 
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrarEndereco", {
           method: "POST",
           headers: {
               "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-              cepServer: cep,
-              paisServer: pais,
-              estadoServer: estado,
-              cidadeServer: cidade,
-              bairroServer: bairro,
-              ruaServer: rua,
-              numeroServer: numero,
-              complementoServer: complemento,
-            
-            
-           
-          })
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cep,
+                paisServer: pais,
+                estadoServer: estado,
+                cidadeServer: cidade,
+                bairroServer: bairro,
+                ruaServer: rua,
+                numeroServer: numero,
+                cnpjServer: cnpj,
+                complementoServer: complemento,
+                
+                
+                
+            })
       }).then(function (resposta) {
 
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
+            console.log("cadastrou com sucesso")
             
 
               // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -536,8 +522,5 @@ console.log("Entrei na funcao")
     }
 
 
-
-
 </script>
-<script src="../public/js/script_cadastro.js"></script>
 

@@ -32,8 +32,8 @@
         <div class="inputs_login">
 
             <div class="input">
-                <input class="input__field" id="input_token" type="text" required />
-                        <label for="input_token" class="input__label">Token de Acesso</label>
+                <input class="input__field" id="input_email" type="text" required />
+                        <label for="input_email" class="input__label">Email de Acesso</label>
                 <img src="./assets/icons8-user-50 1.png" alt="" class="material-symbols-outlined">
                 <!-- <span class="material-symbols-outlined">person</span> -->
             </div>
@@ -46,7 +46,7 @@
                 <!-- <span class="material-symbols-outlined">lock</span> -->
             </div>
 
-            <button class="btn_login" onclick="login()">Entrar</button>
+            <button class="btn_login" onclick="entrar()">Entrar</button>
 
         </div>
 
@@ -58,3 +58,75 @@
 
 </body>
 </html>
+<script>
+    function entrar() {
+
+    var emailEmpresaVar = input_email.value;
+    var senhaVar = input_senha.value;
+
+    if (emailEmpresaVar == "" || senhaVar == "") {
+        // mensagem_erro.innerHTML = "Preencha todos os campos!";
+        // finalizarAguardar();
+        console.log("Input vazias")
+        return false;
+    }
+    else {
+        // setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", emailEmpresaVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailEmpresaServer: emailEmpresaVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                // sessionStorage.email_USUARIO = json.email;
+                // sessionStorage.nome_USUARIO = json.nome;
+                // sessionStorage.username_USUARIO = json.username;
+                // sessionStorage.ID_USUARIO = json.idUsuario;
+                // finalizarAguardar()
+                setTimeout(function () {
+                    window.location = "dashboard/index.html";
+                }, 1000); // apenas para exibir o loading
+
+            });
+           
+        } else {
+           
+            // mensagem_erro.innerHTML = "Login ou senha incorretos";
+            console.log("Houve um erro ao tentar realizar o login!");
+           
+            resposta.text().then(texto => {
+                console.error(texto);
+                // finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function sumirMensagem() {
+    console.log("passou na validação")
+    // mensagem_erro.innerHTML = ""
+}
+
+</script>

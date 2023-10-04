@@ -10,10 +10,9 @@ router.post("/cadastrarEmpresa", function (req, res) {
 router.post("/cadastrarEndereco", function (req, res) {
     usuarioController.cadastrarEndereco(req, res);
 })
-
-// router.post("/autenticar", function (req, res) {
-//     usuarioController.autenticar(req, res);
-// });
+router.post("/autenticar", function (req, res) {
+    usuarioController.entrar(req, res);
+});
 
 
 
