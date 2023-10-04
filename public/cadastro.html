@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,9 +7,11 @@
     <title>Cadastro | NOC LINE</title>
     <link rel="stylesheet" href="./css/cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="js/botao.js">
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
-
+    <script src="js/botao.js"></script>
 </head>
 
 <body>
@@ -56,98 +58,7 @@
                             <div class="check fas fa-check"></div>
                         </div>
                     </div>
-                    <div class="input">
 
-                        <input class="input__field input_mini" id="input_pais" type="text" required />
-                        <label for="input_pais" class="input__label">País</label>
-                        <img src="./assets/icons8-country-50.png" alt="" class="material-symbols-outlined">
-
-                        <input class="input__field input_size" id="input_estado" type="text" required />
-                        <label for="input_estado" class="input__label3">Estado</label>
-                        <img src="./assets/icons8-region-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_estado">
-
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_cidade" type="text" required />
-                        <label for="input_cidade" class="input__label">Cidade</label>
-                        <img src="./assets/icons8-city-50.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_bairro" type="text" required />
-                        <label for="input_bairro" class="input__label">Bairro</label>
-                        <img src="./assets/icons8-neighborhood-50.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_rua" type="text" required />
-                        <label for="input_rua" class="input__label">Rua</label>
-                        <img src="./assets/icons8-street-50.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-
-                        <input class="input__field input_size" id="input_numero" type="text" required />
-                        <label for="input_numero" class="input__label">Número</label>
-                        <img src="./assets/icons8-10mph-speed-sign-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_numero">
-
-                        <input class="input__field input_mini" id="input_complemento" type="text" required />
-                        <label for="input_complemento" class="input__label2">Complemento</label>
-                        <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt="" class="material-symbols-outlined"
-                            id="logo_complemento">
-
-                    </div>
-                            <button class="button" onclick="cadastrarEndereco()">Cadastrar Endereco</button>
-                </div>
-
-                <div class="inputs_login_direita">
-
-                    <div class="input">
-                        <input class="input__field" id="input_razao_social" type="text" required />
-                        <label for="password" class="input__label">Razão Social</label>
-                        <img src="./assets/icons8-video-id-verification-50.png" alt=""
-                            class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_cnpj" type="text" required />
-                        <label for="input_cnpj" class="input__label">CNPJ</label>
-                        <img src="./assets/icons8-empresa-cliente-50.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_email" type="text" required />
-                        <label for="input_email" class="input__label">Email da Empresa</label>
-                        <img src="./assets/icons8-email-64.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_tel_cel" type="text" required />
-                        <label for="input_tel_cel" class="input__label">Telefone Celular</label>
-                        <img src="./assets/icons8-phone-50 (1).png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_senha" type="password" required />
-                        <label for="input_senha" class="input__label">Senha</label>
-                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
-                    </div>
-
-                    <div class="input">
-                        <input class="input__field" id="input_confirma_senha" type="password" required />
-                        <label for="input_confirma_senha" class="input__label">Confirmação de Senha</label>
-                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
-                    </div>
-                
-                </div>
-            </div>
-           
-            <button class="button" onclick="cadastrarEmpresa()">Cadastrar Empresa</button>
-
-=======
                     <div class="form-outer">
 
                         <form action="#">
@@ -402,7 +313,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <footer>
