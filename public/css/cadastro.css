@@ -1,7 +1,7 @@
 @media only screen{
 body{
     margin: 0;
-    background-image: url(../assets/bannerLoginV4.jpg);
+    background-image: url(../assets/banner.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -70,24 +70,242 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center; 
-    height: 30rem;
+    height: 105vh;
+}
+
+.caixa_inputs{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+ position: relative;
+ right: 2vw;
+  height: 50vh;
 }
 
 .inputs_login_esquerda, .inputs_login_direita{
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 28rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 15rem;
 }
 
+/* Formulario de cadastro */
+
+.container{
+    width: 50vw;
+    height: 100vh;
+    background: #040425da;
+    text-align: center;
+    border-radius: 5px;
+    padding: 50px 10px 10px 35px;
+  }
+  .container header{
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+    color: #fff;
+    position: relative;
+    right: 0.5vw;
+  }
+  .container .form-outer{
+    width: 100%;
+    overflow: hidden;
+  }
+  .container .form-outer form{
+    display: flex;
+    width: 400%;
+  }
+  .form-outer form .page{
+    width: 25%;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  .form-outer form .page .title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    
+
+  }
+  .form-outer form .page .field{
+    width: 300px;
+    height: 45px;
+    margin: 10px 0;
+    display: flex;
+    position: relative;
+    left: 2vh;
+  }
+  
+  form .page .field select{
+    width: 19.5rem;
+    padding-left: 3rem;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    color: #ffffff;
+    background-color: transparent;
+    outline: 2px solid #25049b;
+    align-items: center;
+    color: #fdfafa;
+    background: rgba(0, 0, 0, 0.425)
+  }
+
+  .input__label4 {
+    position: absolute;
+    bottom: 8vh;
+    right: 19vw;
+}
+
+  form .page .field button{
+    width: 100%;
+    height: calc(100% + 5px);
+    border: none;
+    background: #3d2b8b;
+    margin-top: -20px;
+    position: relative;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.5s ease;
+  }
+
+  form .page .field button:hover{
+    background: #000;
+  }
+
+  form .page .btns button.prev{
+    
+    font-size: 17px;
+    position: relative;
+    
+  }
+
+  form .page .btns button.next{
+    position: relative;
+    left: 25vh;
+  }
+
+  form .page button.next1{
+    position: relative;
+    left: 23vw;
+  }
+
+  form .page button.cadastro{
+
+position: relative;
+left: 23vw;
+
+  }
+
+  .container .progress-bar{
+    display: flex;
+    margin: 40px 0;
+    user-select: none;
+  }
+
+  .container .progress-bar .step{
+    text-align: center;
+    width: 100%;
+    position: relative;
+    color: #fff;
+  }
+
+  .container .progress-bar .step p{
+    font-weight: 500;
+    font-size: 18px;
+    color: #faf5f5;
+    
+  }
+
+  .progress-bar .step .bullet{
+    height: 25px;
+    width: 25px;
+    border: 2px solid #f0f0f0;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .progress-bar .step .bullet.active{
+    border-color: #1f246b;
+    background: #1f246b;
+  }
+  .progress-bar .step .bullet span{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+  }
+  .progress-bar .step .bullet.active span{
+    display: none;
+  }
+  .progress-bar .step .bullet:before,
+  .progress-bar .step .bullet:after{
+    position: absolute;
+    content: '';
+    bottom: 11px;
+    right: -180px;
+    height: 3px;
+    width: 13vw;
+    background: #ffffff;
+  }
+  .progress-bar .step .bullet.active:after{
+    background: #1f246b;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 0.3s linear forwards;
+  }
+  @keyframes animate {
+    100%{
+      transform: scaleX(1);
+    }
+  }
+  .progress-bar .step:last-child .bullet:before,
+  .progress-bar .step:last-child .bullet:after{
+    display: none;
+  }
+  .progress-bar .step p.active{
+    color: #1f246b;
+    transition: 0.2s linear;
+  }
+  .progress-bar .step .check{
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  .progress-bar .step .check.active{
+    display: block;
+    color: #fff;
+  }
+
+/* Fim do formulario de cadastro */
+
+/* Estilo das inputs */
 
 .input {
-    position: relative;
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .input__field {
-    padding: 1rem 1rem 0.3rem 3rem;
+    padding: 1rem 1rem 1rem 3rem;
     width: 16.5rem;
     border: none;
     border-radius: 4px;
@@ -95,6 +313,8 @@ body{
     color: #ffffff;
     background-color: transparent;
     outline: 2px solid #25049b;
+    align-items: center;
+    
 }
 .input__label {
     position: absolute;
@@ -117,7 +337,7 @@ body{
 .input__label3{
     position: absolute;
     top: 0;
-    left: 38vh;
+    left: 32vh;
     transform: translate(10px, 10px);
     transform-origin: left;
     transition: transform 0.25s;
@@ -152,30 +372,32 @@ body{
 
 .input_mini{
     padding: 1rem 1rem 0.3rem 3rem;
-    width: 8rem;
+    width: 6rem;
 }
 
-.btn_login{
-    padding: 0.7rem;
-    width: 21rem;
-    background-color: #5A78C4;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 0.2rem;
-    border: solid 3px #5A78C4;
+/* Simbolo das inputs */
+
+.material-symbols-outlined{
+    width: 2rem;    
+    height: fit-content;
+    position: relative;
+    top: 1vh;    
 }
 
-.btn_login:hover{
-    background: white;
-    box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
-    color: #5A78C4;
-    cursor: pointer;
-    border: solid 3px #5A78C4;
-    transform: scale(1.02);
+.input img {
+    position: absolute;
+    left: 0.6rem;
+    bottom: 0.7rem;
+}
+
+#logo_estado{
+    position: absolute;
+    left: 11rem;
+}
+
+#logo_complemento{
+    position: absolute;
+    left: 9.1rem;
 }
 
 footer{
@@ -188,41 +410,6 @@ footer{
     width: 100%;
     color: white;
     margin-top: -10px;
-}
-
-.material-symbols-outlined{
-    width: 2rem;    
-    height: fit-content;
-    position: relative;
-    top: 1vh;    
-}
-
-
-
-.input {
-    position: relative;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.input img {
-    position: absolute;
-    left: 0.6rem;
-    bottom: 0.7rem;
-}
-
-#logo_estado{
-    position: absolute;
-    left: 13rem;
-}
-
-#logo_complemento{
-    position: absolute;
-    left: 9.1rem;
 }
 
 }
@@ -367,3 +554,5 @@ footer{
         bottom: 47px;
     }
     }
+
+    
