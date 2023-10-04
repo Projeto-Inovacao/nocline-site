@@ -53,7 +53,7 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-
+    console.log("entrei validacao controller")
 
     var cep = req.body.cepServer;
     var pais = req.body.paisServer;
@@ -64,7 +64,7 @@ function cadastrar(req, res) {
     var numero = req.body.numeroServer;
     var complemento = req.body.complementoServer;
 
-    var nome = req.body.nomeServer;
+    // var nome = req.body.nomeServer;
     var razaoSocial = req.body.razaoSocialServer;
     var cnpj = req.body.cnpjServer;
     var emailEmpresa = req.body.emailEmpresaServer;
@@ -72,7 +72,7 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var confirmaSenha = req.body.confirmaSenhaServer;
     // Faça as validações dos valores
-    if (nome == undefined) {
+   
         if (cep == undefined) {
             res.status(400).send("Seu cep está undefined!");
         } else if (pais == undefined) {
@@ -97,35 +97,35 @@ function cadastrar(req, res) {
             res.status(400).send("Sua telefoneCelular está undefined!");
         } else if (senha == undefined) {
             res.status(400).send("Seu senha está undefined!");
-        } else if (confirmaSenha == undefined) {
-            res.status(400).send("Sua confirmar Senha está undefined!");
+
         } 
         else {
-
-            // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-            usuarioModel.cadastrar(cep, pais, estado, cidade, bairro, rua, numero, complemento, razaoSocial, cnpj, emailEmpresa, telefoneCelular, senha, confirmaSenha, nome)
-                .then(
-                    function (resultado) {
-                        res.json(resultado);
-                    }
-                ).catch(
-                    function (erro) {
-                        console.log(erro);
-                        console.log(
-                            "\nHouve um erro ao realizar o cadastro! Erro: ",
-                            erro.sqlMessage
-                        );
-                        res.status(500).json(erro.sqlMessage);
-                    }
-                );
-        }
-
-
-        module.exports = {
-            autenticar,
-            cadastrar
-        }
-    }
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrar(cep, pais, estado, cidade, bairro, rua, numero, complemento, razaoSocial, cnpj, emailEmpresa, telefoneCelular, senha)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
 }
+}
+
+module.exports = {
+autenticar,
+cadastrar
+}
+
+
+
+// cep, pais, estado, cidade, bairro, rua, numero, complemento, razaoSocial, cnpj, emailEmpresa, telefoneCelular, senha, confirmaSenha, nome
 
 
