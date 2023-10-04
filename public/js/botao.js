@@ -14,15 +14,16 @@ function login() {
   }
 }
 
-function cadastro() {
-  var razao_social = input_razao_social.value
-  var cnpj = input_cnpj.value
-  var email = input_email.value
-  var senha = input_senha.value
+function cadastrar() {
+
 
   if (razao_social != '' && cnpj != '' && email != '' && senha != '') {
     Swal.fire({ icon: 'success', title: 'Cadastro realizado com sucesso!' })
   } else {
     Swal.fire({ icon: 'error', title: 'Cadastro inválido!' })
   }
+
+  
+
 }
+

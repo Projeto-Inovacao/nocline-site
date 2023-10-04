@@ -7,11 +7,9 @@
     <title>Cadastro | NOC LINE</title>
     <link rel="stylesheet" href="./css/cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="js/botao.js">
+
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
-    <script src="js/botao.js"></script>
+
 </head>
 
 <body>
@@ -58,7 +56,98 @@
                             <div class="check fas fa-check"></div>
                         </div>
                     </div>
+                    <div class="input">
 
+                        <input class="input__field input_mini" id="input_pais" type="text" required />
+                        <label for="input_pais" class="input__label">País</label>
+                        <img src="./assets/icons8-country-50.png" alt="" class="material-symbols-outlined">
+
+                        <input class="input__field input_size" id="input_estado" type="text" required />
+                        <label for="input_estado" class="input__label3">Estado</label>
+                        <img src="./assets/icons8-region-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_estado">
+
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_cidade" type="text" required />
+                        <label for="input_cidade" class="input__label">Cidade</label>
+                        <img src="./assets/icons8-city-50.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_bairro" type="text" required />
+                        <label for="input_bairro" class="input__label">Bairro</label>
+                        <img src="./assets/icons8-neighborhood-50.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_rua" type="text" required />
+                        <label for="input_rua" class="input__label">Rua</label>
+                        <img src="./assets/icons8-street-50.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+
+                        <input class="input__field input_size" id="input_numero" type="text" required />
+                        <label for="input_numero" class="input__label">Número</label>
+                        <img src="./assets/icons8-10mph-speed-sign-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_numero">
+
+                        <input class="input__field input_mini" id="input_complemento" type="text" required />
+                        <label for="input_complemento" class="input__label2">Complemento</label>
+                        <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt="" class="material-symbols-outlined"
+                            id="logo_complemento">
+
+                    </div>
+                            <button class="button" onclick="cadastrarEndereco()">Cadastrar Endereco</button>
+                </div>
+
+                <div class="inputs_login_direita">
+
+                    <div class="input">
+                        <input class="input__field" id="input_razao_social" type="text" required />
+                        <label for="password" class="input__label">Razão Social</label>
+                        <img src="./assets/icons8-video-id-verification-50.png" alt=""
+                            class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_cnpj" type="text" required />
+                        <label for="input_cnpj" class="input__label">CNPJ</label>
+                        <img src="./assets/icons8-empresa-cliente-50.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_email" type="text" required />
+                        <label for="input_email" class="input__label">Email da Empresa</label>
+                        <img src="./assets/icons8-email-64.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_tel_cel" type="text" required />
+                        <label for="input_tel_cel" class="input__label">Telefone Celular</label>
+                        <img src="./assets/icons8-phone-50 (1).png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_senha" type="password" required />
+                        <label for="input_senha" class="input__label">Senha</label>
+                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
+                    </div>
+
+                    <div class="input">
+                        <input class="input__field" id="input_confirma_senha" type="password" required />
+                        <label for="input_confirma_senha" class="input__label">Confirmação de Senha</label>
+                        <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
+                    </div>
+                
+                </div>
+            </div>
+           
+            <button class="button" onclick="cadastrarEmpresa()">Cadastrar Empresa</button>
+
+=======
                     <div class="form-outer">
 
                         <form action="#">
@@ -313,6 +402,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <footer>
@@ -320,12 +410,224 @@
         </footer>
 </body>
 
+</html>
 <script>
+    function cadastrarEmpresa() {
+console.log("Entrei na funcao")
+
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+    
+
+
+      var razaoSocial = input_razao_social.value
+      var cnpj = input_cnpj.value;
+      var emailEmpresa = input_email.value;
+      var celularEmpresa = input_tel_cel.value;
+      var senhaEmpresa = input_senha.value;
+      var confirmaSenha = input_confirma_senha.value;
+
+
+    //   if (razaoSocial=="" || cnpj == "" || emailEmpresa == "" || celularEmpresa == "" || senhaEmpresa == "" || confirmaSenha == "") {
+        
+    //       // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
+
+    //       console.log("entrei validacao1")
+    //       return false;
+
+    //   } else {
+    //       setInterval(sumirMensagem, 5000);
+    //   }
+
+    //   // Validação do email para saber se tem @
+    //   if (emailEmpresa.indexOf('@') >= 0) {
+    //       setInterval(sumirMensagem, 5000)
+          
+    //   } else {
+         
+    //       // mensagem_erro.innerHTML = "Email inválido! Falta @";
+    //       console.log("entrei validacao2")
+        
+    //       return false;
+    //   }
+    //   // Validação de senha para saber se ela tem no mínimo 7 digítos
+    //   if (senhaEmpresa.length > 6) {
+    //       setInterval(sumirMensagem, 5000)
+    //   } else {
+        
+    //       // mensagem_erro.innerHTML = "Senha inválida! Mínimo de 7 Digítos";
+    //       console.log("entrei validacao3")
+       
+    //       return false;
+    //   }
+    //   // Validação de senha para saber se elas são iguais
+    //   if (confirmaSenha == senha) {
+    //       setInterval(sumirMensagem, 5000)
+    //   } else {
+    
+    //       // mensagem_erro.innerHTML = "As senhas não coincidem!";
+    //       console.log("entrei validacao4")
+    //       return false;
+    //   }
+
+
+   
+
+      // Validação de CEP para saber se ele possui 9 caracteres
+    //   if (cep.length > 8) {
+    //       setInterval(sumirMensagem, 5000)
+    //   } else {
+          
+    //       // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
+    //       console.log("entrei validacao6")
+    //       return false;
+    //   }
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrarEmpresa", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+             
+              razaoSocialServer: razaoSocial,
+              cnpjServer: cnpj,
+              emailEmpresaServer: emailEmpresa,
+              celularEmpresaServer: celularEmpresa ,
+              senhaEmpresaServer: senhaEmpresa
+            
+        
+
+
+              
+          })
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            
+
+              // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+              // setTimeout(() => {
+              //     window.location = "login.html";
+              // }, "2000")
+
+             
+          } else {
+              throw ("Houve um erro ao tentar realizar o cadastro!");
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        
+      });
+
+      return false;
+  }
+      function sumirMensagem() {
+       console.log("ok")
+    }
+
+    // ENDEREÇO
+    function cadastrarEndereco() {
+console.log("Entrei na funcao")
+
+
+
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var cep = input_cep.value;
+      var pais = input_pais.value;
+      var estado = input_estado.value;
+      var cidade = input_cidade.value;
+      var bairro = input_bairro.value;
+      var rua = input_rua.value;
+      var numero = input_numero.value;
+      var complemento = input_complemento.value;
+    
+
+
+      if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" ) {
+        
+          // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
+
+          console.log("entrei validacao1")
+          return false;
+
+      } else {
+          setInterval(sumirMensagem, 5000);
+      }
+
+
+
+
+
+      // Validação de CEP para saber se ele possui 9 caracteres
+      if (cep.length > 8) {
+          setInterval(sumirMensagem, 5000)
+      } else {
+          
+          // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
+          console.log("entrei validacao6")
+          return false;
+      }
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrarEndereco", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              cepServer: cep,
+              paisServer: pais,
+              estadoServer: estado,
+              cidadeServer: cidade,
+              bairroServer: bairro,
+              ruaServer: rua,
+              numeroServer: numero,
+              complementoServer: complemento,
+            
+            
+           
+          })
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            
+
+              // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+              // setTimeout(() => {
+              //     window.location = "login.html";
+              // }, "2000")
+
+             
+          } else {
+              throw ("Houve um erro ao tentar realizar o cadastro!");
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        
+      });
+
+      return false;
+  }
+      function sumirMensagem() {
+       console.log("ok")
+    }
+
 
 
 
 </script>
-
 <script src="../public/js/script_cadastro.js"></script>
 
-</html>

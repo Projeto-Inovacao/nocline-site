@@ -1,117 +1,184 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql - banco local - ambiente de desenvolvimento
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj VARCHAR(14)
+  create database nocLine;
+  use nocLine;
+ 
+  
+CREATE TABLE IF NOT exists  `Empresa` (
+  `idEmpresa` INT NOT NULL,
+  `razãoSocial` VARCHAR(45) NULL,
+  `CNPJ` CHAR(14) NULL,
+  PRIMARY KEY (`idEmpresa`));
+  
+CREATE TABLE IF NOT EXISTS `Endereco` (
+  `idEndereco` INT NOT NULL,
+  `CEP` CHAR(8) NOT NULL,
+  `num` INT NOT NULL,
+  `rua` VARCHAR(45) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `pais` VARCHAR(45) NOT NULL,
+  `Complemento` VARCHAR(45)  NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idEndereco`, `fkEmpresa`),
+  INDEX `fk_Endereco_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Endereco_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`));
+    
+    CREATE TABLE IF NOT EXISTS `Máquina` (
+  `idMáquina` INT NOT NULL,
+  `IP` VARCHAR(45) NOT NULL,
+  `SO` VARCHAR(45) NULL,
+  `modelo` VARCHAR(45) NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idMáquina`, `fkEmpresa`),
+  INDEX `fk_Máquina_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Máquina_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`));
+    
+    CREATE TABLE IF NOT EXISTS `Janelas` (
+  `idJanelas` INT NOT NULL,
+  `nomeJanela` VARCHAR(45) NULL,
+  `Data` DATE NULL,
+  `Hora` TIME NULL,
+  `fkMaquina` INT NOT NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idJanelas`),
+  INDEX `fk_Janelas_Máquina1_idx` (`fkMaquina` ASC, `fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Janelas_Máquina1`
+    FOREIGN KEY (`fkMaquina` , `fkEmpresa`)
+    REFERENCES `Máquina` (`idMáquina` , `fkEmpresa`));
+    
+    CREATE TABLE IF NOT EXISTS`Componente` (
+  `idComponente` INT NOT NULL,
+  `nomeComponente` VARCHAR(45) NULL,
+  `fkMáquinaComponente` INT NOT NULL,
+  `fkEmpresaComponente` INT NOT NULL,
+  PRIMARY KEY (`idComponente`, `fkMáquinaComponente`, `fkEmpresaComponente`),
+  INDEX `fk_Componentes_Máquina1_idx` (`fkMáquinaComponente` ASC, `fkEmpresaComponente` ASC) VISIBLE,
+  CONSTRAINT `fk_Componentes_Máquina1`
+    FOREIGN KEY (`fkMáquinaComponente` , `fkEmpresaComponente`)
+    REFERENCES `Máquina` (`idMáquina` , `fkEmpresa`));
+    
+    CREATE TABLE IF NOT EXISTS `UnidadeDeMedida` (
+  `idUnidade` INT NOT NULL,
+  `Tipo_de_Dado` VARCHAR(45) NULL,
+  `Representacao` CHAR(2) NULL,
+  PRIMARY KEY (`idUnidade`));
+  
+  CREATE TABLE IF NOT EXISTS `Monitoramento` (
+  `idMonitoramento` INT NOT NULL,
+  `dadoColetado` DOUBLE NOT NULL,
+  `dtHora` DATETIME NOT NULL,
+  `fkComponentesMonitoramentos` INT NOT NULL,
+  `fkMáquinaMonitoramentos` INT NOT NULL,
+  `fkEmpresaMonitoramentos` INT NOT NULL,
+  `fkUnidadeMedida` INT NOT NULL,
+  PRIMARY KEY (`idMonitoramento`, `fkComponentesMonitoramentos`, `fkMáquinaMonitoramentos`, `fkEmpresaMonitoramentos`, `fkUnidadeMedida`),
+  INDEX `fk_Monitoramento_Componentes1_idx` (`fkComponentesMonitoramentos` ASC, `fkMáquinaMonitoramentos` ASC, `fkEmpresaMonitoramentos` ASC) VISIBLE,
+  INDEX `fk_Monitoramento_UnidadeDeMedida1_idx` (`fkUnidadeMedida` ASC) VISIBLE,
+  CONSTRAINT `fk_Monitoramento_Componentes1`
+    FOREIGN KEY (`fkComponentesMonitoramentos` , `fkMáquinaMonitoramentos` , `fkEmpresaMonitoramentos`)
+    REFERENCES `Componente` (`idComponente` , `fkMáquinaComponente` , `fkEmpresaComponente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Monitoramento_UnidadeDeMedida1`
+    FOREIGN KEY (`fkUnidadeMedida`)
+    REFERENCES `UnidadeDeMedida` (`idUnidade`));
+    
+    CREATE TABLE IF NOT EXISTS `Aviso` (
+  `idAviso` INT NOT NULL,
+  `dtHora` DATETIME NULL,
+  `Descricao` VARCHAR(45) NULL,
+  `fkMonitoramento` INT NOT NULL,
+  PRIMARY KEY (`idAviso`, `fkMonitoramento`),
+  INDEX `fk_Monitoramento_has_Usuarios_Monitoramento1_idx` (`fkMonitoramento` ASC) VISIBLE,
+  CONSTRAINT `fk_Monitoramento_has_Usuarios_Monitoramento1`
+    FOREIGN KEY (`fkMonitoramento`)
+    REFERENCES `Monitoramento` (`idMonitoramento`));
+    
+CREATE TABLE IF NOT EXISTS `Permissao` (
+  `idPermissao` INT NOT NULL,
+  `Visualizar` TINYINT NULL,
+  `Excluir` TINYINT NULL,
+  `Alterar` TINYINT NULL,
+  `Cadastrar` TINYINT NULL,
+  `maquinas` TINYINT NULL,
+  `equipe_corporativa` TINYINT NULL,
+  PRIMARY KEY (`idPermissao`));
+  
+  CREATE TABLE IF NOT EXISTS `nivelAcesso` (
+  `idnivelAcesso` INT NOT NULL,
+  `Sigla` CHAR(3) NULL,
+  `descricao` VARCHAR(100) NULL,
+  `fkPermissao` INT NOT NULL,
+  PRIMARY KEY (`idnivelAcesso`, `fkPermissao`),
+  INDEX `fk_nivelAcesso_Permissao1_idx` (`fkPermissao` ASC) VISIBLE,
+  CONSTRAINT `fk_nivelAcesso_Permissao1`
+    FOREIGN KEY (`fkPermissao`)
+    REFERENCES`Permissao` (`idPermissao`)
 );
+CREATE TABLE IF NOT EXISTS `Colaborador` (
+  `idColaborador` INT NOT NULL,
+  `nome` VARCHAR(200) NULL,
+  `email_corporativo` VARCHAR(45) NULL,
+  `senha` VARCHAR(255) NULL,
+  `telCel` CHAR(11) NULL,
+  `fkEmpresa` INT NOT NULL,
+  `fkNivelAcesso` INT NOT NULL,
+  PRIMARY KEY (`idColaborador`, `fkEmpresa`),
+  INDEX `fk_Usuarios_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  INDEX `fk_Colaborador_nivelAcesso1_idx` (`fkNivelAcesso` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuarios_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Colaborador_nivelAcesso1`
+    FOREIGN KEY (`fkNivelAcesso`)
+    REFERENCES `nivelAcesso` (`idnivelAcesso`));
+    
+    CREATE TABLE IF NOT EXISTS `ControleAcesso` (
+  `fkColaborador` INT NOT NULL,
+  `fkEmpresaColaborador` INT NOT NULL,
+  `fkMáquina` INT NOT NULL,
+  `fkEmpresaMáquina` INT NOT NULL,
+  `InicioSessao` DATETIME NOT NULL,
+  `FimSessao` DATETIME NULL,
+  PRIMARY KEY (`fkColaborador`, `fkEmpresaColaborador`, `fkMáquina`, `fkEmpresaMáquina`),
+  INDEX `fk_Usuarios_has_Máquina_Máquina1_idx` (`fkMáquina` ASC, `fkEmpresaMáquina` ASC) VISIBLE,
+  INDEX `fk_Usuarios_has_Máquina_Usuarios1_idx` (`fkColaborador` ASC, `fkEmpresaColaborador` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuarios_has_Máquina_Usuarios1`
+    FOREIGN KEY (`fkColaborador` , `fkEmpresaColaborador`)
+    REFERENCES `Colaborador` (`idColaborador` , `fkEmpresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_has_Máquina_Máquina1`
+    FOREIGN KEY (`fkMáquina` , `fkEmpresaMáquina`)
+    REFERENCES`Máquina` (`idMáquina` , `fkEmpresa`));
+    
+    CREATE TABLE IF NOT EXISTS `Planos` (
+  `idPlano` INT NOT NULL AUTO_INCREMENT,
+  `Essentials` TINYINT NULL,
+  `Master` TINYINT NULL,
+  `plus` TINYINT NULL,
+  `fkEmpresa` INT NOT NULL,
+  INDEX `fk_Planos_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  PRIMARY KEY (`idPlano`),
+  CONSTRAINT `fk_Planos_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`));
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-
-/*
-comando para sql server - banco remoto - ambiente de produção
-*/
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	razao_social VARCHAR(50),
-	cnpj VARCHAR(14)
-);
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT FOREIGN KEY REFERENCES empresa(id)
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY IDENTITY(1,1),
-	descricao VARCHAR(300),
-	fk_empresa INT FOREIGN KEY REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
-);
-
-/*
-comandos para criar usuário em banco de dados azure, sqlserver,
-com permissão de insert + update + delete + select
-*/
-
-CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
-WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
-DEFAULT_SCHEMA = dbo;
-
-EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
-
-EXEC sys.sp_addrolemember @rolename = N'db_datareader',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+CREATE TABLE IF NOT EXISTS`Cartao` (
+  `idCartao` INT NOT NULL,
+  `NumCartao` CHAR(4) NULL,
+  `Validade` DATE NULL,
+  `CVV` CHAR(3) NULL,
+  `Bandeira` VARCHAR(50) NULL,
+  `fkEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idCartao`),
+  INDEX `fk_Cartao_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Cartao_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `Empresa` (`idEmpresa`));
