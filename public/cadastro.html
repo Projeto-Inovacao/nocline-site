@@ -30,14 +30,32 @@
             </div>
 
             <div class="inputs_login">
-                <div class="inputs_login_esquerda">
 
-                    <div class="input">
-                        <input class="input__field" id="input_cep" type="text" required />
-                        <label for="input_cep" class="input__label">CEP</label>
-                        <img src="./assets/codigo-postal.png" alt="" class="material-symbols-outlined">
+                <div class="container">
+                    <header>Cadastro</header>
+                    <div class="progress-bar">
+                        <div class="step">
+                            <p>Representante</p>
+                            <div class="bullet">
+                                <span>1</span>
+                            </div>
+                            <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                            <p>Endereço</p>
+                            <div class="bullet">
+                                <span>2</span>
+                            </div>
+                            <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                            <p>Pagamento</p>
+                            <div class="bullet">
+                                <span>3</span>
+                            </div>
+                            <div class="check fas fa-check"></div>
+                        </div>
                     </div>
-
                     <div class="input">
 
                         <input class="input__field input_mini" id="input_pais" type="text" required />
@@ -129,13 +147,268 @@
            
             <button class="button" onclick="cadastrarEmpresa()">Cadastrar Empresa</button>
 
+=======
+                    <div class="form-outer">
+
+                        <form action="#">
+
+                            <div class="page slide-page">
+                                <div class="title">Informações do representante legal:</div>
+                                <div class="caixa_inputs">
+                                    <div class="inputs_login_esquerda">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_razao_social" type="text"
+                                                    required />
+                                                <label for="password" class="input__label">Razão Social</label>
+                                                <img src="./assets/icons8-video-id-verification-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cnpj" type="text" required />
+                                                <label for="input_cnpj" class="input__label">CNPJ</label>
+                                                <img src="./assets/icons8-empresa-cliente-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_nome_representante" type="text"
+                                                    required />
+                                                <label for="input_nome_representante" class="input__label">Nome do
+                                                    representante</label>
+                                                <img src="./assets/usuario-de-perfil.png"
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_email" type="text" required />
+                                                <label for="input_email" class="input__label">Email da Empresa</label>
+                                                <img src="./assets/icons8-email-64.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputs_login_direita">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_tel_cel" type="text" required />
+                                                <label for="input_tel_cel" class="input__label">Telefone Celular</label>
+                                                <img src="./assets/icons8-phone-50 (1).png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cpf_representante" type="text" required />
+                                                <label for="input_cpf_representante" class="input__label">CPF do representante</label>
+                                                <img src="./assets/icons8-empresa-cliente-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_senha" type="password" required />
+                                                <label for="input_senha" class="input__label">Senha</label>
+                                                <img src="./assets/icons8-password-64 1.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_confirma_senha" type="password"
+                                                    required />
+                                                <label for="input_confirma_senha" class="input__label">Confirmação de
+                                                    Senha</label>
+                                                <img src="./assets/icons8-password-64 1.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field btns">
+                                    <button class="firstNext next">Próximo</button>
+                                </div>
+
+                            </div>
+
+                            <div class="page ">
+                                <div class="title">Endereço da empresa:</div>
+                                <div class="caixa_inputs">
+                                    <div class="inputs_login_esquerda">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cep" type="text" required />
+                                                <label for="input_cep" class="input__label">CEP</label>
+                                                <img src="./assets/icons8-skyscrapers-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="input">
+
+                                                <input class="input__field input_mini" id="input_pais" type="text"
+                                                    required />
+                                                <label for="input_pais" class="input__label">País</label>
+                                                <img src="./assets/icons8-country-50.png" alt=""
+                                                    class="material-symbols-outlined">
+
+                                                <input class="input__field input_size" id="input_estado" type="text"
+                                                    required />
+                                                <label for="input_estado" class="input__label3">Estado</label>
+                                                <img src="./assets/icons8-region-50.png" alt=""
+                                                    class="material-symbols-outlined" id="logo_estado">
+
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cidade" type="text" required />
+                                                <label for="input_cidade" class="input__label">Cidade</label>
+                                                <img src="./assets/icons8-city-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputs_login_direita">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_bairro" type="text" required />
+                                                <label for="input_bairro" class="input__label">Bairro</label>
+                                                <img src="./assets/icons8-neighborhood-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_rua" type="text" required />
+                                                <label for="input_rua" class="input__label">Rua</label>
+                                                <img src="./assets/icons8-street-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+
+                                                <input class="input__field input_size" id="input_numero" type="text"
+                                                    required />
+                                                <label for="input_numero" class="input__label">Número</label>
+                                                <img src="./assets/icons8-10mph-speed-sign-50.png" alt=""
+                                                    class="material-symbols-outlined" id="logo_numero">
+
+                                                <input class="input__field input_mini" id="input_complemento"
+                                                    type="text" required />
+                                                <label for="input_complemento" class="input__label2">Complemento</label>
+                                                <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt=""
+                                                    class="material-symbols-outlined" id="logo_complemento">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <button class="prev-1 prev">Anterior</button>
+                                    <button class="next-1 next1">Próximo</button>
+                                </div>
+                            </div>
+
+                            <div class="page">
+                                <div class="title">Pagamento:</div>
+                                <div class="caixa_inputs">
+                                    <div class="inputs_login_esquerda">
+                                        <div class="field">
+                                            <div class="input">
+                                                <select>
+                                                    <option>Escolha</option>
+                                                    <option>Essentials</option>
+                                                    <option>Master</option>
+                                                    <option>Plus</option>
+                                                </select>
+                                                <label for="input_complemento" class="input__label4">Planos</label>
+                                                <img src="./assets/folha-de-pagamento.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_numero_cartao" type="text"
+                                                    required />
+                                                <label for="input_numero_cartao" class="input__label">Número do
+                                                    cartão</label>
+                                                <img src="./assets/icons8-empresa-cliente-50.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_nome_titular" type="text"
+                                                    required />
+                                                <label for="input_nome_titular" class="input__label">Nome do
+                                                    titular</label>
+                                                <img src="./assets/icons8-email-64.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputs_login_direita">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_validade" type="text" required />
+                                                <label for="input_validade" class="input__label">Validade</label>
+                                                <img src="./assets/icons8-phone-50 (1).png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cvv" type="password" required />
+                                                <label for="input_cvv" class="input__label">CVV</label>
+                                                <img src="./assets/icons8-password-64 1.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cpf_titular" type="text"
+                                                    required />
+                                                <label for="input_cpf_titular" class="input__label">CPF do
+                                                    titular</label>
+                                                <img src="./assets/icons8-password-64 1.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field btns">
+                                    <button class="prev-2 prev">Anterior</button>
+                                    <button class="submit cadastro" onclick="cadastro()">Cadastrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer>
             <span class="span_copyright">2023 copyright by nocline ©</span>
         </footer>
 </body>
-
 
 </html>
 <script>
@@ -356,3 +629,5 @@ console.log("Entrei na funcao")
 
 
 </script>
+<script src="../public/js/script_cadastro.js"></script>
+

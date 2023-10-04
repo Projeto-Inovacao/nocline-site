@@ -5,19 +5,19 @@
 
 ::-webkit-scrollbar {
     width: 13px;
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background-color: transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background-color: #18272F;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background-color: #10181d;
-  }
+}
 
 
 /* começo do cabeçalho */
@@ -99,7 +99,8 @@
     height: 6vh;
 }
 
-#imgEsquerdaCabecalho,#nocline:hover{
+#imgEsquerdaCabecalho,
+#nocline:hover {
     cursor: pointer;
 }
 
@@ -113,8 +114,8 @@
     display: inline-block;
     margin-top: 5px;
     cursor: pointer;
-  }
-  
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -127,7 +128,7 @@
     justify-content: center;
     text-align: center;
 }
-  
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -145,6 +146,7 @@ a {
     font-size: 11px;
     transform: translateY(11px);
 }
+
 /* fim do cabeçalho */
 
 /* começo do banner */
@@ -163,7 +165,7 @@ a {
     width: 100%;
     height: 80vh;
     z-index: -9999;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .divBoxTextoBanner {
@@ -250,14 +252,16 @@ a {
     transform: translateY(-7px);
 }
 
-.botao1Banner:hover{
+.botao1Banner:hover {
     background-color: #ffffff;
     box-shadow: 0px 5px 20px rgb(0, 0, 0);
     color: black;
     transform: translateY(-7px);
 }
 
-.botao1Banner:hover .texto, .botao2Banner:hover .texto, #botaoComeceConosco:hover .texto{
+.botao1Banner:hover .texto,
+.botao2Banner:hover .texto,
+#botaoComeceConosco:hover .texto {
     color: black;
 }
 
@@ -282,9 +286,10 @@ a {
 .botao2Banner a:hover {
     color: black;
 }
+
 /* fim do banner */
 
-/* Começo do Entenda Como trabalhamos */
+/* Começo Sobre nos */
 .fundoEntenda {
     background-color: white;
     height: 37rem;
@@ -293,16 +298,16 @@ a {
     flex-direction: column;
 }
 
-.sobrenos{
+.sobrenos {
 
     width: 20%;
     position: relative;
     left: 2vw;
     top: 10vh;
-    
+
 }
 
-.subtitulo{
+.subtitulo {
 
     width: 20%;
     position: relative;
@@ -310,57 +315,57 @@ a {
     top: 10vh;
 }
 
-.fundoEntenda img{
+.fundoEntenda img {
 
-width: 4rem;
-height: 4rem;
-position: relative;
-right: 6vw;
-top: 10vh;
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    right: 6vw;
+    top: 10vh;
 
 }
 
 .main-div {
     display: flex;
-    
+
 }
 
 .right-side {
-    flex: 1; 
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
-    
+
 }
 
 
-.right-side > div {
+.right-side>div {
 
     width: 90%;
     position: relative;
     bottom: 10vh;
     left: 5vw;
-    
+
 }
 
 .left-side {
     display: flex;
-    flex: 1; 
+    flex: 1;
     flex-direction: column;
     justify-content: space-around;
     text-align: justify;
     padding: 30px;
-      
+
 }
 
 .left-side p {
 
-width: 80%;
+    width: 80%;
 
 }
 
-/* Fim do Entenda Contexto */
+/* Fim do Sobre nos */
 
 /* Inicio Pq nos escolher*/
 .Div_PqNosEscolher {
@@ -388,14 +393,23 @@ width: 80%;
     top: 5%;
 }
 
-.titulo h1 {
-    font-size: 30px;
+.Tit_PNE h1 {
+
+    position: relative;
+    bottom: 2vh;
+    font-size: xx-large;
 }
 
-.Tit_PNE h1 {
-   
+.Tit_PNE h3 {
+
+    font-size: large;
+}
+
+.Tit_PNE h4 {
+    
     position: relative;
-    bottom: 4vh;
+    bottom: 3vh;
+    font-size: large;
 }
 
 .Cards_PNE {
@@ -421,23 +435,24 @@ width: 80%;
 
 .card img {
     position: relative;
-    bottom: 3vh;
+    top: 1vh;
     width: 5rem;
     height: 5rem;
 }
 
 .card h3 {
     position: relative;
-    bottom: 2vh;
+    top: 1vh;
 }
 
 .card p {
     text-align: center;
     width: 16rem;
     position: relative;
-    bottom: 1vh;
+    top: 1vh;
     font-size: 15px;
 }
+
 /* fim por que nos escolher */
 
 /* começo equipe */
@@ -457,7 +472,7 @@ width: 80%;
 }
 
 .titulo {
-    width: 75% ;
+    width: 75%;
     height: 128vh;
     display: flex;
     justify-content: center;
@@ -481,75 +496,329 @@ width: 80%;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     justify-content: space-around;
 }
 
-.card {
-    background-color: rgba(0, 0, 0, 0.656);
-    width: 17.3%;
+
+.caixa-equipe {
+    display: flex;
+    
+}
+
+.cards-equipe {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 3rem;
+}
+
+
+/* área com as fotos dos integrantes */
+.card-foto {
     height: 50vh;
+    width: 18.7%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 10px 10px 5px rgba(0, 0, 0, 0.384);
+    border-radius: 5%;
+}
+
+/* div das imagens */
+.card-desc2 {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+/* imagens */
+#perfil {
+    position: relative;
+    top: vh;
+    z-index: 999;
+    border-radius: 5%;
+}
+
+/* área para ficar o nome e a função de cada integrante */
+.card-desc {
+    background-color: #FAFAFA;
+    height: 7vh;
+    width: 90%;
+    position: relative;
+    left: 1vw;
+    
+    text-align: center;
+    border-radius: 10%;
+}
+
+/* nome dos integrantes */
+#nome-equipe {
+    font-size: 1rem;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    top: 1vh;
+}
+
+/* função dos integrantes */
+.texto3 {
+    padding: 1.0em;
+    text-align: center;
+    height: 20vh;
+    font-size: 0.76rem;
+    position: relative;
+    bottom: 1vh;
+    opacity: 0.8;
+}
+
+/* Final da Nossa Equipe */
+
+/* Inicio Planos*/
+
+.Div_Planos {
+    background-color: #000000;
+    width: 100%;
+    height: 40rem;
+    z-index: 0;
+    position: relative;
+}
+
+.Tit_Planos {
+    width: 100%;
+    height: 10rem;
+    color: white;
+    font-family: Inter;
+    font-size: 0.75rem;
+    text-align: center;
     display: flex;
     justify-content: center;
-    align-items: start;
-    border-radius: 0.2rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 5%;
 }
 
-.img-membro {
-    background-repeat: no-repeat;
-    width:90%;
-    height: 36vh;
+
+
+.Tit_Planos h1 {
+
+    position: relative;
+    bottom: 2vh;
+    font-size: xx-large;
+}
+
+.Tit_Planos h3 {
+
+    font-size: large;
+}
+
+.Tit_Planos h4 {
+
+    position: relative;
+    bottom: 3vh;
+    font-size: large;
+}
+
+
+.Cards_Planos {
+    width: 100%;
+    height: 31rem;
+    position: relative;
+    bottom: 10vh;
     display: flex;
-   justify-content: center;
-   align-items: center;
-   background-size: cover;
-    margin-top: 18px;
+    justify-content: space-around;
+    align-items: center;
 }
 
-#gyulia {
-    background-image: url('../assets/gyulia.jpeg');
+.Cards_Planos .card_planos1 {
+    width: 18rem;
+    height: 18rem;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    border: 2px solid white;
+    position: relative;
+    bottom: 3vh; 
 }
 
-#jonathan {
-    background-image: url('../assets/jonathan.jpeg');
+.Cards_Planos .card_planos2 {
+    width: 18rem;
+    height: 20rem;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 1rem;
 }
 
-#luize {
-    background-image: url('../assets/luize.jpeg');
+.Cards_Planos .card_planos3 {
+    width: 18rem;
+    height: 22rem;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    border: 2px solid white;
+    position: relative;
+    top: 3vh; 
 }
 
-#marcos {
-    background-image: url('../assets/marcos.jpeg');
+#cards:hover {
+
+transition: 0.5s ease-in-out;
+transform: scale(1.101);
+
+
 }
 
-#rita {
-    background-image: url('../assets/rita.jpeg');
+#cards h1 {
+
+    color: #ffffff;
+
 }
 
-#miguel {
-    background-image: url('../assets/miguel.jpeg');
+#cards h2 {
+
+    color: #ffffff;
+
 }
 
-.txt {
-    color: white;
+#cards span {
+
+    position: relative;
+    top: 2vh;
+    color: #ffffff;
+    font-size: small;
+
+}
+
+#cards p {
+
     text-align: center;
-    margin-top: 280px;
-    font-size: 13px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 16rem;
+    position: relative;
+    top: 5vh;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: start;
+
 }
 
-.txt h1 {
-   font-weight: 100;
+/* fim planos */
+
+/* Inicio Avaliacoes*/
+
+.Div_avaliacoes {
+    width: 100%;
+    height: 40rem;
+    z-index: 0;
+    position: relative;
 }
 
-.txt h4 {
-    font-weight: 600;
+.Tit_avaliacoes {
+    width: 100%;
+    height: 10rem;
+    color: rgb(0, 0, 0);
+    font-family: Inter;
+    font-size: 0.75rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 5%;
 }
-/* Final da Nossa Equipe */
+
+.Tit_avaliacoes h1 {
+
+    position: relative;
+    bottom: 2vh;
+    font-size: xx-large;
+}
+
+.Tit_avaliacoes h3 {
+
+    font-size: large;
+}
+
+.Tit_avaliacoes h4 {
+    
+    position: relative;
+    bottom: 3vh;
+    font-size: large;
+}
+
+.Cards_avaliacoes {
+    width: 100%;
+    height: 31rem;
+    position: relative;
+    bottom: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Cards_avaliacoes .card_avaliacoes {
+    width: 22rem;
+    height: 20rem;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.foto{
+
+display: flex;
+flex-direction: row;
+height: 10vh;
+
+
+}
+
+.nomes span {
+
+    color: #ffffff;
+    font-size: small;
+    position: relative;
+    top: 3vh;
+    
+}
+
+.card_avaliacoes img {
+    position: relative;
+    top: 4vh;
+    right: 3vh;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1vh;
+}
+
+.card_avaliacoes h3 {
+    position: relative;
+    top: 5vh;
+    color: #ffffff;
+}
+
+.card_avaliacoes p {
+    text-align: justify;
+    width: 16rem;
+    position: relative;
+    top: 12vh;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+/* fim Avaliacoes */
 
 /* começo do comece conosco */
 .paiComeceConosco {
@@ -630,6 +899,7 @@ width: 80%;
     color: black;
     transform: translateY(-7px);
 }
+
 /* fim do comece conosco */
 
 /* começo do rodape */
@@ -665,23 +935,23 @@ width: 80%;
 
     flex: 1;
     padding: 10px;
-    
+
 }
 
 .lista li {
 
-padding: 10px;
-list-style: none;
-text-decoration: none;
-position: relative;
-right: 3.8vw;
+    padding: 10px;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+    right: 3.8vw;
 
 }
 
 .lista li:hover {
 
-transform: scale(1.03);
-transition: 0.5s ease-in-out;
+    transform: scale(1.03);
+    transition: 0.5s ease-in-out;
 
 }
 
@@ -694,7 +964,7 @@ transition: 0.5s ease-in-out;
     right: 4%;
     height: 25.5rem;
     width: 24rem;
-    bottom: -179.86rem;
+    bottom: -239.86rem;
     justify-content: space-around;
     padding: 70px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
@@ -714,8 +984,8 @@ transition: 0.5s ease-in-out;
 
 .input-group__input {
 
-   
-    
+
+
     padding: 5px;
     margin: 20px 0;
     width: 100%;
@@ -757,20 +1027,20 @@ transition: 0.5s ease-in-out;
 
 }
 
- .enviarMensagem {
-    color:white;
+.enviarMensagem {
+    color: white;
     font-size: 15px;
     background-color: black;
-    position:absolute;
+    position: absolute;
     top: 31rem;
-    height:2rem;
+    height: 2rem;
     width: 10rem;
     border: none;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-} 
+}
 
 .enviarMensagem:hover {
     box-shadow: 0px 5px 10px rgb(138, 138, 138);
@@ -784,15 +1054,15 @@ transition: 0.5s ease-in-out;
     margin: 40px;
 }
 
-.material-symbols-outlined{
+.material-symbols-outlined {
 
-position: relative;
-top: 1vh;
+    position: relative;
+    top: 1vh;
 
 
 }
 
-#iconFaleConosco{
+#iconFaleConosco {
 
     position: relative;
     top: 1vh;
@@ -809,13 +1079,13 @@ top: 1vh;
 }
 
 a {
-    color:black;
+    color: black;
     text-decoration: none;
 }
 
 .divIcon {
     display: flex;
-    padding:20px;
+    padding: 20px;
 }
 
 .icon {
@@ -826,9 +1096,9 @@ a {
     transition: 0.2s ease-in-out;
 }
 
-.icon:hover{
+.icon:hover {
 
-transform: scale(1.1);
+    transform: scale(1.1);
 
 }
 
@@ -857,11 +1127,11 @@ transform: scale(1.1);
 }
 
 #copy {
-    color:#B4B4B4;
+    color: #000000;
 }
 
 .copyright #nocline {
-    height:3rem;
-} 
-/* fim do rodape */
+    height: 3rem;
+}
 
+/* fim do rodape */
