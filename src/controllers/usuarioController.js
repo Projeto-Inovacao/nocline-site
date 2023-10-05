@@ -133,9 +133,106 @@ function cadastrarEndereco(req, res) {
 }
 }
 
+function cadastrarColaborador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller colab")
+
+
+    var nomeColaborador = req.body.nomeCVar;
+    var emailColaborador = req.body.emailCVar;
+    var senhaColaborador = req.body.senhaCVar;
+    var celularColaborador = req.body.celularCVar;
+    var setorColaborador = req.body.setorCVar;
+
+
+    // Faça as validações dos valores
+   
+        if (nomeColaborador == undefined) {
+            res.status(400).send("Seu nome está undefined!");
+        } else if (emailColaborador == undefined) {
+            res.status(400).send("Sua email de senha está undefined!");
+        } else if (senhaColaborador == undefined) {
+            res.status(400).send("Seu senha está undefined!");
+        } else if (celularColaborador == undefined) {
+            res.status(400).send("Seu celular está undefined!");
+        } else if (setorColaborador == undefined) {
+            res.status(400).send("Seu setor está undefined!");
+        } 
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrarColaborador(nomeColaborador, emailColaborador, senhaColaborador, celularColaborador, setorColaborador)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
+
+function cadastrarMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller colab")
+
+    codEmpresa = req.body.codEmpServer;
+    maquinaSetor= req.body.maquinaSetorServer;
+    maquinaNSerie= req.body.maquinaNSerieServer;
+    maquinaSO= req.body.maquinaSOServer;
+    maquinaModelo= req.body.maquinaModeloServer; 
+    comp1= req.body.comp1Server; 
+    comp2= req.body.comp2Server;
+    comp3= req.body.comp3Server; 
+    comp4= req.body.comp4Server;
+
+ 
+
+    // Faça as validações dos valores
+   
+        if (codEmpresa == undefined) {
+            res.status(400).send("Seu codEmpresa está undefined!");
+        } else if (maquinaSetor == undefined) {
+            res.status(400).send("Sua maquinaSetor de senha está undefined!");
+        } else if (maquinaNSerie == undefined) {
+            res.status(400).send("Seu maquinaNSerie está undefined!");
+        } else if (maquinaSO == undefined) {
+            res.status(400).send("Seu maquinaSO está undefined!");
+        } else if (maquinaModelo == undefined) {
+            res.status(400).send("Seu maquinaModelo está undefined!");
+        } 
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrarColaborador(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
+cadastrarColaborador,
+cadastrarMaquina,
 entrar
 }
 

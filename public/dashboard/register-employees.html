@@ -59,9 +59,12 @@
                                     <input type="email" class="form-control form-control-user" id="input_celular_colaborador"
                                         placeholder="Telefone Celular ">
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="input_setor_colaborador"
-                                        placeholder="Setor ">
+                                <div class="form-group" >
+                                    <select placeholder="Setor" class="form-control form-control-user select-componente" id="input_setor_colaborador">
+                                        <option >Setor</option>
+                                        <option value="CCO">CCO</option>
+                                        <option value="SSO">SSO</option>
+                                    </select>                                   
                                 </div>
                                 <div class="form-group row" style="width: 560px; margin-left: 1px;">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -107,6 +110,7 @@ function cadastrarColaborador() {
         var senhaCVar = input_senha_colaborador.value;
         var celularCVar = input_celular_colaborador.value;
         var setorCVar = input_setor_colaborador.value;
+
        
 
 
