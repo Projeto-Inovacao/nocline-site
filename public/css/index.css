@@ -406,7 +406,7 @@ a {
 }
 
 .Tit_PNE h4 {
-    
+
     position: relative;
     bottom: 3vh;
     font-size: large;
@@ -506,7 +506,7 @@ a {
 
 .caixa-equipe {
     display: flex;
-    
+
 }
 
 .cards-equipe {
@@ -531,7 +531,7 @@ a {
 .card-desc2 {
     display: flex;
     justify-content: space-evenly;
-    
+
 }
 
 /* imagens */
@@ -549,7 +549,7 @@ a {
     width: 90%;
     position: relative;
     left: 1vw;
-    
+
     text-align: center;
     border-radius: 10%;
 }
@@ -643,7 +643,7 @@ a {
     border-radius: 1rem;
     border: 2px solid white;
     position: relative;
-    bottom: 3vh; 
+    bottom: 3vh;
 }
 
 .Cards_Planos .card_planos2 {
@@ -667,13 +667,13 @@ a {
     border-radius: 1rem;
     border: 2px solid white;
     position: relative;
-    top: 3vh; 
+    top: 3vh;
 }
 
 #cards:hover {
 
-transition: 0.5s ease-in-out;
-transform: scale(1.101);
+    transition: 0.5s ease-in-out;
+    transform: scale(1.101);
 
 
 }
@@ -750,7 +750,7 @@ transform: scale(1.101);
 }
 
 .Tit_avaliacoes h4 {
-    
+
     position: relative;
     bottom: 3vh;
     font-size: large;
@@ -776,11 +776,11 @@ transform: scale(1.101);
     border-radius: 1rem;
 }
 
-.foto{
+.foto {
 
-display: flex;
-flex-direction: row;
-height: 10vh;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
 
 
 }
@@ -791,7 +791,7 @@ height: 10vh;
     font-size: small;
     position: relative;
     top: 3vh;
-    
+
 }
 
 .card_avaliacoes img {

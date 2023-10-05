@@ -148,15 +148,16 @@ a {
 }
 
 /* começo do FAQ */
-h1{
+h1 {
     font-size: 3rem;
 }
+
 .background {
     height: auto;
     background-color: #0e0c0c;
 }
 
-.banner{
+.banner {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -169,13 +170,14 @@ h1{
     display: flex;
     flex-direction: column;
 }
-.linha{
+
+.linha {
     position: relative;
     bottom: 3rem;
 }
 
 
-.FAQ{
+.FAQ {
     margin: 0.5rem auto;
     margin-bottom: 5rem;
     width: 100vw;
@@ -187,7 +189,7 @@ h1{
     padding: 0.5rem;
 }
 
-.FAQ li label{
+.FAQ li label {
     display: flex;
     align-items: center;
     font-size: 1.35rem;
@@ -197,19 +199,19 @@ h1{
     color: #ffffff;
 }
 
-.FAQ label::before{
+.FAQ label::before {
     content: '▼';
     margin-right: 4rem;
     font-size: 1rem;
     font-weight: 500;
-    
+
 }
 
-input[type="radio"]{
+input[type="radio"] {
     display: none;
 }
 
-.FAQ .texto{
+.FAQ .texto {
     color: #ffffff;
     line-height: 2rem;
     max-height: 0;
@@ -217,15 +219,16 @@ input[type="radio"]{
     transition: max-height 0.5s, padding 0.5s;
 }
 
-.container .FAQ input[type="radio"]:checked + label + .texto{
-    max-height: 50rem ;
+.container .FAQ input[type="radio"]:checked+label+.texto {
+    max-height: 50rem;
     padding: 2rem 2rem 5rem;
 }
-.container .FAQ input[type="radio"]:checked + label::before{
+
+.container .FAQ input[type="radio"]:checked+label::before {
     content: '▶';
 }
 
-.container2 img{
+.container2 img {
     height: 20rem;
 }
 
@@ -241,7 +244,7 @@ input[type="radio"]{
     height: 40rem;
 }
 
-#faleConosco{
+#faleConosco {
     font-size: 2rem;
 }
 
