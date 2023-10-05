@@ -977,15 +977,11 @@ height: 10vh;
 }
 
 .input-group {
-
     position: relative;
 
 }
 
 .input-group__input {
-
-
-
     padding: 5px;
     margin: 20px 0;
     width: 100%;
