@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="js/botao.js">
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
     <script src="js/botao.js"></script>
+    <script src="js/conexaoCad.js"></script>
 </head>
 
 <body>
@@ -88,18 +89,19 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_nome_representante" type="text"
+                                                <input class="input__field" id="input_nome_rep" type="text"
                                                     required />
                                                 <label for="input_nome_representante" class="input__label">Nome do
-                                                    representante</label>
+                                                    Representante Legal</label>
                                                 <img src="./assets/usuario-de-perfil.png"
                                                     class="material-symbols-outlined">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_email" type="text" required />
-                                                <label for="input_email" class="input__label">Email da Empresa</label>
+                                                <input class="input__field" id="input_email_rep" type="text" required />
+                                                <label for="input_email" class="input__label">Email  do
+                                                    Representante Legal</label>
                                                 <img src="./assets/icons8-email-64.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -108,8 +110,9 @@
                                     <div class="inputs_login_direita">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_tel_cel" type="text" required />
-                                                <label for="input_tel_cel" class="input__label">Telefone Celular</label>
+                                                <input class="input__field" id="input_cel_rep" type="text" required />
+                                                <label for="input_tel_cel" class="input__label">Celular  do
+                                                    Representante Legal</label>
                                                 <img src="./assets/icons8-phone-50 (1).png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -117,8 +120,9 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cpf_representante" type="text" required />
-                                                <label for="input_cpf_representante" class="input__label">CPF do representante</label>
+                                                <input class="input__field" id="input_cpf_rep" type="text" required />
+                                                <label for="input_cpf_representante" class="input__label">CPF do
+                                                    Representante Legal</label>
                                                 <img src="./assets/icons8-empresa-cliente-50.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -126,7 +130,7 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_senha" type="password" required />
+                                                <input class="input__field" id="input_senha_rep" type="password" required />
                                                 <label for="input_senha" class="input__label">Senha</label>
                                                 <img src="./assets/icons8-password-64 1.png" alt=""
                                                     class="material-symbols-outlined">
@@ -240,7 +244,7 @@
                                         <div class="field">
                                             <div class="input">
                                                 <select>
-                                                    <option>Escolha</option>
+                                                    <option value="">Escolha</option>
                                                     <option>Essentials</option>
                                                     <option>Master</option>
                                                     <option>Plus</option>
@@ -324,201 +328,8 @@
 <script>
     function cadastro(){
         cadastrarEmpresa()
+        cadastrarColaborador()
         cadastrarEndereco()
-    }
-
-    function cadastrarEmpresa() {
-    console.log("Entrei na funcao")
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var razaoSocial = input_razao_social.value
-      var cnpj = input_cnpj.value;
-      var emailEmpresa = input_email.value;
-      var celularEmpresa = input_tel_cel.value;
-      var senhaEmpresa = input_senha.value;
-      var confirmaSenha = input_confirma_senha.value;
-      var cpfRepresentante = input_cpf_representante.value;
-     
-    //   if (razaoSocial=="" || cnpj == "" || emailEmpresa == "" || celularEmpresa == "" || senhaEmpresa == "" || confirmaSenha == "") {
-        
-    //       // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
-    
-    //       console.log("entrei validacao1")
-    //       return false;
-
-    //   } else {
-        //       setInterval(sumirMensagem, 5000);
-    //   }
-
-    //   // Validação do email para saber se tem @
-    //   if (emailEmpresa.indexOf('@') >= 0) {
-    //       setInterval(sumirMensagem, 5000)
-          
-    //   } else {
-         
-    //       // mensagem_erro.innerHTML = "Email inválido! Falta @";
-    //       console.log("entrei validacao2")
-        
-    //       return false;
-    //   }
-    //   // Validação de senha para saber se ela tem no mínimo 7 digítos
-    //   if (senhaEmpresa.length > 6) {
-    //       setInterval(sumirMensagem, 5000)
-    //   } else {
-        
-    //       // mensagem_erro.innerHTML = "Senha inválida! Mínimo de 7 Digítos";
-    //       console.log("entrei validacao3")
-       
-    //       return false;
-    //   }
-    //   // Validação de senha para saber se elas são iguais
-    //   if (confirmaSenha == senha) {
-    //       setInterval(sumirMensagem, 5000)
-    //   } else {
-    
-    //       // mensagem_erro.innerHTML = "As senhas não coincidem!";
-    //       console.log("entrei validacao4")
-    //       return false;
-    //   }
-      // Validação de CEP para saber se ele possui 9 caracteres
-    //   if (cep.length > 8) {
-    //       setInterval(sumirMensagem, 5000)
-    //   } else {
-          
-    //       // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
-    //       console.log("entrei validacao6")
-    //       return false;
-    //   }
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrarEmpresa", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-              
-              razaoSocialServer: razaoSocial,
-              cnpjServer: cnpj,
-              emailEmpresaServer: emailEmpresa,
-              celularEmpresaServer: celularEmpresa ,
-              senhaEmpresaServer: senhaEmpresa,
-              cpfRepresentanteServer: cpfRepresentante
-              
-            })
-        }).then(function (resposta) {
-            
-          console.log("resposta: ", resposta);
-          
-          if (resposta.ok) {
-              console.log("cadastrei empresa")
-              // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-              
-              // setTimeout(() => {
-                  //     window.location = "login.html";
-                  // }, "2000")
-                  
-             
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                
-            });
-
-            return false;
-        }
-        
-        // ENDEREÇO
-        function cadastrarEndereco() {
-            console.log("Entrei na funcao endereco")
-            
-            //Recupere o valor da nova input pelo nome do id
-            // Agora vá para o método fetch logo abaixo
-            var cnpj = input_cnpj.value;
-            var cep = input_cep.value;
-            var pais = input_pais.value;
-            var estado = input_estado.value;
-            var cidade = input_cidade.value;
-            var bairro = input_bairro.value;
-            var rua = input_rua.value;
-            var numero = input_numero.value;
-            var complemento = input_complemento.value;
-            
-            
-      
-    //   if (cep == "" || pais == "" || estado == "" || cidade == "" || bairro == "" || rua == "" || numero == "" ) {
-        
-    //       // mensagem_erro.innerHTML = "(Há campos que não foram preenchidos)";
-
-    //       console.log("entrei validacao1")
-    //       return false;
-          
-    //     } else {
-    //         setInterval(sumirMensagem, 5000);
-    //     }
-
-      // Validação de CEP para saber se ele possui 9 caracteres
-    //   if (cep.length > 8) {
-    //       setInterval(sumirMensagem, 5000)
-    //     } else {
-            
-    //       // mensagem_erro.innerHTML = "CEP inválido!  CEP é composto por  9 Caracteres, exemplo: 01001-000";
-    //       console.log("entrei validacao6")
-    //       return false;
-    //   }
-
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrarEndereco", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                cepServer: cep,
-                paisServer: pais,
-                estadoServer: estado,
-                cidadeServer: cidade,
-                bairroServer: bairro,
-                ruaServer: rua,
-                numeroServer: numero,
-                cnpjServer: cnpj,
-                complementoServer: complemento,
-                
-                
-                
-            })
-      }).then(function (resposta) {
-
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-            console.log("cadastrou com sucesso")
-            
-
-              // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-              // setTimeout(() => {
-              //     window.location = "login.html";
-              // }, "2000")
-
-             
-          } else {
-              throw ("Houve um erro ao tentar realizar o cadastro!");
-          }
-      }).catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        
-      });
-
-      return false;
-  }
-      function sumirMensagem() {
-       console.log("ok")
     }
 
 

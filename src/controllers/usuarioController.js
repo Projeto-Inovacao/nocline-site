@@ -42,27 +42,15 @@ function cadastrarEmpresa(req, res) {
 
     var razaoSocial = req.body.razaoSocialServer;
     var cnpj = req.body.cnpjServer;
-    var emailEmpresa = req.body.emailEmpresaServer;
-    var celularEmpresa = req.body.celularEmpresaServer;
-    var senhaEmpresa = req.body.senhaEmpresaServer;
-    var cpfRepresentante = req.body.cpfRepresentanteServer;
 
        if (razaoSocial == undefined) {
             res.status(400).send("Sua razaoSocial está undefined!");
         } else if (cnpj == undefined) {
-            res.status(400).send("Sua cnpj está undefined!");
-        } else if (emailEmpresa == undefined) {
-            res.status(400).send("Sua Email da Empresa está undefined!");
-        } else if (celularEmpresa == undefined) {
-            res.status(400).send("Sua telefoneCelular está undefined!");
-        } else if (cpfRepresentante == undefined) {
-            res.status(400).send("Sua cpfRepresentante está undefined!");
-        } else if (senhaEmpresa == undefined) {
-            res.status(400).send("Seu senha está undefined!");
+            res.status(400).send("Seu cnpj está undefined!");
         } 
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarEmpresa(razaoSocial, cnpj, emailEmpresa, celularEmpresa, senhaEmpresa, cpfRepresentante)
+     usuarioModel.cadastrarEmpresa(razaoSocial, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -71,7 +59,7 @@ function cadastrarEmpresa(req, res) {
          function (erro) {
              console.log(erro);
              console.log(
-                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
                  erro.sqlMessage
              );
              res.status(500).json(erro.sqlMessage);
@@ -137,30 +125,34 @@ function cadastrarColaborador(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller colab")
 
-
-    var nomeColaborador = req.body.nomeCVar;
-    var emailColaborador = req.body.emailCVar;
-    var senhaColaborador = req.body.senhaCVar;
-    var celularColaborador = req.body.celularCVar;
-    var setorColaborador = req.body.setorCVar;
-
+    var cnpj = req.body.cnpjServer;
+    var nomeRepresentante = req.body.nomeRepresentanteServer;
+    var emailRepresentante = req.body.emailRepresentanteServer;
+    var celularColaborador = req.body.celularRepresentanteServer;
+    var cpfRepresentante = req.body.cpfRepresentanteServer;
+    var senhaRepresentante = req.body.senhaRepresentanteServer;
 
     // Faça as validações dos valores
    
-        if (nomeColaborador == undefined) {
+        if (nomeRepresentante == undefined) {
             res.status(400).send("Seu nome está undefined!");
-        } else if (emailColaborador == undefined) {
+        } else if (cnpj == undefined) {
+            res.status(400).send("Seu CNPJ de senha está undefined!");
+        }
+        else if (emailRepresentante == undefined) {
             res.status(400).send("Sua email de senha está undefined!");
-        } else if (senhaColaborador == undefined) {
+        } else if (senhaRepresentante == undefined) {
             res.status(400).send("Seu senha está undefined!");
         } else if (celularColaborador == undefined) {
             res.status(400).send("Seu celular está undefined!");
-        } else if (setorColaborador == undefined) {
+        } else if (cpfRepresentante == undefined) {
             res.status(400).send("Seu setor está undefined!");
+        } else if (senhaRepresentante == undefined) {
+            res.status(400).send("Sua senha está undefined!");
         } 
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarColaborador(nomeColaborador, emailColaborador, senhaColaborador, celularColaborador, setorColaborador)
+     usuarioModel.cadastrarColaborador(nomeRepresentante, emailRepresentante, celularColaborador, cpfRepresentante, senhaRepresentante, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -210,7 +202,7 @@ function cadastrarMaquina(req, res) {
         } 
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarColaborador(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4)
+     usuarioModel.cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4)
      .then(
          function (resultado) {
              res.json(resultado);
