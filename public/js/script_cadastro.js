@@ -19,7 +19,7 @@ nextBtnFirst.addEventListener("click", function(){
   current += 1;
 });
 nextBtnSec.addEventListener("click", function(){
-  slidePage.style.marginLeft = "-50%";
+  slidePage.style.marginLeft = "-30%";
   bullet[current - 1].classList.add("active");
   progressCheck[current - 1].classList.add("active");
   progressText[current - 1].classList.add("active");
