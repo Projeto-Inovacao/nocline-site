@@ -197,137 +197,133 @@
 
 
         /* começo do cabeçalho */
-        .paiCabecalho {
-            width: 100%;
-            height: 7vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+ /* começo do cabeçalho */
+.paiCabecalho {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
 
-        .filhoCabecalho {
-            width: 90%;
-            height: 7vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.filhoCabecalho {
+    width: 90%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .esquerdaCabecalho {
-            width: 20vw;
-            height: 7vh;
-            display: flex;
-            align-items: center;
+.esquerdaCabecalho {
+    width: 20vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
 
-        }
+}
 
-        .direitaCabecalho {
-            width: 20vw;
-            height: 7vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
+.direitaCabecalho {
+    width: 20vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
-        .pCabecalho {
-            font-size: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            position: relative;
-        }
+.pCabecalho {
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+}
 
-        .pCabecalho::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            border-radius: 4px;
-            background-color: #18272F;
-            bottom: 0;
-            left: 0;
-            transform-origin: right;
-            transform: scaleX(0);
-            transition: transform .3s ease-in-out;
-        }
+.pCabecalho::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #18272F;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
 
-        .pCabecalho::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            border-radius: 4px;
-            background-color: #18272F;
-            bottom: 0;
-            left: 0;
-            transform-origin: right;
-            transform: scaleX(0);
-            transition: transform .3s ease-in-out;
-        }
+.pCabecalho::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #18272F;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
 
-        .pCabecalho:hover::before {
-            transform-origin: left;
-            transform: scaleX(1);
-        }
+.pCabecalho:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
 
-        #imgEsquerdaCabecalho {
-            width: 13vw;
-            height: 6vh;
-        }
+#imgEsquerdaCabecalho {
+    width: 13vw;
+    height: 6vh;
+}
 
-        .espaco-vazio {
-            width: 100px;
-            /* Defina a largura desejada */
-            height: 30px;
-            /* Defina a altura desejada */
-        }
+#imgEsquerdaCabecalho,
+#nocline:hover {
+    cursor: pointer;
+}
 
-        #imgEsquerdaCabecalho,
-        #nocline:hover {
-            cursor: pointer;
-        }
+#imgDireitaCabecalho {
+    width: 1vw;
+    height: 3vh;
+}
 
-        #imgDireitaCabecalho {
-            width: 1vw;
-            height: 3vh;
-        }
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    cursor: pointer;
+}
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-top: 5px;
-            cursor: pointer;
-        }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 100px;
+    margin-left: -50px;
+    padding: 10px 10px;
+    z-index: 1;
+    font-size: 10px;
+    justify-content: center;
+    text-align: center;
+}
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 100px;
-            margin-left: -50px;
-            padding: 10px 10px;
-            z-index: 1;
-            font-size: 10px;
-            justify-content: center;
-            text-align: center;
-        }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
 
-        a {
-            list-style: none;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-        }
+.dropdown-content a:hover {
+    font-size: 11px;
+    transform: translateY(11px);
+}
 
-        .dropdown-content a:hover {
-            font-size: 11px;
-            transform: translateY(11px);
-        }
 
         /* fim do cabeçalho */
 
@@ -338,6 +334,7 @@
             width: 100%;
             height: 45rem;
             background-color: black;
+    
         }
 
         .divBoxTextoBanner {
@@ -345,7 +342,7 @@
             flex-direction: column;
             justify-content: center;
             height: 23vh;
-            margin-top: 15%;
+            margin-top: 18%;
         }
 
         .pTituloBanner {
@@ -364,12 +361,12 @@
             word-wrap: break-word
         }
 
-        .linhaTitulo {
-            height: 5px;
-            width: 33vh;
-            background-color: #ffffff;
+        .linha {
             position: relative;
-            left: calc(70px);
+            margin-left: 10%;
+            color: #ffffff;
+            margin-top: -7%;
+            font-size:50px;
         }
 
         .divBoxTextoBanner {
@@ -426,18 +423,21 @@
             left: 10%;
             width: 139%;
             height: 45rem;
+            background-color: rgb(255, 255, 255);
+            padding: 5%;
+            border-radius: 20px;
         }
 
         .textoSaiba {
             display: flex;
             flex-direction: column;
-            color: #FFF;
+            color: #000000;
             width: 100%;
         }
 
         .textoSaiba p {
             transition: color 0.3s ease-in-out;
-            color: #FFF;
+            color: #000000;
             text-align: justify;
             font-family: Inter;
             font-size: 18px;
@@ -447,22 +447,23 @@
         }
 
         #tituloSaiba {
-            color: #FFF;
+            color: #000000;
             font-family: Inter;
-            font-size: 30px;
+            font-size: 25px;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
             text-transform: uppercase;
-            margin-bottom: 1%;
+            margin-bottom: 3%;
+            
         }
 
         .boxSaiba img {
-            width: 30vw;
+            width: 50vw;
             height: 40vh;
-            margin-left: 15%;
+            margin-left: 5%;
             border-radius: 10px;
-            mix-blend-mode: lighten;
+            /* mix-blend-mode: lighten; */
         }
 
         /* fim do banner */
@@ -528,10 +529,11 @@
             right: 4%;
             height: 25.5rem;
             width: 24rem;
-            bottom: -105%;
+            bottom: -121%;
             justify-content: space-around;
             padding: 70px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
+         
         }
 
 

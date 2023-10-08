@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./css/mobile_index.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="js/botao.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
     <!-- para importar ícones do google -->
 
@@ -33,16 +35,12 @@
                 <div class="dropdown">
                     <img id="imgDireitaCabecalho" src="./assets/menu-aberto.png">
                     <div class="dropdown-content">
-                        <a href="#titulo-equipe">
-                            <p>Nossa Equipe</p>
+                        <a href="index.html">
+                            <p>HOME</p>
                         </a>
                         <br>
-                        <a href="#fundoEntenda">
-                            <p>Nosso Serviço</p>
-                        </a>
-                        <br>
-                        <a href="#Div_PqNosEscolher">
-                            <p>Nosso Teste</p>
+                        <a href="saiba_mais.html">
+                            <p>SAIBA MAIS</p>
                         </a>
                     </div>
                 </div>
@@ -53,12 +51,78 @@
 
     <div class="background">
         <div class="titulo">
-            <h1>PERGUNTAS FREQUENTES</h1>
-            <h1 class="linha"> _______________________ </h1>
+            <h4>PERGUNTAS FREQUENTES</h4>
+            <h1 class="linha"> ______ </h1>
         </div>
-        <div class="banner">
-            <div class="container">
-                <ul class="FAQ">
+        <div class="container">
+        <div class="layout">
+            <div class="accordion">
+                <div class="accordion__question">
+                    <p>▾  Como funciona a atuação da Nocline?</p>
+                  
+                </div>
+                <div class="accordion__answer">
+                    <p>A Nocline opera no monitoramento e gerenciamento de dados provenientes de hardwares, apresentando soluções avançadas para aprimorar a eficiência operacional. Nosso foco é fornecer aos clientes um monitoramento adequado para mitigar os riscos de sobrecarga em suas máquinas.
+
+                    </p>
+      
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion__question">
+                    <p>▾  Qual o procedimento para consultar as informações do hardware?</p>
+      
+                </div>
+                <div class="accordion__answer">
+                    <p>
+                        Após o registro em nossa plataforma, você será redirecionado para a tela de login. Basta inserir seu e-mail e senha para acessar todas as informações relevantes sobre o seu dispositivo.
+                    </p>
+      
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion__question">
+                    <p>▾  De que maneira o hardware influencia na segurança do site?</p>
+      
+                </div>
+                <div class="accordion__answer">
+                    <p>
+                        A supervisão contínua do hardware pela Nocline garante a integridade e segurança do seu site, prevenindo possíveis falhas operacionais. O excesso de carga nos componentes de hardware pode resultar em instabilidade nas máquinas e, consequentemente, no software CBTC. Portanto, asseguramos o monitoramento meticuloso de cada componente para evitar quedas inesperadas.
+
+                    </p>
+      
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion__question">
+                    <p>▾   Como a NocLine contribui para o sucesso do meu negócio?</p>
+      
+                </div>
+                <div class="accordion__answer">
+                    <p>
+                        A Nocline agrega valor ao seu negócio ao fornecer análises preditivas e soluções personalizadas, otimizando a gestão dos sistemas e impulsionando a eficiência operacional.
+
+                    </p>
+      
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion__question">
+                    <p>▾  Qual o Procedimento para Acionar o Suporte Técnico da Nocline?</p>
+      
+                </div>
+                <div class="accordion__answer">
+                    <p>
+                        Nosso suporte técnico está disponível 24/7. Você pode entrar em contato através do nosso site, garantindo assistência imediata quando necessário.
+                    </p>
+      
+                </div>
+            </div>
+           <!-- <div class="container2">
+                <img src="../public/assets/Questions-amico 1.svg" alt="">
+            </div> -->
+      
+                <!-- <ul class="FAQ">
                     <li>
                         <input type="radio" name="FAQ" id="primeiro" checked>
 
@@ -129,14 +193,12 @@
                         </div>
                         <hr>
                     </li>
-                </ul>
+                </ul> -->
 
-            </div>
-            <div class="container2">
-                <img src="../public/assets/Questions-amico 1.svg" alt="">
-            </div>
+          
+         
         </div>
-
+    </div>
     </div>
 
     <!-- começo do rodape -->
@@ -226,3 +288,17 @@
 </body>
 
 </html>
+
+<script>
+    let answers=document.querySelectorAll(".accordion");
+    answers.forEach((event)=>{
+        event.addEventListener('click',()=>{
+            if(event.classList.contains("active")){
+                event.classList.remove("active");
+            }
+            else{
+                event.classList.add("active");
+            }
+        })
+    })
+</script>
