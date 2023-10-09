@@ -63,9 +63,13 @@ function cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, ma
     // o componente n sei como fazer e o codEmpresa???????
         INSERT INTO Maquina (numeroSerie, so, modelo, setor comp1, comp2, comp3, comp4) VALUES ( '${codEmpresa}', '${maquinaSetor}', '${maquinaNSerie}', '${maquinaSO}', '${maquinaModelo}');
     `;
+    var valores = [nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj];
 
-    console.log("Executando a instrução SQL: \n" + instrucao);
-   return database.executar(instrucao);
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executarComParametros(instrucao, valores);
+
+//     console.log("Executando a instrução SQL: \n" + instrucao);
+//    return database.executar(instrucao);
 
 }
 
