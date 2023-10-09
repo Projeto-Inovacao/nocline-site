@@ -47,9 +47,10 @@ function cadastrarColaborador(nomeRepresentante, emailRepresentante, cpfRepresen
     var instrucao = `
         INSERT INTO colaborador (nome, cpf, email, celular, senha, fkEmpresa, fkNivelAcesso) VALUES ( '${nomeRepresentante}', '${emailRepresentante}', '${celularRepresentante}', '${cpfRepresentante}', '${senhaRepresentante}', (select idEmpresa from empresa where CNPJ = '${cnpj}'), 1);
     `;
+    var valores = [nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj];
 
     console.log("Executando a instrução SQL: \n" + instrucao);
-   return database.executar(instrucao);
+    return database.executar(instrucao, valores);
 
 }
 
@@ -63,10 +64,7 @@ function cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, ma
     // o componente n sei como fazer e o codEmpresa???????
         INSERT INTO Maquina (numeroSerie, so, modelo, setor comp1, comp2, comp3, comp4) VALUES ( '${codEmpresa}', '${maquinaSetor}', '${maquinaNSerie}', '${maquinaSO}', '${maquinaModelo}');
     `;
-    var valores = [nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj];
-
-console.log("Executando a instrução SQL: \n" + instrucao);
-return database.executarComParametros(instrucao, valores);
+    
 
 //     console.log("Executando a instrução SQL: \n" + instrucao);
 //    return database.executar(instrucao);
