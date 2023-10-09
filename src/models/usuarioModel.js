@@ -14,7 +14,7 @@ var database = require("../database/config")
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarEmpresa( razaoSocial, cnpj) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", razaoSocial, cnpj);
+    console.log("ACESSEI O USUARIO MODEL EMPRESA \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", razaoSocial, cnpj);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
@@ -25,6 +25,7 @@ function cadastrarEmpresa( razaoSocial, cnpj) {
    return database.executar(instrucao);
 
 }
+
 function cadastrarEndereco(cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():", cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento);
 
@@ -47,10 +48,9 @@ function cadastrarColaborador(nomeRepresentante, emailRepresentante, cpfRepresen
     var instrucao = `
         INSERT INTO colaborador (nome, cpf, email, celular, senha, fkEmpresa, fkNivelAcesso) VALUES ( '${nomeRepresentante}', '${emailRepresentante}', '${celularRepresentante}', '${cpfRepresentante}', '${senhaRepresentante}', (select idEmpresa from empresa where CNPJ = '${cnpj}'), 1);
     `;
-    var valores = [nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj];
 
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao, valores);
+    return database.executar(instrucao);
 
 }
 
@@ -66,7 +66,7 @@ function cadastrarCartao(cnpj, plano, nCartao, nomeTitular, validade, cvv, bande
     `;
 
     var instrucao2 = `
-    insert foda;
+    INSERT INTO cartao (nCartao, validade, cvv, bandeira, nomeTitular, fkEmpresa) VALUES ( '${nCartao}', '${validade}', '${cvv}', '${bandeira}', '${nomeTitular}', (select idEmpresa from empresa where CNPJ = '${cnpj}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

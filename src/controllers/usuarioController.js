@@ -199,7 +199,7 @@ function cadastrarCartao(req, res) {
     } 
     else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarColaborador(plano, nCartao, nomeTitular, validade, cvv, bandeira, cnpj)
+     usuarioModel.cadastrarCartao(plano, nCartao, nomeTitular, validade, cvv, bandeira, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);

@@ -173,7 +173,9 @@ function cadastrarEmpresa(){
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var cnpj = input_cnpj.value;
-        var plano = input_plano.value;
+        var plano = document.getElementById("input_plano").selectedIndex
+        // var plano = input_plano.value;
+        console.log(plano)
         var nCartao = input_numero_cartao.value;
         var nomeTitular = input_nome_titular.value;
         var validade = input_validade.value;
