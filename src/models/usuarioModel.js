@@ -55,6 +55,27 @@ function cadastrarColaborador(nomeRepresentante, emailRepresentante, cpfRepresen
 }
 
 
+
+function cadastrarCartao(cnpj, plano, nCartao, nomeTitular, validade, cvv, bandeira) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():", cnpj, plano, nCartao, nomeTitular, validade, cvv, bandeira);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+         UPDATE empresa set fkPlano = ${plano} where cnpj = ${cnpj};
+    `;
+
+    var instrucao2 = `
+    insert foda;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao2);
+    database.executar(instrucao);
+    return database.executar(instrucao2);
+}
+
+
 function cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4);
 
@@ -76,5 +97,6 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarEndereco, 
     cadastrarColaborador, 
-    cadastrarMaquina
+    cadastrarMaquina, 
+    cadastrarCartao
 };

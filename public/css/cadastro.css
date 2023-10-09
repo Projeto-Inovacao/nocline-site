@@ -5,6 +5,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(7px);
+
   }
 
   ::-webkit-scrollbar {
@@ -98,7 +100,7 @@
   .container {
     width: 50vw;
     height: 100vh;
-    background: #040425da;
+    background: #121212e2;
     text-align: center;
     border-radius: 5px;
     padding: 50px 10px 10px 35px;
@@ -154,7 +156,7 @@
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    outline: 2px solid #25049b;
+    outline: 2px solid #ffffff;
     align-items: center;
     color: #fdfafa;
     background: rgba(0, 0, 0, 0.425)
@@ -170,7 +172,7 @@
     width: 100%;
     height: calc(100% + 5px);
     border: none;
-    background: #3d2b8b;
+    background: #323131;
     margin-top: -20px;
     position: relative;
     border-radius: 5px;
@@ -245,8 +247,8 @@
   }
 
   .progress-bar .step .bullet.active {
-    border-color: #1f246b;
-    background: #1f246b;
+    border-color: #8b8b8b;
+    background: #a2a2a3;
   }
 
   .progress-bar .step .bullet span {
@@ -272,7 +274,7 @@
   }
 
   .progress-bar .step .bullet.active:after {
-    background: #1f246b;
+    border-color: #8b8b8b;
     transform: scaleX(0);
     transform-origin: left;
     animation: animate 0.3s linear forwards;
@@ -290,7 +292,7 @@
   }
 
   .progress-bar .step p.active {
-    color: #1f246b;
+    color: #a2a2a3;
     transition: 0.2s linear;
   }
 
@@ -330,7 +332,7 @@
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    outline: 2px solid #25049b;
+    outline: 2px solid #ffffff;
     align-items: center;
 
   }
@@ -381,7 +383,7 @@
   }
 
   .input__field:is(:focus-visible, :valid) {
-    outline-color: #4021af;
+    outline-color: #ffffff;
   }
 
   .input_size {
