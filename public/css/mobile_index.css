@@ -8,7 +8,7 @@
     }
 
     .filhoCabecalho {
-        width: 100%;
+        width: 100vw;
         height: 7vh;
     }
 
@@ -36,10 +36,7 @@
 
     /* Começo Banner mobie */
     .paiBanner {
-        height: 18rem !important;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 50%;
+        height: 19rem !important;
     }
 
     .divBoxTextoBanner {
@@ -80,8 +77,8 @@
     }
 
     .botao2Banner {
-        width: 40%;
-        height: 100%;
+        width: 4rem;
+        height: 2rem;
         padding: 0 0.4rem;
         font-size: 6px;
     }
@@ -98,6 +95,89 @@
 
     /* fim banner mobile */
 
+    /* Começo Sobre nos */
+    .fundoEntenda {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .sobrenos {
+        width: 50%;
+        top: 1.5vh;
+        left: 5.5rem;
+        text-align: center;
+
+    }
+
+    .subtitulo {
+        width: 70%;
+        top: 2vh;
+        left: 4.5rem;
+    }
+
+    .fundoEntenda img {
+        width: 2.5rem;
+        height: 2.5rem;
+        position: relative;
+        right: 0vw;
+        top: 10vh;
+
+    }
+
+    .main-div {
+        display: flex;
+    }
+
+    .right-side {
+        padding: 1rem;
+    }
+
+
+    .right-side>div {
+        left: 0;
+        height: 23vh;
+        bottom: 2rem;
+        width: 10vw;
+        right: 7rem;
+    }
+
+    .right-side p {
+        top: 2.5rem;
+        position: relative;
+        width: 40vw;
+        left: 0rem;
+        font-size: 0.8rem;
+        text-align: start;
+    }
+
+    .right-side h2 {
+        top: 2rem;
+        left: 2.7rem;
+        position: relative;
+        font-size: 1.3rem;
+    }
+
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: justify;
+        padding: 1rem;
+    }
+
+    .left-side p {
+        width: 45vw;
+        text-align: end;
+        font-size: 0.8rem;
+    }
+
+
+    /* Fim do Sobre nos */
+
+
     /* começo entenda como trabalhamos mobile */
     .imagemEntenda {
         height: 35vh;
@@ -105,7 +185,8 @@
     }
 
     .fundoEntenda {
-        height: 45rem;
+        height: 40rem;
+        width: 100vw;
     }
 
     .textoEntenda {
@@ -115,19 +196,23 @@
     .tituloEntenda {
         position: relative;
         top: 80%;
+        width: 100vw;
     }
 
     .tituloEntenda p {
         font-size: 13px;
+        width: 100vw;
     }
 
     .subtituloEntenda {
         position: relative;
         top: 65%;
+        width: 100vw;
     }
 
     .subtituloEntenda p {
         font-size: 11px;
+        width: 100vw;
     }
 
     .divQuadrados {
@@ -206,21 +291,22 @@
 
     /* Começo porque nos escolher mobile */
     .Div_filtro {
-        height: 53rem !important;
+        height: 50rem !important;
     }
 
     .Cards_PNE {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        height: 100%;
-        margin-top: 10%;
+        height: 150vh;
+        position: relative;
+        top: 0.5rem;
     }
 
     .Cards_PNE .card {
         margin: auto;
-        width: 17rem;
-        height: 15rem;
+        width: 65vw;
+        height: 30vh;
     }
 
     .card img {
@@ -244,7 +330,7 @@
 
     .Tit_PNE h1 {
         margin: auto;
-        color: rgb(255, 255, 255);
+        color: #fff;
         position: relative;
     }
 
@@ -258,18 +344,10 @@
     }
 
     .Div_PqNosEscolher {
-        background-image: url(../assets/banner45.jpg);
+        background-image: url(../assets/banner.png);
         background-size: cover;
         width: 100%;
-        height: 61rem !important;
-        z-index: 0;
-        position: relative;
-        margin-top: 13%;
-    }
-
-    .Div_PqNosEscolher {
-        width: 100%;
-        height: 85rem;
+        height: 75rem !important;
         z-index: 0;
     }
 
@@ -279,172 +357,392 @@
     }
 
     .Div_filtro {
-        height: 78rem;
+        position: relative;
+        bottom: 0rem;
+        width: 100vw;
+
     }
 
     /* fim porque nos escolher mobile */
 
     /* Começo da nossa equipe mobile */
+
     .all-membros {
-        height: 221vh;
-        display: flex;
+        height: 270vh;
+    }
+
+    .cards-equipe {
         flex-direction: column;
-        margin-left: -10px;
+    }
+
+
+    /* área com as fotos dos integrantes */
+    .card-foto {
+        height: 38vh;
+        width: 37vw;
+    }
+
+    /* função dos integrantes */
+    .texto3 {
+        bottom: 0vh;
     }
 
     /* fim da nosssa equipe mobile */
 
-    /* Começo do comece conosco mobile */
+    /* Inicio Planos mobile*/
+
+    .Div_Planos {
+        height: 75rem;
+    }
+
+    .Tit_Planos {
+        width: 100vw;
+        height: 10rem;
+        flex-direction: column;
+        top: 0.5rem;
+    }
+
+    .Tit_Planos h1 {
+        position: relative;
+        bottom: 2vh;
+        font-size: xx-large;
+    }
+
+    .Tit_Planos h3 {
+
+        font-size: large;
+    }
+
+    .Tit_Planos h4 {
+
+        position: relative;
+        bottom: 3vh;
+        font-size: large;
+    }
+
+    .Cards_Planos {
+        height: 60rem;
+        bottom: 0vh;
+        flex-direction: column;
+    }
+
+
+    /* fim planos */
+
+    /* Inicio Avaliacoes*/
+
+    .Div_avaliacoes {
+        width: 100%;
+        height: 78rem;
+        z-index: 0;
+        position: relative;
+        top: 1rem;
+    }
+
+    .Tit_avaliacoes {
+        flex-direction: column;
+    }
+
+
+    .Cards_avaliacoes {
+        width: 100%;
+        height: 65rem;
+        bottom: 0vh;
+        flex-direction: column;
+    }
+
+    .Cards_avaliacoes .card_avaliacoes {
+        width: 22rem;
+        height: 21rem;
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1rem;
+    }
+
+    .foto {
+        height: 7vh;
+    }
+
+    /* fim Avaliacoes */
+
+
+    /* começo do comece conosco mobile */
     .paiComeceConosco {
-        height: 200px;
-        background-size: cover;
-        background-position: 100%;
+        height: 20vh;
     }
 
     .filhoComeceConosco {
-        width: 80%;
-        height: 85%;
+        display: flex;
+        width: 90%;
+        height: 60%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .esquerdaComeceConosco {
+        width: 50%;
+        height: 20%;
     }
 
     .boxTextoComeceConosco {
-        width: 60%;
-        margin-top: 10%;
-        font-size: 10px;
+        width: 90%;
+        position: relative;
+        top: 5vh;
+        left: 5vw;
     }
 
     #pComeceConosco {
-        position: relative;
-        right: 25%;
-        width: 280px;
         font-size: 20px;
     }
 
+    #textoComece {
+        font-size: 10px;
+    }
+
     #botaoComeceConosco {
-        width: 15vw;
-        height: 3vh;
-        font-size: 7px;
-        position: relative;
-        margin-top: 8px;
+        width: 25vw;
+        height: 4vh;
+        font-size: 10px;
     }
 
-    /* fim do comeco conosco mobile */
-
-    /* Comecço rodapé mobile */
-    .maps {
-        height: 15rem;
+    #botaoComeceConosco:hover {
+        background-color: #ffffff;
+        box-shadow: 0px 5px 20px rgb(0, 0, 0);
+        color: black;
+        transform: translateY(-7px);
     }
 
-    .rodape {
-        flex-direction: column;
-        width: 65vw;
-        height: 30vh;
-    }
+    /* fim do comece conosco */
+    
+/* começo do rodape */
 
-    .footer_contatos {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    #email {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .links {
-        padding: 10px 0 0 0;
-        font-size: 0.8rem;
-        position: relative;
-        left: 40%;
-        top: 15%;
-    }
-
-    .faleConosco {
-        font-size: 0.8rem;
-        margin: 0;
-        position: relative;
-        left: 20%;
-        top: 15%;
-    }
-
-    #faleConosco {
-        font-size: 0.9rem;
-    }
-
-    .iconFaleConosco {
-        font-size: 15px !important;
-    }
-
-    #iconFaleConosco {
-        width: 15px;
-        height: 15px;
-        position: relative;
-        top: 4px;
-        margin-right: 5px;
-    }
-
-    .divIcon {
-        padding: 15px 0 0 0;
-        width: 100%;
-        justify-content: space-around;
-    }
-
-    .icon {
-        padding: 0;
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
-    .material-symbols-outlined {
-        position: relative;
-        top: 3px;
-    }
-
-    .copyright {
-        width: 100%;
-    }
-
-    #copy {
-        padding: 0 0 0 10px;
-        font-size: 0.5rem;
-    }
-
-    .copyright #nocline {
-        width: 30vw;
-        height: 3.2vh;
-    }
-
-    .feedbackForm {
-        right: 10%;
-        height: 8rem;
-        width: 28%;
-        top: 396.9rem;
-        padding: 56.1px;
-    }
-
-    .feedbackForm h2 {
-        font-size: 1.4rem;
-        margin-top: -50px;
-    }
-
-    .feedbackForm input {
-        margin: 5px;
-        font-size: 0.6rem;
-    }
-
-    .enviarMensagem {
-        font-size: 8px;
-        top: 12rem;
-        left: 4rem;
-        height: 1rem;
-        width: 7rem;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-    }
-
-    /* fim do rodape Mobile */
+.rodape {
+    display: flex;
+    width: 100%;
+    height: 35rem;
 }
 
-/* FIM MOBILE */
+.notes {
+    position: relative;
+    width: auto;
+    max-width: 300px;
+    min-height: 150px;
+    background: #0e0c0c;
+    color: #333;
+    padding: 20px;
+    margin: 20px 0;
+    outline: none;
+    border-radius: 5px;
+
+}
+
+.container {
+    display: flex;
+    width: 60vw;
+    position: relative;
+    left: 2vw;
+}
+
+.lista {
+
+    flex: 1;
+    padding: 10px;
+
+}
+
+.lista li {
+
+    padding: 10px;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+    right: 3.8vw;
+
+}
+
+.lista li:hover {
+
+    transform: scale(1.03);
+    transition: 0.5s ease-in-out;
+
+}
+
+.feedbackForm {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    z-index: 99;
+    right: 4%;
+    height: 25.5rem;
+    width: 24rem;
+    bottom: -239.86rem;
+    justify-content: space-around;
+    padding: 70px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
+}
+
+
+.feedbackForm ::placeholder {
+    padding-left: 0.5rem;
+}
+
+.input-group {
+    position: relative;
+
+}
+
+.input-group__input {
+    padding: 5px;
+    margin: 20px 0;
+    width: 100%;
+    outline: none;
+    height: 20px;
+    border: 0;
+    border-bottom: 2px solid rgb(33, 32, 32);
+    text-align: start;
+    font-size: medium;
+    background-color: transparent;
+    transition: border-bottom 500ms;
+
+
+}
+
+.input-group__input:is(:focus, :valid) {
+
+    border-bottom: 2px solid rgb(0, 0, 0);
+
+}
+
+.input-group__label {
+
+    position: absolute;
+    top: 3vh;
+    left: 0;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform 0.25s;
+
+}
+
+.input-group__input:focus+.input-group__label,
+.input-group__input:valid+.input-group__label {
+
+    transform: translate(0, -14px) scale(0.9);
+    color: #000000;
+
+
+}
+
+.enviarMensagem {
+    color: white;
+    font-size: 15px;
+    background-color: black;
+    position: absolute;
+    top: 31rem;
+    height: 2rem;
+    width: 10rem;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.enviarMensagem:hover {
+    box-shadow: 0px 5px 10px rgb(138, 138, 138);
+    transform: translateY(-7px);
+}
+
+.faleConosco {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.material-symbols-outlined {
+
+    position: relative;
+    top: 1vh;
+
+
+}
+
+#iconFaleConosco {
+
+    position: relative;
+    top: 1vh;
+
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.divIcon {
+    display: flex;
+    padding: 20px;
+}
+
+.icon {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    padding: 7px;
+    transition: 0.2s ease-in-out;
+}
+
+.icon:hover {
+
+    transform: scale(1.1);
+
+}
+
+.links a:hover {
+    font-size: 12px;
+}
+
+.iconFace {
+    display: flex;
+    width: 2rem;
+    height: 2.3rem;
+    padding: 2px;
+    margin-top: -2px;
+}
+
+.copyright {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid gray;
+}
+
+.copyright span {
+    justify-content: space-around;
+    padding: 23px;
+}
+
+#copy {
+    color: #000000;
+}
+
+.copyright #nocline {
+    height: 3rem;
+}
+
+/* fim do rodape */
+
+}
