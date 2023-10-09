@@ -4,9 +4,9 @@ function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
     select 
-    email_corporativo, senha, emailEmpresa, senhaEmpresa from Colaborador 
+    email, senha from Colaborador 
     right join Empresa on fkEmpresa = idEmpresa
-    WHERE (email_corporativo = '${email}' AND senha = '${senha}') or (emailEmpresa = '${email}' AND senhaEmpresa = '${senha}');
+    WHERE email = '${email}' AND senha = sha2('${senha}', 256);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
