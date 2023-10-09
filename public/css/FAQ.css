@@ -153,8 +153,10 @@ h1 {
 }
 
 .background {
-    height: auto;
-    background-color: #0e0c0c;
+    height:max-content;
+    background-color: #000000;
+    position: relative;
+  
 }
 
 .banner {
@@ -165,77 +167,76 @@ h1 {
 
 .titulo {
     color: #ffffff;
-    padding-top: 5rem;
-    padding-left: 7rem;
+    padding-top: 2.8rem;
+    padding-left: 4.7rem;
     display: flex;
     flex-direction: column;
+    font-size: 35px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .linha {
     position: relative;
     bottom: 3rem;
+    letter-spacing: 0px;
+    
 }
 
-
-.FAQ {
-    margin: 0.5rem auto;
-    margin-bottom: 5rem;
-    width: 100vw;
-}
-
-.FAQ li {
-    list-style: none;
-    width: 100%;
-    padding: 0.5rem;
-}
-
-.FAQ li label {
-    display: flex;
-    align-items: center;
-    font-size: 1.35rem;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 0.2rem;
-    color: #ffffff;
-}
-
-.FAQ label::before {
-    content: '▼';
-    margin-right: 4rem;
-    font-size: 1rem;
-    font-weight: 500;
-
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-.FAQ .texto {
-    color: #ffffff;
-    line-height: 2rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s, padding 0.5s;
-}
-
-.container .FAQ input[type="radio"]:checked+label+.texto {
-    max-height: 50rem;
-    padding: 2rem 2rem 5rem;
-}
-
-.container .FAQ input[type="radio"]:checked+label::before {
-    content: '▶';
-}
 
 .container2 img {
     height: 20rem;
+    margin-left: 118%;
+    margin-top: -50%;
 }
 
+.container{
+height: max-content;
+margin-top: -2%;
+margin-left: 3%;
+}
 
+.layout{
+    width: 600px;
+    margin-left: 5%;
+}
+.accordion{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 5%;
+    background: #000000;
+    width: 1000px;
+    color: #ffffff;
+    border-bottom: 2px solid rgb(255, 255, 255); 
+    background-color: rgb(0, 0, 0);
+}
+.accordion__question p{
+    margin: 5px;
+    padding: 0;
+    font-family: Verdana;
+    font-size: 20px;
+}
+.accordion__answer p{
+    margin: 5px;
+    padding: 10px;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    border-radius: 10px; 
+}
+.accordion:hover{
+    cursor: pointer;
+}
+.accordion__answer {
+    display: none;
+} 
+.accordion.active .accordion__answer {
+    display: block;
+}
 /* final do FAQ */
-
-
 /* começo do rodape */
 
 .rodape {
