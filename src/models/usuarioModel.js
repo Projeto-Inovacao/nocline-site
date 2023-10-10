@@ -62,11 +62,11 @@ function cadastrarCartao(cnpj, plano, nCartao, nomeTitular, validade, cvv, bande
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-         UPDATE empresa set fkPlano = ${plano} where cnpj = ${cnpj};
+    UPDATE empresa SET fkPlano = ${cnpj} WHERE CNPJ = ${plano};   
     `;
 
     var instrucao2 = `
-    INSERT INTO cartao (nCartao, validade, cvv, bandeira, nomeTitular, fkEmpresa) VALUES ( '${nCartao}', '${validade}', '${cvv}', '${bandeira}', '${nomeTitular}', (select idEmpresa from empresa where CNPJ = '${cnpj}'));
+    INSERT INTO cartao (nCartao, validade, cvv, bandeira, nomeTitular, fkEmpresaC) VALUES ( '${nCartao}', '${validade}', '${cvv}', '${bandeira}', '${nomeTitular}', (select idEmpresa from empresa WHERE CNPJ = '${plano}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -97,6 +97,6 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarEndereco, 
     cadastrarColaborador, 
-    cadastrarMaquina, 
+    // cadastrarMaquina, 
     cadastrarCartao
 };

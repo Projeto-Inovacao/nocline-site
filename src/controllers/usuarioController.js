@@ -270,7 +270,7 @@ module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
 cadastrarColaborador,
-cadastrarMaquina, 
+// cadastrarMaquina, 
 cadastrarCartao
 // entrar
 }

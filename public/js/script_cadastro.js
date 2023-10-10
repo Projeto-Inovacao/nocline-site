@@ -34,7 +34,7 @@ prevBtnSec.addEventListener("click", function(){
   current -= 1;
 });
 prevBtnThird.addEventListener("click", function(){
-  slidePage.style.marginLeft = "-25%";
+  slidePage.style.marginLeft = "-30%";
   bullet[current - 2].classList.remove("active");
   progressCheck[current - 2].classList.remove("active");
   progressText[current - 2].classList.remove("active");
