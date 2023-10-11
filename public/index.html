@@ -366,7 +366,7 @@
     <div class="footer">
 
         <a class="scroll-to-top" href="#inicio">
-            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-arrow-up">🠅</i>
         </a>
 
         <div class="rodape">
@@ -466,5 +466,18 @@
             });
         });
     });
+
+    window.addEventListener("scroll", function() {
+    var scrollButton = document.querySelector(".scroll-to-top");
+    
+    // Verifique a posição vertical da página
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        // Se o usuário rolou para baixo mais de 20 pixels, adicione a classe "show"
+        scrollButton.classList.add("show");
+    } else {
+        // Caso contrário, remova a classe "show"
+        scrollButton.classList.remove("show");
+    }
+});
 
 </script>
