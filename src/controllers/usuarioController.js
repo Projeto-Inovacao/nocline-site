@@ -102,7 +102,7 @@ function cadastrarEndereco(req, res) {
         }
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarEndereco(cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento)
+     usuarioModel.cadastrarEndereco(cep, numero, rua, bairro, cidade, estado, pais, complemento, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -126,7 +126,7 @@ function cadastrarColaborador(req, res) {
     var cnpj = req.body.cnpjServer;
     var nomeRepresentante = req.body.nomeRepresentanteServer;
     var emailRepresentante = req.body.emailRepresentanteServer;
-    var celularColaborador = req.body.celularRepresentanteServer;
+    var celularRepresentante= req.body.celularRepresentanteServer;
     var cpfRepresentante = req.body.cpfRepresentanteServer;
     var senhaRepresentante = req.body.senhaRepresentanteServer;
 
@@ -140,7 +140,7 @@ function cadastrarColaborador(req, res) {
         res.status(400).send("Sua email de senha está undefined!");
     } else if (senhaRepresentante == undefined) {
         res.status(400).send("Seu senha está undefined!");
-    } else if (celularColaborador == undefined) {
+    } else if (celularRepresentante == undefined) {
         res.status(400).send("Seu celular está undefined!");
     } else if (cpfRepresentante == undefined) {
         res.status(400).send("Seu setor está undefined!");
@@ -149,7 +149,7 @@ function cadastrarColaborador(req, res) {
     } 
     else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarColaborador(nomeRepresentante, emailRepresentante, celularColaborador, cpfRepresentante, senhaRepresentante, cnpj)
+     usuarioModel.cadastrarColaborador(nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -199,7 +199,7 @@ function cadastrarCartao(req, res) {
     } 
     else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarCartao(plano, nCartao, nomeTitular, validade, cvv, bandeira, cnpj)
+     usuarioModel.cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, plano)
      .then(
          function (resultado) {
              res.json(resultado);

@@ -62,7 +62,6 @@
 </html>
 <script>
     function entrar() {
-
     var emailEmpresaVar = input_email.value;
     var senhaVar = input_senha.value;
 
@@ -97,11 +96,10 @@
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                // sessionStorage.email_USUARIO = json.email;
-                // sessionStorage.nome_USUARIO = json.nome;
-                // sessionStorage.username_USUARIO = json.username;
-                // sessionStorage.ID_USUARIO = json.idUsuario;
-                // finalizarAguardar()
+               
+                sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                 setTimeout(function () {
                     window.location = "dashboard/index.html";
                 }, 1000); // apenas para exibir o loading
