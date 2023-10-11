@@ -1,4 +1,4 @@
-/* PARTE MOBILE FAQ*/
+/* PARTE MOBILE */
 @media only screen and (max-width: 600px) {
 
     * {
@@ -54,103 +54,240 @@
         height: 2vh;
     }
 
-    /* começo do FAQ */
-    h1 {
-        font-size: 3rem;
-    }
 
-    .background {
-        height: max-content;
-        background-color: #000000;
-        position: relative;
-
-    }
-
-    .banner {
+    /* Começo do Entenda Como trabalhamos */
+    .fundoEntenda {
+        background-color: rgb(0, 0, 0);
+        height: 26rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    .paiEntenda {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 50vh;
+    }
+
+    .textoEntenda {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+    }
+
+    .tituloEntenda {
+        display: flex;
+        justify-content: center;
+        height: 5vh;
+    }
+
+    .tituloEntenda p {
+        color: black;
+        font-size: large;
+        height: 5vh;
+    }
+
+    .subtituloEntenda {
+        border-color: black;
+    }
+
+    .linhaPreta {
+        position: relative;
+        top: 60%;
+        left: 10%;
+        width: 80%;
+        height: 0.4vh;
+        background-color: black;
+    }
+
+    .divQuadrados {
+        margin-top: 1%;
+        background-color: rgb(0, 0, 0);
+        width: 100%;
+        height: 45vh;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 5%;
+    }
+
+    .idDetalhes {
+        font-size: 13px;
+        position: relative;
+        top: -20%;
+        font-weight: bold;
+        color: white;
+    }
+
+    .botaoSaibaMais {
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 8vw;
+        height: 6vh;
+        font-size: 12px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0);
+        border: 3px #ffffff solid;
+        font-weight: bold;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .botaoSaibaMais:hover {
+        background-color: #ffffff;
+        color: black;
+        transform: translateY(-7px);
+        border-radius: 2px;
+    }
+
+    .QuadradoEsquerda {
+        background-image: url(../assets/IMG1.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 45vh;
+        width: 18%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .expanding-div {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s;
+        background-color: rgb(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+    }
+
+    .hidden-text {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .imagemEntenda {
+        height: 45vh;
+        width: 100%;
+    }
+
+    .QuadradoMeio {
+        background-image: url(../assets/IMG2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        height: 45vh;
+        width: 18%;
+
+    }
+
+    .expanding-divM {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s;
+        background-color: rgb(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+    }
+
+    .hidden-textM {
+        padding: 10px;
+        margin: 0;
+        color: rgb(255, 255, 255);
+    }
+
+    .QuadradoDireita {
+        background-image: url(../assets/IMG3.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 45vh;
+        width: 18%;
+
+    }
+
+    .expanding-divD {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s;
+        background-color: rgb(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+    }
+
+    .hidden-textD {
+        padding: 10px;
+        margin: 0;
+        color: white;
+    }
+
+    .faixapreta {
+        position: relative;
+        top: 67%;
+        width: 100%;
+        background-color: rgb(0, 0, 0, 0.8);
+        height: 15vh;
+        display: flex;
         align-items: center;
     }
 
-    .titulo {
-        color: #ffffff;
-        padding-top: 2.8rem;
-        padding-left: 4.7rem;
-        display: flex;
-        flex-direction: column;
-        font-size: 35px;
-        font-family: Inter;
-        font-style: normal;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-
-    .linha {
+    .faixapretaM {
         position: relative;
-        bottom: 3rem;
-        letter-spacing: 0px;
-
+        top: 67%;
+        width: 100%;
+        background-color: rgb(0, 0, 0, 0.8);
+        height: 15vh;
+        display: flex;
+        align-items: center;
     }
 
-
-    .container2 img {
-        height: 20rem;
-        margin-left: 118%;
-        margin-top: -50%;
+    .faixapretaD {
+        position: relative;
+        top: 67%;
+        width: 100%;
+        background-color: rgb(0, 0, 0, 0.8);
+        height: 15vh;
+        display: flex;
+        align-items: center;
     }
 
-    .container {
-        height: max-content;
-        margin-top: -2%;
-        margin-left: 3%;
+    .expanded {
+        height: 200px;
     }
 
-    .layout {
-        width: 600px;
-        margin-left: 5%;
+    .faixapreta p {
+        color: white;
+        align-self: center;
+        margin-bottom: 3%;
     }
 
-    .accordion {
-        padding: 10px;
-        margin-top: 10px;
-        margin-bottom: 5%;
-        background: #000000;
-        width: auto;
-        color: #ffffff;
-        border-bottom: 2px solid rgb(255, 255, 255);
-        background-color: rgb(0, 0, 0);
+    .faixapreta button {
+        color: white;
+        border-color: white;
+        background-color: black;
+        width: 40%;
     }
 
-    .accordion__question p {
-        margin: 5px;
-        padding: 0;
-        font-family: Verdana;
-        font-size: 20px;
+    .filhofaixa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 8vh;
+        width: 100%;
     }
 
-    .accordion__answer p {
-        margin: 5px;
-        padding: 10px;
-        font-size: large;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color: rgb(255, 255, 255);
-        background: rgb(0, 0, 0);
-        border-radius: 10px;
-    }
-
-    .accordion:hover {
-        cursor: pointer;
-    }
-
-    .accordion__answer {
-        display: none;
-    }
-
-    .accordion.active .accordion__answer {
-        display: block;
-    }
-
-    /* final do FAQ */
+    /* Fim do Entenda Contexto */
     /* começo do rodape */
 
     .rodape {
@@ -217,7 +354,7 @@
         position: absolute;
         z-index: 99;
         right: 4rem;
-        top: 90rem;
+        top: 77rem;
         height: 17.5rem;
         width: 9rem;
         justify-content: space-around;
