@@ -80,6 +80,7 @@ function cadastrarEmpresa(){
                       nomeRepresentanteServer: nomeRepresentante, 
                       emailRepresentanteServer : emailRepresentante,
                       celularRepresentanteServer : celularRepresentante,
+                    //   oi
                       cpfRepresentanteServer : cpfRepresentante,
                       senhaRepresentanteServer : senhaRepresentante,
                       cnpjServer: cnpj

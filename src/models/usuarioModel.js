@@ -77,22 +77,6 @@ function cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, pl
 }
 
 
-function cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4);
-
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucao = `
-    // o componente n sei como fazer e o codEmpresa???????
-        INSERT INTO Maquina (numeroSerie, so, modelo, setor comp1, comp2, comp3, comp4) VALUES ( '${codEmpresa}', '${maquinaSetor}', '${maquinaNSerie}', '${maquinaSO}', '${maquinaModelo}');
-    `;
-    
-
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//    return database.executar(instrucao);
-
-}
-
 module.exports = {
     entrar,
     cadastrarEmpresa,
