@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | NOC LINE</title>
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/Mobile_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -13,7 +14,6 @@
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
     <script src="js/botao.js"></script>
     <script src="js/conexaoCad.js"></script>
-    <script src="js/viaCep.js"></script>
 </head>
 
 <body>
@@ -162,8 +162,8 @@
                                     <div class="inputs_login_esquerda">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="cep_input" type="text" required />
-                                                <label for="cep_input" class="input__label">CEP</label>
+                                                <input class="input__field" id="input_cep" type="text" required />
+                                                <label for="input_cep" class="input__label">CEP</label>
                                                 <img src="./assets/icons8-skyscrapers-50.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -171,15 +171,15 @@
                                         <div class="field">
                                             <div class="input">
 
-                                                <input class="input__field input_mini" id="pais_input" type="text"
+                                                <input class="input__field input_mini" id="input_pais" type="text"
                                                     required />
-                                                <label for="pais_input" class="input__label">País</label>
+                                                <label for="input_pais" class="input__label">País</label>
                                                 <img src="./assets/icons8-country-50.png" alt=""
                                                     class="material-symbols-outlined">
 
-                                                <input class="input__field input_size" id="estado_input" type="text"
+                                                <input class="input__field input_size" id="input_estado" type="text"
                                                     required />
-                                                <label for="estado_input" class="input__label3">Estado</label>
+                                                <label for="input_estado" class="input__label3">Estado</label>
                                                 <img src="./assets/icons8-region-50.png" alt=""
                                                     class="material-symbols-outlined" id="logo_estado">
 
@@ -187,8 +187,8 @@
                                         </div>
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="cidade_input" type="text" required />
-                                                <label for="cidade_input" class="input__label">Cidade</label>
+                                                <input class="input__field" id="input_cidade" type="text" required />
+                                                <label for="input_cidade" class="input__label">Cidade</label>
                                                 <img src="./assets/icons8-city-50.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -197,16 +197,16 @@
                                     <div class="inputs_login_direita">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="bairro_input" type="text" required />
-                                                <label for="bairro_input" class="input__label">Bairro</label>
+                                                <input class="input__field" id="input_bairro" type="text" required />
+                                                <label for="input_bairro" class="input__label">Bairro</label>
                                                 <img src="./assets/icons8-neighborhood-50.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="rua_input" type="text" required />
-                                                <label for="rua_input" class="input__label">Rua</label>
+                                                <input class="input__field" id="input_rua" type="text" required />
+                                                <label for="input_rua" class="input__label">Rua</label>
                                                 <img src="./assets/icons8-street-50.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -215,15 +215,15 @@
                                         <div class="field">
                                             <div class="input">
 
-                                                <input class="input__field input_size" id="numero_input" type="text"
+                                                <input class="input__field input_size" id="input_numero" type="text"
                                                     required />
-                                                <label for="numero_input" class="input__label">Número</label>
+                                                <label for="input_numero" class="input__label">Número</label>
                                                 <img src="./assets/icons8-10mph-speed-sign-50.png" alt=""
                                                     class="material-symbols-outlined" id="logo_numero">
 
-                                                <input class="input__field input_mini" id="complemento_input"
+                                                <input class="input__field input_mini" id="input_complemento"
                                                     type="text" required />
-                                                <label for="complemento_input" class="input__label2">Complemento</label>
+                                                <label for="input_complemento" class="input__label2">Complemento</label>
                                                 <img src="./assets/icons8-parking-and-3rd-floor-50.png" alt=""
                                                     class="material-symbols-outlined" id="logo_complemento">
 
@@ -250,7 +250,7 @@
                                                     <option value="2">Master</option>
                                                     <option value="3">Plus</option>
                                                 </select>
-                                                <label for="complemento_input" class="input__label4">Planos</label>
+                                                <label for="input_complemento" class="input__label4">Planos</label>
                                                 <img src="./assets/folha-de-pagamento.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -258,9 +258,9 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="numero_input_cartao" type="text"
+                                                <input class="input__field" id="input_numero_cartao" type="text"
                                                     required />
-                                                <label for="numero_input_cartao" class="input__label">Número do
+                                                <label for="input_numero_cartao" class="input__label">Número do
                                                     Cartão</label>
                                                 <img src="./assets/cartao-sim.png" alt=""
                                                     class="material-symbols-outlined">
