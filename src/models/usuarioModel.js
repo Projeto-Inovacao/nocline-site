@@ -4,16 +4,22 @@ function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
     select 
-    email, senha from colaborador 
+    * from colaborador 
      join empresa on fkEmpresa = idEmpresa
     WHERE (email = '${email}' AND senha = '${senha}') ;
     `;
+    // var instrucao2=`SELECT c.fkEmpresa AS idEmpresa
+    // FROM colaborador c
+    // WHERE c.email = '${email}';`;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
+    // console.log("Executando a instrução SQL2: \n" + instrucao2);
     return database.executar(instrucao);
 }
 
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrarEmpresa( razaoSocial, cnpj) {
+function cadastrarEmpresa(razaoSocial, cnpj) {
     console.log("ACESSEI O USUARIO MODEL EMPRESA \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", razaoSocial, cnpj);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -22,7 +28,7 @@ function cadastrarEmpresa( razaoSocial, cnpj) {
     INSERT INTO empresa (razaoSocial, cnpj) VALUES ( '${razaoSocial}', '${cnpj}');`
 
     console.log("Executando a instrução SQL: \n" + instrucao);
-   return database.executar(instrucao);
+    return database.executar(instrucao);
 
 }
 
@@ -80,8 +86,8 @@ function cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, pl
 module.exports = {
     entrar,
     cadastrarEmpresa,
-    cadastrarEndereco, 
-    cadastrarColaborador, 
+    cadastrarEndereco,
+    cadastrarColaborador,
     // cadastrarMaquina, 
     cadastrarCartao
 };

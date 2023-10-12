@@ -504,8 +504,8 @@
     padding: 0.8rem 2.5rem 1rem 2.5rem;
   }
 
-  #input_pais,
-  #input_numero {
+  #pais_input,
+  #numero_input {
     margin-bottom: 0.8rem;
   }
 

@@ -66,6 +66,8 @@ function cadastrarEmpresa(req, res) {
      );
 }
 }
+
+
 function cadastrarEndereco(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller")

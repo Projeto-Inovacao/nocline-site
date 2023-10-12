@@ -10779,7 +10779,7 @@ a.text-secondary:hover {
 }
 
 .text-success {
-    color: #ff0074 !important
+    color: #338dff !important
 }
 
 a.text-success:focus,
@@ -10788,7 +10788,7 @@ a.text-success:hover {
 }
 
 .text-info {
-    color: #8d00d0 !important
+    color: #bbd0f2 !important
 }
 
 a.text-info:focus,
@@ -11244,7 +11244,7 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: .25rem solid #00a3ff !important
+    border-left: .25rem solid #0711fa !important
 }
 
 .border-bottom-primary {
@@ -11260,7 +11260,7 @@ a:focus {
 }
 
 .border-left-success {
-    border-left: .25rem solid #ff0074 !important
+    border-left: .25rem solid #338dff !important
 }
 
 .border-bottom-success {
@@ -11268,7 +11268,7 @@ a:focus {
 }
 
 .border-left-info {
-    border-left: .25rem solid #8d00d0 !important
+    border-left: .25rem solid #bbd0f2 !important
 }
 
 .border-bottom-info {

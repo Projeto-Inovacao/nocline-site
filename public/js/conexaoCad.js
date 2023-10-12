@@ -109,18 +109,18 @@ function cadastrarEmpresa(){
     
       function cadastrarEndereco() {
           console.log("Entrei na funcao endereco")
-    
+        
           //Recupere o valor da nova input pelo nome do id
           // Agora vá para o método fetch logo abaixo
           var cnpj = input_cnpj.value;
-          var cep = input_cep.value;
-          var pais = input_pais.value;
-          var estado = input_estado.value;
-          var cidade = input_cidade.value;
-          var bairro = input_bairro.value;
-          var rua = input_rua.value;
-          var numero = input_numero.value;
-          var complemento = input_complemento.value;
+          var cep = cep_input.value;
+          var pais = pais_input.value;
+          var estado = estado_input.value;
+          var cidade = cidade_input.value;
+          var bairro = bairro_input.value;
+          var rua = rua_input.value;
+          var numero = numero_input.value;
+          var complemento = complemento_input.value;
     
     
     
@@ -213,6 +213,7 @@ function cadastrarEmpresa(){
   
       if (resposta.ok) {
         console.log("cadastrou com sucesso")
+        
   
       } else {
           throw ("Houve um erro ao tentar realizar o cadastro!");
