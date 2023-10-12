@@ -219,12 +219,67 @@ function cadastrarCartao(req, res) {
 }
 }
 
+function cadastrarMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller maqqqq")
+    
+    var codEmpresaMVar = req.body.codEmpServer;
+    var maquinaSetorMVar = req.body.maquinaSetorServer;
+    var maquinaSOMVar = req.body.maquinaSOServer;
+    var maquinaModeloMVar = req.body.maquinaModeloServer;
+    var maquinaIPMVar = req.body.maquinaIPServer;
+    // var cpuRadio = req.body.cpuRadioServer;
+    // var ramRadio = req.body.ramRadioServer;
+    // var discoRadio = req.body.discoRadioServer;
+    // var redeRadio = req.body.redeRadioServer;
+
+    // Faça as validações dos valores
+    if (codEmpresaMVar == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (maquinaSetorMVar == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    }  else if (maquinaSOMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (maquinaModeloMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (maquinaIPMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (cpuRadio == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    }
+    else if (ramRadio == undefined) {
+        res.status(400).send("Seu senha está undefined!");
+    } else if (discoRadio == undefined) {
+        res.status(400).send("Seu celular está undefined!");
+    } else if (redeRadio == undefined) {
+        res.status(400).send("Seu setor está undefined!");
+    } 
+    else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrarMaquina(maquinaIPMVar, maquinaSOMVar, maquinaModeloMVar, maquinaSetorMVar, codEmpresaMVar)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro de maquina! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
 
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
 cadastrarColaborador,
-// cadastrarMaquina, 
+cadastrarMaquina, 
 cadastrarCartao,
 entrar
 }

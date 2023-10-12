@@ -48,14 +48,14 @@
                                         placeholder="Setor">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_maquina_setor"
+                                    <input type="name" class="form-control form-control-user" id="input_maquina_ip"
                                         placeholder="IP da máquina">
                                         <span style="font-size: 12px; margin-left: 12px;">Qual IP da minha máquina? Acesse http://www.meuip.com/</span>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="input_maquina_nserie"
                                         placeholder="Número de Série">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="input_maquina_so"
                                         placeholder="Sistema Operacional">
@@ -67,17 +67,17 @@
                                 <div class="form-group" >
                                     <h8 style="font-size: 15px; margin-left: 16px;">Escolha os componentes que você deseja monitorar:</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input type="radio" name="opcao" value="opcao2"> <h8 style="font-size: 13px; ">CPU</h8>
-                                        <input style="margin-left: 22px;" type="radio" name="opcao" value="opcao1"> <h8 style="font-size: 13px;">RAM</h8>
+                                        <input type="radio" name="opcao1" value="9" id="radioCPU"> <h8 style="font-size: 13px; ">CPU</h8>
+                                        <input style="margin-left: 22px;" type="radio" name="opcao2" value="11" id="radioRAM"> <h8 style="font-size: 13px;">RAM</h8>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input type="radio" name="opcao" value="opcao2"> <h8 style="font-size: 13px; ">DISCO</h8>
-                                        <input style="margin-left: 10px;" type="radio" name="opcao" value="opcao1"> <h8 style="font-size: 13px;">REDE</h8>
+                                        <input type="radio" name="opcao3" value="10" id="radioDISCO"> <h8 style="font-size: 13px; ">DISCO</h8>
+                                        <input style="margin-left: 10px;" type="radio" name="opcao4" value="12" id="radioREDE"> <h8 style="font-size: 13px;">REDE</h8>
                                     </div>
                               
                                 </div>
                                 
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <a class="btn btn-primary btn-user btn-block" onclick="cadastrarMaquina()">
                                     Confirmar Cadastro de Nova Máquina
                                 </a>
                                 
@@ -116,16 +116,17 @@
     // Agora vá para o método fetch logo abaixo
     var codEmpresaMVar = input_cod_empresa.value;
     var maquinaSetorMVar = input_maquina_setor.value;
-    var maquinaNSerieMVar = input_maquina_nserie.value; 
     var maquinaSOMVar = input_maquina_so.value; 
     var maquinaModeloMVar = input_maquina_modelo.value; 
-    var comp1MVar = input_componente1.value; 
-    var comp2MVar = input_componente2.value; 
-    var comp3MVar = input_componente3.value; 
-    var comp4MVar = input_componente4.value; 
+    var maquinaIPMVar= input_maquina_ip.value;
+    // var cpuRadio = document.getElementById("radioCPU");
+    // var ramRaRadio = document.getElementById("radioDISCO");
+    // var redeRdio = document.getElementById("radioRAM");
+    // var discoadio = document.getElementById("radioREDE");
+   
 
    
-            fetch("/usuarios/cadastrarMaquina", {
+            fetch("src/routes/usuarios/cadastrarMaquina", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -135,13 +136,14 @@
                     // Agora vá para o arquivo routes/usuario.js
                     codEmpServer: codEmpresaMVar,
                     maquinaSetorServer : maquinaSetorMVar,
-                    maquinaNSerieServer : maquinaNSerieMVar,
                     maquinaSOServer: maquinaSOMVar,
                     maquinaModeloServer: maquinaModeloMVar, 
-                    comp1Server: comp1MVar, 
-                    comp2Server: comp2MVar,
-                    comp3Server: comp3MVar, 
-                    comp4Server: comp4MVar, 
+                    maquinaIPServer: maquinaIPMVar, 
+                    // cpuRadioServer: cpuRadio, 
+                    // ramRadioServer: ramRadio, 
+                    // discoRadioServer: discoRadio,
+                    // redeRadioServer: redeRadio
+                
                 })
             }).then(function (resposta) {
 
@@ -153,7 +155,7 @@
                     // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                     setTimeout(() => {
-                        window.location = "login.html";
+                        // window.location = "login.html";
                     }, "2000")
 
                     limparFormulario();

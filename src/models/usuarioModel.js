@@ -82,12 +82,33 @@ function cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, pl
     return database.executar(instrucao2);
 }
 
+function cadastrarMaquina(maquinaIPMVar, maquinaSOMVar, maquinaModeloMVar, maquinaSetorMVar, codEmpresaMVar) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():",     //  e na ordem de inserção dos dados.
+    );
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    // var instrucao = `
+    // UPDATE empresa SET fkPlano = ${plano} WHERE CNPJ = ${cnpj};   
+    // `;
+
+    var instrucao3 = `
+    INSERT INTO maquina (ip, so, hostname, modelo, setor, fkEmpresa) VALUES ( '${maquinaIPMVar}', '${maquinaSOMVar}', 'host', '${maquinaModeloMVar}', '${maquinaSetorMVar}', '${codEmpresaMVar}');
+
+    `;
+
+    // console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao3);
+    // database.executar(instrucao);
+    return database.executar(instrucao3);
+}
+
 
 module.exports = {
     entrar,
     cadastrarEmpresa,
     cadastrarEndereco,
     cadastrarColaborador,
-    // cadastrarMaquina, 
+    cadastrarMaquina, 
     cadastrarCartao
 };
