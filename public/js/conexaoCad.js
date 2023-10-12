@@ -177,7 +177,7 @@ function cadastrarEmpresa(){
         var plano = document.getElementById("input_plano").selectedIndex
         // var plano = input_plano.value;
         console.log(plano)
-        var nCartao = input_numero_cartao.value;
+        var nCartao = numero_input_cartao.value;
         var nomeTitular = input_nome_titular.value;
         var validade = input_validade.value;
         var cvv = input_cvv.value;
