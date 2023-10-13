@@ -1,3 +1,4 @@
+const { json } = require("express");
 var usuarioModel = require("../models/usuarioModel");
 
 function entrar(req, res) {

@@ -98,9 +98,15 @@
                 console.log(json);
                 console.log(JSON.stringify(json));
                
-                sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.SENHA_USUARIO = json.senha;
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.CELULAR_USUARIO = json.celular;
+                    sessionStorage.ID_USUARIO = json.idColaborador;
+                    sessionStorage.NOME_EMPRESA = json.razaoSocial;
+                    sessionStorage.CNPJ_EMPRESA = json.CNPJ;
+
                 setTimeout(function () {
                     window.location = "dashboard/index.html";
                 }, 1000); // apenas para exibir o loading
