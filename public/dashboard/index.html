@@ -522,7 +522,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="myAreaChartCPU"></canvas>
                                     </div>
                                 </div>
                                 
@@ -568,11 +568,11 @@
                             </div>
                             <div class="card shadow mb-4" style="margin-left: -158px; width: 495px; height: 500px;">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Memória RAM</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Memória RAM (%)</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="myAreaChartRAM"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -697,16 +697,18 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
+    
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-
+    
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-line-cpu.js"></script>
+    <script src="js/demo/chart-line-ram.js"></script>
 
 </body>
 

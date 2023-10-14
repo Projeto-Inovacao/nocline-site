@@ -3,24 +3,23 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 var idMaquina = 1
-// Pie Chart Example    
-var ctx = document.getElementById("myPieChart");
+// var ctx = document.getElementById("myAreaChartCPU");
 
-window.onload = obterDadosDisco(idMaquina);
+window.onload = obterDadosRAM(idMaquina);
 
-function obterDadosDisco(idMaquina) {
-  console.log("DISCO!")
+function obterDadosRAM(idMaquina) {
+    console.log("RAM")
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
 
-  fetch(`/medidas/ultimasDisco/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/medidas/ultimasRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
           response.json().then(function (resposta) {
-              console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+              console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
               resposta.reverse();
 
-              plotarGraficoDisco(resposta, idMaquina);
+              plotarGraficoRAM(resposta, idMaquina);
 
           });
       } else {
@@ -32,30 +31,37 @@ function obterDadosDisco(idMaquina) {
       });
 }
 
-function plotarGraficoDisco(resposta, idMaquina) {
+function plotarGraficoRAM(resposta, idMaquina) {
 
   console.log('iniciando plotagem do gráfico...');
 
   // Criando estrutura para plotar gráfico - labels
-  let labels = ["Usado", "Livre"];
+  let labels = [];
 
   // Criando estrutura para plotar gráfico - dados
   let dados = {
       labels: labels,
       datasets: [{
-          label: 'Livre',
+          label: 'usado',
           data: [],
-          backgroundColor: ['rgba(185, 11, 0)','rgba(0, 185, 185)'],
-          borderColor: ['rgba(185, 11, 0)','rgba(0, 185, 185)'],
-          tension: 0.1
+          backgroundColor: ['rgba(220, 11, 11)'],
+          borderColor: ['rgba(255, 123, 123)'],
+          tension: 0.1,
+          fill: false
       },
       {
-          label: 'Usado',
-          data: []
-      }]
+        label: 'livre',
+        data: [],
+        backgroundColor: ['rgba(42, 178, 3)'],
+        borderColor: ['rgba(149, 255, 123)'],
+        tension: 0.1,
+        fill: false
+    },
+  ]
   };
 
   console.log('----------------------------------------------')
+  console.log('-------------------PLOT RAM---------------------')
   console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
   console.log(resposta)
 
@@ -63,7 +69,8 @@ function plotarGraficoDisco(resposta, idMaquina) {
   for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.livre);
-      dados.datasets[0].data.push(registro.usado);
+      dados.datasets[1].data.push(registro.usado);
+      labels.push(registro.dtHora);
   }
 
   console.log('----------------------------------------------')
@@ -76,33 +83,15 @@ function plotarGraficoDisco(resposta, idMaquina) {
 
   // Criando estrutura para plotar gráfico - config
   const config = {
-    type: 'doughnut',
-    data: dados
-  };
-
-  const options = {
-  maintainAspectRatio: false,
-  tooltips: {
-    backgroundColor: "rgb(255,255,255)",
-    bodyFontColor: "#858796",
-    borderColor: '#dddfeb',
-    borderWidth: 1,
-    xPadding: 15,
-    yPadding: 15,
-    displayColors: false,
-    caretPadding: 10,
-  },
-  legend: {
-    display: false // Aqui você já está ocultando as legendas
-  },
-  cutoutPercentage: 80,
-}
+    type: 'line',
+    data: dados,
+    fill: false
+  }
   
   // Adicionando gráfico criado em div na tela
-  let chartDisco = new Chart(
-      document.getElementById(`myPieChart`),
-      config,
-      options
+  let chartRAM= new Chart(
+      document.getElementById(`myAreaChartRAM`),
+      config
   );
 
   // setTimeout(() => atualizarGrafico(idMaquina, dados, chartDisco), 2000);

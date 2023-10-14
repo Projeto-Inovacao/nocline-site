@@ -1,15 +1,13 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
+// Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+// Chart.defaults.global.defaultFontColor = '#858796';
 
 var idMaquina = 1
+console.log("teste!")
 // Pie Chart Example    
-var ctx = document.getElementById("myPieChart");
-
-window.onload = obterDadosDisco(idMaquina);
-
-function obterDadosDisco(idMaquina) {
-  console.log("DISCO!")
+// var ctx = document.getElementById("");
+window.onload = obterDadosGrafico(idMaquina);
+function obterDadosGrafico(idMaquina) {
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
@@ -20,7 +18,7 @@ function obterDadosDisco(idMaquina) {
               console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
               resposta.reverse();
 
-              plotarGraficoDisco(resposta, idMaquina);
+              plotarGrafico(resposta, idMaquina);
 
           });
       } else {
@@ -32,7 +30,7 @@ function obterDadosDisco(idMaquina) {
       });
 }
 
-function plotarGraficoDisco(resposta, idMaquina) {
+function plotarGrafico(resposta, idMaquina) {
 
   console.log('iniciando plotagem do gráfico...');
 
@@ -45,8 +43,8 @@ function plotarGraficoDisco(resposta, idMaquina) {
       datasets: [{
           label: 'Livre',
           data: [],
-          backgroundColor: ['rgba(185, 11, 0)','rgba(0, 185, 185)'],
-          borderColor: ['rgba(185, 11, 0)','rgba(0, 185, 185)'],
+          backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(199, 52, 52, 0.6)'],
+          borderColor: ['rgb(75, 192, 192)', 'rgb(199, 52, 52)'],
           tension: 0.1
       },
       {
@@ -100,7 +98,7 @@ function plotarGraficoDisco(resposta, idMaquina) {
   
   // Adicionando gráfico criado em div na tela
   let chartDisco = new Chart(
-      document.getElementById(`myPieChart`),
+      document.getElementById(``),
       config,
       options
   );

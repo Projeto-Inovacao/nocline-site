@@ -58,6 +58,7 @@ function modules() {
   // ChartJS
   var chartJS = gulp.src('./node_modules/chart.js/dist/*.js')
     .pipe(gulp.dest('./vendor/chart.js'));
+//    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   // dataTables
   var dataTables = gulp.src([
       './node_modules/datatables.net/js/*.js',
