@@ -182,3 +182,12 @@ CREATE TABLE IF NOT EXISTS`Cartao` (
   CONSTRAINT `fk_Cartao_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `Empresa` (`idEmpresa`));
+
+CREATE TABLE IF NOT EXISTS `Mural` (
+	  `id` INT PRIMARY KEY,
+	  `titulo` VARCHAR(100),
+	  `descricao` VARCHAR(150),
+    `fkcolaborador` INT,
+    FOREIGN KEY (`fkcolaborador`)
+    REFERENCES `Colaborador` (`idColaborador`)
+);

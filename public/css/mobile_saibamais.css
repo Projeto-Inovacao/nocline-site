@@ -1,4 +1,6 @@
-@media only screen and (min-width: 992px) {
+/* PARTE MOBILE */
+@media only screen and (max-width: 600px) {
+
     * {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,172 +23,62 @@
     }
 
 
-    /* começo do cabeçalho */
+    /* Começo cabeçalho mobile */
     .paiCabecalho {
-        width: 100%;
-        height: 7vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 95%;
+        margin: auto;
     }
 
     .filhoCabecalho {
-        width: 90%;
+        width: 97vw;
         height: 7vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     .esquerdaCabecalho {
-        width: 20vw;
-        height: 7vh;
-        display: flex;
-        align-items: center;
-
+        width: 6vw;
+        height: 1vh;
     }
 
     .direitaCabecalho {
-        width: 20vw;
+        width: 50vw;
         height: 7vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .pCabecalho {
-        font-size: 12px;
-        cursor: pointer;
-        font-weight: bold;
-        position: relative;
-    }
-
-    .pCabecalho::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        border-radius: 4px;
-        background-color: #18272F;
-        bottom: 0;
-        left: 0;
-        transform-origin: right;
-        transform: scaleX(0);
-        transition: transform .3s ease-in-out;
-    }
-
-    .pCabecalho::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        border-radius: 4px;
-        background-color: #18272F;
-        bottom: 0;
-        left: 0;
-        transform-origin: right;
-        transform: scaleX(0);
-        transition: transform .3s ease-in-out;
-    }
-
-    .pCabecalho:hover::before {
-        transform-origin: left;
-        transform: scaleX(1);
     }
 
     #imgEsquerdaCabecalho {
-        width: 13vw;
-        height: 6vh;
-    }
-
-    .espaco-vazio {
-        width: 100px;
-        /* Defina a largura desejada */
-        height: 30px;
-        /* Defina a altura desejada */
-    }
-
-    #imgEsquerdaCabecalho,
-    #nocline:hover {
-        cursor: pointer;
+        width: 30vw;
+        height: 3.2vh;
     }
 
     #imgDireitaCabecalho {
-        width: 1vw;
-        height: 3vh;
+        width: 3vw;
+        height: 2vh;
     }
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        margin-top: 5px;
-        cursor: pointer;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 100px;
-        margin-left: -50px;
-        padding: 10px 10px;
-        z-index: 1;
-        font-size: 10px;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    a {
-        list-style: none;
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        transition: all 0.3s ease 0s;
-        cursor: pointer;
-    }
-
-    .dropdown-content a:hover {
-        font-size: 11px;
-        transform: translateY(11px);
-    }
-
-    /* fim do cabeçalho */
-
+    /* Final Cabeçalho*/
+    
     /* começo do banner */
 
     .faixaBanner {
         display: flex;
-        width: 100%;
-        height: 45rem;
+        width: 100vw;
+        height: 50rem;
         background-color: black;
-
     }
 
-    .divBoxTextoBanner {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 23vh;
-        margin-top: 18%;
-    }
 
     .pTituloBanner {
         display: flex;
         position: relative;
         justify-content: center;
-        font-size: 35px;
+        font-size: 30px;
         letter-spacing: 1px;
         color: #FFF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         font-family: Inter;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         line-height: normal;
-        left: calc(-30px);
+        left: 0;
         word-wrap: break-word
     }
 
@@ -201,8 +93,13 @@
     .divBoxTextoBanner {
         display: flex;
         justify-content: center;
-        width: 60%;
+        width: 100%;
+        flex-direction: column;
+        height: 23vh;
+        position: relative;
+        top: 18rem;
     }
+
 
     .textoBanner {
         display: flex;
@@ -214,20 +111,22 @@
 
     .botaoSaiba {
         display: flex;
-        width: 150%;
-        height: 7vh;
+        width: auto;
+        position: relative;
+        height: 5vh;
         flex-direction: row;
         justify-content: space-around;
         text-align: center;
-        margin-bottom: 4%;
-        margin-top: 5%;
-        margin-left: 5%;
+        bottom: 4%;
+        top: 5%;
+        padding: 1rem;
+        left: 0;
     }
 
     .botaoSaiba button {
         color: #000;
         font-family: Inter;
-        font-size: 20px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -235,9 +134,8 @@
         border-color: #ffffff;
         border-radius: 5px;
         background: #ffffff;
-        width: 25%;
         height: fit-content;
-        padding: 1%;
+        padding: 0.3rem;
     }
 
     .botaoSaiba button:hover {
@@ -246,11 +144,12 @@
 
     .boxSaiba {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-around;
         position: relative;
         left: 10%;
-        width: 139%;
+        width: 70vw;
+        top: 1rem;
         height: 45rem;
         background-color: rgb(255, 255, 255);
         padding: 5%;
@@ -261,7 +160,7 @@
         display: flex;
         flex-direction: column;
         color: #000000;
-        width: 100%;
+        width: auto;
     }
 
     .textoSaiba p {
@@ -269,7 +168,7 @@
         color: #000000;
         text-align: justify;
         font-family: Inter;
-        font-size: 18px;
+        font-size: 15px;
         font-style: normal;
         font-weight: 300;
         line-height: normal;
@@ -278,7 +177,8 @@
     #tituloSaiba {
         color: #000000;
         font-family: Inter;
-        font-size: 25px;
+        font-size: 20px;
+        text-align: center;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -289,19 +189,28 @@
 
     .boxSaiba img {
         width: 50vw;
-        height: 40vh;
-        margin-left: 5%;
+        height: auto;
+        position: relative;
+        left: 3rem;
+        top: 1rem;
+        margin-bottom: 1rem;
         border-radius: 10px;
         /* mix-blend-mode: lighten; */
     }
 
+
     /* fim do banner */
+
     /* começo do rodape */
 
     .rodape {
         display: flex;
         width: 100%;
-        height: 40rem;
+        height: 68rem;
+    }
+
+    #faleConosco {
+        font-size: 2rem;
     }
 
     .notes {
@@ -320,33 +229,35 @@
 
     .container {
         display: flex;
-        width: 60vw;
+        width: 85vw;
+        padding: 1rem;
         position: relative;
-        left: 2vw;
     }
 
     .lista {
-
+        position: relative;
         flex: 1;
-        padding: 10px;
+        padding: 0px;
+        left: 1rem;
 
+    }
+
+    .lista h4 {
+        margin: 1rem;
     }
 
     .lista li {
-
-        padding: 10px;
+        padding: 1px;
+        width: 9rem;
         list-style: none;
         text-decoration: none;
         position: relative;
-        right: 3.8vw;
-
+        right: 5vw;
     }
 
     .lista li:hover {
-
         transform: scale(1.03);
         transition: 0.5s ease-in-out;
-
     }
 
     .feedbackForm {
@@ -355,37 +266,33 @@
         background-color: white;
         position: absolute;
         z-index: 99;
-        right: 4%;
-        height: 25.5rem;
-        width: 24rem;
-        bottom: -121%;
+        right: 4rem;
+        top: 90rem;
+        height: 17.5rem;
+        width: 9rem;
         justify-content: space-around;
-        padding: 70px;
+        margin-top: 1rem;
+        padding: 4.2rem;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
-
     }
-
-
 
     .feedbackForm ::placeholder {
         padding-left: 0.5rem;
     }
 
     .input-group {
-
         position: relative;
 
     }
 
     .input-group__input {
-
-
-
-        padding: 5px;
-        margin: 20px 0;
-        width: 100%;
+        padding: 20px;
+        margin: 10px;
+        width: 7rem;
+        right: 1rem;
+        position: relative;
         outline: none;
-        height: 20px;
+        height: 10px;
         border: 0;
         border-bottom: 2px solid rgb(33, 32, 32);
         text-align: start;
@@ -397,13 +304,12 @@
     }
 
     .input-group__input:is(:focus, :valid) {
-
         border-bottom: 2px solid rgb(0, 0, 0);
 
     }
 
     .input-group__label {
-
+        right: 10rem;
         position: absolute;
         top: 3vh;
         left: 0;
@@ -415,11 +321,8 @@
 
     .input-group__input:focus+.input-group__label,
     .input-group__input:valid+.input-group__label {
-
         transform: translate(0, -14px) scale(0.9);
         color: #000000;
-
-
     }
 
     .enviarMensagem {
@@ -427,7 +330,8 @@
         font-size: 15px;
         background-color: black;
         position: absolute;
-        top: 31rem;
+        top: 27.5rem;
+        right: 3.8rem;
         height: 2rem;
         width: 10rem;
         border: none;
@@ -480,19 +384,18 @@
 
     .divIcon {
         display: flex;
-        padding: 20px;
+        padding: 15px;
     }
 
     .icon {
         display: flex;
-        width: 2rem;
-        height: 2rem;
-        padding: 7px;
+        width: 1.5rem;
+        height: 1.2rem;
+        padding: 5px;
         transition: 0.2s ease-in-out;
     }
 
     .icon:hover {
-
         transform: scale(1.1);
 
     }
@@ -503,30 +406,28 @@
 
     .iconFace {
         display: flex;
-        width: 2rem;
-        height: 2.3rem;
-        padding: 2px;
-        margin-top: -2px;
+        width: 1rem;
+        height: 1.3rem;
+        padding: 0px;
+        margin-top: -1px;
     }
 
     .copyright {
         justify-content: space-between;
         display: flex;
         align-items: center;
-        border-top: 2px solid gray;
+        border-top: 1px solid gray;
     }
 
     .copyright span {
         justify-content: space-around;
-        padding: 23px;
+        padding: 20px;
+        font-size: 0.8rem;
     }
 
-    #copy {
-        color: #B4B4B4;
-    }
 
     .copyright #nocline {
-        height: 3rem;
+        height: 2rem;
     }
 
     /* fim do rodape */
