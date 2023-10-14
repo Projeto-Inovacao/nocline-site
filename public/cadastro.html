@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | NOC LINE</title>
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/Mobile_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -243,11 +244,11 @@
                                     <div class="inputs_login_esquerda">
                                         <div class="field">
                                             <div class="input">
-                                                <select>
+                                                <select id="input_plano">
                                                     <option value="">Escolha</option>
-                                                    <option>Essentials</option>
-                                                    <option>Master</option>
-                                                    <option>Plus</option>
+                                                    <option value="1">Essentials</option>
+                                                    <option value="2">Master</option>
+                                                    <option value="3">Plus</option>
                                                 </select>
                                                 <label for="input_complemento" class="input__label4">Planos</label>
                                                 <img src="./assets/folha-de-pagamento.png" alt=""
@@ -298,9 +299,9 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cpf_titular" type="text"
+                                                <input class="input__field" id="input_bandeira" type="text"
                                                     required />
-                                                <label for="input_cpf_titular" class="input__label">Bandeira</label>
+                                                <label for="input_bandeira" class="input__label">Bandeira</label>
                                                 <img src="./assets/bandeira.png" alt=""
                                                     class="material-symbols-outlined">
                                             </div>
@@ -329,6 +330,7 @@
         cadastrarEmpresa()
         cadastrarColaborador()
         cadastrarEndereco()
+        cadastrarCartao()
     }
 
 

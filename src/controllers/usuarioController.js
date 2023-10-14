@@ -1,3 +1,4 @@
+const { json } = require("express");
 var usuarioModel = require("../models/usuarioModel");
 
 function entrar(req, res) {
@@ -46,8 +47,7 @@ function cadastrarEmpresa(req, res) {
        if (razaoSocial == undefined) {
             res.status(400).send("Sua razaoSocial está undefined!");
         } else if (cnpj == undefined) {
-            res.status(400).send("Seu cnpj está undefined!");
-        } 
+            res.status(400).send("Seu cnpj está undefined!");}
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
      usuarioModel.cadastrarEmpresa(razaoSocial, cnpj)
@@ -59,7 +59,7 @@ function cadastrarEmpresa(req, res) {
          function (erro) {
              console.log(erro);
              console.log(
-                 "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
                  erro.sqlMessage
              );
              res.status(500).json(erro.sqlMessage);
@@ -67,6 +67,8 @@ function cadastrarEmpresa(req, res) {
      );
 }
 }
+
+
 function cadastrarEndereco(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller")
@@ -103,7 +105,7 @@ function cadastrarEndereco(req, res) {
         }
         else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarEndereco(cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento)
+     usuarioModel.cadastrarEndereco(cep, numero, rua, bairro, cidade, estado, pais, complemento, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -124,35 +126,33 @@ function cadastrarEndereco(req, res) {
 function cadastrarColaborador(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller colab")
-
     var cnpj = req.body.cnpjServer;
     var nomeRepresentante = req.body.nomeRepresentanteServer;
     var emailRepresentante = req.body.emailRepresentanteServer;
-    var celularColaborador = req.body.celularRepresentanteServer;
+    var celularRepresentante= req.body.celularRepresentanteServer;
     var cpfRepresentante = req.body.cpfRepresentanteServer;
     var senhaRepresentante = req.body.senhaRepresentanteServer;
 
     // Faça as validações dos valores
-   
-        if (nomeRepresentante == undefined) {
-            res.status(400).send("Seu nome está undefined!");
-        } else if (cnpj == undefined) {
-            res.status(400).send("Seu CNPJ de senha está undefined!");
-        }
-        else if (emailRepresentante == undefined) {
-            res.status(400).send("Sua email de senha está undefined!");
-        } else if (senhaRepresentante == undefined) {
-            res.status(400).send("Seu senha está undefined!");
-        } else if (celularColaborador == undefined) {
-            res.status(400).send("Seu celular está undefined!");
-        } else if (cpfRepresentante == undefined) {
-            res.status(400).send("Seu setor está undefined!");
-        } else if (senhaRepresentante == undefined) {
-            res.status(400).send("Sua senha está undefined!");
-        } 
-        else {
+    if (nomeRepresentante == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    }
+    else if (emailRepresentante == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (senhaRepresentante == undefined) {
+        res.status(400).send("Seu senha está undefined!");
+    } else if (celularRepresentante == undefined) {
+        res.status(400).send("Seu celular está undefined!");
+    } else if (cpfRepresentante == undefined) {
+        res.status(400).send("Seu setor está undefined!");
+    } else if (senhaRepresentante == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } 
+    else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarColaborador(nomeRepresentante, emailRepresentante, celularColaborador, cpfRepresentante, senhaRepresentante, cnpj)
+     usuarioModel.cadastrarColaborador(nomeRepresentante, cpfRepresentante, emailRepresentante, celularRepresentante, senhaRepresentante, cnpj)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -171,38 +171,38 @@ function cadastrarColaborador(req, res) {
 }
 
 
-function cadastrarMaquina(req, res) {
+function cadastrarCartao(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller colab")
 
-    codEmpresa = req.body.codEmpServer;
-    maquinaSetor= req.body.maquinaSetorServer;
-    maquinaNSerie= req.body.maquinaNSerieServer;
-    maquinaSO= req.body.maquinaSOServer;
-    maquinaModelo= req.body.maquinaModeloServer; 
-    comp1= req.body.comp1Server; 
-    comp2= req.body.comp2Server;
-    comp3= req.body.comp3Server; 
-    comp4= req.body.comp4Server;
-
- 
+    var cnpj = req.body.cnpjServer;
+    var plano = req.body.planoServer;
+    var nCartao = req.body.nCartaoServer;
+    var nomeTitular = req.body.nomeTitularServer;
+    var validade = req.body.validadeServer;
+    var cvv = req.body.cvvServer;
+    var bandeira = req.body.bandeiraServer;
 
     // Faça as validações dos valores
-   
-        if (codEmpresa == undefined) {
-            res.status(400).send("Seu codEmpresa está undefined!");
-        } else if (maquinaSetor == undefined) {
-            res.status(400).send("Sua maquinaSetor de senha está undefined!");
-        } else if (maquinaNSerie == undefined) {
-            res.status(400).send("Seu maquinaNSerie está undefined!");
-        } else if (maquinaSO == undefined) {
-            res.status(400).send("Seu maquinaSO está undefined!");
-        } else if (maquinaModelo == undefined) {
-            res.status(400).send("Seu maquinaModelo está undefined!");
-        } 
-        else {
+    if (plano == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    }
+    else if (nCartao == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (nomeTitular == undefined) {
+        res.status(400).send("Seu senha está undefined!");
+    } else if (validade == undefined) {
+        res.status(400).send("Seu celular está undefined!");
+    } else if (cvv == undefined) {
+        res.status(400).send("Seu setor está undefined!");
+    } else if (bandeira == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } 
+    else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-     usuarioModel.cadastrarMaquina(codEmpresa, maquinaSetor, maquinaNSerie, maquinaSO, maquinaModelo, comp1, comp2, comp3, comp4)
+     usuarioModel.cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, plano)
      .then(
          function (resultado) {
              res.json(resultado);
@@ -219,12 +219,69 @@ function cadastrarMaquina(req, res) {
      );
 }
 }
+
+function cadastrarMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller maqqqq")
+    
+    var codEmpresaMVar = req.body.codEmpServer;
+    var maquinaSetorMVar = req.body.maquinaSetorServer;
+    var maquinaSOMVar = req.body.maquinaSOServer;
+    var maquinaModeloMVar = req.body.maquinaModeloServer;
+    var maquinaIPMVar = req.body.maquinaIPServer;
+    // var cpuRadio = req.body.cpuRadioServer;
+    // var ramRadio = req.body.ramRadioServer;
+    // var discoRadio = req.body.discoRadioServer;
+    // var redeRadio = req.body.redeRadioServer;
+
+    // Faça as validações dos valores
+    if (codEmpresaMVar == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (maquinaSetorMVar == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    }  else if (maquinaSOMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (maquinaModeloMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (maquinaIPMVar == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    } else if (cpuRadio == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    }
+    else if (ramRadio == undefined) {
+        res.status(400).send("Seu senha está undefined!");
+    } else if (discoRadio == undefined) {
+        res.status(400).send("Seu celular está undefined!");
+    } else if (redeRadio == undefined) {
+        res.status(400).send("Seu setor está undefined!");
+    } 
+    else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrarMaquina(maquinaIPMVar, maquinaSOMVar, maquinaModeloMVar, maquinaSetorMVar, codEmpresaMVar)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro de maquina! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
 
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
 cadastrarColaborador,
-cadastrarMaquina,
+cadastrarMaquina, 
+cadastrarCartao,
 entrar
 }
 

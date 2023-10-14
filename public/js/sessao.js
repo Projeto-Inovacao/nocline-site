@@ -1,13 +1,21 @@
 // sessão
 function validarSessao() {
-  
+    // aguardar();
 
-    var email = sessionStorage.input_emailEmpresa;
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    var idUsuario = sessionStorage.ID_USUARIO;
 
+    var b_usuario = document.getElementById("b_usuario");
 
-    var id_empresa = document.getElementById("idEmpresa");
+    if (email != null && nome != null && idUsuario != null ){
+        // window.alert(`Seja bem-vindo, ${nome}!`);
+        b_usuario.innerHTML = nome;
 
-
+        // finalizarAguardar();
+    } else {
+        window.location = "../login.html";
+    }
 }
 function limparSessao() {
     sessionStorage.clear();

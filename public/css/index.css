@@ -19,6 +19,50 @@
     background-color: #10181d;
 }
 
+.scroll-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    z-index: 99999;
+    color: #000000;
+    background: rgba(90, 92, 105, 0.74);
+    line-height: 46px;
+    border-radius: 9%;
+    animation: fadeIn 1s; 
+  }
+  
+  .scroll-to-top.show {
+    display: inline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+  .scroll-to-top:focus, .scroll-to-top:hover {
+    color: white;
+    
+  }
+  
+  .scroll-to-top:hover {
+    background: #5a5c69;
+  }
+  
+  .scroll-to-top i {
+    font-weight: 800;
+    font-size: 5vh;
+  }
 
 /* começo do cabeçalho */
 .paiCabecalho {

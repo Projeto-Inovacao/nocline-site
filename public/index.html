@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | NOC LINE</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/mobile_index.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -362,6 +364,11 @@
 
     <!-- começo do rodape -->
     <div class="footer">
+
+        <a class="scroll-to-top" href="#inicio">
+            <i class="fas fa-arrow-up">🠅</i>
+        </a>
+
         <div class="rodape">
             <div class="footer_contatos">
                 <div class="faleConosco">
@@ -460,41 +467,17 @@
         });
     });
 
-    // começo entenda como trabalhamos
-    var isExpanded = false;//está variável será usada para controlar o estado da expansão do conteúdo da div.
-
-    function quadraEsquerdo() {
-        const expandingDiv = document.querySelector('.expanding-div'); // usando document.querySelector(). O elemento selecionado é a div que contém o texto oculto que queremos expandir e esconder.
-        isExpanded = !isExpanded; //Esta linha alterna o valor da variável isExpanded
-
-        if (isExpanded) {
-            expandingDiv.style.height = '0'; // Se isExpanded for true após a alteração, isso significa que o elemento deve ser contraído
-        } else {
-            expandingDiv.style.height = expandingDiv.scrollHeight + 'px'; //Se isExpanded for false,  deve ser expandido. A altura do elemento HTML é definida como a altura total do conteúdo dentro dele.
-        }
+    window.addEventListener("scroll", function() {
+    var scrollButton = document.querySelector(".scroll-to-top");
+    
+    // Verifique a posição vertical da página
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        // Se o usuário rolou para baixo mais de 20 pixels, adicione a classe "show"
+        scrollButton.classList.add("show");
+    } else {
+        // Caso contrário, remova a classe "show"
+        scrollButton.classList.remove("show");
     }
-
-    function quadraMeio() {
-        const expandingDiv = document.querySelector('.expanding-divM');
-        isExpanded = !isExpanded;
-
-        if (isExpanded) {
-            expandingDiv.style.height = '0';
-        } else {
-            expandingDiv.style.height = expandingDiv.scrollHeight + 'px';
-        }
-    }
-
-    function quadraDireito() {
-        const expandingDiv = document.querySelector('.expanding-divD');
-        isExpanded = !isExpanded;
-
-        if (isExpanded) {
-            expandingDiv.style.height = '0';
-        } else {
-            expandingDiv.style.height = expandingDiv.scrollHeight + 'px';
-        }
-    }
-    // fim do entenda como trabalhamos
+});
 
 </script>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Login | NOC LINE</title>
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/mobile_login.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -62,7 +63,6 @@
 </html>
 <script>
     function entrar() {
-
     var emailEmpresaVar = input_email.value;
     var senhaVar = input_senha.value;
 
@@ -97,11 +97,16 @@
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                // sessionStorage.email_USUARIO = json.email;
-                // sessionStorage.nome_USUARIO = json.nome;
-                // sessionStorage.username_USUARIO = json.username;
-                // sessionStorage.ID_USUARIO = json.idUsuario;
-                // finalizarAguardar()
+               
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.SENHA_USUARIO = json.senha;
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.CELULAR_USUARIO = json.celular;
+                    sessionStorage.ID_USUARIO = json.idColaborador;
+                    sessionStorage.NOME_EMPRESA = json.razaoSocial;
+                    sessionStorage.CNPJ_EMPRESA = json.CNPJ;
+
                 setTimeout(function () {
                     window.location = "dashboard/index.html";
                 }, 1000); // apenas para exibir o loading

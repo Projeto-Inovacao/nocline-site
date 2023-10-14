@@ -1,10 +1,11 @@
-@media only screen {
   body {
     margin: 0;
     background-image: url(../assets/banner.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(7px);
+
   }
 
   ::-webkit-scrollbar {
@@ -98,7 +99,7 @@
   .container {
     width: 50vw;
     height: 100vh;
-    background: #040425da;
+    background: #121212e2;
     text-align: center;
     border-radius: 5px;
     padding: 50px 10px 10px 35px;
@@ -154,7 +155,7 @@
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    outline: 2px solid #25049b;
+    outline: 2px solid #ffffff;
     align-items: center;
     color: #fdfafa;
     background: rgba(0, 0, 0, 0.425)
@@ -170,7 +171,7 @@
     width: 100%;
     height: calc(100% + 5px);
     border: none;
-    background: #3d2b8b;
+    background: #323131;
     margin-top: -20px;
     position: relative;
     border-radius: 5px;
@@ -245,8 +246,8 @@
   }
 
   .progress-bar .step .bullet.active {
-    border-color: #1f246b;
-    background: #1f246b;
+    border-color: #8b8b8b;
+    background: #a2a2a3;
   }
 
   .progress-bar .step .bullet span {
@@ -272,7 +273,7 @@
   }
 
   .progress-bar .step .bullet.active:after {
-    background: #1f246b;
+    border-color: #8b8b8b;
     transform: scaleX(0);
     transform-origin: left;
     animation: animate 0.3s linear forwards;
@@ -290,7 +291,7 @@
   }
 
   .progress-bar .step p.active {
-    color: #1f246b;
+    color: #a2a2a3;
     transition: 0.2s linear;
   }
 
@@ -330,7 +331,7 @@
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    outline: 2px solid #25049b;
+    outline: 2px solid #ffffff;
     align-items: center;
 
   }
@@ -381,7 +382,7 @@
   }
 
   .input__field:is(:focus-visible, :valid) {
-    outline-color: #4021af;
+    outline-color: #ffffff;
   }
 
   .input_size {
@@ -431,146 +432,3 @@
     margin-top: -10px;
   }
 
-}
-
-/* responsive */
-@media (min-width: 400px) and (max-width: 900px) {
-  body {
-    margin: 0;
-    background-image: url(../assets/bannerLoginV4.jpg);
-    background-repeat: no-repeat;
-    /* background-size: cover; */
-    background-position: 72%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  .navbar_login {
-    padding: 3.4rem 0 2rem 0;
-    width: 90%;
-    display: flex;
-    justify-content: space-around;
-    margin: auto;
-    align-items: center;
-  }
-
-  .texto_navbar {
-    font-size: 0.55rem;
-    text-decoration: none;
-    color: white;
-    text-transform: uppercase;
-  }
-
-  .texto_navbar:hover {
-    color: #5a78c4;
-    transform: translate(5px)
-  }
-
-  .div_logo {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .logo_login {
-    width: 70%;
-  }
-
-  .inputs_login {
-    display: block;
-  }
-
-  .input {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .inputs_login_esquerda {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 15rem;
-    padding: 2.5rem 2.5rem 0 2.5rem;
-  }
-
-  .inputs_login_direita {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: center;
-    height: 20rem;
-    padding: 0.8rem 2.5rem 1rem 2.5rem;
-  }
-
-  #input_pais,
-  #input_numero {
-    margin-bottom: 0.8rem;
-  }
-
-  .input_login {
-    padding: 0.6rem 0.6rem 0.6rem 2rem;
-    width: 12rem;
-    background-color: #43537DBD;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    color: white;
-    font-size: 0.5rem;
-  }
-
-  .input_login::placeholder {
-    color: white;
-    font-size: 0.5rem;
-  }
-
-  .btn_login {
-    padding: 0.8rem;
-    width: 14.5rem;
-    background-color: #5A78C4;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    font-size: 0.5rem;
-  }
-
-  footer {
-    padding: 2rem;
-    display: flex;
-  }
-
-  .span_copyright {
-    font-size: 0.7rem;
-    text-align: center;
-    width: 100%;
-    color: white;
-  }
-
-  .material-symbols-outlined {
-    width: 1.1rem;
-    height: 1rem;
-  }
-
-  .input {
-    position: relative;
-    color: white;
-  }
-
-  .input img {
-    position: absolute;
-    left: 8px;
-    bottom: 6px;
-  }
-
-  #logo_numero {
-    bottom: 47px;
-  }
-
-  #logo_complemento {
-    left: 8px;
-  }
-
-  #logo_estado {
-    left: 8px;
-    bottom: 47px;
-  }
-}
