@@ -65,7 +65,7 @@
 
                         <form action="#">
 
-                            <div class="page slide-page">
+                            <div id="page1" class="page slide-page">
                                 <div class="title">Informações do Representante Legal:</div>
                                 <div class="caixa_inputs">
                                     <div class="inputs_login_esquerda">
@@ -90,8 +90,7 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_nome_rep" type="text"
-                                                    required />
+                                                <input class="input__field" id="input_nome_rep" type="text" required />
                                                 <label for="input_nome_representante" class="input__label">Nome do
                                                     Representante Legal</label>
                                                 <img src="./assets/usuario-de-perfil.png"
@@ -101,7 +100,7 @@
                                         <div class="field">
                                             <div class="input">
                                                 <input class="input__field" id="input_email_rep" type="text" required />
-                                                <label for="input_email" class="input__label">Email  do
+                                                <label for="input_email" class="input__label">Email do
                                                     Representante Legal</label>
                                                 <img src="./assets/icons8-email-64.png" alt=""
                                                     class="material-symbols-outlined">
@@ -112,7 +111,7 @@
                                         <div class="field">
                                             <div class="input">
                                                 <input class="input__field" id="input_cel_rep" type="text" required />
-                                                <label for="input_tel_cel" class="input__label">Celular  do
+                                                <label for="input_tel_cel" class="input__label">Celular do
                                                     Representante Legal</label>
                                                 <img src="./assets/icons8-phone-50 (1).png" alt=""
                                                     class="material-symbols-outlined">
@@ -124,14 +123,14 @@
                                                 <input class="input__field" id="input_cpf_rep" type="text" required />
                                                 <label for="input_cpf_representante" class="input__label">CPF do
                                                     Representante Legal</label>
-                                                <img src="./assets/cpf.png" alt=""
-                                                    class="material-symbols-outlined">
+                                                <img src="./assets/cpf.png" alt="" class="material-symbols-outlined">
                                             </div>
                                         </div>
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_senha_rep" type="password" required />
+                                                <input class="input__field" id="input_senha_rep" type="password"
+                                                    required />
                                                 <label for="input_senha" class="input__label">Senha</label>
                                                 <img src="./assets/icons8-password-64 1.png" alt=""
                                                     class="material-symbols-outlined">
@@ -156,7 +155,7 @@
 
                             </div>
 
-                            <div class="page ">
+                            <div id="page2" class="page">
                                 <div class="title">Endereço da Empresa:</div>
                                 <div class="caixa_inputs">
                                     <div class="inputs_login_esquerda">
@@ -238,7 +237,7 @@
                                 </div>
                             </div>
 
-                            <div class="page">
+                            <div id="page3" class="page">
                                 <div class="title">Pagamento:</div>
                                 <div class="caixa_inputs">
                                     <div class="inputs_login_esquerda">
@@ -273,8 +272,7 @@
                                                     required />
                                                 <label for="input_nome_titular" class="input__label">Nome do
                                                     Titular</label>
-                                                <img src="./assets/nome.png" alt=""
-                                                    class="material-symbols-outlined">
+                                                <img src="./assets/nome.png" alt="" class="material-symbols-outlined">
                                             </div>
                                         </div>
                                     </div>
@@ -299,8 +297,7 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_bandeira" type="text"
-                                                    required />
+                                                <input class="input__field" id="input_bandeira" type="text" required />
                                                 <label for="input_bandeira" class="input__label">Bandeira</label>
                                                 <img src="./assets/bandeira.png" alt=""
                                                     class="material-symbols-outlined">
@@ -310,7 +307,7 @@
                                 </div>
                                 <div class="field btns">
                                     <button class="prev-2 prev">Anterior</button>
-                                    <button class="submit cadastro" onclick="cadastro()">Cadastrar</button>
+                                    <button class="submit cadastro">Cadastrar</button>
                                 </div>
                             </div>
                         </form>
@@ -323,16 +320,60 @@
             <span class="span_copyright">Copyright &copy; NOCLINE 2023</span>
         </footer>
 </body>
-<script src="../public/js/script_cadastro.js"></script>
+
 </html>
 <script>
-    function cadastro(){
+
+    function cadastro() {
         cadastrarEmpresa()
         cadastrarColaborador()
         cadastrarEndereco()
         cadastrarCartao()
     }
 
+    // Animação do cadastro
+
+    const slidePage = document.querySelector(".slide-page");
+    const nextBtnFirst = document.querySelector(".firstNext");
+    const nextBtnSec = document.querySelector(".next-1");
+    const prevBtnSec = document.querySelector(".prev-1");
+    const prevBtnThird = document.querySelector(".prev-2");
+    const progressText = [...document.querySelectorAll(".step p")];
+    const progressCheck = [...document.querySelectorAll(".step .check")];
+    const bullet = [...document.querySelectorAll(".step .bullet")];
+    let max = 3;
+    let current = 1;
+
+    nextBtnFirst.addEventListener("click", function () {
+        slidePage.style.marginLeft = "-25%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        progressText[current - 1].classList.add("active");
+        current += 1;
+    });
+    nextBtnSec.addEventListener("click", function () {
+        slidePage.style.marginLeft = "-50%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        progressText[current - 1].classList.add("active");
+        current += 1;
+    });
+
+    prevBtnSec.addEventListener("click", function () {
+        slidePage.style.marginLeft = "0%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        progressText[current - 2].classList.remove("active");
+        current -= 1;
+    });
+    prevBtnThird.addEventListener("click", function () {
+        slidePage.style.marginLeft = "-25%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        progressText[current - 2].classList.remove("active");
+        current -= 1;
+    });
+
+    // Fim da animação do cadastro
 
 </script>
-
