@@ -552,7 +552,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="myAreaChartRede" style="display: block; width: 650px; height: 200px;"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -635,28 +635,28 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Visualização de Desempenho Completo</h6>
                             </div>
                             <div class="card-body">
-                                <h4 class="small font-weight-bold">Rede <span class="float-right">20%</span></h4>
+                                <h4 class="small font-weight-bold">Porcentagem de Perda de Pacotes<span class="float-right" id="perda_pacotes">10%</span></h4>
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"
+                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="bar_perda_pacotes"></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Disco Rígido <span class="float-right">40%</span>
+                                <h4 class="small font-weight-bold">Disco Rígido <span class="float-right" id="disco_rigido">40%</span>
                                 </h4>
                                 <div class="progress mb-4">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="bar_disco_rigido"></div>
                                 </div>
                                 <h4 class="small font-weight-bold"> Porcentagem de Uso de CPU <span
-                                        class="float-right">60%</span></h4>
+                                        class="float-right" id="porcentagem_cpu">60%</span></h4>
                                 <div class="progress mb-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" id="bar_porcentagem_cpu"></div>
                                 </div>
                                 <h4 class="small font-weight-bold"> Porcentagem de Uso de Memória RAM<span
-                                        class="float-right">80%</span></h4>
+                                        class="float-right" id="uso_memoria_ram">80%</span></h4>
                                 <div class="progress mb-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" id="bar_uso_memoria_ram"></div>
                                 </div>
 
                             </div>
@@ -753,6 +753,7 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-line-cpu.js"></script>
     <script src="js/demo/chart-line-ram.js"></script>
+    <script src="js/demo/chart-line-rede.js"></script>
 
 </body>
 

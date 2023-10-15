@@ -4,7 +4,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var idMaquina = 1
 // Pie Chart Example    
-var ctx = document.getElementById("myAreaChartCPU");
+// var ctx = document.getElementById("myAreaChartCPU");
 
 window.onload = obterDadosCPU(idMaquina);
 
