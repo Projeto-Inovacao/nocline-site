@@ -15,8 +15,8 @@ async function buscarCep() {
                 var respostaJson = await resposta.json()
                 console.log('DADOS RECEBIDOS', respostaJson)
                 input_rua.value = respostaJson.logradouro;
-                input_cidade.value = respostaJson.bairro;
-                input_bairro.value = respostaJson.localidade;
+                input_bairro.value = respostaJson.bairro;
+                input_cidade.value = respostaJson.localidade;
                 input_estado.value = respostaJson.uf;
                 input_pais.value = "Brasil"
 
