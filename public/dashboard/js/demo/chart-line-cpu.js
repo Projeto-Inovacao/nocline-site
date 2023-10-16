@@ -84,5 +84,52 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
   );
 
-  // setTimeout(() => atualizarGrafico(idMaquina, dados, chartDisco), 2000);
+   setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+}
+
+function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
+
+    fetch(`/medidas/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+
+                // obterDadosCPU(idMaquina);
+                // alertar(novoRegistro, idMaquina);
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                console.log(`Dados atuais do gráfico:`);
+                console.log(dados);
+
+                if (novoRegistro[0].dtHora == dados.datasets[0].data.dtHora) {
+                    console.log("---------------------------------------------------------------")
+                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    console.log("Horário do novo dado capturado:")
+                    console.log(novoRegistro[0].dtHora)
+                    console.log("Horário do último dado capturado:")
+                    console.log(dados.labels[dados.labels.length - 1])
+                    console.log("---------------------------------------------------------------")
+                } else {
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro
+                    dados.labels.push(novoRegistro[0].dtHora); // incluir um novo momento
+
+                    dados.datasets[0].data.shift();  // apagar o primeira medida
+                    dados.datasets[0].data.push(novoRegistro[0].dadoColetado); // incluir uma nova medida
+
+                    chartCPU.update();
+                }
+
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
 }

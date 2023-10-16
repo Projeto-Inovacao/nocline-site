@@ -105,28 +105,145 @@ function buscarUltimasMedidasRede(idMaquina, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarUltimasMedidasDesempenho(idMaquina, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
+        instrucaoSql = `select * from VW_DESEMPENHO_CHART
+        where idMaquina = ${idMaquina}
+       limit ${limite_linhas}`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_DESEMPENHO_CHART
+                    where idMaquina = ${idMaquina}
+                   limit ${limite_linhas}`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealCPU(idMaquina) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_CPU_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+        instrucaoSql = `select * from VW_CPU_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealRAM(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_RAM_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_RAM_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealRAM(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_RAM_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_RAM_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealDesempenho(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_DESEMPENHO_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 3`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_DESEMPENHO_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 3`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealRede(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_REDE_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_REDE_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealDisco(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select * from VW_DISCO_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_DISCO_CHART
+        where idMaquina = ${idMaquina}
+        ORDER BY dtHora DESC limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -138,9 +255,14 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 
 module.exports = {
-    buscarMedidasEmTempoReal,
-    buscarUltimasMedidasDisco,
+    buscarMedidasEmTempoRealCPU,
+    buscarMedidasEmTempoRealRAM,
+    buscarMedidasEmTempoRealDesempenho,
+    buscarMedidasEmTempoRealDisco,
+    buscarMedidasEmTempoRealRede,
     buscarUltimasMedidasCPU,
     buscarUltimasMedidasRAM,
-    buscarUltimasMedidasRede
+    buscarUltimasMedidasDisco,
+    buscarUltimasMedidasRede,
+    buscarUltimasMedidasDesempenho
 }

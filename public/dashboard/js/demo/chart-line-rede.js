@@ -2,6 +2,11 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+var KPI_BYTE_ENVIADOS = document.getElementById("bytes_enviados_kpi");
+var KPI_BYTE_RECEBIDOS = document.getElementById("bytes_recebidos_kpi");
+
+//var valores_kpi_rede = [KPI_BYTE_ENVIADOS, KPI_BYTE_RECEBIDOS]
+
 var idMaquina = 1
 // var ctx = document.getElementById("myAreaChartRede");
 
@@ -68,9 +73,16 @@ function plotarGraficoRede(resposta, idMaquina) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
+      var byte = [registro.enviados, registro.recebidos]
       dados.datasets[0].data.push(registro.enviados);
       dados.datasets[1].data.push(registro.recebidos);
       labels.push(registro.dtHora);
+      if(registro.enviados != null){
+        KPI_BYTE_ENVIADOS.innerHTML = registro.enviados
+      }
+      if(registro.recebidos != null){
+        KPI_BYTE_RECEBIDOS.innerHTML = registro.recebidos
+      }
   }
 
   console.log('----------------------------------------------')
@@ -106,5 +118,62 @@ function plotarGraficoRede(resposta, idMaquina) {
       config
   );
 
-  // setTimeout(() => atualizarGrafico(idMaquina, dados, chartDisco), 2000);
+  setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRede), 5000);
+}
+
+function atualizarGraficoRede(idMaquina, dados, chartRede) {
+
+  fetch(`/medidas/tempo-realRede/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+          response.json().then(function (novoRegistro) {
+
+              // obterDadosCPU(idMaquina);
+              // alertar(novoRegistro, idMaquina);
+              console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+              console.log(`Dados atuais do gráfico:`);
+              console.log(dados);
+
+              if (novoRegistro[0].dtHora == dados.datasets[0].data.dtHora) {
+                  console.log("---------------------------------------------------------------")
+                  console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                  // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                  console.log("Horário do novo dado capturado:")
+                  console.log(novoRegistro[0].dtHora)
+                  console.log("Horário do último dado capturado:")
+                  console.log(dados.labels[dados.labels.length - 1])
+                  console.log("---------------------------------------------------------------")
+              } else {
+                  // tirando e colocando valores no gráfico
+                  dados.labels.shift(); // apagar o primeiro
+                  dados.labels.push(novoRegistro[0].dtHora); // incluir um novo momento
+
+                  dados.datasets[0].data.shift();  // apagar o primeira medida
+                  dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
+
+                  dados.datasets[1].data.shift();  // apagar o primeira medida
+                  dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
+
+                  if(novoRegistro.enviados != null){
+                    KPI_BYTE_ENVIADOS.innerHTML = novoRegistro.enviados
+                  }
+                  if(novoRegistro.recebidos != null){
+                    KPI_BYTE_RECEBIDOS.innerHTML = novoRegistro.recebidos
+                  }
+
+                  chartRede.update();
+              }
+
+              // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+              proximaAtualizacaoRede = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRede), 5000);
+          });
+      } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacaoRede = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRede), 5000);
+      }
+  })
+      .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
 }

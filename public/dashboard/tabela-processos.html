@@ -20,10 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
-
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="atualizarFeed()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -391,29 +390,44 @@
                         </div>
 
 
-                        <div class="row">
+                                        <div class="container-fluid">
 
-                            <div class="col-lg-6">
-    
-                                <!-- Default Card Example -->
-                                <div class="card mb-4"style="margin-top: 20px; width: 1000px">
-                                    <!-- <div class="card-header">
-                                        Default Card Example
-                                    </div> -->
-                                    <div class="card-body" >
-                                    
-                                    </div>
-                                </div>
-                            </div></div>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tabela dos Funcionários da sua Empresa</h1>
+                    <p class="mb-4">Proporcionamos um elevado nível de controle no que diz respeito aos registros dos seus funcionários em
+                        nosso sistema de monitoramento.
+                        </p>
 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Funcionários Cadastrados</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>PID</th>
+                                            <th>Nome</th>
+                                            <th>Uso de CPU em Bytes</th>
+                                            <th>Uso de Memoria em Bytes</th>
+                                            <th>Uso de Memoria Swap em Bytes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body_processo">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-    
-        </div>
-    </div>
-    
-                    
+                </div>
+                <!-- /.container-fluid -->
 
+            </div>
             <!-- End of Main Content -->
+
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -470,8 +484,7 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/tabelas/processos.js"></script>
 
 </body>
 
