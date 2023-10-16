@@ -84,6 +84,16 @@
     height: 50vh;
   }
 
+  .inputs_login_esquerda1,
+  .inputs_login_direita1 {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 18rem;
+  }
+
   .inputs_login_esquerda,
   .inputs_login_direita {
     padding: 1rem;
@@ -431,4 +441,3 @@
     color: white;
     margin-top: -10px;
   }
-
