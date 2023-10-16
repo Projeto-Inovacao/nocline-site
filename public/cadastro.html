@@ -68,7 +68,7 @@
                             <div id="page1" class="page slide-page">
                                 <div class="title">Informações do Representante Legal:</div>
                                 <div class="caixa_inputs">
-                                    <div class="inputs_login_esquerda">
+                                    <div class="inputs_login_esquerda1">
                                         <div class="field">
                                             <div class="input">
                                                 <input class="input__field" id="input_razao_social" type="text"
@@ -81,7 +81,8 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cnpj" type="text" required />
+                                                <input class="input__field" id="input_cnpj" type="text" maxlength="18"
+                                                    OnKeyPress="formatar('##.###.###/####-##', this)" required />
                                                 <label for="input_cnpj" class="input__label">CNPJ</label>
                                                 <img src="./assets/icons8-empresa-cliente-50.png" alt=""
                                                     class="material-symbols-outlined">
@@ -107,10 +108,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="inputs_login_direita">
+                                    <div class="inputs_login_direita1">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cel_rep" type="text" required />
+                                                <input class="input__field" id="input_cel_rep" type="text"
+                                                    maxlength="13" OnKeyPress="formatar('##-#####-####', this)"
+                                                    required />
                                                 <label for="input_tel_cel" class="input__label">Celular do
                                                     Representante Legal</label>
                                                 <img src="./assets/icons8-phone-50 (1).png" alt=""
@@ -120,7 +123,9 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cpf_rep" type="text" required />
+                                                <input class="input__field" id="input_cpf_rep" type="text"
+                                                    maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"
+                                                    required />
                                                 <label for="input_cpf_representante" class="input__label">CPF do
                                                     Representante Legal</label>
                                                 <img src="./assets/cpf.png" alt="" class="material-symbols-outlined">
@@ -161,7 +166,8 @@
                                     <div class="inputs_login_esquerda">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cep" type="text" required />
+                                                <input class="input__field" id="input_cep" type="text" maxlength="9"
+                                                    OnKeyPress="formatar('#####-###', this)" required />
                                                 <label for="input_cep" class="input__label">CEP</label>
                                                 <img src="./assets/icons8-skyscrapers-50.png" alt=""
                                                     class="material-symbols-outlined">
@@ -258,6 +264,7 @@
                                         <div class="field">
                                             <div class="input">
                                                 <input class="input__field" id="input_numero_cartao" type="text"
+                                                    maxlength="19" OnKeyPress="formatar('#### #### #### ####', this)"
                                                     required />
                                                 <label for="input_numero_cartao" class="input__label">Número do
                                                     Cartão</label>
@@ -279,7 +286,8 @@
                                     <div class="inputs_login_direita">
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_validade" type="text" required />
+                                                <input class="input__field" id="input_validade" type="text"
+                                                    maxlength="5" OnKeyPress="formatar('##/##', this)" required />
                                                 <label for="input_validade" class="input__label">Validade</label>
                                                 <img src="./assets/validade.png" alt=""
                                                     class="material-symbols-outlined">
@@ -288,7 +296,8 @@
 
                                         <div class="field">
                                             <div class="input">
-                                                <input class="input__field" id="input_cvv" type="password" required />
+                                                <input class="input__field" id="input_cvv" type="password" maxlength="3"
+                                                    required />
                                                 <label for="input_cvv" class="input__label">CVV</label>
                                                 <img src="./assets/icons8-password-64 1.png" alt=""
                                                     class="material-symbols-outlined">
@@ -375,5 +384,17 @@
     });
 
     // Fim da animação do cadastro
+
+    // Mascaras das Inputs
+    function formatar(mascara, documento) {
+        var i = documento.value.length;
+        var saida = mascara.substring(0, 1);
+        var texto = mascara.substring(i)
+
+        if (texto.substring(0, 1) != saida) {
+            documento.value += texto.substring(0, 1);
+        }
+
+    }
 
 </script>
