@@ -48,12 +48,16 @@
                             </div>
                             <form class="user">
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_nome_colaborador"
+                                    <input type="name" class="form-control form-control-user" id="input_codigo_empresa"
                                         placeholder="Código da Empresa">
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_nome_colaborador"
                                         placeholder="Nome Completo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control form-control-user" id="input_cpf_colaborador"
+                                        placeholder="CPF">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="input_email_colaborador"
@@ -66,8 +70,8 @@
                                 <div class="form-group" >
                                     <h8 style="font-size: 15px; margin-left: 16px;">Setor</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input type="radio" name="opcao" value="opcao2"> <h8 style="font-size: 13px; ">CCO</h8>
-                                        <input style="margin-left: 10px;" type="radio" name="opcao" value="opcao1"> <h8 style="font-size: 13px;">SSO</h8>
+                                        <input id="input_setor1" type="radio" name="opcao" value="CCO"> <h8 style="font-size: 13px; ">CCO</h8>
+                                        <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao" value="SSO"> <h8 style="font-size: 13px;">SSO</h8>
                                     </div>
                               
                                 </div>
@@ -81,7 +85,7 @@
                                             id="input_confirmSenha_colaborador" placeholder="Confirmação de senha">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block" onclick="cadastrarColaborador()">
+                                <a href="login.html" class="btn btn-primary btn-user btn-block" onclick="cadastrarColaborador1()">
                                     Confirmar Cadastro de Colaborador
                                 </a>
                                 <hr>
@@ -106,26 +110,30 @@
 
 </html>
 <script>
-function cadastrarColaborador() {
+function cadastrarColaborador1() {
     
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
+        var codigoCVar = input_codigo_empresa.value;
         var nomeCVar = input_nome_colaborador.value;
         var emailCVar = input_email_colaborador.value;
+        var cpfVar = input_cpf_colaborador.value;
         var senhaCVar = input_senha_colaborador.value;
         var celularCVar = input_celular_colaborador.value;
-        var setorCVar = input_setor_colaborador.value;
-
+        var setorCVar = "CCO"
+        if(input_setor2.checked){
+            setorCVar = "SSO"
+         }
        
 
 
-        if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == "" ) {
+        // if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == ""|| cpfVar == "" ) {
 
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
-        }
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        //     return false;
+        // }
        
-                fetch("/usuarios/cadastrarColaborador", {
+                fetch("/usuarios/cadastrarColaborador1", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -135,9 +143,11 @@ function cadastrarColaborador() {
                         // Agora vá para o arquivo routes/usuario.js
                         nomeCServer: nomeCVar,
                         emailCServer: emailCVar,
+                        cpfCServer: cpfVar,
                         senhaCServer: senhaCVar,
                         celularCServer : celularCVar, 
-                        setorCServer : setorCVar
+                        setorCServer : setorCVar, 
+                        codigoCServer: codigoCVar
                         
                     })
                 }).then(function (resposta) {
@@ -150,7 +160,7 @@ function cadastrarColaborador() {
                         // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                         setTimeout(() => {
-                            window.location = "login.html";
+                            window.location = "dashboard/index.html";
                         }, "2000")
 
                         limparFormulario();
