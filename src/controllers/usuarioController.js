@@ -317,6 +317,53 @@ function cadastrarMaquina(req, res) {
 }
 
 
+function alterarColaborador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller")
+
+    var id = req.body.idServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var celular = req.body.celularServer;
+    var setor = req.body.setorServer;
+    var codigo = req.body.cdEmpServer;
+ 
+
+
+    // Faça as validações dos valores
+   
+        if (id == undefined) {
+            res.status(400).send("Seu cep está undefined!");
+        } else if (email == undefined) {
+            res.status(400).send("Sua cnpj de senha está undefined!");
+        } else if (senha == undefined) {
+            res.status(400).send("Seu pais está undefined!");
+        } else if (celular == undefined) {
+            res.status(400).send("Seu estado está undefined!");
+        } else if (setor == undefined) {
+            res.status(400).send("Seu bairro está undefined!");
+        }
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.alterarColaborador(id, email, celular, senha, setor, codigo)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
+
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
@@ -324,7 +371,8 @@ cadastrarColaborador,
 cadastrarMaquina, 
 cadastrarCartao,
 entrar,
-cadastrarColaborador1
+cadastrarColaborador1, 
+alterarColaborador
 }
 
 

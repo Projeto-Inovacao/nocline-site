@@ -31,6 +31,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/alterarColaborador", function (req, res) {
+    usuarioController.alterarColaborador(req, res);
+});
+
 
 
 module.exports = router;

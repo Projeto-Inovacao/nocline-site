@@ -115,6 +115,20 @@ function cadastrarMaquina(maquinaIPMVar, maquinaSOMVar, maquinaModeloMVar, maqui
     return database.executar(instrucao3);
 }
 
+function alterarColaborador(id, email, celular, senha, setor, codigo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", id, email, celular, senha, setor);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        UPDATE colaborador SET email = '${email}', celular = '${celular}', senha = '${senha}', fkNivelAcesso= (select idNivelAcesso from NivelAcesso where sigla = '${setor}') where idColaborador = '${id}' and (select idEmpresa from empresa where idEmpresa = '${codigo}');
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+
+}
+
 
 module.exports = {
     entrar,
@@ -123,5 +137,6 @@ module.exports = {
     cadastrarColaborador,
     cadastrarMaquina, 
     cadastrarCartao,
-    cadastrarColaborador1
+    cadastrarColaborador1, 
+    alterarColaborador
 };
