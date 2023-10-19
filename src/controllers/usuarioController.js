@@ -364,6 +364,43 @@ function alterarColaborador(req, res) {
 }
 
 
+function excluirColaborador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller")
+
+    var id = req.body.idServer;
+    var codigo = req.body.cdEmpServer;
+ 
+
+
+    // Faça as validações dos valores
+   
+        if (id == undefined) {
+            res.status(400).send("Seu cep está undefined!");
+        }  else if (codigo == undefined) {
+            res.status(400).send("Seu pais está undefined!");
+        } 
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.excluirColaborador(id, codigo)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
+
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
@@ -372,7 +409,8 @@ cadastrarMaquina,
 cadastrarCartao,
 entrar,
 cadastrarColaborador1, 
-alterarColaborador
+alterarColaborador, 
+excluirColaborador
 }
 
 

@@ -35,6 +35,8 @@ router.post("/alterarColaborador", function (req, res) {
     usuarioController.alterarColaborador(req, res);
 });
 
-
+router.post("/excluirColaborador", function (req, res) {
+    usuarioController.excluirColaborador(req, res);
+});
 
 module.exports = router;
