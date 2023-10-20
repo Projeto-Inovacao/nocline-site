@@ -276,9 +276,9 @@
     position: absolute;
     content: '';
     bottom: 11px;
-    right: -185px;
+    left: 2.8vw;
     height: 3px;
-    width: 13vw;
+    width: 21vw;
     background: #ffffff;
   }
 
