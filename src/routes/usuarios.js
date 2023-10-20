@@ -15,6 +15,10 @@ router.post("/cadastrarColaborador", function (req, res) {
     usuarioController.cadastrarColaborador(req, res);
 })
 
+router.post("/cadastrarColaborador1", function (req, res) {
+    usuarioController.cadastrarColaborador1(req, res);
+})
+
 router.post("/cadastrarCartao", function (req, res) {
     usuarioController.cadastrarCartao(req, res);
 })
@@ -27,6 +31,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/alterarColaborador", function (req, res) {
+    usuarioController.alterarColaborador(req, res);
+});
 
+router.post("/excluirColaborador", function (req, res) {
+    usuarioController.excluirColaborador(req, res);
+});
 
 module.exports = router;

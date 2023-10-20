@@ -40,24 +40,19 @@
                             </div>
                             <form class="user">
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Identificador do Colaborador">
+                                    <input type="name" class="form-control form-control-user" id="input_cdEmp"
+                                        placeholder="Código Empresa">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Nome Completo">
+                                    <input type="name" class="form-control form-control-user" id="input_cdCol"
+                                        placeholder=" ID do Colaborador">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Endereço de Email ">
-                                </div>
-                               
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Setor ">
+                                    <input type="name" class="form-control form-control-user" id="input_nomeCol"
+                                        placeholder=" Nome do Colaborador">
                                 </div>
                              
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <a class="btn btn-primary btn-user btn-block" onclick="excluirColaborador()">
                                     Confirmar Exclusão de Colaborador
                                 </a>
                                 <hr>
@@ -89,3 +84,60 @@
 </body>
 
 </html>
+<script>
+    function excluirColaborador() {
+
+            alert("Você tem certeza que deseja excluir o colaborador: " + input_nomeCol.value + " ?")
+        
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var id = input_cdCol.value;
+            var codigo = input_cdEmp.value;
+            
+    
+    
+            // if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == ""|| cpfVar == "" ) {
+    
+            //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            //     return false;
+            // }
+           
+                    fetch("/usuarios/excluirColaborador", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            // crie um atributo que recebe o valor recuperado aqui
+                            // Agora vá para o arquivo routes/usuario.js
+                            idServer: id,
+                            cdEmpServer : codigo
+                            
+                        })
+                    }).then(function (resposta) {
+    
+                        console.log("resposta: ", resposta);
+    
+                        if (resposta.ok) {
+                            alert("Exclusão do colaborador realizada com sucesso!");
+    
+                            // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+    
+                            setTimeout(() => {
+                                window.location = "index.html";
+                            }, "2000")
+    
+                            limparFormulario();
+    
+                        } else {
+                            throw ("Houve um erro ao tentar realizar o cadastro!");
+                        }
+                    }).catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+    
+                    return false;
+                // Enviando o valor da nova input
+            }
+        
+    </script>

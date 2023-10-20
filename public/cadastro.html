@@ -240,6 +240,84 @@
                                 <div class="field">
                                     <button class="prev-1 prev">Anterior</button>
                                     <button class="submit cadastro" onclick="cadastro()">Cadastrar</button>
+                                    <button class="next-1 next1">Próximo</button>
+                                </div>
+                            </div>
+
+                            <div id="page3" class="page">
+                                <div class="title">Pagamento:</div>
+                                <div class="caixa_inputs">
+                                    <div class="inputs_login_esquerda">
+                                        <div class="field">
+                                            <div class="input">
+                                                <select id="input_plano">
+                                                    <option value="">Escolha</option>
+                                                    <option value="1">Essentials</option>
+                                                    <option value="2">Master</option>
+                                                    <option value="3">Plus</option>
+                                                </select>
+                                                <label for="input_complemento" class="input__label4">Planos</label>
+                                                <img src="./assets/folha-de-pagamento.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_numero_cartao" type="text"
+                                                    maxlength="19" OnKeyPress="formatar('#### #### #### ####', this)"
+                                                    required />
+                                                <label for="input_numero_cartao" class="input__label">Número do
+                                                    Cartão</label>
+                                                <img src="./assets/cartao-sim.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_nome_titular" type="text"
+                                                    required />
+                                                <label for="input_nome_titular" class="input__label">Nome do
+                                                    Titular</label>
+                                                <img src="./assets/nome.png" alt="" class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputs_login_direita">
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_validade" type="text"
+                                                    maxlength="5" OnKeyPress="formatar('##/##', this)" required />
+                                                <label for="input_validade" class="input__label">Validade</label>
+                                                <img src="./assets/validade.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_cvv" type="password" maxlength="3"
+                                                    required />
+                                                <label for="input_cvv" class="input__label">CVV</label>
+                                                <img src="./assets/icons8-password-64 1.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="input">
+                                                <input class="input__field" id="input_bandeira" type="text" required />
+                                                <label for="input_bandeira" class="input__label">Bandeira</label>
+                                                <img src="./assets/bandeira.png" alt=""
+                                                    class="material-symbols-outlined">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field btns">
+                                    <button class="prev-2 prev">Anterior</button>
+                                    <button onclick="cadastro()" class="submit cadastro">Cadastrar</button>
                                 </div>
                             </div>
                         </form>

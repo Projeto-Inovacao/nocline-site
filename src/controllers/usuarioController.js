@@ -123,6 +123,56 @@ function cadastrarEndereco(req, res) {
 }
 }
 
+function cadastrarColaborador1(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller")
+
+    var nome = req.body.nomeCServer;
+    var email = req.body.emailCServer;
+    var cpf = req.body.cpfCServer;
+    var senha = req.body.senhaCServer;
+    var celular = req.body.celularCServer;
+    var setor = req.body.setorCServer;
+   var codigo = req.body.codigoCServer;
+
+
+    // Faça as validações dos valores
+   
+        if (nome == undefined) {
+            res.status(400).send("Seu cep está undefined!");
+        } else if (email == undefined) {
+            res.status(400).send("Sua cnpj de senha está undefined!");
+        } else if (senha == undefined) {
+            res.status(400).send("Seu pais está undefined!");
+        } else if (celular == undefined) {
+            res.status(400).send("Seu estado está undefined!");
+        } else if (setor == undefined) {
+            res.status(400).send("Seu bairro está undefined!");
+        }else if (cpf == undefined) {
+            res.status(400).send("Seu bairro está undefined!");
+        }else if (codigo == undefined) {
+            res.status(400).send("Seu bairro está undefined!");
+        }
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.cadastrarColaborador1(nome,cpf, email, senha, celular, codigo, setor)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
 function cadastrarColaborador(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller colab")
@@ -245,15 +295,6 @@ function cadastrarMaquina(req, res) {
         res.status(400).send("Sua email de senha está undefined!");
     } else if (maquinaIPMVar == undefined) {
         res.status(400).send("Sua email de senha está undefined!");
-    } else if (cpuRadio == undefined) {
-        res.status(400).send("Sua email de senha está undefined!");
-    }
-    else if (ramRadio == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-    } else if (discoRadio == undefined) {
-        res.status(400).send("Seu celular está undefined!");
-    } else if (redeRadio == undefined) {
-        res.status(400).send("Seu setor está undefined!");
     } 
     else {
      // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -276,13 +317,100 @@ function cadastrarMaquina(req, res) {
 }
 
 
+function alterarColaborador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller")
+
+    var id = req.body.idServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var celular = req.body.celularServer;
+    var setor = req.body.setorServer;
+    var codigo = req.body.cdEmpServer;
+ 
+
+
+    // Faça as validações dos valores
+   
+        if (id == undefined) {
+            res.status(400).send("Seu cep está undefined!");
+        } else if (email == undefined) {
+            res.status(400).send("Sua cnpj de senha está undefined!");
+        } else if (senha == undefined) {
+            res.status(400).send("Seu pais está undefined!");
+        } else if (celular == undefined) {
+            res.status(400).send("Seu estado está undefined!");
+        } else if (setor == undefined) {
+            res.status(400).send("Seu bairro está undefined!");
+        }
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.alterarColaborador(id, email, celular, senha, setor, codigo)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
+
+function excluirColaborador(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller")
+
+    var id = req.body.idServer;
+    var codigo = req.body.cdEmpServer;
+ 
+
+
+    // Faça as validações dos valores
+   
+        if (id == undefined) {
+            res.status(400).send("Seu cep está undefined!");
+        }  else if (codigo == undefined) {
+            res.status(400).send("Seu pais está undefined!");
+        } 
+        else {
+     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+     usuarioModel.excluirColaborador(id, codigo)
+     .then(
+         function (resultado) {
+             res.json(resultado);
+         }
+     ).catch(
+         function (erro) {
+             console.log(erro);
+             console.log(
+                 "\nHouve um erro ao realizar o cadastro! Erro: ",
+                 erro.sqlMessage
+             );
+             res.status(500).json(erro.sqlMessage);
+         }
+     );
+}
+}
+
+
 module.exports = {
 cadastrarEmpresa,
 cadastrarEndereco,
 cadastrarColaborador,
 cadastrarMaquina, 
 cadastrarCartao,
-entrar
+entrar,
+cadastrarColaborador1, 
+alterarColaborador, 
+excluirColaborador
 }
 
 
