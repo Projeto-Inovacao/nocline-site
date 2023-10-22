@@ -132,6 +132,12 @@
         font-weight: 500;
         letter-spacing: 1px;
         text-transform: uppercase;
+        transition: 0.5s ease-in-out;
+    }
+
+    .btn_login:hover{
+        transform: scale(1.1);
+        background-color: #10181d;
     }
 
     .material-symbols-outlined {

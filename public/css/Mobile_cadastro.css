@@ -91,7 +91,7 @@
   .progress-bar .step .bullet:before,
   .progress-bar .step .bullet:after {
     bottom: 11px;
-    right: -65px;
+    left: 12vw;
   }
 
   .input__label {

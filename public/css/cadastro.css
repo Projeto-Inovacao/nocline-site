@@ -178,7 +178,7 @@
   }
 
   form .page .field button {
-    width: 100%;
+    width: 90%;
     height: calc(100% + 5px);
     border: none;
     background: #323131;
@@ -191,11 +191,12 @@
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in-out;
   }
 
   form .page .field button:hover {
-    background: #000;
+    background: #10181d;
+    transform: scale(1.1);
   }
 
   form .page .btns button.prev {
@@ -283,7 +284,7 @@
   }
 
   .progress-bar .step .bullet.active:after {
-    border-color: #8b8b8b;
+    background-color: #8b8b8b;
     transform: scaleX(0);
     transform-origin: left;
     animation: animate 0.3s linear forwards;
@@ -316,7 +317,7 @@
 
   .progress-bar .step .check.active {
     display: block;
-    color: #fff;
+    color: #a2a2a3;
   }
 
   /* Fim do formulario de cadastro */
