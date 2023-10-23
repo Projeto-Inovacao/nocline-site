@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="js/botao.js">
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
     <script src="js/viaCep.js"></script>
+    <script src="js/validacao.js"></script>
     <script src="js/conexaoCad.js"></script>
 </head>
 
@@ -52,13 +53,6 @@
                             </div>
                             <div class="check fas fa-check"></div>
                         </div>
-                        <!-- <div class="step">
-                            <p>Pagamento</p>
-                            <div class="bullet">
-                                <span>3</span>
-                            </div>
-                            <div class="check fas fa-check"></div>
-                        </div> -->
                     </div>
 
                     <div class="form-outer">
@@ -67,7 +61,7 @@
 
                             <div id="page1" class="page slide-page">
                                 <div class="title">Informações do Representante Legal:</div>
-                                <div class="caixa_inputs">
+                                <div class="caixa_inputs" id="form">
                                     <div class="inputs_login_esquerda1">
                                         <div class="field">
                                             <div class="input">
@@ -76,6 +70,10 @@
                                                 <label for="password" class="input__label">Razão Social</label>
                                                 <img src="./assets/icons8-video-id-verification-50.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
 
@@ -86,6 +84,10 @@
                                                 <label for="input_cnpj" class="input__label">CNPJ</label>
                                                 <img src="./assets/icons8-empresa-cliente-50.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
 
@@ -96,6 +98,10 @@
                                                     Representante Legal</label>
                                                 <img src="./assets/usuario-de-perfil.png"
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
                                         <div class="field">
@@ -105,6 +111,10 @@
                                                     Representante Legal</label>
                                                 <img src="./assets/icons8-email-64.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
                                     </div>
@@ -118,6 +128,10 @@
                                                     Representante Legal</label>
                                                 <img src="./assets/icons8-phone-50 (1).png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
 
@@ -129,6 +143,10 @@
                                                 <label for="input_cpf_representante" class="input__label">CPF do
                                                     Representante Legal</label>
                                                 <img src="./assets/cpf.png" alt="" class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
 
@@ -139,6 +157,10 @@
                                                 <label for="input_senha" class="input__label">Senha</label>
                                                 <img src="./assets/icons8-password-64 1.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
 
@@ -150,12 +172,16 @@
                                                     Senha</label>
                                                 <img src="./assets/icons8-password-64 1.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="field btns">
-                                    <button class="firstNext next">Próximo</button>
+                                    <button onclick="checkInputs()" class=" firstNext next">Próximo</button>
                                 </div>
 
                             </div>
@@ -167,10 +193,15 @@
                                         <div class="field">
                                             <div class="input">
                                                 <input class="input__field" id="input_cep" type="text" maxlength="9"
-                                                    OnKeyPress="formatar('#####-###', this)" required oninput="buscarCep()" />
+                                                    OnKeyPress="formatar('#####-###', this)" required
+                                                    oninput="buscarCep()" />
                                                 <label for="input_cep" class="input__label">CEP</label>
                                                 <img src="./assets/icons8-skyscrapers-50.png" alt=""
                                                     class="material-symbols-outlined">
+                                                <i class="img-success"><img src="./images/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="./images/error-icon.svg" alt=""></i>
+
+                                                <small>Error Message</small>
                                             </div>
                                         </div>
                                         <div class="field">
@@ -260,10 +291,24 @@
         cadastrarEmpresa()
         cadastrarColaborador()
         cadastrarEndereco()
-        cadastrarCartao()
     }
 
-    // Animação do cadastro
+    const allInputs = document.querySelectorAll('input');
+        allInputs.forEach(input => {
+            input.oninvalid = function (e) {
+                e.preventDefault();
+            };
+        });
+
+    const razaoSocial = document.getElementById('input_razao_social')
+    const cnpj = document.getElementById('input_cnpj')
+    const nome = document.getElementById('input_nome_rep')
+    const email = document.getElementById('input_email_rep')
+    const telefone = document.getElementById('input_cel_rep')
+    const cpf = document.getElementById('input_cpf_rep')
+    const senha = document.getElementById('input_senha_rep')
+    const confirmarSenha = document.getElementById('input_confirma_senha')
+    const cep = document.getElementById('input_cep')
 
     const slidePage = document.querySelector(".slide-page");
     const nextBtnFirst = document.querySelector(".firstNext");
@@ -289,19 +334,137 @@
         progressText[current - 2].classList.remove("active");
         current -= 1;
     });
-    
 
-    // Fim da animação do cadastro
+    function checkInputs() {
 
-    // Mascaras das Inputs
-    function formatar(mascara, documento) {
-        var i = documento.value.length;
-        var saida = mascara.substring(0, 1);
-        var texto = mascara.substring(i)
 
-        if (texto.substring(0, 1) != saida) {
-            documento.value += texto.substring(0, 1);
+        const razaoSocialValue = razaoSocial.value.trim()
+        const cnpjValue = cnpj.value.trim()
+        const nomeValue = nome.value.trim()
+        const emailValue = email.value.trim()
+        const telefoneValue = telefone.value.trim()
+        const cpfValue = cpf.value.trim()
+        const senhaValue = senha.value.trim()
+        const confirmarSenhaValue = confirmarSenha.value.trim()
+        const cepValue = cep.value.trim()
+
+        if (razaoSocialValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(razaoSocial, 'Preencha esse campo')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(razaoSocial)
         }
+
+        if (cnpjValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(cnpj, 'Preencha esse campo')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(cnpj)
+        }
+
+        if (nomeValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(nome, 'Preencha esse campo')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(nome)
+        }
+
+        if (emailValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(email, 'Preencha esse campo')
+        } else if (!isEmail(emailValue)) {
+            setErrorFor(email, 'Email inválido')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(email)
+        }
+
+        if (telefoneValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(telefone, 'Preencha esse campo')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(telefone)
+        }
+
+        if (cpfValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(cpf, 'Preencha esse campo')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(cpf)
+        }
+
+        if (senhaValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(senha, 'Preencha esse campo')
+
+        } else if (senhaValue.length < 8) {
+            setErrorFor(senha, 'Senha deve ter mais que 8 caracteres')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(senha)
+        }
+
+        if (confirmarSenhaValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(confirmarSenha, 'Preencha esse campo')
+
+        } else if (senhaValue !== confirmarSenhaValue) {
+            setErrorFor(confirmarSenha, 'Senhas não tão iguais')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(confirmarSenha)
+        }
+
+        if (confirmarSenhaValue === '') {
+            // mostrar erro
+            // add classe
+            setErrorFor(confirmarSenha, 'Preencha esse campo')
+
+        } else if (senhaValue !== confirmarSenhaValue) {
+            setErrorFor(confirmarSenha, 'Senhas não tão iguais')
+        } else {
+            // adicionar a classe de sucesso
+            setSuccessFor(confirmarSenha)
+        }
+
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small')
+
+        small.innerText = message
+
+        formControl.className = 'input error'
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+
+        formControl.className = 'input success'
+    }
+
+    function isEmail(email) {
+        return /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email)
+    }
+
+    const isAllValid = [...document.querySelectorAll('input')].every(input => input.classList.contains('success'));
+
+    if (isAllValid) {
+
 
     }
 

@@ -19,10 +19,6 @@ router.post("/cadastrarColaborador1", function (req, res) {
     usuarioController.cadastrarColaborador1(req, res);
 })
 
-router.post("/cadastrarCartao", function (req, res) {
-    usuarioController.cadastrarCartao(req, res);
-})
-
 router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 })
