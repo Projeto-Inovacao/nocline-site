@@ -40,46 +40,70 @@
                             </div>
                             <form class="user">
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="name" class="form-control form-control-user" id="input_cdEmp"
                                         placeholder="Código da Empresa">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="name" class="form-control form-control-user" id="input_idMaquina"
+                                        placeholder="Código da máquina" oninput="pesquisarMaquina()">
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control form-control-user" id="input_ip"
                                         placeholder="IP da máquina">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="name" class="form-control form-control-user" id="input_hostname"
+                                        placeholder="Hostname da máquina">
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control form-control-user" id="input_modelo"
+                                        placeholder="Modelo da máquina">
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control form-control-user" id="input_so"
                                         placeholder="Sistema Operacional">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Setor">
-                                </div>
-                                <div class="form-group" >
-                                    <h8 style="font-size: 15px; margin-left: 16px;">Escolha os componentes que você deseja monitorar:</h8>
+                                    <h8 style="font-size: 15px; margin-left: 16px;">Setor</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input type="radio" name="opcao" value="opcao2"> <h8 style="font-size: 13px; ">CPU</h8>
-                                        <input style="margin-left: 22px;" type="radio" name="opcao" value="opcao1"> <h8 style="font-size: 13px;">RAM</h8>
+                                        <input id="input_setor1" type="radio" name="opcao" value="CCO">
+                                        <h8 style="font-size: 13px; ">CCO</h8>
+                                        <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao"
+                                            value="SSO">
+                                        <h8 style="font-size: 13px;">SSO</h8>
+                                    </div>
+                                </div>
+
+                                <!--
+                                <div class="form-group">
+                                    <h8 style="font-size: 15px; margin-left: 16px;">Escolha os componentes que você
+                                        deseja monitorar:</h8>
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
+                                        <input type="radio" name="opcao" value="opcao2">
+                                        <h8 style="font-size: 13px; ">CPU</h8>
+                                        <input style="margin-left: 22px;" type="radio" name="opcao" value="opcao1">
+                                        <h8 style="font-size: 13px;">RAM</h8>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input type="radio" name="opcao" value="opcao2"> <h8 style="font-size: 13px; ">DISCO</h8>
-                                        <input style="margin-left: 10px;" type="radio" name="opcao" value="opcao1"> <h8 style="font-size: 13px;">REDE</h8>
+                                        <input type="radio" name="opcao" value="opcao2">
+                                        <h8 style="font-size: 13px; ">DISCO</h8>
+                                        <input style="margin-left: 10px;" type="radio" name="opcao" value="opcao1">
+                                        <h8 style="font-size: 13px;">REDE</h8>
                                     </div>
-                              
                                 </div>
-                               
-                                
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Confirmar Atualização de Dados de Máquina
+                                -->
+
+                                <a class="btn btn-primary btn-user btn-block" onclick="alterarMaquina()">
+                                    Confirmar Atualização de Dados da Maquina
                                 </a>
-                                
-                                
+
+
                             </form>
                             <hr>
                             <!-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
                             </div> -->
-                           
+
                         </div>
                     </div>
                 </div>
@@ -101,3 +125,110 @@
 </body>
 
 </html>
+<script>
+
+    input_cdEmp.value = sessionStorage.ID_EMPRESA
+
+    function pesquisarMaquina() {
+
+        idEmpresa = input_cdEmp.value
+        idMaquina = input_idMaquina.value
+
+        console.log("teste")
+        fetch(`/empresas/listarMaquinasPorId/${idEmpresa}/${idMaquina}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    input_ip.value = "";
+                    input_so.value = "";
+                    input_setor2.checked = false
+                    input_setor1.checked = false
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    dados = resposta[0]
+
+                    input_ip.value = dados.ip
+                    input_so.value = dados.so;
+                    input_hostname.value = dados.hostname
+                    input_modelo.value = dados.modelo
+
+                    if (dados.setor == "SSO") {
+                        input_setor2.checked = true
+                    } else {
+                        input_setor1.checked = true
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function alterarMaquina() {
+
+        var idMaquina = input_idMaquina.value;
+        var codEmpresa = input_cdEmp.value
+        var ip = input_cdEmp.value;
+        var so = input_so.value;
+        var hostname = input_hostname.value;
+        var modelo = input_modelo.value;
+        var setor = "CCO"
+        if (input_setor2.checked) {
+            setorCVar = "SSO"
+        }
+
+
+
+        // if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == ""|| cpfVar == "" ) {
+
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        //     return false;
+        // }
+
+        fetch("/usuarios/alterarMaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codEmpresaServer: codEmpresa,
+                idMaquinaServer: idMaquina,
+                ipServer: ip,
+                soServer: so,
+                hostnameServer: hostname,
+                modeloServer: modelo,
+                setorServer: setor
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                alert("Alterações da maquina realizadas com sucesso!");
+
+                setTimeout(() => {
+                    window.location = "tables-machines.html";
+                }, "2000")
+
+                limparFormulario();
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+        // Enviando o valor da nova input
+    }
+
+</script>

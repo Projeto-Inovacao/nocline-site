@@ -16,12 +16,20 @@ router.get("/buscar/:id", function (req, res) {
   empresaController.buscarPorId(req, res);
 });
 
-router.get("/listarFunc/:idEmpresa", function (req, res) {
-  empresaController.listar(req, res);
-});
-
 router.get("/listarFuncionario/:idEmpresa", function (req, res) {
   empresaController.listarFuncionario(req, res);
+});
+
+router.get("/listarFuncionarioPorId/:idEmpresa/:idColaborador", function (req, res) {
+  empresaController.listarFuncionarioPorId(req, res);
+});
+
+router.get("/listarMaquinas/:idEmpresa", function (req, res) {
+  empresaController.listarMaquinas(req, res);
+});
+
+router.get("/listarMaquinasPorId/:idEmpresa/:idMaquina", function (req, res) {
+  empresaController.listarMaquinasPorId(req, res);
 });
 
 module.exports = router;
