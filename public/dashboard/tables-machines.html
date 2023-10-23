@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="atualizarFeed(), validarSessao()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -394,20 +394,15 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>IP da Máquina</th>
+                                            <th>Hostname</th>
                                             <th>Sistema Operacional</th>
                                             <th>Setor</th>
                                             <th>Modelo</th>
-                                            <th>Status</th>
+                                            <th>Status Monitoramento</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tabela_maquinas">
                                         <tr>
-                                            <td>01</td>
-                                            <td>029029</td>
-                                            <td>Windowns</td>
-                                            <td>CCO</td>
-                                            <td>XXXX</td>
-                                            <td>Ativa</td>
                                         </tr>
                                         
                                     </tbody>
@@ -478,7 +473,8 @@
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/tabelas/maquinas.js"></script>
+    <script src="js/sessao.js"></script>
 
 </body>
 

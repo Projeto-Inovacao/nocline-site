@@ -44,27 +44,36 @@
                                         placeholder="Código da Empresa">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_maquina_setor"
-                                        placeholder="Setor">
+                                    <select name="Setor" required="required" class="form-control form-control-user"
+                                        id="input_maquina_setor">
+                                        <option value="" disabled selected="selected">Setor</option>
+                                        <option value="SSO">SSO</option>
+                                        <option value="CCO">CCO</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_maquina_ip"
                                         placeholder="IP da máquina">
-                                        <span style="font-size: 12px; margin-left: 12px;">Qual IP da minha máquina? Acesse http://www.meuip.com/</span>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="input_maquina_nserie"
-                                        placeholder="Número de Série">
-                                </div> -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="input_maquina_so"
-                                        placeholder="Sistema Operacional">
+                                    <span style="font-size: 12px; margin-left: 12px;">Qual IP da minha máquina? Acesse
+                                        http://www.meuip.com/</span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="input_maquina_modelo"
+                                    <input type="name" class="form-control form-control-user"
+                                        id="input_maquina_hostname" placeholder="Hostname">
+                                </div>
+                                <div class="form-group">
+                                    <select name="so" required="required" class="form-control form-control-user"
+                                        id="input_maquina_so">
+                                        <option value="" disabled selected="selected">Sistema Operacional</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="Windows">Windows</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control form-control-user" id="input_maquina_modelo"
                                         placeholder="Modelo">
                                 </div>
-                                <div class="form-group" >
+                                <!-- <div class="form-group" >
                                     <h8 style="font-size: 15px; margin-left: 16px;">Escolha os componentes que você deseja monitorar:</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
                                         <input type="radio" name="opcao1" value="9" id="radioCPU"> <h8 style="font-size: 13px; ">CPU</h8>
@@ -75,19 +84,19 @@
                                         <input style="margin-left: 10px;" type="radio" name="opcao4" value="12" id="radioREDE"> <h8 style="font-size: 13px;">REDE</h8>
                                     </div>
                               
-                                </div>
-                                
+                                </div> -->
+
                                 <a class="btn btn-primary btn-user btn-block" onclick="cadastrarMaquina()">
                                     Confirmar Cadastro de Nova Máquina
                                 </a>
-                                
-                                
+
+
                             </form>
                             <hr>
                             <!-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
                             </div> -->
-                           
+
                         </div>
                     </div>
                 </div>
@@ -110,64 +119,59 @@
 
 </html>
 <script>
+
+    input_cod_empresa.value = sessionStorage.ID_EMPRESA
+
     function cadastrarMaquina() {
-    
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var codEmpresaMVar = input_cod_empresa.value;
-    var maquinaSetorMVar = input_maquina_setor.value;
-    var maquinaSOMVar = input_maquina_so.value; 
-    var maquinaModeloMVar = input_maquina_modelo.value; 
-    var maquinaIPMVar= input_maquina_ip.value;
-    // var cpuRadio = document.getElementById("radioCPU");
-    // var ramRaRadio = document.getElementById("radioDISCO");
-    // var redeRdio = document.getElementById("radioRAM");
-    // var discoadio = document.getElementById("radioREDE");
-   
 
-   
-            fetch("src/routes/usuarios/cadastrarMaquina", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    codEmpServer: codEmpresaMVar,
-                    maquinaSetorServer : maquinaSetorMVar,
-                    maquinaSOServer: maquinaSOMVar,
-                    maquinaModeloServer: maquinaModeloMVar, 
-                    maquinaIPServer: maquinaIPMVar, 
-                    // cpuRadioServer: cpuRadio, 
-                    // ramRadioServer: ramRadio, 
-                    // discoRadioServer: discoRadio,
-                    // redeRadioServer: redeRadio
-                
-                })
-            }).then(function (resposta) {
+        var codEmpresaMVar = input_cod_empresa.value;
+        var maquinaModeloMVar = input_maquina_modelo.value;
+        var maquinaIPMVar = input_maquina_ip.value;
+        var maquinaHostnameVar = input_maquina_hostname.value
 
-                console.log("resposta: ", resposta);
+        var selectSO = document.querySelector('#input_maquina_so');
+        var maquinaSOMVar = selectSO.options[selectSO.selectedIndex].value;
 
-                if (resposta.ok) {
-                    alert("Cadastro realizado com sucesso!");
+        var selectSetor = document.querySelector('#input_maquina_setor');
+        var maquinaSetorMVar = selectSetor.options[selectSetor.selectedIndex].value;
 
-                    // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        fetch("/usuarios/cadastrarMaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                codEmpServer: codEmpresaMVar,
+                maquinaSetorServer: maquinaSetorMVar,
+                maquinaSOServer: maquinaSOMVar,
+                maquinaModeloServer: maquinaModeloMVar,
+                maquinaIPServer: maquinaIPMVar,
+                maquinaHostnameServer: maquinaHostnameVar
 
-                    setTimeout(() => {
-                        // window.location = "login.html";
-                    }, "2000")
+            })
+        }).then(function (resposta) {
 
-                    limparFormulario();
+            console.log("resposta: ", resposta);
 
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+            if (resposta.ok) {
+                alert("Cadastro realizado com sucesso!");
 
-            return false;
+                setTimeout(() => {
+                    window.location = "tables-machines.html";
+                }, "2000")
+
+                limparFormulario();
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
         // Enviando o valor da nova input
     }
 
