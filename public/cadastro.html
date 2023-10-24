@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                                 <div class="field btns">
-                                    <button onclick="checkInputs()" class=" firstNext next">Próximo</button>
+                                    <button onclick="checkInputs();" class="next">Próximo</button>
                                 </div>
 
                             </div>
@@ -198,8 +198,8 @@
                                                 <label for="input_cep" class="input__label">CEP</label>
                                                 <img src="./assets/icons8-skyscrapers-50.png" alt=""
                                                     class="material-symbols-outlined">
-                                                <i class="img-success"><img src="./images/success-icon.svg" alt=""></i>
-                                                <i class="img-error"><img src="./images/error-icon.svg" alt=""></i>
+                                                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                                                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
 
                                                 <small>Error Message</small>
                                             </div>
@@ -269,8 +269,8 @@
                                 </div>
 
                                 <div class="field">
-                                    <button class="prev-1 prev">Anterior</button>
-                                    <button class="submit cadastro" onclick="cadastro()">Cadastrar</button>
+                                    <button class=" prev" onclick="prev()">Anterior</button>
+                                    <button class="submit cadastro" onclick="checkInputs2()">Cadastrar</button>
                                 </div>
                             </div>
                         </form>
@@ -293,12 +293,35 @@
         cadastrarEndereco()
     }
 
-    const allInputs = document.querySelectorAll('input');
-        allInputs.forEach(input => {
-            input.oninvalid = function (e) {
-                e.preventDefault();
-            };
-        });
+    // Animacao do cdastro
+
+    const slidePage = document.querySelector(".slide-page");
+    const progressText = [...document.querySelectorAll(".step p")];
+    const progressCheck = [...document.querySelectorAll(".step .check")];
+    const bullet = [...document.querySelectorAll(".step .bullet")];
+    let max = 2;
+    let current = 1;
+
+    function next() {
+        slidePage.style.marginLeft = "-25%";
+        bullet[current - 1].classList.add("active");
+        progressCheck[current - 1].classList.add("active");
+        progressText[current - 1].classList.add("active");
+        current += 1;
+    }
+
+    function prev() {
+        slidePage.style.marginLeft = "0%";
+        bullet[current - 2].classList.remove("active");
+        progressCheck[current - 2].classList.remove("active");
+        progressText[current - 2].classList.remove("active");
+        current -= 1;
+    }
+
+    // Fim da animacao do cdastro
+
+
+    // Validacao dos campos
 
     const razaoSocial = document.getElementById('input_razao_social')
     const cnpj = document.getElementById('input_cnpj')
@@ -309,35 +332,26 @@
     const senha = document.getElementById('input_senha_rep')
     const confirmarSenha = document.getElementById('input_confirma_senha')
     const cep = document.getElementById('input_cep')
-
-    const slidePage = document.querySelector(".slide-page");
-    const nextBtnFirst = document.querySelector(".firstNext");
-    const prevBtnSec = document.querySelector(".prev-1");
-    const progressText = [...document.querySelectorAll(".step p")];
-    const progressCheck = [...document.querySelectorAll(".step .check")];
-    const bullet = [...document.querySelectorAll(".step .bullet")];
-    let max = 2;
-    let current = 1;
-
-    nextBtnFirst.addEventListener("click", function () {
-        slidePage.style.marginLeft = "-25%";
-        bullet[current - 1].classList.add("active");
-        progressCheck[current - 1].classList.add("active");
-        progressText[current - 1].classList.add("active");
-        current += 1;
+    const numero = document.getElementById('input_numero')
+    const allInputs = document.querySelectorAll('input');
+    allInputs.forEach(input => {
+        input.oninvalid = function (e) {
+            e.preventDefault();
+        };
     });
 
-    prevBtnSec.addEventListener("click", function () {
-        slidePage.style.marginLeft = "0%";
-        bullet[current - 2].classList.remove("active");
-        progressCheck[current - 2].classList.remove("active");
-        progressText[current - 2].classList.remove("active");
-        current -= 1;
-    });
+
 
     function checkInputs() {
 
+        if (isAllValid()) {
+            next()
+        }
+    }
 
+    function isAllValid() {
+        const page1 = document.getElementById('page1'); // Seleciona a primeira parte do formulário
+        const inputs = page1.querySelectorAll('input'); // Seleciona apenas as entradas da primeira parte do formulário
         const razaoSocialValue = razaoSocial.value.trim()
         const cnpjValue = cnpj.value.trim()
         const nomeValue = nome.value.trim()
@@ -346,12 +360,14 @@
         const cpfValue = cpf.value.trim()
         const senhaValue = senha.value.trim()
         const confirmarSenhaValue = confirmarSenha.value.trim()
-        const cepValue = cep.value.trim()
+
+        let isValid = true;
 
         if (razaoSocialValue === '') {
             // mostrar erro
             // add classe
             setErrorFor(razaoSocial, 'Preencha esse campo')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(razaoSocial)
@@ -361,6 +377,7 @@
             // mostrar erro
             // add classe
             setErrorFor(cnpj, 'Preencha esse campo')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(cnpj)
@@ -370,6 +387,7 @@
             // mostrar erro
             // add classe
             setErrorFor(nome, 'Preencha esse campo')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(nome)
@@ -379,8 +397,10 @@
             // mostrar erro
             // add classe
             setErrorFor(email, 'Preencha esse campo')
+            isValid = false;
         } else if (!isEmail(emailValue)) {
             setErrorFor(email, 'Email inválido')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(email)
@@ -390,6 +410,7 @@
             // mostrar erro
             // add classe
             setErrorFor(telefone, 'Preencha esse campo')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(telefone)
@@ -399,6 +420,7 @@
             // mostrar erro
             // add classe
             setErrorFor(cpf, 'Preencha esse campo')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(cpf)
@@ -408,9 +430,11 @@
             // mostrar erro
             // add classe
             setErrorFor(senha, 'Preencha esse campo')
+            isValid = false;
 
         } else if (senhaValue.length < 8) {
             setErrorFor(senha, 'Senha deve ter mais que 8 caracteres')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(senha)
@@ -420,26 +444,53 @@
             // mostrar erro
             // add classe
             setErrorFor(confirmarSenha, 'Preencha esse campo')
+            isValid = false;
 
         } else if (senhaValue !== confirmarSenhaValue) {
             setErrorFor(confirmarSenha, 'Senhas não tão iguais')
+            isValid = false;
         } else {
             // adicionar a classe de sucesso
             setSuccessFor(confirmarSenha)
         }
 
-        if (confirmarSenhaValue === '') {
-            // mostrar erro
-            // add classe
-            setErrorFor(confirmarSenha, 'Preencha esse campo')
+        return isValid;
+    }
 
-        } else if (senhaValue !== confirmarSenhaValue) {
-            setErrorFor(confirmarSenha, 'Senhas não tão iguais')
+    function isAllValid2() {
+
+        const page2 = document.getElementById('page2'); // Seleciona a segunda parte do formulário
+        const inputs = page1.querySelectorAll('input'); // Seleciona apenas as entradas da primeira parte do formulário
+        const cepValue = cep.value.trim()
+        const numeroValue = numero.value.trim()
+        let isValid = true;
+
+        if (cepValue === '') {
+            setErrorFor(cep, 'Preencha esse campo')
+            isValid = false;
+        } else if (cepValue.length < 9) {
+            setErrorFor(cep, 'Cep invalido')
+            isValid = false;
         } else {
-            // adicionar a classe de sucesso
-            setSuccessFor(confirmarSenha)
+            setSuccessFor(cep)
         }
 
+        if (numeroValue === '') {
+            setErrorFor(numero, 'Preencha esse campo')
+            isValid = false;
+        } else {
+            setSuccessFor(numero)
+        }
+
+        return isValid;
+
+    }
+
+    function checkInputs2() {
+
+        if (isAllValid2()) {
+            cadastro()
+        }
     }
 
     function setErrorFor(input, message) {
@@ -459,13 +510,6 @@
 
     function isEmail(email) {
         return /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email)
-    }
-
-    const isAllValid = [...document.querySelectorAll('input')].every(input => input.classList.contains('success'));
-
-    if (isAllValid) {
-
-
     }
 
 </script>

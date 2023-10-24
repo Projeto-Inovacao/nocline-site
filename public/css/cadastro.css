@@ -170,7 +170,7 @@
     background: rgba(0, 0, 0, 0.425)
   }
 
-  
+
 
   form .page .field button {
     width: 90%;
@@ -404,38 +404,39 @@
 
   .input.success input {
     border: 3px solid #4ECA64;
-}
+  }
 
-.input.error input {
+  .input.error input {
     border: 3px solid #DB5A5A;
-}
+  }
 
-.input.error i.img-error {
+  .input.error i.img-error {
     visibility: visible;
-}
+  }
 
-.input.success i.img-success {
+  .input.success i.img-success {
     visibility: visible;
-}
+  }
 
-.input.error small{
+  .input.error small {
     color: #DB5A5A;
     visibility: visible;
-}
+  }
 
-.input i {
+  .input i {
     position: absolute;
     top: 45px;
     right: 6vh;
     visibility: hidden;
-}
-.input small {
+  }
+
+  .input small {
     visibility: hidden;
     position: absolute;
     top: 7vh;
     font-size: 14px;
 
-}
+  }
 
   /* Simbolo das inputs */
 
