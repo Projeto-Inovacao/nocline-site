@@ -140,15 +140,14 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-
-                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                    sessionStorage.ID_EMPRESA = json.fk_empresa;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.SENHA_USUARIO = json.senha;
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.CELULAR_USUARIO = json.celular;
-                    sessionStorage.ID_USUARIO = json.idColaborador;
-                    sessionStorage.NOME_EMPRESA = json.razaoSocial;
-                    sessionStorage.CNPJ_EMPRESA = json.CNPJ;
+                    sessionStorage.ID_USUARIO = json.id_colaborador;
+                    sessionStorage.NOME_EMPRESA = json.razao_social;
+                    sessionStorage.CNPJ_EMPRESA = json.cnpj;
 
                     setTimeout(function () {
                         window.location = "dashboard/index.html";

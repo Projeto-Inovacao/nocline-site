@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="atualizarFeed(), validarSessao()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -394,20 +394,15 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>IP da Máquina</th>
+                                            <th>Hostname</th>
                                             <th>Sistema Operacional</th>
                                             <th>Setor</th>
                                             <th>Modelo</th>
-                                            <th>Status</th>
+                                            <th>Status Monitoramento</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tabela_maquinas">
                                         <tr>
-                                            <td>01</td>
-                                            <td>029029</td>
-                                            <td>Windowns</td>
-                                            <td>CCO</td>
-                                            <td>XXXX</td>
-                                            <td>Ativa</td>
                                         </tr>
                                         
                                     </tbody>
@@ -449,15 +444,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja Sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="../login.html">Sair</a>
                 </div>
             </div>
         </div>
@@ -478,7 +473,8 @@
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/tabelas/maquinas.js"></script>
+    <script src="js/sessao.js"></script>
 
 </body>
 

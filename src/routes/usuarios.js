@@ -23,6 +23,14 @@ router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 })
 
+router.post("/alterarMaquina", function (req, res) {
+    usuarioController.alterarMaquina(req, res);
+});
+
+router.post("/excluirMaquina", function (req, res) {
+    usuarioController.excluirMaquina(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
