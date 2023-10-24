@@ -15,15 +15,15 @@ router.get("/pesquisar/:descricao", function (req, res) {
     avisoController.pesquisarDescricao(req, res);
 });
 
-router.post("/publicar/:fkcolaborador", function (req, res) {
+router.post("/publicar/:id_colaborador", function (req, res) {
     avisoController.publicar(req, res);
 });
 
-router.put("/editar/:idAviso", function (req, res) {
+router.put("/editar/:id_chat", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.delete("/deletar/:idAviso", function (req, res) {
+router.delete("/deletar/:id_chat", function (req, res) {
     avisoController.deletar(req, res);
 });
 

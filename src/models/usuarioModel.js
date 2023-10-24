@@ -1,12 +1,21 @@
 var database = require("../database/config")
 
+    //select 
+    //* from colaborador 
+    //join empresa on fk_empresa = id_empresa
+    //WHERE (email = '${email}' AND senha = sha('${senha}',256)) ;/
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+<<<<<<< HEAD
     var instrucao = `
     select 
     * from colaborador 
      join empresa on fk_empresa = id_empresa
     WHERE (email = '${email}' AND senha = '${senha}') ;
+=======
+    var instrucao = `select * from colaborador join empresa on fk_empresa = id_empresa WHERE email = 'no@email.com' AND senha = 'senha321' ;
+   
+>>>>>>> 7a813cb9a7240a46333afb1e34be722cb771faab
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
@@ -17,7 +26,7 @@ function cadastrarEmpresa(razaoSocial, cnpj) {
     console.log("ACESSEI O USUARIO MODEL EMPRESA \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", razaoSocial, cnpj);
 
     var instrucao = `
-    INSERT INTO empresa (razaoSocial, cnpj) VALUES ( '${razaoSocial}', '${cnpj}');`
+    INSERT INTO empresa (razao_social, cnpj) VALUES ( '${razaoSocial}', '${cnpj}');`
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -28,7 +37,7 @@ function cadastrarEndereco(cep, numero, rua, bairro, cidade, estado, pais, compl
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():", cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento);
 
     var instrucao = `
-        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where CNPJ = '${cnpj}'));
+        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where cnpj = '${cnpj}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
