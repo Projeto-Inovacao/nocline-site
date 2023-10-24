@@ -81,7 +81,7 @@
     align-items: center;
     position: relative;
     right: 2vw;
-    height: 50vh;
+    height: 55vh;
   }
 
   .inputs_login_esquerda1,
@@ -91,7 +91,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 18rem;
+    height: 21rem;
   }
 
   .inputs_login_esquerda,
@@ -101,14 +101,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 15rem;
+    height: 18rem;
   }
 
   /* Formulario de cadastro */
 
   .container {
     width: 50vw;
-    height: 100vh;
+    height: 109vh;
     background: #121212e2;
     text-align: center;
     border-radius: 5px;
@@ -145,7 +145,6 @@
     font-weight: 500;
     color: #fff;
 
-
   }
 
   .form-outer form .page .field {
@@ -171,14 +170,10 @@
     background: rgba(0, 0, 0, 0.425)
   }
 
-  .input__label4 {
-    position: absolute;
-    bottom: 8vh;
-    right: 19vw;
-  }
+
 
   form .page .field button {
-    width: 100%;
+    width: 90%;
     height: calc(100% + 5px);
     border: none;
     background: #323131;
@@ -191,11 +186,12 @@
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in-out;
   }
 
   form .page .field button:hover {
-    background: #000;
+    background: #10181d;
+    transform: scale(1.1);
   }
 
   form .page .btns button.prev {
@@ -208,6 +204,7 @@
   form .page .btns button.next {
     position: relative;
     left: 25vh;
+    top: 2vh;
   }
 
   form .page button.next1 {
@@ -283,7 +280,7 @@
   }
 
   .progress-bar .step .bullet.active:after {
-    border-color: #8b8b8b;
+    background-color: #8b8b8b;
     transform: scaleX(0);
     transform-origin: left;
     animation: animate 0.3s linear forwards;
@@ -316,7 +313,7 @@
 
   .progress-bar .step .check.active {
     display: block;
-    color: #fff;
+    color: #a2a2a3;
   }
 
   /* Fim do formulario de cadastro */
@@ -349,7 +346,7 @@
   .input__label {
     position: absolute;
     top: 0;
-    left: 7vh;
+    left: 5.5vh;
     transform: translate(10px, 10px);
     transform-origin: left;
     transition: transform 0.25s;
@@ -375,7 +372,7 @@
 
   .input__field:focus-visible~.input__label,
   .input__field:valid~.input__label {
-    transform: translate(-7vh, -25px) scale(0.8);
+    transform: translate(-5.5vh, -25px) scale(0.8);
     color: #ffffff;
   }
 
@@ -403,6 +400,42 @@
   .input_mini {
     padding: 1rem 1rem 0.3rem 3rem;
     width: 6rem;
+  }
+
+  .input.success input {
+    border: 3px solid #4ECA64;
+  }
+
+  .input.error input {
+    border: 3px solid #DB5A5A;
+  }
+
+  .input.error i.img-error {
+    visibility: visible;
+  }
+
+  .input.success i.img-success {
+    visibility: visible;
+  }
+
+  .input.error small {
+    color: #DB5A5A;
+    visibility: visible;
+  }
+
+  .input i {
+    position: absolute;
+    top: 45px;
+    right: 6vh;
+    visibility: hidden;
+  }
+
+  .input small {
+    visibility: hidden;
+    position: absolute;
+    top: 7vh;
+    font-size: 14px;
+
   }
 
   /* Simbolo das inputs */
