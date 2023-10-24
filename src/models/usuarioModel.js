@@ -6,7 +6,7 @@ function entrar(email, senha) {
     select 
     * from colaborador 
      join empresa on fk_empresa = id_empresa
-    WHERE (email = '${email}' AND senha = sha('${senha}',256)) ;
+    WHERE (email = '${email}' AND senha = '${senha}') ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
