@@ -32,25 +32,31 @@
 
 
         <div class="inputs_login">
-        <div class="title">Endereço da Empresa:</div>
+            <div class="title">Endereço da Empresa:</div>
             <div class="input">
                 <input class="input__field" id="input_email" type="text" required />
-                        <label for="input_email" class="input__label">Email de Acesso</label>
+                <label for="input_email" class="input__label">Email de Acesso</label>
                 <img src="./assets/icons8-user-50 1.png" alt="" class="material-symbols-outlined">
-                <!-- <span class="material-symbols-outlined">person</span> -->
+                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
             </div>
 
             <div class="input">
-                <!-- <input type="password" name="" id="" class="input_login" placeholder="**************"> -->
+
                 <input class="input__field" id="input_senha" type="password" required />
-                        <label for="input_senha" class="input__label">Senha</label>
+                <label for="input_senha" class="input__label">Senha</label>
                 <img src="./assets/icons8-password-64 1.png" alt="" class="material-symbols-outlined">
-                <!-- <span class="material-symbols-outlined">lock</span> -->
+                <i class="img-success"><img src="assets/success-icon.svg" alt=""></i>
+                <i class="img-error"><img src="assets/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
             </div>
 
             <div class="contBtn">
-            <button class="btn_login" onclick="entrar()">Entrar</button>
-</div>
+                <button class="btn_login" onclick="entrar()">Entrar</button>
+            </div>
         </div>
 
     </div>
@@ -60,44 +66,80 @@
     </footer>
 
 </body>
+
 </html>
 <script>
+
+    const email = document.getElementById('input_email')
+    const senha = document.getElementById('input_senha')
+
+    function isAllValid() {
+
+        const emailValue = email.value.trim()
+        const senhaValue = senha.value.trim()
+        let isValid = true;
+
+        if (emailValue === '') {
+            setErrorFor(email, 'Preencha esse campo')
+            isValid = false;
+        } else {
+            setSuccessFor(email)
+        }
+
+        if (senhaValue === '') {
+            setErrorFor(senha, 'Preencha esse campo')
+            isValid = false;
+        } else {
+            setSuccessFor(senha)
+        }
+
+        return isValid;
+
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small')
+
+        small.innerText = message
+
+        formControl.className = 'input error'
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+
+        formControl.className = 'input success'
+    }
+
     function entrar() {
-    var emailEmpresaVar = input_email.value;
-    var senhaVar = input_senha.value;
 
-    if (emailEmpresaVar == "" || senhaVar == "") {
-        // mensagem_erro.innerHTML = "Preencha todos os campos!";
-        // finalizarAguardar();
-        console.log("Input vazias")
-        return false;
-    }
-    else {
-        // setInterval(sumirMensagem, 5000)
-    }
 
-    console.log("FORM LOGIN: ", emailEmpresaVar);
-    console.log("FORM SENHA: ", senhaVar);
+        if(isAllValid()){
+        var emailEmpresaVar = input_email.value;
+        var senhaVar = input_senha.value;
 
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            emailEmpresaServer: emailEmpresaVar,
-            senhaServer: senhaVar
-        })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
+        console.log("FORM LOGIN: ", emailEmpresaVar);
+        console.log("FORM SENHA: ", senhaVar);
 
-        if (resposta.ok) {
-            console.log(resposta);
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailEmpresaServer: emailEmpresaVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
 
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-               
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
                     sessionStorage.ID_EMPRESA = json.fk_empresa;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.SENHA_USUARIO = json.senha;
@@ -107,33 +149,30 @@
                     sessionStorage.NOME_EMPRESA = json.razao_social;
                     sessionStorage.CNPJ_EMPRESA = json.cnpj;
 
-                setTimeout(function () {
-                    window.location = "dashboard/index.html";
-                }, 1000); // apenas para exibir o loading
+                    setTimeout(function () {
+                        window.location = "dashboard/index.html";
+                    }, 1000); // apenas para exibir o loading
 
-            });
-           
-        } else {
-           
-            // mensagem_erro.innerHTML = "Login ou senha incorretos";
-            console.log("Houve um erro ao tentar realizar o login!");
-           
-            resposta.text().then(texto => {
-                console.error(texto);
-                // finalizarAguardar(texto);
-            });
-        }
+                });
 
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+            } else {
 
-    return false;
-}
+                // mensagem_erro.innerHTML = "Login ou senha incorretos";
+                console.log("Houve um erro ao tentar realizar o login!");
 
-function sumirMensagem() {
-    console.log("passou na validação")
-    // mensagem_erro.innerHTML = ""
-}
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+    }
 
 </script>

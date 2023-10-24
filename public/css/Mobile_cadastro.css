@@ -33,25 +33,29 @@
 
   .inputs_login {
     padding: 0rem;
+    height: 130vh;
   }
 
   .caixa_inputs {
     flex-direction: column;
     position: relative;
     right: 5vw;
-    height: 60vh;
+    height: 82vh;
+    
   }
 
   .inputs_login_esquerda1,
   .inputs_login_direita1 {
-    height: 15rem;
+    height: 18rem;
+    padding: 2rem;
+    gap: 1.2rem;
   }
 
   /* Formulario de cadastro */
 
   .container {
     width: 80vw;
-    height: 100vh;
+    height: 125vh;
   }
 
   form .page .field button {
@@ -74,6 +78,7 @@
   form .page .btns button.next {
     position: relative;
     left: 7vh;
+    top: 0vh;
   }
 
   form .page button.next1 {
@@ -91,7 +96,7 @@
   .progress-bar .step .bullet:before,
   .progress-bar .step .bullet:after {
     bottom: 11px;
-    right: -65px;
+    left: 12vw;
   }
 
   .input__label {
@@ -133,5 +138,19 @@
     transform: translate(-4vh, -25px) scale(0.8);
   }
 
+  .input i {
+    position: absolute;
+    top: 45px;
+    right: 4vh;
+    visibility: hidden;
+  }
+
+  .input small {
+    visibility: hidden;
+    position: absolute;
+    top: 5.5vh;
+    font-size: 14px;
+
+  }
 
 }

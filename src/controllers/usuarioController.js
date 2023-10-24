@@ -221,56 +221,6 @@ function cadastrarColaborador(req, res) {
     }
 }
 
-
-function cadastrarCartao(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    console.log("entrei validacao controller colab")
-
-    var cnpj = req.body.cnpjServer;
-    var plano = req.body.planoServer;
-    var nCartao = req.body.nCartaoServer;
-    var nomeTitular = req.body.nomeTitularServer;
-    var validade = req.body.validadeServer;
-    var cvv = req.body.cvvServer;
-    var bandeira = req.body.bandeiraServer;
-
-    // Faça as validações dos valores
-    if (plano == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (cnpj == undefined) {
-        res.status(400).send("Seu CNPJ de senha está undefined!");
-    }
-    else if (nCartao == undefined) {
-        res.status(400).send("Sua email de senha está undefined!");
-    } else if (nomeTitular == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-    } else if (validade == undefined) {
-        res.status(400).send("Seu celular está undefined!");
-    } else if (cvv == undefined) {
-        res.status(400).send("Seu setor está undefined!");
-    } else if (bandeira == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    }
-    else {
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarCartao(nCartao, validade, cvv, bandeira, nomeTitular, cnpj, plano)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
 function cadastrarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller maqqqq")
@@ -491,7 +441,6 @@ module.exports = {
     cadastrarMaquina,
     alterarMaquina,
     excluirMaquina,
-    cadastrarCartao,
     entrar,
     cadastrarColaborador1,
     alterarColaborador,

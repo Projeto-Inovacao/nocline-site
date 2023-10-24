@@ -170,19 +170,6 @@ CREATE TABLE IF NOT EXISTS `Colaborador` (
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `Empresa` (`idEmpresa`));
 
-CREATE TABLE IF NOT EXISTS`Cartao` (
-  `idCartao` INT NOT NULL,
-  `NumCartao` CHAR(4) NULL,
-  `Validade` DATE NULL,
-  `CVV` CHAR(3) NULL,
-  `Bandeira` VARCHAR(50) NULL,
-  `fkEmpresa` INT NOT NULL,
-  PRIMARY KEY (`idCartao`),
-  INDEX `fk_Cartao_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
-  CONSTRAINT `fk_Cartao_Empresa1`
-    FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `Empresa` (`idEmpresa`));
-
 CREATE TABLE IF NOT EXISTS `Mural` (
 	  `id` INT PRIMARY KEY,
 	  `titulo` VARCHAR(100),
