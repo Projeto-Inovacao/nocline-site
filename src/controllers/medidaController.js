@@ -105,6 +105,23 @@ function buscarUltimasMedidasDesempenho(req, res) {
     });
 }
 
+function buscarUltimasJanelas(req, res) {
+
+    var idMaquina = req.params.idMaquina;
+
+    medidaModel.buscarUltimasJanelas(idMaquina).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarMedidasEmTempoRealCPU(req, res) {
 
     var idMaquina = req.params.idMaquina;
@@ -196,6 +213,24 @@ function buscarMedidasEmTempoRealDisco(req, res) {
     });
 }
 
+function buscarMedidasEmTempoRealJanelas(req, res) {
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarUltimasJanelas(idMaquina).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarMedidasEmTempoRealCPU,
     buscarMedidasEmTempoRealRAM,
@@ -206,5 +241,7 @@ module.exports = {
     buscarUltimasMedidasCPU,
     buscarUltimasMedidasRAM,
     buscarUltimasMedidasRede,
-    buscarUltimasMedidasDesempenho
+    buscarUltimasMedidasDesempenho,
+    buscarUltimasJanelas,
+    buscarMedidasEmTempoRealJanelas
 }

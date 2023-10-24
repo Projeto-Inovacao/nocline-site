@@ -124,7 +124,7 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
           console.log("Como não houve mudança de armazenamento no disco, o gráfico não atualizará.")
           // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
           console.log("Horário do novo dado capturado:")
-          console.log(novoRegistro[0].dtHora)
+          console.log(novoRegistro[0].data_hora)
           console.log("Horário do último dado capturado:")
           console.log(dados.labels[dados.labels.length - 1])
           console.log("---------------------------------------------------------------")

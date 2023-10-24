@@ -4,7 +4,6 @@ var idMaquina = 1
 var KPI_CPU = document.getElementById("uso_cpu_kpi");
 var KPI_RAM = document.getElementById("ram_kpi");
 var KPI_DISCO = document.getElementById("disco_kpi");
-var KPI_JANELA = document.getElementById("janelas_kpi");
 
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
@@ -65,8 +64,8 @@ function atualizarGraficoDesempenho(idMaquina) {
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 console.log(JSON.stringify(novoRegistro) + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-                valores = [CPU, RAM, DISCO]
-                valores_kpi_desempenho = [KPI_CPU, KPI_RAM, KPI_DISCO]
+                valores = [DISCO, CPU, RAM]
+                valores_kpi_desempenho = [KPI_DISCO, KPI_CPU, KPI_RAM]
                 valores_Bar = [CPU_bar, RAM_bar, disco_bar]
 
                 for (i = 0; i < novoRegistro.length; i++) {
@@ -74,7 +73,7 @@ function atualizarGraficoDesempenho(idMaquina) {
                     if (valores[i] && valores_Bar[i]) {
                         valores[i].innerHTML = (dados.uso) + "%";
                         valores_Bar[i].style.width = (novoRegistro.uso) + "%";
-                        valores_kpi_desempenho[i].style.width = (dados.uso) + "%";
+                        valores_kpi_desempenho[i].innerHTML = (dados.uso) + "%";
                     }
                 }
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
