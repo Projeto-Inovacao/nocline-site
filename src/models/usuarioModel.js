@@ -131,7 +131,6 @@ module.exports = {
     cadastrarEndereco,
     cadastrarColaborador,
     cadastrarMaquina, 
-    cadastrarCartao,
     cadastrarColaborador1, 
     alterarColaborador, 
     excluirColaborador
