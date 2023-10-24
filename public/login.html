@@ -55,7 +55,7 @@
             </div>
 
             <div class="contBtn">
-                <button class="btn_login" onclick="checkInputs()">Entrar</button>
+                <button class="btn_login" onclick="entrar()">Entrar</button>
             </div>
         </div>
 
@@ -97,13 +97,6 @@
 
     }
 
-    function checkInputs() {
-
-        if (isAllValid()) {
-            entrar()
-        }
-    }
-
     function setErrorFor(input, message) {
         const formControl = input.parentElement;
         const small = formControl.querySelector('small')
@@ -120,6 +113,9 @@
     }
 
     function entrar() {
+
+
+        if(isAllValid()){
         var emailEmpresaVar = input_email.value;
         var senhaVar = input_senha.value;
 
@@ -176,6 +172,8 @@
         })
 
         return false;
+
+    }
     }
 
 </script>
