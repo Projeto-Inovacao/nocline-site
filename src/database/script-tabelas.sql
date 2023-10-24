@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `Endereco` (
   
   CREATE TABLE IF NOT EXISTS `Monitoramento` (
   `idMonitoramento` INT NOT NULL,
-  `dadoColetado` DOUBLE NOT NULL,
-  `dtHora` DATETIME NOT NULL,
+  `dado_coletado` DOUBLE NOT NULL,
+  `data_hora` DATETIME NOT NULL,
   `fkComponentesMonitoramentos` INT NOT NULL,
   `fkMáquinaMonitoramentos` INT NOT NULL,
   `fkEmpresaMonitoramentos` INT NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `Endereco` (
     
     CREATE TABLE IF NOT EXISTS `Aviso` (
   `idAviso` INT NOT NULL,
-  `dtHora` DATETIME NULL,
+  `data_hora` DATETIME NULL,
   `Descricao` VARCHAR(45) NULL,
   `fkMonitoramento` INT NOT NULL,
   PRIMARY KEY (`idAviso`, `fkMonitoramento`),

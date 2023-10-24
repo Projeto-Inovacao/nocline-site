@@ -22,18 +22,16 @@ function atualizarFeed() {
                     var novaLinha = feed.insertRow();
 
                     // Cria células para cada coluna
-                    var celulaPID = novaLinha.insertCell(0);
-                    var celulaNome = novaLinha.insertCell(1);
-                    var celulaUsoCPU = novaLinha.insertCell(2);
-                    var celulaUsoMemoria = novaLinha.insertCell(3);
-                    var celulaUsoMemoriaSwap = novaLinha.insertCell(4);
+                    var PID = novaLinha.insertCell(0);
+                    var UsoCPU = novaLinha.insertCell(1);
+                    var UsoMemoria = novaLinha.insertCell(2);
+                    var UsoMemoriaSwap = novaLinha.insertCell(3);
 
 
-                    celulaPID.innerHTML = processo.PID;
-                    celulaNome.innerHTML = processo.nome;
-                    celulaUsoCPU.innerHTML = processo.usoCPU;
-                    celulaUsoMemoria.innerHTML = processo.usoMemoria;
-                    celulaUsoMemoriaSwap.innerHTML = processo.memoriaVirtual;
+                    PID.innerHTML = processo.pid;
+                    UsoCPU.innerHTML = processo.uso_cpu;
+                    UsoMemoria.innerHTML = processo.uso_memoria;
+                    UsoMemoriaSwap.innerHTML = processo.memoria_virtual;
 
                 }
 

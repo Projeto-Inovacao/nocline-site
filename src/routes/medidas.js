@@ -23,6 +23,10 @@ router.get("/ultimasDesempenho/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasDesempenho(req, res);
 });
 
+router.get("/ultimasJanelas/:idMaquina", function (req, res) {
+    medidaController.buscarUltimasJanelas(req, res);
+});
+
 router.get("/tempo-realCPU/:idMaquina", function (req, res) {
     medidaController.buscarMedidasEmTempoRealCPU(req, res);
 })
@@ -41,6 +45,10 @@ router.get("/tempo-realDisco/:idMaquina", function (req, res) {
 
 router.get("/tempo-realDesempenho/:idMaquina", function (req, res) {
     medidaController.buscarMedidasEmTempoRealDesempenho(req, res);
+})
+
+router.get("/tempo-realJanelas/:idMaquina", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealJanelas(req, res);
 })
 
 module.exports = router;
