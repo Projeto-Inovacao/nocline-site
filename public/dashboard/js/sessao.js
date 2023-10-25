@@ -3,20 +3,6 @@ function validarSessao() {
     console.log(id)
     var nome = sessionStorage.NOME_USUARIO;
     console.log(nome)
-    
-    empresaModel.buscarMaquinasPorEmpresa(id).then((resultadoMaquinas) => {
-        if (resultadoMaquinas.length > 0) {
-            res.json({
-                maquinas: resultadoMaquinas
-            });
-            var maquinasJSON = JSON.stringify(resultadoMaquinas);
-            sessionStorage.MAQUINAS = maquinasJSON;
-        } else {
-            res.status(204).json({ Maquinas: [] });
-        }
-    })
-
-
 
     if (id != null && nome != null) {
         var b_usuario = document.getElementById("b_usuario")

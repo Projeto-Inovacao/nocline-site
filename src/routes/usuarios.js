@@ -7,6 +7,7 @@ var usuarioController = require("../controllers/usuarioController");
 router.post("/cadastrarEmpresa", function (req, res) {
     usuarioController.cadastrarEmpresa(req, res);
 })
+
 router.post("/cadastrarEndereco", function (req, res) {
     usuarioController.cadastrarEndereco(req, res);
 })
@@ -17,10 +18,6 @@ router.post("/cadastrarColaborador", function (req, res) {
 
 router.post("/cadastrarColaborador1", function (req, res) {
     usuarioController.cadastrarColaborador1(req, res);
-})
-
-router.post("/cadastrarCartao", function (req, res) {
-    usuarioController.cadastrarCartao(req, res);
 })
 
 router.post("/cadastrarMaquina", function (req, res) {

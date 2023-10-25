@@ -1,5 +1,4 @@
-@media only screen and (min-width: 992px) {
-    * {
+  * {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -28,6 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: #ffffff;
     }
 
     .filhoCabecalho {
@@ -97,13 +97,6 @@
     #imgEsquerdaCabecalho {
         width: 13vw;
         height: 6vh;
-    }
-
-    .espaco-vazio {
-        width: 100px;
-        /* Defina a largura desejada */
-        height: 30px;
-        /* Defina a altura desejada */
     }
 
     #imgEsquerdaCabecalho,
@@ -210,6 +203,7 @@
         justify-content: center;
         color: white;
         font-size: 13px;
+        
     }
 
     .botaoSaiba {
@@ -265,14 +259,13 @@
     }
 
     .textoSaiba p {
-        transition: color 0.3s ease-in-out;
         color: #000000;
         text-align: justify;
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
-        font-weight: 300;
         line-height: normal;
+        
     }
 
     #tituloSaiba {
@@ -284,7 +277,6 @@
         line-height: normal;
         text-transform: uppercase;
         margin-bottom: 3%;
-
     }
 
     .boxSaiba img {
@@ -358,7 +350,7 @@
         right: 4%;
         height: 25.5rem;
         width: 24rem;
-        bottom: -121%;
+        bottom: -111%;
         justify-content: space-around;
         padding: 70px;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 25px -5px, rgba(0, 0, 0, 0.06) 0px 10px 10px -5px;
@@ -530,4 +522,3 @@
     }
 
     /* fim do rodape */
-}

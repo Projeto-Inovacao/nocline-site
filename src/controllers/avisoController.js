@@ -15,7 +15,7 @@ function listar(req, res) {
 }
 
 function listarPorUsuario(req, res) {
-    var fkcolaborador = req.params.fkcolaborador;
+    var fk_colaborador_chat = req.params.fk_colaborador_chat;
 
     avisoModel.listarPorUsuario(fkco)
         .then(
@@ -63,16 +63,16 @@ function pesquisarDescricao(req, res) {
 function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    var fkcolaborador = req.params.fkcolaborador;
+    var fk_colaborador_chat = req.body.fk_colaborador_chat;
 
     if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
-    } else if (fkcolaborador == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
+    } else if (fk_colaborador_chat == undefined) {
+        res.status(400).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, fkcolaborador)
+        avisoModel.publicar(titulo, descricao, fk_colaborador_chat)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -90,9 +90,9 @@ function publicar(req, res) {
 
 function editar(req, res) {
     var novaDescricao = req.body.descricao;
-    var idAviso = req.params.idAviso;
+    var id_chat = req.params.id_chat;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    avisoModel.editar(novaDescricao, id_chat)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -109,9 +109,9 @@ function editar(req, res) {
 }
 
 function deletar(req, res) {
-    var idAviso = req.params.idAviso;
+    var id_chat = req.params.id_chat;
 
-    avisoModel.deletar(idAviso)
+    avisoModel.deletar(id_chat)
         .then(
             function (resultado) {
                 res.json(resultado);

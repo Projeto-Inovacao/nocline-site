@@ -117,7 +117,41 @@
         outline-color: #ffffff;
     }
 
+    .input.success input {
+        border: 3px solid #4ECA64;
+    }
     
+    .input.error input {
+        border: 3px solid #DB5A5A;
+    }
+    
+    .input.error i.img-error {
+        visibility: visible;
+    }
+    
+    .input.success i.img-success {
+        visibility: visible;
+    }
+    
+    .input.error small{
+        color: #DB5A5A;
+        visibility: visible;
+    }
+    
+    .input i {
+        position: absolute;
+        top: 12px;
+        right: 3vh;
+        visibility: hidden;
+    }
+    .input small {
+        visibility: hidden;
+        position: absolute;
+        top: 8vh;
+        left: -0vh;
+        font-size: 14px;
+    
+    }
     
     .btn_login{
         width: 200px;
@@ -132,6 +166,12 @@
         font-weight: 500;
         letter-spacing: 1px;
         text-transform: uppercase;
+        transition: 0.5s ease-in-out;
+    }
+
+    .btn_login:hover{
+        transform: scale(1.1);
+        background-color: #10181d;
     }
 
     .material-symbols-outlined {
