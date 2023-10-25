@@ -5,17 +5,18 @@ function validarSessao() {
     console.log(id)
     console.log(nome)
     console.log(nivel_acesso)
-    console.log("SKFHJSDJSADGFHJVDGHJKFGVSAHDJGFHJDSGFHJGSDHJFGHJDSGFHJGDSHJFGHJSDGFHJDGSHJFGSDHJFGHJDSGFHJSDGHFJGSDHJFGHJSDGFHJSDGFHJGSDHJFGHJDSGFHJGDSHJFGHJSDGFHJDSGHFJGSDHFGDHSJGFHJDGSFHJGSDHJFGHJDSGFHDGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-
-    if (nivel_acesso = 3) {
+   
+    if (nivel_acesso == 3) {
         const cco1 = document.getElementById("cadastro_colab")
         const cco2 = document.getElementById("atualizar_colab")
         cco1.style.display = "none"
         cco2.style.display= "none"
-        console.log(cco1)
-        console.log(cco2)
     } 
-    else if (nivel_acesso = 2) {
+    else if (nivel_acesso == 2) {
+        const cco1 = document.getElementById("cadastro_colab")
+        const cco2 = document.getElementById("atualizar_colab")
+        cco1.style.display = "none"
+        cco2.style.display= "none"
         const sso1 = document.getElementById("cadastro_maq")
         const sso2 = document.getElementById("atualizar_maq")
         sso1.style.display = "none"
@@ -28,8 +29,6 @@ function validarSessao() {
 
         b_usuario.innerHTML = id;
         n_usuario.innerHTML = nome;
-        console.log(b_usuario)
-        console.log(n_usuario)
     } else {
         window.location = "../login.html";
     }
