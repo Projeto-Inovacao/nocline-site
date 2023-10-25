@@ -6,8 +6,11 @@ var database = require("../database/config")
     //WHERE (email = '${email}' AND senha = sha('${senha}',256)) ;/
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `select * from colaborador join empresa on fk_empresa = id_empresa WHERE email = 'no@email.com' AND senha = 'senha321' ;
-   
+    var instrucao = `
+    select 
+    * from colaborador 
+     join empresa on fk_empresa = id_empresa
+    WHERE (email = '${email}' AND senha = '${senha}') ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
@@ -18,7 +21,7 @@ function cadastrarEmpresa(razaoSocial, cnpj) {
     console.log("ACESSEI O USUARIO MODEL EMPRESA \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", razaoSocial, cnpj);
 
     var instrucao = `
-    INSERT INTO empresa (razaoSocial, cnpj) VALUES ( '${razaoSocial}', '${cnpj}');`
+    INSERT INTO empresa (razao_social, cnpj) VALUES ( '${razaoSocial}', '${cnpj}');`
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -29,7 +32,7 @@ function cadastrarEndereco(cep, numero, rua, bairro, cidade, estado, pais, compl
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():", cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento);
 
     var instrucao = `
-        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where CNPJ = '${cnpj}'));
+        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where cnpj = '${cnpj}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -41,7 +44,7 @@ function cadastrarColaborador(nomeRepresentante, cpfRepresentante, emailRepresen
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", nomeRepresentante, emailRepresentante, cpfRepresentante, celularRepresentante, senhaRepresentante, cnpj);
 
     var instrucao = `
-        INSERT INTO colaborador (nome, cpf, email, celular, senha, fk_empresa, fk_nivel_acesso) VALUES ( '${nomeRepresentante}', '${cpfRepresentante}','${emailRepresentante}', '${celularRepresentante}',  '${senhaRepresentante}', (select id_empresa from empresa where CNPJ = '${cnpj}'), 1);
+        INSERT INTO colaborador (nome, cpf, email, celular, senha, fk_empresa, fk_nivel_acesso) VALUES ( '${nomeRepresentante}', '${cpfRepresentante}','${emailRepresentante}', '${celularRepresentante}',  '${senhaRepresentante}', (select id_empresa from empresa where cnpj = '${cnpj}'), 1);
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

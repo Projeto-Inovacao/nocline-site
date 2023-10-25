@@ -62,10 +62,9 @@ function atualizarGraficoDesempenho(idMaquina) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(JSON.stringify(novoRegistro) + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-                valores = [DISCO, CPU, RAM]
-                valores_kpi_desempenho = [KPI_DISCO, KPI_CPU, KPI_RAM]
+                valores = [CPU, RAM, DISCO]
+                valores_kpi_desempenho = [KPI_CPU, KPI_RAM, KPI_DISCO]
                 valores_Bar = [CPU_bar, RAM_bar, disco_bar]
 
                 for (i = 0; i < novoRegistro.length; i++) {

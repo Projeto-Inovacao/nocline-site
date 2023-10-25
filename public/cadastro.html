@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="./css/cadastro.css">
     <link rel="stylesheet" href="./css/Mobile_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+    <!-- SWEET ALERT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
+
     <link rel="stylesheet" href="js/botao.js">
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
+    <!-- VIA CEP -->
     <script src="js/viaCep.js"></script>
+    <!-- CADASTRO E VALIDAÇÃO DO CADASTRO -->
     <script src="js/validacao.js"></script>
     <script src="js/conexaoCad.js"></script>
 </head>
@@ -287,11 +292,24 @@
 </html>
 <script>
 
-    function cadastro() {
-        cadastrarEmpresa()
-        cadastrarColaborador()
-        cadastrarEndereco()
+    async function cadastro() {
+        try {
+            await cadastrarEmpresa();
+            await cadastrarColaborador();
+            await cadastrarEndereco();
+            Swal.fire({
+                icon: 'success',
+                title: 'Cadastro realizado com sucesso',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            await new Promise(resolve => setTimeout(resolve, 1500))
+            window.location = "login.html";
+        } catch (error) {
+            console.error('Ocorreu um erro durante o cadastro:', error);
+        }
     }
+
 
     // Animacao do cdastro
 
