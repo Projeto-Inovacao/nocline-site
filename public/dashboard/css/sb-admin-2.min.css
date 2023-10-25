@@ -10761,12 +10761,15 @@ button.bg-dark:hover {
 }
 
 .text-primary {
-    color: #2e59d9!important
+    color: #2e59d9!important;
+    position: relative;
+    left: 1vw;
+    white-space: pre-line;
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #224abe !important
+    color: #2e59d9!important;
 }
 
 .text-secondary {
