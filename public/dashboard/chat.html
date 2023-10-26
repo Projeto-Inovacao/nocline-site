@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top" onload="atualizarFeed()">
+<body id="page-top" onload="validarSessao(), atualizarFeed()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -46,10 +46,12 @@
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
 
-            <li class="nav-item active">
-                <a class="nav-link" style="font-style: italic;">
-                    <span>Código Empresarial: XX</span></a>
+            <li class="nav-item active" style="height: 5%;">
+                <i
+                    style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px; margin-bottom: 5%;">Código
+                    Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
             </li>
+
 
 
             <!-- Divider -->
@@ -132,7 +134,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="chat.html">
                     <img id="icons" src="img/icon-chat.png">
-                    <span>Chat</span></a>
+                    <span>Mural</span></a>
             </li>
 
             <hr class="sidebar-divider my-0">
@@ -180,7 +182,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <!-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -191,7 +193,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -420,7 +422,7 @@
                                             style="border-radius: 3px; color: white; background-color: black; ">Enviar</button>
                                     </div>
                                 </div>
-                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">chat de
+                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">Mural de
                                     Avisos</h1>
 
                                 </div>
