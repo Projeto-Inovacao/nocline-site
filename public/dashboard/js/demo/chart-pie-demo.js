@@ -2,6 +2,8 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+
+
 var idMaquina = 1
 // Pie Chart Example    
 var ctx = document.getElementById("myPieChart");

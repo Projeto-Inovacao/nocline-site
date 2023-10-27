@@ -32,7 +32,7 @@ function cadastrarEndereco(cep, numero, rua, bairro, cidade, estado, pais, compl
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():", cep, cnpj, pais, estado, cidade, bairro, rua, numero, complemento);
 
     var instrucao = `
-        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where CNPJ = '${cnpj}'));
+        INSERT INTO endereco ( cep, num, rua, bairro, cidade, estado, pais, complemento, fk_empresaE) VALUES ( '${cep}', ${numero}, '${rua}', '${bairro}', '${cidade}', '${estado}', '${pais}', '${complemento}', (select id_empresa from empresa where cnpj = '${cnpj}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

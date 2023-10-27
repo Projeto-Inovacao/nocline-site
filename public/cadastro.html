@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./css/Mobile_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <!-- SWEET ALERT -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
 
     <link rel="stylesheet" href="js/botao.js">
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
@@ -294,8 +295,8 @@
     async function cadastro() {
         try {
             await cadastrarEmpresa();
-            await cadastrarEndereco();
             await cadastrarColaborador();
+            await cadastrarEndereco();
             Swal.fire({
                 icon: 'success',
                 title: 'Cadastro realizado com sucesso',

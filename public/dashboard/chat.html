@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top" onload="atualizarFeed(), validarSessao()">
+<body id="page-top" onload="validarSessao(), atualizarFeed()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -46,10 +46,12 @@
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
 
-            <li class="nav-item active">
-                <a class="nav-link" style="font-style: italic;">
-                    <span>Código Empresarial: XX</span></a>
+            <li class="nav-item active" style="height: 5%;">
+                <i
+                    style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px; margin-bottom: 5%;">Código
+                    Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
             </li>
+
 
 
             <!-- Divider -->
@@ -97,36 +99,32 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
-                        <a class="collapse-item" href="register-employees.html">Cadastrar Colaboradores</a>
+                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar Colaboradores</a>
                         <a class="collapse-item" href="tables-employees.html">Visualizar Colaboradores</a>
-                        <a class="collapse-item" href="update-employees.html">Atualizar Colaboradores</a>
-                        <a class="collapse-item" href="delete-employees.html">Excluir Colaboradores</a>
+                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar Colaboradores</a>
                     </div>
                 </div>
             </li>
-
+    
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
-
+    
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-
+    
                     <img id="icons" src="img/icon-maquina.png">
                     <span><b>Máquinas</b></span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
-                        <a class="collapse-item" href="register-machines.html">Cadastrar Máquinas</a>
+                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq" >Cadastrar Máquinas</a>
                         <a class="collapse-item" href="tables-machines.html">Visualizar Máquinas</a>
-                        <a class="collapse-item" href="update-machines.html">Atualizar Máquinas</a>
-                        <a class="collapse-item" href="delete-machines.html">Excluir Máquinas</a>
-
+                        <a class="collapse-item" href="update-machines.html" id="atualizar_maq">Atualizar Máquinas</a>
                     </div>
                 </div>
             </li>
-
             <!-- Nav Item - Dashboard -->
 
 
@@ -136,7 +134,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="chat.html">
                     <img id="icons" src="img/icon-chat.png">
-                    <span>Chat</span></a>
+                    <span>Mural</span></a>
             </li>
 
             <hr class="sidebar-divider my-0">
@@ -184,7 +182,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <!-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -195,7 +193,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -383,15 +381,7 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
                         <h1 class="h3 mb-4 text-gray-800">Publicar um Aviso</h1>
-                        <select name="selMachine" id="selMachine" onchange="selMachineCorreto()"
-                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 63%;">
-                            <option value=1>Máquina 1</option>
-                            <option value=9>Máquina 2</option>
-                            <option value=10>Máquina 3</option>
-                            <option value=11>Máquina 4</option>
-                            <option value=12>Máquina 5</option>
-                            <option value=12>Máquina 6</option>
-                        </select>
+
                     </div>
                     <div class="container-fluid">
 
@@ -428,17 +418,17 @@
                                                 style="width: 900px;"></textarea>
                                         </label>
                                         <br>
-                                        <button onclick="publicar()"
+                                        <button onclick=" return publicar()"
                                             style="border-radius: 3px; color: white; background-color: black; ">Enviar</button>
                                     </div>
                                 </div>
-                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">chat de
+                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">Mural de
                                     Avisos</h1>
-                                   
-                                <div class="div-results" style="margin-top: 40px; margin-left: -27px;">
-                                    <div id="feed_container" class="feed-container">
-                                    </div>
+
                                 </div>
+                                <div id="feed_container">
+                                <!-- <div class="div-results" style="margin-top: 40px; margin-left: -27px;">
+                                    </div> -->
                             </div>
                         </div>
                     </div>
@@ -543,7 +533,7 @@
                 window.alert("Post realizado com sucesso !");
                 window.location = "/dashboard/chat.html";
                 limparFormulario();
-               // finalizarAguardar();
+                // finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -607,47 +597,70 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
+
+                        /*                        <div class="card shadow mb-4" style="width: 1000px;">
+                                                        <div class="card-header py-3">
+                                                            <h6 class="m-0 font-weight-bold text-primary">Otimizando o Desempenho da CPU:</h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <b>Encerre Aplicativos Não Essenciais:</b>
+                                                            Feche programas em segundo plano que não são necessários.<br>
+                                                            <b>Verifique Atualizações:</b>
+                                                            Mantenha o sistema operacional e aplicativos atualizados para melhorar a eficiência.
+                                                        </div>
+                                                    </div>*/
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
+                        var divTitulo = document.createElement("div")
+
+                        var h6Titulo = document.createElement("h6");
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
+                        
+                        // ATRIBUINDO CLASSES
+                        divPublicacao.className = "card shadow mb-4";
+                        divPublicacao.style.width = "1000px";
+                        divDescricao.className = "card-body";
+                        
+                        btnEditar.style.borderRadius = "3px" 
+                        btnEditar.style.color = "white" 
+                        btnEditar.style.backgroundColor = "black" 
+                        btnEditar.style.marginRight = "10px" 
+                        btnEditar.style.marginLeft = "5px" 
+                        
+                        btnDeletar.style.borderRadius = "3px" 
+                        btnDeletar.style.color = "white" 
+                        btnDeletar.style.backgroundColor = "black" 
+                        
+                        divButtons.style.marginBottom = "10px"
 
+                        divTitulo.style.marginLeft = "10px"
+                        divTitulo.style.marginRight = "10px"
+                        
+                        divTitulo.className = "card-header py-3";
+                        h6Titulo.className = "m-0 font-weight-bold text-primary";
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.id_chat + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        h6Titulo.innerHTML = "<br/>" + "Autor:  " + publicacao.nome + "<br/><br/>" + " Título:  " + publicacao.titulo;
+                        divDescricao.innerHTML = publicacao.descricao;
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
-
-                        divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.id_chat;
-                        spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
-                        divDescricao.className = "publicacao-descricao";
-
-                        divButtons.className = "div-buttons"
-
-                        btnEditar.className = "publicacao-btn-editar"
+                        
                         btnEditar.id = "btnEditar" + publicacao.id_chat;
                         btnEditar.setAttribute("onclick", `editar(${publicacao.id_chat})`);
 
-                        btnDeletar.className = "publicacao-btn-editar"
                         btnDeletar.id = "btnDeletar" + publicacao.id_chat;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.id_chat})`);
 
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
+                        // divPublicacao.appendChild(spanID);
+                        // divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(h6Titulo);
                         divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        // divPublicacao.appendChild(divButtons);
+                        // divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
                     }
 
