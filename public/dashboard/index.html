@@ -542,12 +542,12 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small">
-                                    <span class="mr-2">
+                                    <!-- <span class="mr-2">
                                         <i class="fas fa-circle text-primary"></i> Bytes Enviados
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle text-success"></i> Bytes Recebidos
-                                    </span>
+                                    </span> -->
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -595,17 +595,17 @@
                                     </div>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body" style="height: 412px;">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                <div class="card-body" style="height: 392px;">
+                                    <div class="chart-pie pt-4 pb-2" style="height: 100%;">
+                                        <canvas id="myPieChart" class="graphPie"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
+                                        <!-- <span class="mr-2">
                                             <i class="fas fa-circle text-primary"></i> Livre
                                         </span>
                                         <span class="mr-2">
                                             <i class="fas fa-circle text-success"></i> Usado
-                                        </span>
+                                        </span> -->
                                     </div>
                                 </div>
                             </div>
@@ -751,7 +751,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-pie-demo.js"></script>
