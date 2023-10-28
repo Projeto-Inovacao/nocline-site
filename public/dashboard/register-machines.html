@@ -158,9 +158,15 @@
             if (resposta.ok) {
                 alert("Cadastro realizado com sucesso!");
 
-                setTimeout(() => {
-                    window.location = "tables-machines.html";
-                }, "2000")
+                resposta.json().then(json => {
+                    console.log(JSON.stringify(json));
+                    sessionStorage.MAQUINAS = JSON.stringify(json.maquina)
+
+                    setTimeout(() => {
+                        window.location = "tables-machines.html";
+                    }, "2000")
+
+                });
 
                 limparFormulario();
 
@@ -172,7 +178,7 @@
         });
 
         return false;
-        // Enviando o valor da nova input
+        
     }
 
 </script>

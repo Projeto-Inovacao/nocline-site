@@ -33,6 +33,17 @@ function validarSessao() {
         window.location = "../login.html";
     }
 }
+
+function exibirMaquinas() {
+    select = document.getElementById("select_maquina");
+    JSON.parse(sessionStorage.MAQUINAS).forEach(item => {
+        var opcao = document.createElement('option');
+        opcao.value = item.id_maquina;
+        opcao.innerHTML = "Maquina " + item.id_maquina;
+        select.appendChild(opcao);
+    });
+}
+
 /*
 function limparSessao() {
     sessionStorage.clear();

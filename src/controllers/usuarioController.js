@@ -1,5 +1,6 @@
 const { json } = require("express");
 var usuarioModel = require("../models/usuarioModel");
+var empresaModel = require("../models/empresaModel");
 
 function entrar(req, res) {
     var email = req.body.emailEmpresaServer;
@@ -18,8 +19,25 @@ function entrar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
                     if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
+                        empresaModel.buscarMaquinasPorEmpresa(resultado[0].fk_empresa)
+                        .then((resultadoMaquina) => {
+                            if (resultadoMaquina.length > 0) {
+                                res.json({
+                                    nome: resultado[0].nome,
+                                    senha: resultado[0].senha,
+                                    email: resultado[0].email,
+                                    celular: resultado[0].celular,
+                                    id_colaborador: resultado[0].id_colaborador,
+                                    razao_social: resultado[0].razao_social,
+                                    cnpj: resultado[0].cnpj,
+                                    fk_nivel_acesso: resultado[0].fk_nivel_acesso,
+                                    fk_empresa: resultado[0].fk_empresa,
+                                    maquina: resultadoMaquina
+                                });
+                            } else {
+                                res.status(204).json({ maquina: [] });
+                            }
+                        })
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
