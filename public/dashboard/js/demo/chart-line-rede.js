@@ -47,18 +47,18 @@ function plotarGraficoRede(resposta, idMaquina) {
   let dados = {
       labels: labels,
       datasets: [{
-          label: 'enviados',
+          label: 'Bytes Enviados',
           data: [],
-          backgroundColor: ['rgba(220, 11, 11)'],
-          borderColor: ['rgba(255, 123, 123)'],
+          backgroundColor: ['#00FF7F'],
+          borderColor: ['#00FF7F'],
           tension: 0.1,
           fill: false
       },
       {
-        label: 'recebidos',
+        label: 'Bytes Recebidos',
         data: [],
-        backgroundColor: ['rgba(42, 178, 3)'],
-        borderColor: ['rgba(149, 255, 123)'],
+        backgroundColor: ['#8A2BE2'],
+        borderColor: ['#8A2BE2'],
         tension: 0.1,
         fill: false
     },
