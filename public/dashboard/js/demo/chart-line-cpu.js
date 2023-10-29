@@ -43,10 +43,10 @@ function plotarGraficoCPU(resposta, idMaquina) {
   let dados = {
       labels: labels,
       datasets: [{
-          label: 'Uso (%)',
+          label: 'Usada',
           data: [],
-          backgroundColor: ['rgba(0, 7, 120)'],
-          borderColor: ['rgba(89, 95, 186)'],
+          backgroundColor: ['#8A2BE2'],
+          borderColor: ['#8A2BE2'],
           tension: 0.1,
           fill: false
       }]

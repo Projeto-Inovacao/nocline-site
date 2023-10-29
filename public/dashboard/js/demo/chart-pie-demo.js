@@ -47,8 +47,8 @@ function plotarGraficoDisco(resposta, idMaquina) {
     datasets: [{
       label: 'Livre',
       data: [],
-      backgroundColor: ['rgba(0, 185, 185)', 'rgba(185, 11, 0)'],
-      borderColor: ['rgba(0, 185, 185)','rgba(185, 11, 0)'],
+      backgroundColor: ['#00FF7F', '#8A2BE2'],
+      borderColor: ['#00FF7F','#8A2BE2'],
       tension: 0.1
     },
     {
