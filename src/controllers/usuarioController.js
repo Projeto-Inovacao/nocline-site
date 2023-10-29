@@ -226,8 +226,8 @@ function cadastrarMaquina(req, res) {
     console.log("entrei validacao controller maqqqq")
 
     var codEmpresa = req.body.codEmpServer;
-    var setor = req.body.maquinaSetorServer;
-    var so = req.body.maquinaSOServer;
+    var setor = req.body.setorMServer;
+    var so = req.body.soMServer;
     var modelo = req.body.maquinaModeloServer;
     var ip = req.body.maquinaIPServer;
     var hostname = req.body.maquinaHostnameServer;

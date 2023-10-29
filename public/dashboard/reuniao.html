@@ -9,15 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Tabela de Visualização de Processos</title>
+    <title>NOCLINE - Suporte</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -26,12 +23,11 @@
 
 </head>
 
-<body id="page-top" onload="validarSessao(), atualizarFeed()">
+<body id="page-top" onload="validarSessao()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
 
         <!-- Sidebar -->
 
@@ -53,7 +49,6 @@
             </li>
 
 
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -65,8 +60,8 @@
             </li>
 
             <hr class="sidebar-divider my-0">
-<!-- 
-            <li class="nav-item active">
+
+            <!-- <li class="nav-item active">
                 <a class="nav-link" href="orientacoes.html">
                     <img id="icons" src="img/icon-orientacoes.png">
                     <span>Orientações</span></a>
@@ -99,32 +94,35 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
-                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar Colaboradores</a>
+                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar
+                            Colaboradores</a>
                         <a class="collapse-item" href="tables-employees.html">Visualizar Colaboradores</a>
-                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar Colaboradores</a>
+                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar
+                            Colaboradores</a>
                     </div>
                 </div>
             </li>
-    
+
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
-    
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-    
+
                     <img id="icons" src="img/icon-maquina.png">
                     <span><b>Máquinas</b></span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
-                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq" >Cadastrar Máquinas</a>
+                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq">Cadastrar Máquinas</a>
                         <a class="collapse-item" href="tables-machines.html">Visualizar Máquinas</a>
                         <a class="collapse-item" href="update-machines.html" id="atualizar_maq">Atualizar Máquinas</a>
                     </div>
                 </div>
             </li>
+
             <!-- Nav Item - Dashboard -->
 
 
@@ -163,6 +161,15 @@
             <img class="sidebar-card-illustration mb-2" src="img/logotipo-do-metro.png" style="width: 25px; height: 25px;">
             <p class="text-center mb-2"><strong>O código da sua empresa é:</strong> <a target="_blank">xxxx</a></p>
         </div> -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
+        <hr class="sidebar-divider my-0">
+        <!-- <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/logotipo-do-metro.png" style="width: 25px; height: 25px;">
+                <p class="text-center mb-2"><strong>O código da sua empresa é:</strong> <a target="_blank">xxxx</a></p>
+            </div> -->
 
 
         </ul>
@@ -235,7 +242,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Central de Alertas
+                                    Alerts Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
@@ -286,7 +293,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
-                                    Centro de Mensagens
+                                    Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
@@ -379,75 +386,43 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-
-                    <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-4 text-gray-800">Publicar um Aviso</h1>
-
-                    </div>
-                    <div class="container-fluid">
-
-                        <!-- Page Heading -->
-
-                        <p class="mb-4">Apreciamos o seu contato eficiente com os seus funcionários, por isso
-                            disponibilizamos no nosso sistema um chat de avisos onde você pode compartilhar informações
-                            importantes, comunicados, e atualizações relevantes sobre as máquinas para manter toda a
-                            equipe bem informada e
-                            alinhada com as práticas de monitoramento da empresa. Este recurso visa facilitar a
-                            comunicação interna,
-                            promovendo a transparência e fortalecendo a conexão entre a gestão e os colaboradores.
-
-                        </p>
-
-
-                    </div>
-                    <div id="card-maior">
-                        <div class="avisos">
-                            <div class="container">
-                                <div class="div-form">
-                                    <div id="form_postagem" style="margin-left: -27px;">
-                                        <label>
-                                            Título do aviso:
-                                            <br>
-                                            <input name="titulo" id="titulo_form" maxlength="100" type="text"
-                                                style="width: 900px;">
-                                        </label>
-                                        <br>
-                                        <label>
-                                            Descrição (máximo de 300 caracteres):
-                                            <br>
-                                            <textarea name="descricao" id="descricao_form" maxlength="300" rows="5"
-                                                style="width: 900px;"></textarea>
-                                        </label>
-                                        <br>
-                                        <button onclick=" return publicar()"
-                                            style="border-radius: 3px; color: white; background-color: black; ">Enviar</button>
-                                    </div>
-                                </div>
-                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">Mural de
-                                    Avisos</h1>
-
-                                </div>
-                                <div id="feed_container">
-                                <!-- <div class="div-results" style="margin-top: 40px; margin-left: -27px;">
-                                    </div> -->
-                            </div>
-                        </div>
-                    </div>
-
+                    <h1 class="h3 mb-4 text-gray-800">Abertura de Chamados</h1>
+                    <p class="mb-4">Utilize nossa formulário com conexão direta para nossa ferramenta Helpdesk para
+                        abrir chamados e obter suporte
+                        especializado de forma ágil e eficiente, garantindo a resolução de suas necessidades com
+                        excelência.
+                    </p>
 
 
                 </div>
+                <!-- /.container-fluid -->
+                <div id="card-maior">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Accordion -->
+                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                            role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">Solicitação de suporte</h6>
+                        </a>
+
+                        <!-- Card Content - Collapse -->
+                        <div class="collapse show" id="collapseCardExample">
+                            <div class="card-body">
+
+                                <iframe width='560' height='580'
+                                    src='https://app.pipefy.com/public/form/buA_N5jY?embedded=true'
+                                    frameborder='0'></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
             <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; NOCLINE 2023</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -493,187 +468,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
     <script src="js/sessao.js"></script>
+
 </body>
 
 </html>
 <script>
-
-    // b_usuario.innerHTML = sessionStorage.NOME_COLABORADOR;
-
-    function limparFormulario() {
-        document.getElementById("form_postagem").reset();
-    }
-
-    function publicar() {
-        var id_colaboradorVar = sessionStorage.ID_USUARIO;
-
-        var corpo = {
-            titulo: titulo_form.value,
-            descricao: descricao_form.value,
-            fk_colaborador_chat: id_colaboradorVar
-        }
-
-        fetch(`/avisos/publicar/${id_colaboradorVar}`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(corpo)
-
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                window.alert("Post realizado com sucesso !");
-                window.location = "/dashboard/chat.html";
-                limparFormulario();
-                // finalizarAguardar();
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-
-        return false
-    }
+    b_usuario.innerHTML = sessionStorage.ID_EMPRESA;
+    n_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
-    function editar(id_chat) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = id_chat;
-        console.log("cliquei em editar - " + id_chat);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + id_chat);
-        // window.location = "/dashboard/edicao-aviso.html"
-
-    }
-
-    function deletar(id_chat) {
-        console.log("Criar função de apagar post escolhido - ID" + id_chat);
-        fetch(`/avisos/deletar/${id_chat}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                // window.location = "/dashboard/chat.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
-
-    function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
-                }
-
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementById("feed_container");
-                    feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-
-
-                        /*                        <div class="card shadow mb-4" style="width: 1000px;">
-                                                        <div class="card-header py-3">
-                                                            <h6 class="m-0 font-weight-bold text-primary">Otimizando o Desempenho da CPU:</h6>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <b>Encerre Aplicativos Não Essenciais:</b>
-                                                            Feche programas em segundo plano que não são necessários.<br>
-                                                            <b>Verifique Atualizações:</b>
-                                                            Mantenha o sistema operacional e aplicativos atualizados para melhorar a eficiência.
-                                                        </div>
-                                                    </div>*/
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var divTitulo = document.createElement("div")
-
-                        var h6Titulo = document.createElement("h6");
-                        var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
-                        
-                        // ATRIBUINDO CLASSES
-                        divPublicacao.className = "card shadow mb-4";
-                        divPublicacao.style.width = "1000px";
-                        divDescricao.className = "card-body";
-                        
-                        btnEditar.style.borderRadius = "3px" 
-                        btnEditar.style.color = "white" 
-                        btnEditar.style.backgroundColor = "black" 
-                        btnEditar.style.marginRight = "10px" 
-                        btnEditar.style.marginLeft = "5px" 
-                        
-                        btnDeletar.style.borderRadius = "3px" 
-                        btnDeletar.style.color = "white" 
-                        btnDeletar.style.backgroundColor = "black" 
-                        
-                        divButtons.style.marginBottom = "10px"
-
-                        divTitulo.style.marginLeft = "10px"
-                        divTitulo.style.marginRight = "10px"
-                        
-                        divTitulo.className = "card-header py-3";
-                        h6Titulo.className = "m-0 font-weight-bold text-primary";
-
-                        h6Titulo.innerHTML = "<br/>" + "Autor:  " + publicacao.nome + "<br/><br/>" + " Título:  " + publicacao.titulo;
-                        divDescricao.innerHTML = publicacao.descricao;
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
-                        
-                        btnEditar.id = "btnEditar" + publicacao.id_chat;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.id_chat})`);
-
-                        btnDeletar.id = "btnDeletar" + publicacao.id_chat;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.id_chat})`);
-
-                        // divPublicacao.appendChild(spanID);
-                        // divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(h6Titulo);
-                        divPublicacao.appendChild(divDescricao);
-                        // divPublicacao.appendChild(divButtons);
-                        // divButtons.appendChild(btnEditar);
-                        // divButtons.appendChild(btnDeletar);
-                        feed.appendChild(divPublicacao);
-                    }
-
-                    //finalizarAguardar();
-                });
-            } else {
-                throw ('Houve um erro na API!');
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
-            //finalizarAguardar();
-        });
-    }
 
 </script>
