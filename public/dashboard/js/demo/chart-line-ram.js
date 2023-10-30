@@ -2,9 +2,7 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-var idMaquina = 1
-
-window.onload = obterDadosRAM(idMaquina);
+// window.onload = obterDadosRAM(idMaquina);
 
 function obterDadosRAM(idMaquina) {
     console.log("RAM")
@@ -103,10 +101,10 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
             response.json().then(function (novoRegistro) {
 
                 // obterDadosCPU(idMaquina);
-                // alertar(novoRegistro, idMaquina);
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico:`);
-                console.log(dados);
+                // // alertar(novoRegistro, idMaquina);
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                // console.log(dados);
 
                 if (novoRegistro[0].data_hora == dados.datasets[0].data.data_hora) {
                     console.log("---------------------------------------------------------------")
@@ -144,4 +142,12 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function limparRAM(){
+    let chartRAM = new Chart(
+        document.getElementById(`myAreaChartRAM`),
+    );
+
+    chartRAM.clear()
 }

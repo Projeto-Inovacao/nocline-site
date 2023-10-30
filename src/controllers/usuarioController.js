@@ -20,24 +20,35 @@ function entrar(req, res) {
 
                     if (resultado.length == 1) {
                         empresaModel.buscarMaquinasPorEmpresa(resultado[0].fk_empresa)
-                        .then((resultadoMaquina) => {
-                            if (resultadoMaquina.length > 0) {
-                                res.json({
-                                    nome: resultado[0].nome,
-                                    senha: resultado[0].senha,
-                                    email: resultado[0].email,
-                                    celular: resultado[0].celular,
-                                    id_colaborador: resultado[0].id_colaborador,
-                                    razao_social: resultado[0].razao_social,
-                                    cnpj: resultado[0].cnpj,
-                                    fk_nivel_acesso: resultado[0].fk_nivel_acesso,
-                                    fk_empresa: resultado[0].fk_empresa,
-                                    maquina: resultadoMaquina
-                                });
-                            } else {
-                                res.status(204).json({ maquina: [] });
-                            }
-                        })
+                            .then((resultadoMaquina) => {
+                                if (resultadoMaquina.length > 0) {
+                                    res.json({
+                                        nome: resultado[0].nome,
+                                        senha: resultado[0].senha,
+                                        email: resultado[0].email,
+                                        celular: resultado[0].celular,
+                                        id_colaborador: resultado[0].id_colaborador,
+                                        razao_social: resultado[0].razao_social,
+                                        cnpj: resultado[0].cnpj,
+                                        fk_nivel_acesso: resultado[0].fk_nivel_acesso,
+                                        fk_empresa: resultado[0].fk_empresa,
+                                        maquina: resultadoMaquina
+                                    });
+                                } else {
+                                    res.json({
+                                        nome: resultado[0].nome,
+                                        senha: resultado[0].senha,
+                                        email: resultado[0].email,
+                                        celular: resultado[0].celular,
+                                        id_colaborador: resultado[0].id_colaborador,
+                                        razao_social: resultado[0].razao_social,
+                                        cnpj: resultado[0].cnpj,
+                                        fk_nivel_acesso: resultado[0].fk_nivel_acesso,
+                                        fk_empresa: resultado[0].fk_empresa,
+                                        maquina: []
+                                    });
+                                }
+                            })
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -266,22 +277,29 @@ function cadastrarMaquina(req, res) {
         res.status(400).send("Sua email de senha está undefined!");
     }
     else {
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro de maquina! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            .then(function (resultado) {
+                empresaModel.buscarMaquinasPorEmpresa(codEmpresa)
+                    .then(function (resultadoMaquina) {
+                        if (resultadoMaquina.length > 0) {
+                            res.json({
+                                maquina: resultadoMaquina
+                            });
+                        } else {
+                            res.json(resultado);
+                        }
+                    })
+                    .catch(function (erro) {
+                        console.log(erro);
+                        console.log("Houve um erro ao buscar máquinas da empresa! Erro: ", erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+                    });
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o cadastro de máquina! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
 }
 
@@ -314,22 +332,29 @@ function alterarMaquina(req, res) {
         res.status(400).send("Sua email de senha está undefined!");
     }
     else {
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            .then(function (resultado) {
+                empresaModel.buscarMaquinasPorEmpresa(codEmpresa)
+                    .then(function (resultadoMaquina) {
+                        if (resultadoMaquina.length > 0) {
+                            res.json({
+                                maquina: resultadoMaquina
+                            });
+                        } else {
+                            res.json(resultado);
+                        }
+                    })
+                    .catch(function (erro) {
+                        console.log(erro);
+                        console.log("Houve um erro ao buscar máquinas da empresa! Erro: ", erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+                    });
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o cadastro de máquina! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
 }
 

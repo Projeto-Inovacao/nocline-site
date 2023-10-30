@@ -1,5 +1,3 @@
-var idMaquina = 1
-
 // VAR PARA KPI
 var KPI_CPU = document.getElementById("uso_cpu_kpi");
 var KPI_RAM = document.getElementById("ram_kpi");
@@ -20,7 +18,7 @@ valores = [DISCO, RAM, CPU]
 valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU]
 valores_Bar = [disco_bar, RAM_bar, CPU_bar]
 
-window.onload = obterDadosDesempenho(idMaquina);
+// window.onload = obterDadosDesempenho(idMaquina);
 
 function obterDadosDesempenho(idMaquina) {
     console.log("Desempenho")
@@ -88,4 +86,12 @@ function atualizarGraficoDesempenho(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function limparDesempenho() {
+    for (i = 0; i <= valores.length; i++) {
+        valores[i].innerHTML = "";
+        valores_Bar[i].style.width = "";
+        valores_kpi_desempenho[i].innerHTML = "";
+    }
 }
