@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top" onload="validarSessao()">
+<body id="page-top" onload="validarSessao(), exibirPerfil()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -438,6 +438,12 @@
 
                                     <p class="nav-item active">
 
+                                        <span style="color: black;">Nivel de Acesso:</span></a><span id="ni_usuario"
+                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
+                                    </p>
+
+                                    <p class="nav-item active">
+
                                         <span style="color: black;">Celular:</span></a><span id="c_usuario"
                                             style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
                                     </p>
@@ -467,25 +473,25 @@
                             <div class="card-body" style="height: 450px; width: 900px;">
 
                                 <p class="nav-item active">
-                                    <span style="color: black;">Data de Início de Contrato:</span><span id="i_usuario"
+                                    <span style="color: black;">Data de Início de Contrato:</span><span id=""
                                         style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
                                 </p>
 
                                 <p class="nav-item active">
 
-                                    <span style="color: black;">Data de Fim de Contrato:</span></a><span id="no_usuario"
+                                    <span style="color: black;">Data de Fim de Contrato:</span></a><span id=""
                                         style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
                                 </p>
 
                                 <p class="nav-item active">
 
-                                    <span style="color: black;">Plano: </span></a><span id="e_usuario"
+                                    <span style="color: black;">Plano: </span></a><span id=""
                                         style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
                                 </p>
 
                                 <p class="nav-item active">
 
-                                    <span style="color: black;">Valor por Mês:</span></a><span id="c_usuario"
+                                    <span style="color: black;">Valor por Mês:</span></a><span id=""
                                         style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
                                 </p>
 
@@ -556,20 +562,7 @@
 
                 <!-- Page level custom scripts -->
                 <script src="js/demo/datatables-demo.js"></script>
+                <script src="js/sessao.js"></script>
 
 </body>
-
 </html>
-<script>
-    i_usuario.innerHTML = sessionStorage.ID_USUARIO;
-    n_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    no_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    e_usuario.innerHTML = sessionStorage.EMAIL_USUARIO;
-    c_usuario.innerHTML = sessionStorage.CELULAR_USUARIO;
-    s_usuario.innerHTML = sessionStorage.SENHA_USUARIO;
-    n_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
-    c_empresa.innerHTML = sessionStorage.CNPJ_EMPRESA
-    b_usuario.innerHTML = sessionStorage.ID_EMPRESA;
-    
-
-</script>

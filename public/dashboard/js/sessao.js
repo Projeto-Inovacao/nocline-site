@@ -39,11 +39,34 @@ function exibirMaquinas() {
     JSON.parse(sessionStorage.MAQUINAS).forEach(item => {
         var opcao = document.createElement('option');
         opcao.value = item.id_maquina;
-        opcao.innerHTML = "Maquina " + item.id_maquina;
+        opcao.innerHTML = "Maquina ID: " + item.id_maquina;
         select.appendChild(opcao);
     });
 }
 
+function exibirPerfil(){
+    var ni = ""
+
+    if(sessionStorage.NIVEL_ACESSO == 3){
+        ni = "CCO | Centro de Controle Operacional"
+    } else if (sessionStorage.NIVEL_ACESSO == 2){
+        ni = "SSO | Sala de Supervisão Opercional"
+    } else if (sessionStorage.NIVEL_ACESSO == 1){
+        ni = "RLP | Representante Legal"
+    }
+    
+    i_usuario.innerHTML = sessionStorage.ID_USUARIO;
+    no_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    e_usuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+    c_usuario.innerHTML = sessionStorage.CELULAR_USUARIO;
+    s_usuario.innerHTML = sessionStorage.SENHA_USUARIO;
+    ni_usuario.innerHTML = ni
+
+    // EMPRESA
+    n_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
+    c_empresa.innerHTML = sessionStorage.CNPJ_EMPRESA
+    b_usuario.innerHTML = sessionStorage.ID_EMPRESA;
+}
 /*
 function limparSessao() {
     sessionStorage.clear();
