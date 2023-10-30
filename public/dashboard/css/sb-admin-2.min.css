@@ -10760,11 +10760,20 @@ button.bg-dark:hover {
     color: #fff !important
 }
 
+.text-primary-dash {
+    color: #2e59d9!important;
+    position: relative;
+    left: 0vw;
+    white-space: pre-line;
+
+}
+
 .text-primary {
     color: #2e59d9!important;
     position: relative;
-    left: 1vw;
+    left: 2vw;
     white-space: pre-line;
+
 }
 
 a.text-primary:focus,
@@ -10791,7 +10800,7 @@ a.text-success:hover {
 }
 
 .text-info {
-    color: #bbd0f2 !important
+    color: #042f75 !important
 }
 
 a.text-info:focus,
@@ -11230,7 +11239,7 @@ a:focus {
 }
 
 .text-gray-800 {
-    color: #5a5c69 !important
+    color: #5a5c69 !important;
 }
 
 .text-gray-900 {
@@ -11271,7 +11280,7 @@ a:focus {
 }
 
 .border-left-info {
-    border-left: .25rem solid #bbd0f2 !important
+    border-left: .25rem solid #042f75 !important
 }
 
 .border-bottom-info {
