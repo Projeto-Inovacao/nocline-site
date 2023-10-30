@@ -32,6 +32,10 @@ function entrar(req, res) {
                                         cnpj: resultado[0].cnpj,
                                         fk_nivel_acesso: resultado[0].fk_nivel_acesso,
                                         fk_empresa: resultado[0].fk_empresa,
+                                        data_inicio: resultado[0].data_inicio,
+                                        data_termino: resultado[0].data_termino,
+                                        nome_plano: resultado[0].nome_plano,
+                                        preco_total: resultado[0].preco_total,
                                         maquina: resultadoMaquina
                                     });
                                 } else {
@@ -45,6 +49,10 @@ function entrar(req, res) {
                                         cnpj: resultado[0].cnpj,
                                         fk_nivel_acesso: resultado[0].fk_nivel_acesso,
                                         fk_empresa: resultado[0].fk_empresa,
+                                        data_inicio: resultado[0].data_inicio,
+                                        data_termino: resultado[0].data_termino,
+                                        nome_plano: resultado[0].nome_plano,
+                                        preco_total: resultado[0].preco_total,
                                         maquina: []
                                     });
                                 }
