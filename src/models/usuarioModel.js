@@ -8,7 +8,7 @@ function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
     select 
-    colaborador.*, contrato.data_inicio, contrato.data_termino, plano.nome_plano, contrato.preco_total from colaborador 
+    colaborador.*, empresa.cnpj, contrato.data_inicio, contrato.data_termino, plano.nome_plano, contrato.preco_total from colaborador 
      join empresa on fk_empresa = id_empresa
      left join contrato on fk_empresaCo = id_empresa
      left join plano on fk_plano = id_plano
