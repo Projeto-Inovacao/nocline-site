@@ -1,8 +1,6 @@
-var idMaquina = 1
+// window.onload = obterDadosJanela(idMaquina);
 
-window.onload = obterDadosDesempenho(idMaquina);
-
-function obterDadosDesempenho(idMaquina) {
+function obterDadosJanela(idMaquina) {
     console.log("Desempenho")
     // if (proximaAtualizacao != undefined) {
     //     clearTimeout(proximaAtualizacao);
@@ -48,7 +46,7 @@ function atualizarListaJanela(idMaquina, quantidade_janelas) {
       fetch(`/medidas/tempo-realJanelas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
                     var lista_janela = document.getElementById('lista_janela');
                     var quantidade_janelas_visiveis = 0
@@ -78,4 +76,9 @@ function atualizarListaJanela(idMaquina, quantidade_janelas) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function limparJanela(){
+    janelas_kpi.innerHTML = ""
+    lista_janela.innerHTML = ""
 }

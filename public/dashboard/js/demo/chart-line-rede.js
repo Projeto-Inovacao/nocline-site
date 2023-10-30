@@ -5,19 +5,16 @@ Chart.defaults.global.defaultFontColor = '#858796';
 var KPI_BYTE_ENVIADOS = document.getElementById("bytes_enviados_kpi");
 var KPI_BYTE_RECEBIDOS = document.getElementById("bytes_recebidos_kpi");
 
-//var valores_kpi_rede = [KPI_BYTE_ENVIADOS, KPI_BYTE_RECEBIDOS]
+var elemento_maquina = document.getElementById("select_maquina");
+var idMaquina = elemento_maquina.value;
 
-var idMaquina = 1
-// var ctx = document.getElementById("myAreaChartRede");
-
-window.onload = obterDadosRede(idMaquina);
+// window.onload = obterDadosRede(idMaquina);
 
 function obterDadosRede(idMaquina) {
     console.log("REDE")
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
-
   fetch(`/medidas/ultimasREDE/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
           response.json().then(function (resposta) {
@@ -47,7 +44,7 @@ function plotarGraficoRede(resposta, idMaquina) {
   let dados = {
       labels: labels,
       datasets: [{
-          label: 'Bytes Enviados',
+          label: 'MegaBytes Enviados',
           data: [],
           backgroundColor: ['#00FF7F'],
           borderColor: ['#00FF7F'],
@@ -55,7 +52,7 @@ function plotarGraficoRede(resposta, idMaquina) {
           fill: false
       },
       {
-        label: 'Bytes Recebidos',
+        label: 'MegaBytes Recebidos',
         data: [],
         backgroundColor: ['#8A2BE2'],
         borderColor: ['#8A2BE2'],
@@ -128,10 +125,10 @@ function atualizarGraficoRede(idMaquina, dados, chartRede) {
           response.json().then(function (novoRegistro) {
 
               // obterDadosCPU(idMaquina);
-              // alertar(novoRegistro, idMaquina);
-              console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-              console.log(`Dados atuais do gráfico:`);
-              console.log(dados);
+              // // alertar(novoRegistro, idMaquina);
+              // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+              // console.log(`Dados atuais do gráfico:`);
+              // console.log(dados);
 
               if (novoRegistro[0].data_hora == dados.datasets[0].data.data_hora) {
                   console.log("---------------------------------------------------------------")
@@ -176,4 +173,12 @@ function atualizarGraficoRede(idMaquina, dados, chartRede) {
           console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
       });
 
+}
+
+function limparRede(){
+  let chartRede = new Chart(
+      document.getElementById(`myAreaChartRede`),
+  );
+
+  chartRede.clear()
 }

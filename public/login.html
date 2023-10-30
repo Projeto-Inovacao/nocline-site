@@ -12,6 +12,9 @@
     <script src="sweetalert2.all.min.js"></script>
     <script src="js/botao.js"></script>
     <link rel="shortcut icon" href="assets/metro logo.png" type="image/x-icon">
+    <!-- SWEET ALERT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -115,67 +118,81 @@
     function entrar() {
 
 
-        if(isAllValid()){
-        var emailEmpresaVar = input_email.value;
-        var senhaVar = input_senha.value;
+        if (isAllValid()) {
+            var emailEmpresaVar = input_email.value;
+            var senhaVar = input_senha.value;
 
-        console.log("FORM LOGIN: ", emailEmpresaVar);
-        console.log("FORM SENHA: ", senhaVar);
+            console.log("FORM LOGIN: ", emailEmpresaVar);
+            console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailEmpresaServer: emailEmpresaVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.ID_EMPRESA = json.fk_empresa;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.SENHA_USUARIO = json.senha;
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.CELULAR_USUARIO = json.celular;
-                    sessionStorage.ID_USUARIO = json.id_colaborador;
-                    sessionStorage.NOME_EMPRESA = json.razao_social;
-                    sessionStorage.CNPJ_EMPRESA = json.cnpj;
-                    sessionStorage.NIVEL_ACESSO = json.fk_nivel_acesso;
-                    sessionStorage.NIVEL_ACESSO = json.fk_nivel_acesso;
-
-                    setTimeout(function () {
-                        window.location = "dashboard/index.html";
-                    }, 1000); // apenas para exibir o loading
-                
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailEmpresaServer: emailEmpresaVar,
+                    senhaServer: senhaVar
                 })
-                
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-            } else {
+                if (resposta.ok) {
+                    console.log(resposta);
+                    resposta.json().then(json => {
+                        console.log(JSON.stringify(json));
+                        sessionStorage.ID_EMPRESA = json.fk_empresa;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.SENHA_USUARIO = json.senha;
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.CELULAR_USUARIO = json.celular;
+                        sessionStorage.ID_USUARIO = json.id_colaborador;
+                        sessionStorage.NOME_EMPRESA = json.razao_social;
+                        sessionStorage.CNPJ_EMPRESA = json.cnpj;
+                        sessionStorage.NIVEL_ACESSO = json.fk_nivel_acesso;
+                        sessionStorage.DATA_INICIO = json.data_inicio;
+                        sessionStorage.DATA_FIM = json.data_termino;
+                        sessionStorage.PLANO = json.nome_plano;
+                        sessionStorage.VALOR = json.preco_total;
+                        sessionStorage.acesso = false;
+                        sessionStorage.MAQUINAS = JSON.stringify(json.maquina)
 
-                // mensagem_erro.innerHTML = "Login ou senha incorretos";
-                console.log("Houve um erro ao tentar realizar o login!");
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login realizado com sucesso! Redirecionando você para o site!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    // finalizarAguardar(texto);
-                });
-            }
+                        setTimeout(function () {
+                            window.location = "/dashboard/tables-machines.html";
+                        }, 1500);
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+                    });
 
-        return false;
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Senha ou email incorretos!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    // mensagem_erro.innerHTML = "Login ou senha incorretos";
+                    console.log("Houve um erro ao tentar realizar o login!");
 
-    }
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        // finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+
+        }
     }
 
 </script>

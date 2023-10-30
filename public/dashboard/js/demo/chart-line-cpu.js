@@ -2,11 +2,10 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-var idMaquina = 1
 // Pie Chart Example    
 // var ctx = document.getElementById("myAreaChartCPU");
 
-window.onload = obterDadosCPU(idMaquina);
+// window.onload = obterDadosCPU(idMaquina);
 
 function obterDadosCPU(idMaquina) {
   console.log("CPU")
@@ -94,10 +93,10 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
             response.json().then(function (novoRegistro) {
 
                 // obterDadosCPU(idMaquina);
-                // alertar(novoRegistro, idMaquina);
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico:`);
-                console.log(dados);
+                // // alertar(novoRegistro, idMaquina);
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                // console.log(dados);
 
                 if (novoRegistro[0].data_hora == dados.datasets[0].data.data_hora) {
                     console.log("---------------------------------------------------------------")
@@ -132,4 +131,12 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function limparCPU(){
+    let chartCPU = new Chart(
+        document.getElementById(`myAreaChartCPU`),
+    );
+
+    chartCPU.clear()
 }

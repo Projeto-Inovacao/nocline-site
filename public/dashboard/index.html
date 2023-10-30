@@ -20,11 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
-    <script src="js/sessao.js"></script>
 
 </head>
 
-<body id="page-top" onload="validarSessao()">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -92,27 +91,29 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
-                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar Colaboradores</a>
+                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar
+                            Colaboradores</a>
                         <a class="collapse-item" href="tables-employees.html">Visualizar Colaboradores</a>
-                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar Colaboradores</a>
+                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar
+                            Colaboradores</a>
                     </div>
                 </div>
             </li>
-    
+
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
-    
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-    
+
                     <img id="icons" src="img/icon-maquina.png">
                     <span><b>Máquinas</b></span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
-                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq" >Cadastrar Máquinas</a>
+                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq">Cadastrar Máquinas</a>
                         <a class="collapse-item" href="tables-machines.html">Visualizar Máquinas</a>
                         <a class="collapse-item" href="update-machines.html" id="atualizar_maq">Atualizar Máquinas</a>
                     </div>
@@ -140,7 +141,7 @@
                     <img id="icons" src="img/icon-suporte.png">
                     <span><b>Fale Conosco</b></span>
                 </a>
-               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
@@ -376,14 +377,8 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard - Maquina <span id="nome_maquina">XXX</span></h1>
-                        <select name="selMachine" id="selMachine" onchange="selMachineCorreto()"
+                        <select name="selMachine" id="select_maquina"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 63%;">
-                            <option value=1>Máquina 1</option>
-                            <option value=9>Máquina 2</option>
-                            <option value=10>Máquina 3</option>
-                            <option value=11>Máquina 4</option>
-                            <option value=12>Máquina 5</option>
-                            <option value=12>Máquina 6</option>
                         </select>
                     </div>
 
@@ -438,7 +433,8 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="uso_cpu_kpi">X</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="uso_cpu_kpi">X</div>
                                                 </div>
 
                                             </div>
@@ -477,8 +473,9 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Bytes Enviados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">X</div>
+                                                MegaBytes Enviados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
+                                                X</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-file-upload fa-2x text-gray-300"></i>
@@ -495,12 +492,14 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Bytes
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                MegaBytes
                                                 Recebidos
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="bytes_recebidos_kpi">X</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="bytes_recebidos_kpi">X</div>
                                                 </div>
 
                                             </div>
@@ -544,7 +543,7 @@
                                 </div>
                                 <div class="mt-4 text-center small">
                                     <!-- <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Bytes Enviados
+                                        <i class="fas fa-circle text-primary"></i> MegaBytes Enviados
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle text-success"></i> Bytes Recebidos
@@ -553,8 +552,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRede"
-                                        style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRede" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -598,9 +596,10 @@
                                 <!-- Card Body -->
                                 <div class="card-body" style="height: 393px; ">
                                     <div class="chart-pie pt-4 pb-2" style="height: 100%;">
-                                        <canvas id="myPieChart" class="graphPie" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myPieChart" class="graphPie"
+                                            style="height: 100%; width:100%;"></canvas>
                                     </div>
-                                    
+
                                     <div class="mt-4 text-center small">
                                         <!-- <span class="mr-2">
                                             <i class="fas fa-circle text-primary"></i> Livre
@@ -658,8 +657,8 @@
                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
                                         id="bar_uso_memoria_ram"></div>
                                 </div>
-                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Disco Rígido <span class="float-right"
-                                        id="disco_rigido">40%</span>
+                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Disco Rígido <span
+                                        class="float-right" id="disco_rigido">40%</span>
                                 </h4>
                                 <div class="progress mb-4">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
@@ -678,7 +677,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary-dash">Janelas Abertas</h6>
                             </div>
                             <div class="card-body" id="lista_janela">
-                              <!--  <h1 class="small font-weight-bold">XXX</h1>-->
+                                <!--  <h1 class="small font-weight-bold">XXX</h1>-->
                             </div>
                         </div>
 
@@ -735,7 +734,7 @@
                 <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="../login.html">Sair</a>
+                    <a class="btn btn-primary" onclick="limparSessao()" href="../login.html">Sair</a>
                 </div>
             </div>
         </div>
@@ -762,9 +761,56 @@
     <script src="js/demo/chart-line-rede.js"></script>
     <script src="js/demo/janelas.js"></script>
     <script src="js/demo/desempenho.js"></script>
+    <script src="js/sessao.js"></script>
 </body>
 
 </html>
 <script>
-    window.onload = validarSessao
+    window.onload = async function () {
+        try {
+            await validarSessao();
+            exibirMaquinas();
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            await obterDadosCPU(idMaquina);
+            await obterDadosDisco(idMaquina);
+            await obterDadosDesempenho(idMaquina);
+            await obterDadosJanela(idMaquina);
+            await obterDadosRede(idMaquina);
+            await obterDadosRAM(idMaquina);
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    };
+
+    var seletor = document.getElementById("select_maquina");
+
+    seletor.addEventListener("change", function () {
+        mudarId()
+    });
+
+
+    async function mudarId() {
+        try {
+            limparCPU()
+            limparDisco()
+            limparRAM()
+            limparJanela()
+            limparDesempenho()
+            limparRede()
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            console.log(idMaquina)
+            await obterDadosCPU(idMaquina);
+            await obterDadosDisco(idMaquina);
+            await obterDadosDesempenho(idMaquina);
+            await obterDadosJanela(idMaquina);
+            await obterDadosRede(idMaquina);
+            await obterDadosRAM(idMaquina);
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    }
+
+ 
 </script>

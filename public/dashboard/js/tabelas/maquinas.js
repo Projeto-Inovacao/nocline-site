@@ -47,7 +47,6 @@ function atualizarFeed() {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
-        console.error(resposta);
-       // finalizarAguardar();
+        tabela_titulo_maquina.innerHTML = "Você não tem nenhuma maquina cadastrada..."
     });
 }

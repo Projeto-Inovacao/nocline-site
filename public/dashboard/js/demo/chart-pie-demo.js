@@ -2,13 +2,10 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-
-
-var idMaquina = 1
 // Pie Chart Example    
 var ctx = document.getElementById("myPieChart");
 
-window.onload = obterDadosDisco(idMaquina);
+// window.onload = obterDadosDisco(idMaquina);
 
 function obterDadosDisco(idMaquina) {
   console.log("DISCO!")
@@ -153,4 +150,12 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
       console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 
+}
+
+function limparDisco(){
+  let chartDisco = new Chart(
+      document.getElementById(`myPieChart`),
+  );
+
+  chartDisco.clear()
 }

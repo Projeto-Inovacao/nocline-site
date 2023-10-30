@@ -27,6 +27,7 @@ function atualizarFeed() {
                     var setor = novaLinha.insertCell(2);
                     var email = novaLinha.insertCell(3);
                     var celular = novaLinha.insertCell(4);
+                    var status = novaLinha.insertCell(5);
 
 
                     ID.innerHTML = funcionario.id;
@@ -34,6 +35,11 @@ function atualizarFeed() {
                     setor.innerHTML = funcionario.setor;
                     email.innerHTML = funcionario.email;
                     celular.innerHTML = funcionario.celular;
+                    if(funcionario.status = 0){
+                        status.innerHTML = "Ativo"
+                    } else{
+                        status.innerHTML = "Inativo"
+                    }
 
                 }
 
