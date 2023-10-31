@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 </head>
 
-<body id="page-top" onload="validarSessao(), atualizarFeed()">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -375,15 +375,9 @@
             
                         <div class="d-sm-flex align-items-center justify-content-between mb-3">
                             <h1 class="h3 mb-0 text-gray-800" style="width: 100%;">Tabela dos Processos </h1>
-                            <select name="selMachine" id="selMachine" onchange="selMachineCorreto()"
-                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 63%;">
-                                <option value=1>Máquina 1</option>
-                                <option value=9>Máquina 2</option>
-                                <option value=10>Máquina 3</option>
-                                <option value=11>Máquina 4</option>
-                                <option value=12>Máquina 5</option>
-                                <option value=12>Máquina 6</option>
-                            </select>
+                            <select name="selMachine" id="select_maquina"
+                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 63%;">
+                        </select>
                         </div>
 
 
@@ -415,6 +409,12 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="paginacao">
+                        <span id="pagina_atual">Página 1</span>
+                        <button style="border-radius: 3px; color: white; background-color: black;" id="pag_anterior">Anterior</button>
+                        <button style="border-radius: 3px; color: white; background-color: black;"  id="prox_pagina">Próxima</button>
                     </div>
 
                 </div>
@@ -486,9 +486,15 @@
 
 </html>
 <script>
-    b_usuario.innerHTML = sessionStorage.ID_EMPRESA;
-    n_usuario.innerHTML=  sessionStorage.NOME_USUARIO; 
-
-
-
+    window.onload = async function () {
+        try {
+            await validarSessao();
+            exibirMaquinas();
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            await atualizarFeed(idMaquina)
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    };
 </script>

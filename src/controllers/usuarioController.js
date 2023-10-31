@@ -322,6 +322,7 @@ function alterarMaquina(req, res) {
     var hostname = req.body.hostnameServer;
     var modelo = req.body.modeloServer;
     var setor = req.body.setorServer;
+    var status = req.body.statusServer;
 
     // Faça as validações dos valores
     if (codEmpresa == undefined) {
@@ -340,7 +341,7 @@ function alterarMaquina(req, res) {
         res.status(400).send("Sua email de senha está undefined!");
     }
     else {
-        usuarioModel.alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor)
+        usuarioModel.alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor, status)
             .then(function (resultado) {
                 empresaModel.buscarMaquinasPorEmpresa(codEmpresa)
                     .then(function (resultadoMaquina) {
@@ -410,6 +411,7 @@ function alterarColaborador(req, res) {
     var senha = req.body.senhaServer;
     var celular = req.body.celularServer;
     var setor = req.body.setorServer;
+    var status = req.body.statusServer;
     var codigo = req.body.cdEmpServer;
 
 
@@ -429,7 +431,7 @@ function alterarColaborador(req, res) {
     }
     else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.alterarColaborador(id, email, celular, senha, setor, codigo)
+        usuarioModel.alterarColaborador(id, email, celular, senha, setor, status, codigo)
             .then(
                 function (resultado) {
                     res.json(resultado);

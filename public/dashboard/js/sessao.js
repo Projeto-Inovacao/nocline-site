@@ -73,10 +73,15 @@ function exibirPerfil(){
     b_usuario.innerHTML = sessionStorage.ID_EMPRESA;
 
     // PLANO
+    qtd_maquinas = 0
+    JSON.parse(sessionStorage.MAQUINAS).forEach(item => {
+        qtd_maquinas++
+    });
     inicio_usuario.innerHTML = sessionStorage.DATA_INICIO;
     fim_usuario.innerHTML = sessionStorage.DATA_FIM;
     plano_usuario.innerHTML = sessionStorage.PLANO;
     valor_usuario.innerHTML = sessionStorage.VALOR;
+    maquinas_usuario.innerHTML = qtd_maquinas;
 }
 
 function limparSessao() {

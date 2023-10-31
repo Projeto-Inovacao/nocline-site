@@ -1,9 +1,5 @@
 var database = require("../database/config")
 
-    //select 
-    //* from colaborador 
-    //join empresa on fk_empresa = id_empresa
-    //WHERE (email = '${email}' AND senha = sha('${senha}',256)) ;/
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
@@ -52,7 +48,7 @@ function cadastrarColaborador(nomeRepresentante, cpfRepresentante, emailRepresen
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", nomeRepresentante, emailRepresentante, cpfRepresentante, celularRepresentante, senhaRepresentante, cnpj);
 
     var instrucao = `
-        INSERT INTO colaborador (nome, cpf, email, celular, senha, fk_empresa, fk_nivel_acesso) VALUES ( '${nomeRepresentante}', '${cpfRepresentante}','${emailRepresentante}', '${celularRepresentante}',  '${senhaRepresentante}', (select id_empresa from empresa where cnpj = '${cnpj}'), 1);
+        INSERT INTO colaborador (nome, cpf, email, celular, senha, status_colaborador, fk_empresa, fk_nivel_acesso) VALUES ( '${nomeRepresentante}', '${cpfRepresentante}','${emailRepresentante}', '${celularRepresentante}',  '${senhaRepresentante}', 1, (select id_empresa from empresa where cnpj = '${cnpj}'), 1);
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -64,7 +60,7 @@ function cadastrarColaborador1(nome,cpf, email, senha, celular, codigo, setor) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", nome,cpf, email, senha, celular, codigo, setor);
 
     var instrucao = `
-        INSERT INTO colaborador (nome, cpf, email, celular, senha, fk_empresa, fk_nivel_acesso) VALUES ( '${nome}', '${cpf}','${email}', '${celular}',  '${senha}', (select id_empresa from empresa where id_empresa = '${codigo}'), (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'));
+        INSERT INTO colaborador (nome, cpf, email, celular, senha, status_colaborador, fk_empresa, fk_nivel_acesso) VALUES ( '${nome}', '${cpf}','${email}', '${celular}',  '${senha}', 1, (select id_empresa from empresa where id_empresa = '${codigo}'), (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'));
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -78,19 +74,27 @@ function cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname) {
     );
 
     var instrucao = `
-    INSERT INTO maquina (ip, so, hostname, modelo, setor, fk_empresaM) VALUES ( '${ip}', '${so}', '${hostname}', '${modelo}', '${setor}', ${codEmpresa});
-
+    INSERT INTO maquina (ip, so, hostname, modelo, setor, status_maquina, fk_empresaM) VALUES ( '${ip}', '${so}', '${hostname}', '${modelo}', '${setor}', 1,${codEmpresa});
     `;
 
+    var instrucao2 = `
+    INSERT INTO componente VALUES
+    (null, 'RAM', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 1),
+    (null, 'CPU', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 2),
+    (null, 'DISCO', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 3),
+    (null, 'REDE', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 4);`;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao2);
+    database.executar(instrucao);
+    return database.executar(instrucao2);
 }
 
-function alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor) {
+function alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor, status) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():");
 
     var instrucao = `
-    UPDATE maquina set ip = '${ip}', so = '${so}', hostname = '${hostname}', setor = '${setor}', modelo = '${modelo}' where fk_empresaM = ${codEmpresa} and id_maquina = ${id};
+    UPDATE maquina set ip = '${ip}', so = '${so}', hostname = '${hostname}', setor = '${setor}', modelo = '${modelo}', status_maquina = ${status} where fk_empresaM = ${codEmpresa} and id_maquina = ${id};
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -110,11 +114,11 @@ function excluirMaquina(idEmpresa, idMaquina) {
 
 }
 
-function alterarColaborador(id, email, celular, senha, setor, codigo) {
+function alterarColaborador(id, email, celular, senha, setor, status, codigo) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", id, email, celular, senha, setor);
 
     var instrucao = `
-        UPDATE colaborador SET email = '${email}', celular = '${celular}', senha = '${senha}', fk_nivel_acesso= (select id_nivel_acesso from nivel_acesso where sigla = '${setor}') where id_colaborador = '${id}' and (select id_empresa from empresa where id_empresa = '${codigo}');
+        UPDATE colaborador SET email = '${email}', celular = '${celular}', senha = '${senha}', fk_nivel_acesso= (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'), status_colaborador = ${status} where id_colaborador = '${id}' and (select id_empresa from empresa where id_empresa = '${codigo}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

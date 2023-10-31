@@ -12,6 +12,10 @@ function atualizarFeed() {
 
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
+                t_maquinas = 0
+                t_maquinas_critico = 0
+                t_maquinas_risco = 0
+                qtd_avisos_mes = 0
 
                 var feed = document.getElementById("tabela_maquinas");
                 feed.innerHTML = "";
@@ -28,7 +32,8 @@ function atualizarFeed() {
                     var so = novaLinha.insertCell(3);
                     var modelo = novaLinha.insertCell(4);
                     var setor = novaLinha.insertCell(5);
-                    var monitoramento = novaLinha.insertCell(6);
+                    var status = novaLinha.insertCell(6);
+                    var qtd_alertas_maquina = novaLinha.insertCell(7);
 
 
                     id.innerHTML = maquina.id_maquina;
@@ -37,8 +42,24 @@ function atualizarFeed() {
                     so.innerHTML = maquina.so;
                     modelo.innerHTML = maquina.modelo;
                     setor.innerHTML = maquina.setor;
-                    monitoramento.innerHTML = "OK";
+                    if(maquina.status_maquina == 1){
+                        status.innerHTML = "Ativa"
+                    }else if (maquina.status_maquina == 0){
+                        status.innerHTML = "Inativa"
+                    }
+                    qtd_alertas_maquina.innerHTML = maquina.qtd_alerta_maquina;
+                    
+                    console.log(maquina.qtd_maquina)
+                    t_maquinas += maquina.qtd_maquina
+                    console.log(t_maquinas)
+                    t_maquinas_critico += maquina.qtd_critico
+                    t_maquinas_risco += maquina.qtd_risco
+                    qtd_avisos_mes += maquina.qtd_alertas_no_mes
 
+                    total_maquinas.innerHTML = t_maquinas;
+                    total_maquinas_critico.innerHTML = t_maquinas_critico;
+                    total_maquinas_risco.innerHTML = t_maquinas_risco;
+                    avisos_mes.innerHTML = qtd_avisos_mes;
                 }
 
                // finalizarAguardar();

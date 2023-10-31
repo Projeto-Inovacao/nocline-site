@@ -141,23 +141,23 @@
             <hr class="sidebar-divider my-0">
 
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <img id="icons" src="img/icon-suporte.png">
-            <span><b>Fale Conosco</b></span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Você pode:</h6>
-                <a class="collapse-item" href="suporte.html">Solicitar Suporte</a>
-                <a class="collapse-item" href="feedback.html">Enviar Avaliação</a>
-                <a class="collapse-item" href="reuniao.html">Agendar Reunião</a>
-            </div>
-        </div>
-    </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <img id="icons" src="img/icon-suporte.png">
+                    <span><b>Fale Conosco</b></span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Você pode:</h6>
+                        <a class="collapse-item" href="suporte.html">Solicitar Suporte</a>
+                        <a class="collapse-item" href="feedback.html">Enviar Avaliação</a>
+                        <a class="collapse-item" href="reuniao.html">Agendar Reunião</a>
+                    </div>
+                </div>
+            </li>
 
             <hr class="sidebar-divider my-0">
             <!-- <div class="sidebar-card d-none d-lg-flex">
@@ -380,7 +380,7 @@
 
                 <!-- Content Row -->
 
-                
+
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -393,91 +393,93 @@
                     </p>
 
 
-                        <div class="row">
-<!-- KPI USO DE RAM -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Total de Máquinas
-                    </div>
-                    <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="uso_cpu_kpi">X</div>
+                    <div class="row">
+                        <!-- KPI USO DE TOTAL MAQUINAS -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Total
+                                                de Máquinas
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="total_maquinas">X</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- KPI USO DE MAQUINAS EM PERIGO -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Máquinas em Estado Critico</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_maquinas_critico">X</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI USO DE MAQUINAS EM RISCO -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Máquinas em Risco</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_maquinas_risco">X</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-laptop fa-2x text-gray-300"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- KPI USO DE RAM -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                         Máquinas em Perigo</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-laptop fa-2x text-gray-300"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                            
-    
-    
-                            <!-- KPI USO DE RAM -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                   Máquinas em Risco</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X</div>
+
+                        <!-- KPI AVISOS NO MES -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Avisos
+                                                Enviados no Mês
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="avisos_mes">X</div>
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-    
-                            <!-- KPI USO DE CPU -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Avisos Enviados no Mês
-                                                </div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="uso_cpu_kpi">X</div>
-                                                    </div>
-    
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                            </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -494,7 +496,8 @@
                                             <th>Sistema Operacional</th>
                                             <th>Setor</th>
                                             <th>Modelo</th>
-                                            <th>Status Monitoramento</th>
+                                            <th>Status</th>
+                                            <th>Quantidade de Alertas</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabela_maquinas">

@@ -29,6 +29,10 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 
+    <!-- SWEET ALERT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -49,7 +53,7 @@
                             <form class="user">
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_codigo_empresa"
-                                        placeholder="Código da Empresa">
+                                        placeholder="Código da Empresa" readonly="true">
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user"
@@ -161,10 +165,12 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                alert("Cadastro de um novo membro da equipe realizado com sucesso!");
-
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cadastro de um novo membro da equipe realizado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 setTimeout(() => {
                     window.location = "tables-employees.html";
                 }, "2000")
