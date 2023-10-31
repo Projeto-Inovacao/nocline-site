@@ -75,11 +75,19 @@ function cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname) {
 
     var instrucao = `
     INSERT INTO maquina (ip, so, hostname, modelo, setor, status_maquina, fk_empresaM) VALUES ( '${ip}', '${so}', '${hostname}', '${modelo}', '${setor}', 1,${codEmpresa});
-
     `;
 
+    var instrucao2 = `
+    INSERT INTO componente VALUES
+    (null, 'RAM', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 1),
+    (null, 'CPU', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 2),
+    (null, 'DISCO', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 3),
+    (null, 'REDE', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 4);`;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao2);
+    database.executar(instrucao);
+    return database.executar(instrucao2);
 }
 
 function alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor, status) {
