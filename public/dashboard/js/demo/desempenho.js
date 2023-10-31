@@ -14,7 +14,7 @@ var CPU_bar = document.getElementById("bar_porcentagem_cpu");
 var RAM_bar = document.getElementById("bar_uso_memoria_ram");
 var disco_bar = document.getElementById("bar_disco_rigido");
 
-valores = [DISCO, RAM, CPU]
+valores = [DISCO, CPU, RAM]
 valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU]
 valores_Bar = [disco_bar, RAM_bar, CPU_bar]
 
@@ -60,9 +60,7 @@ function atualizarGraficoDesempenho(idMaquina) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-
-                valores = [CPU, RAM, DISCO]
-                valores_kpi_desempenho = [KPI_CPU, KPI_RAM, KPI_DISCO]
+                valores_kpi_desempenho = [KPI_DISCO, KPI_CPU, KPI_RAM]
                 valores_Bar = [CPU_bar, RAM_bar, disco_bar]
 
                 for (i = 0; i < novoRegistro.length; i++) {
