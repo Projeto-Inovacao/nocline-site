@@ -21,6 +21,10 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 
+    <!-- SWEET ALERT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -64,6 +68,17 @@
                                         <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao"
                                             value="SSO">
                                         <h8 style="font-size: 13px;">SSO</h8>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h8 style="font-size: 15px; margin-left: 16px;">Status</h8>
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
+                                        <input id="input_status1" type="radio" name="opcao_status" value="1">
+                                        <h8 style="font-size: 13px; ">Ativo</h8>
+                                        <input id="input_status2" style="margin-left: 10px;" type="radio" name="opcao_status"
+                                            value="0">
+                                        <h8 style="font-size: 13px;">Inativo</h8>
                                     </div>
                                 </div>
                                 
@@ -124,6 +139,8 @@
                     input_celular.value = "";
                     input_setor1.checked = false
                     input_setor2.checked = false
+                    input_status1.checked = false
+                    input_status2.checked = false
                 }
 
                 resposta.json().then(function (resposta) {
@@ -138,6 +155,11 @@
                         input_setor2.checked = true
                     } else {
                         input_setor1.checked = true
+                    }
+                    if (dados.status_colaborador == 1) {
+                        input_status1.checked = true
+                    } else {
+                        input_status2.checked = true
                     }
 
                     // finalizarAguardar();
@@ -164,6 +186,10 @@
         if (input_setor2.checked) {
             setorCVar = "SSO"
         }
+        var status = 1
+        if (input_status2.checked) {
+            status = 0
+        }
 
 
 
@@ -186,6 +212,7 @@
                 senhaServer: senha,
                 celularServer: celular,
                 setorServer: setor,
+                statusServer: status,
                 cdEmpServer: codigo
 
             })
@@ -194,16 +221,16 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                alert("Alterações ao colaborador realizadas com sucesso!");
-
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Alterações ao colaborador realizadas com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 setTimeout(() => {
                     window.location = "tables-employees.html";
                 }, "2000")
-
-                limparFormulario();
-
+                
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }

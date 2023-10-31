@@ -35,9 +35,9 @@ function atualizarFeed() {
                     setor.innerHTML = funcionario.setor;
                     email.innerHTML = funcionario.email;
                     celular.innerHTML = funcionario.celular;
-                    if(funcionario.status = 0){
+                    if(funcionario.status_colaborador == 1){
                         status.innerHTML = "Ativo"
-                    } else{
+                    }else if (funcionario.status_colaborador == 0){
                         status.innerHTML = "Inativo"
                     }
 

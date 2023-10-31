@@ -26,7 +26,7 @@ function cadastrar(razaoSocial, cnpj) {
 
 function listarFuncionario(idEmpresa) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select id_colaborador as id, nome, email, fk_empresa, celular, sigla as setor from colaborador join nivel_acesso on fk_nivel_acesso = id_nivel_acesso where fk_empresa = ${idEmpresa} AND fk_nivel_acesso != 1;
+  var instrucao = `select id_colaborador as id, nome, email, status_colaborador, fk_empresa, celular, sigla as setor from colaborador join nivel_acesso on fk_nivel_acesso = id_nivel_acesso where fk_empresa = ${idEmpresa} AND fk_nivel_acesso != 1;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -34,7 +34,7 @@ function listarFuncionario(idEmpresa) {
 
 function listarFuncionarioPorId(idEmpresa, idColaborador) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select id_colaborador as id, nome, email, fk_empresa, celular, sigla as setor from colaborador join nivel_acesso on fk_nivel_acesso = id_nivel_acesso where fk_empresa = ${idEmpresa} and id_colaborador = ${idColaborador};
+  var instrucao = `select id_colaborador as id, nome, email, fk_empresa, celular, sigla as setor, status_colaborador from colaborador join nivel_acesso on fk_nivel_acesso = id_nivel_acesso where fk_empresa = ${idEmpresa} and id_colaborador = ${idColaborador};
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -42,7 +42,7 @@ function listarFuncionarioPorId(idEmpresa, idColaborador) {
 
 function listarMaquinas(idEmpresa) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select * from maquina where fk_empresaM = ${idEmpresa};
+  var instrucao = `select * from VW_ALERTAS_TABLE where fk_empresaM = ${idEmpresa} order by qtd_alerta_maquina desc;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -58,7 +58,7 @@ function listarMaquinasPorId(idEmpresa, idMaquina) {
 
 function buscarMaquinasPorEmpresa(id) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select * from maquina where fk_empresaM = ${id}
+  var instrucao = `select * from VW_ALERTAS_TABLE where fk_empresaM = ${id} order by qtd_alerta_maquina desc
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);

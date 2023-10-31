@@ -21,6 +21,10 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 
+    <!-- SWEET ALERT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -41,7 +45,7 @@
                             <form class="user">
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_cdEmp"
-                                        placeholder="Código da Empresa">
+                                        placeholder="Código da Empresa" readonly="true">
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_idMaquina"
@@ -60,8 +64,14 @@
                                         placeholder="Modelo da máquina">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_so"
-                                        placeholder="Sistema Operacional">
+                                    <h8 style="font-size: 15px; margin-left: 16px;">Sistema Operacional</h8>
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
+                                        <input id="input_so1" type="radio" name="opcao_so" value="Linux">
+                                        <h8 style="font-size: 13px; ">Linux</h8>
+                                        <input id="input_so2" style="margin-left: 10px;" type="radio" name="opcao_so"
+                                            value="Windows">
+                                        <h8 style="font-size: 13px;">Windows</h8>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <h8 style="font-size: 15px; margin-left: 16px;">Setor</h8>
@@ -71,6 +81,16 @@
                                         <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao"
                                             value="SSO">
                                         <h8 style="font-size: 13px;">SSO</h8>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h8 style="font-size: 15px; margin-left: 16px;">Status</h8>
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
+                                        <input id="input_status1" type="radio" name="opcao_status" value="1">
+                                        <h8 style="font-size: 13px; ">Ativo</h8>
+                                        <input id="input_status2" style="margin-left: 10px;" type="radio" name="opcao_status"
+                                            value="0">
+                                        <h8 style="font-size: 13px;">Inativo</h8>
                                     </div>
                                 </div>
 
@@ -142,6 +162,10 @@
                     input_so.value = "";
                     input_setor2.checked = false
                     input_setor1.checked = false
+                    input_so1.checked = false
+                    input_so2.checked = false
+                    input_status1.checked = false
+                    input_status2.checked = false
                 }
 
                 resposta.json().then(function (resposta) {
@@ -150,7 +174,6 @@
                     dados = resposta[0]
 
                     input_ip.value = dados.ip
-                    input_so.value = dados.so;
                     input_hostname.value = dados.hostname
                     input_modelo.value = dados.modelo
 
@@ -160,6 +183,17 @@
                         input_setor1.checked = true
                     }
 
+                    if (dados.so == "Windows") {
+                        input_so2.checked = true
+                    } else {
+                        input_so1.checked = true
+                    }
+
+                    if (dados.status_maquina == 1) {
+                        input_status1.checked = true
+                    } else {
+                        input_status2.checked = true
+                    }
                     // finalizarAguardar();
                 });
             } else {
@@ -175,22 +209,21 @@
 
         var idMaquina = input_idMaquina.value;
         var codEmpresa = input_cdEmp.value
-        var ip = input_cdEmp.value;
-        var so = input_so.value;
+        var ip = input_ip.value;
         var hostname = input_hostname.value;
         var modelo = input_modelo.value;
         var setor = "CCO"
         if (input_setor2.checked) {
             setorCVar = "SSO"
         }
-
-
-
-        // if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == ""|| cpfVar == "" ) {
-
-        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        //     return false;
-        // }
+        var soMVar = "Linux"
+        if (input_so2.checked) {
+            soMVar = "Windows"
+        }
+        var status = 1
+        if (input_status2.checked) {
+            status = 0
+        }
 
         fetch("/usuarios/alterarMaquina", {
             method: "POST",
@@ -201,10 +234,11 @@
                 codEmpresaServer: codEmpresa,
                 idMaquinaServer: idMaquina,
                 ipServer: ip,
-                soServer: so,
+                soServer: soMVar,
                 hostnameServer: hostname,
                 modeloServer: modelo,
-                setorServer: setor
+                setorServer: setor,
+                statusServer: status
 
             })
         }).then(function (resposta) {
@@ -212,13 +246,15 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                alert("Alterações da maquina realizadas com sucesso!");
-
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Alterações da maquina realizadas com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 setTimeout(() => {
                     window.location = "tables-machines.html";
                 }, "2000")
-
-                limparFormulario();
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
