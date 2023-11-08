@@ -15,6 +15,14 @@ router.get("/ultimasRAM/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasRAM(req, res);
 });
 
+router.get("/ultimasTemp/:idMaquina", function (req, res) {
+    medidaController.buscarUltimasMedidasTemp(req, res);
+});
+
+router.get("/tempo-realTemp/:idMaquina", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTemp(req, res);
+})
+
 router.get("/ultimasREDE/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasRede(req, res);
 });
