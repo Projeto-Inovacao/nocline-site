@@ -50,18 +50,35 @@
             </li>
 
 
-            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard Principal</span></a>
             </li>
 
             <hr class="sidebar-divider my-0">
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <img id="icons" src="../assets/engrenagem.png">
+                    <span style="color: white;"><b>Dashboards Específicas</b></span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Você pode visualizar:</h6>
+                        <a class="collapse-item" href="utilities-color.html">Temperatura</a>
+                        <a class="collapse-item" href="utilities-border.html">Processador</a>
+                        <a class="collapse-item" href="utilities-animation.html"> Tendências</a>
+                        <a class="collapse-item" href="tabela-processos.html"> Processos</a>
+                        <a class="collapse-item" href="utilities-other.html"> Análise Geral por Estação</a>
+                    </div>
+                </div>
+            </li>
             <!-- <li class="nav-item active">
                 <a class="nav-link" href="orientacoes.html">
                     <img id="icons" src="img/icon-orientacoes.png">
@@ -70,34 +87,28 @@
 
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tabela-processos.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Processos</span></a>
-            </li>
-
-            <hr class="sidebar-divider my-0">
             <!-- Divider -->
 
             <!-- Heading -->
             <!-- <div class="sidebar-heading">
-            Interface
-        </div> -->
+                Interface
+            </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <img id="icons" src="img/icon-colaboradores.png">
-                    <span><b>Colaboradores</b></span>
+                    <span style="color: white;"><b>Colaboradores</b></span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
-                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar Colaboradores</a>
+                        <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar
+                            Colaboradores</a>
                         <a class="collapse-item" href="tables-employees.html">Visualizar Colaboradores</a>
-                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar Colaboradores</a>
+                        <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar
+                            Colaboradores</a>
                     </div>
                 </div>
             </li>
@@ -110,19 +121,17 @@
                     aria-expanded="true" aria-controls="collapsePages">
 
                     <img id="icons" src="img/icon-maquina.png">
-                    <span><b>Máquinas</b></span>
+                    <span style="color: white;"><b>Máquinas</b></span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
-                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq" >Cadastrar Máquinas</a>
+                        <a class="collapse-item" href="register-machines.html" id="cadastro_maq">Cadastrar Máquinas</a>
                         <a class="collapse-item" href="tables-machines.html">Visualizar Máquinas</a>
                         <a class="collapse-item" href="update-machines.html" id="atualizar_maq">Atualizar Máquinas</a>
                     </div>
                 </div>
             </li>
-
-
             <!-- Nav Item - Dashboard -->
 
 
@@ -143,9 +152,9 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <img id="icons" src="img/icon-suporte.png">
-                    <span><b>Fale Conosco</b></span>
+                    <span style="color: white;"><b>Fale Conosco</b></span>
                 </a>
-               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode:</h6>
@@ -157,12 +166,7 @@
             </li>
 
             <hr class="sidebar-divider my-0">
-            <!-- <div class="sidebar-card d-none d-lg-flex">
-            <img class="sidebar-card-illustration mb-2" src="img/logotipo-do-metro.png" style="width: 25px; height: 25px;">
-            <p class="text-center mb-2"><strong>O código da sua empresa é:</strong> <a target="_blank">xxxx</a></p>
-        </div> -->
-
-
+            
         </ul>
         <!-- End of Sidebar -->
 
@@ -464,9 +468,9 @@
 
                     </div>
                     <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4" style="height: 300px; width: 1000px;" >
+                        <div class="card shadow mb-4" style="height: 300px; width: 1135px;" >
                             <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3" style="width: 1000px;">
+                            <div class="card-header py-3" style="width: 1135px;">
                                 <h6 class="m-0 font-weight-bold text-primary-dash">Informações contratuais:</h6>
 
                             </div>
