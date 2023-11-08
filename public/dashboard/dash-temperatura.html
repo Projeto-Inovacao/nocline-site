@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Dashboard</title>
+    <title>NOCLINE - Dashboard Temperatura da CPU</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,7 +68,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
-                        <a class="collapse-item" href="dash-temperatura.html">Temperatura</a>
+                              <a class="collapse-item" href="dash-temperatura.html">Temperatura</a>
                         <a class="collapse-item" href="utilities-border.html">Processador</a>
                         <a class="collapse-item" href="utilities-animation.html"> Tendências</a>
                         <a class="collapse-item" href="tabela-processos.html"> Processos</a>
@@ -386,17 +386,14 @@
                     <!-- Page Heading -->
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Principal
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard Temperatura da CPU
                             <select name="selMachine" id="select_maquina"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                 style="margin-left: 260%;">
                             </select>
                     </div>
 
-                    <!-- Content Row -->
                     <div class="row">
-
-                        <!-- KPI USO DE DISCO -->
                         <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -404,12 +401,12 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                                 style=" margin-top: -6%;">
-                                                Disco</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="disco_kpi"
-                                                style=" margin-top: 2%;">X%</div>
+                                                JANELAS ABERTAS</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
+                                                style=" margin-top: 2%;">X</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -459,173 +456,20 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                     </div>
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
-                                                style=" margin-top: -6%;">
-                                                JANELAS ABERTAS</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
-                                                style=" margin-top: 2%;">X</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    
 
-
-                        <!-- KPI USO DE RAM -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                MegaBytes Enviados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
-                                                X</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file-upload fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- KPI USO DE CPU -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                MegaBytes
-                                                Recebidos
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                        id="bytes_recebidos_kpi">X</div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file-download fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
+                    
+                    
 
                     <div class="row">
 
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Rede</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="mt-4 text-center small">
-                                    <!-- <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> MegaBytes Enviados
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> Bytes Recebidos
-                                    </span> -->
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChartRede" style="height: 100%; width:100%;"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="card shadow mb-4" style="width: 590px;height: 500px;">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash"> CPU (%)</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChartCPU" style="height: 100%; width:100%;"></canvas>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash"> Disco Rígido (%) </h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body" style="height: 393px; ">
-                                    <div class="chart-pie pt-4 pb-2" style="height: 100%;">
-                                        <canvas id="myPieChart" class="graphPie"
-                                            style="height: 100%; width:100%;"></canvas>
-                                    </div>
-
-                                    <div class="mt-4 text-center small">
-                                        <!-- <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Livre
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Usado
-                                        </span> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow mb-4" style="margin-left: -165px; width: 543px; height: 500px;">
+                            
+                            <div class="card shadow mb-4" style="margin-left: 5px; width: 543px; height: 500px;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Memória RAM (%)</h6>
                                 </div>
@@ -786,10 +630,10 @@
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
             await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
+            // await obterDadosDisco(idMaquina);
+            await obterDadosDesempenhoTemp(idMaquina);
             await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
+            // await obterDadosRede(idMaquina);
             await obterDadosRAM(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
@@ -815,10 +659,7 @@
             var idMaquina = elemento_maquina.value;
             console.log(idMaquina)
             await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
             await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
             await obterDadosRAM(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
