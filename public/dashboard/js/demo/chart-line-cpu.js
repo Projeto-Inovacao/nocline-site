@@ -54,21 +54,20 @@ function plotarGraficoCPU(resposta, idMaquina) {
   console.log('----------------------------------------------')
   console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
   console.log(resposta)
-
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.dado_coletado);
       labels.push(registro.data_hora);
-  }
-
-  console.log('----------------------------------------------')
-  console.log('O gráfico será plotado com os respectivos valores:')
-  console.log('Labels:')
-  console.log(labels)
-  console.log('Dados:')
-  console.log(dados.datasets)
-  console.log('----------------------------------------------')
+    }
+    
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
 
   // Criando estrutura para plotar gráfico - config
   const config = {

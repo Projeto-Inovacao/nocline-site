@@ -9,24 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Perfil</title>
+    <title>NOCLINE - Dashboard Temperatura da CPU</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 
 </head>
 
-<body id="page-top" onload="validarSessao(), exibirPerfil()">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -37,19 +34,19 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon" style="margin-bottom: 5%;">
+                <div class="sidebar-brand-icon" style="margin-bottom: 2%;">
                     <img id="logoNoc" src="img/logo branca.png">
                 </div>
 
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
 
-            <li class="nav-item active" style="height: 6%;">
-                <i style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px; margin-bottom: 5%;">Código
+            <li class="nav-item active" style="height: 2%;">
+                <i style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px;">Código
                     Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
             </li>
 
-
+            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
@@ -116,7 +113,6 @@
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
 
-
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -133,29 +129,7 @@
                     </div>
                 </div>
             </li>
-
-            <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
-                    aria-expanded="true" aria-controls="collapsePages">
-
-                    <img id="icons" src="img/icon-linhas.png">
-                    <span style="color: white;"><b>Linhas</b></span>
-                </a>
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Você Pode:</h6>
-                        <a class="collapse-item" href="register-linhas.html" id="cadastro_maq">Cadastrar Linhas</a>
-                        <a class="collapse-item" href="tables-linhas.html">Visualizar Linhas</a>
-                        <a class="collapse-item" href="update-linhas.html" id="atualizar_maq">Atualizar Linhas</a>
-                    </div>
-                </div>
-            </li>
-
-            <hr class="sidebar-divider my-0">            <!-- Nav Item - Dashboard -->
 
 
             <hr class="sidebar-divider my-0">
@@ -189,8 +163,14 @@
             </li>
 
             <hr class="sidebar-divider my-0">
-            
+            <!-- <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/logotipo-do-metro.png" style="width: 25px; height: 25px;">
+                <p class="text-center mb-2"><strong>O código da sua empresa é:</strong> <a target="_blank">xxxx</a></p>
+            </div> -->
+
+
         </ul>
+
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -203,11 +183,9 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
                     <!-- <form
@@ -313,7 +291,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
-                                    Centro de Mensagens
+                                    Mural de Avisos
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
@@ -366,7 +344,7 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                       <!-- Nav Item - User Information -->
+                        <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -382,14 +360,15 @@
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configurações 
+                                    Configurações
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a> -->
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" href="/public/index.html">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
+                                    href="/public/index.html">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
@@ -405,161 +384,201 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Seu Perfil</h1>
-                    <div class="row" style="margin-top: 4%;">
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard Temperatura da CPU
+                            <select name="selMachine" id="select_maquina"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                style="margin-left: 260%;">
+                            </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                                style=" margin-top: -6%;">
+                                                JANELAS ABERTAS</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
+                                                style=" margin-top: 2%;">X</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- KPI USO DE RAM -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                RAM</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- KPI USO DE CPU -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">CPU
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="uso_cpu_kpi">X</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    
+
+                    
+                    
+
+                    <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-4 col-lg-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Informações Empresariais: </h6>
-                                </div>
-
-                                <div class="card-body" style="height: 250px;">
-                                    <p class="nav-item active" style="height: 75px;">
-                                        <span style="color: black;">Membro da Empresa:</span><br>
-                                        <span id="n_empresa"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 20px; font-weight: bold;"></span>
-
-
-
-                                    </p>
-
-                                    <p class="nav-item active">
-                                        <span style="color: black;">CNPJ da Empresa:</span><br>
-                                        <span id="c_empresa"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 20px; font-weight: bold;"></span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
                         <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                            
+                            <div class="card shadow mb-4" style="margin-left: 5px; width: 543px; height: 500px;">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Informações Gerais:</h6>
-
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Memória RAM (%)</h6>
                                 </div>
-                                <div class="card-body" style="height: 250px;">
-
-                                    <p class="nav-item active">
-                                        <span style="color: black;">ID Colaborador:</span><span id="i_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p>
-
-                                    <p class="nav-item active">
-
-                                        <span style="color: black;">Nome:</span></a><span id="no_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p>
-
-                                    <p class="nav-item active">
-
-                                        <span style="color: black;">Email:</span></a><span id="e_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p>
-
-                                    <p class="nav-item active">
-
-                                        <span style="color: black;">Nivel de Acesso:</span></a><span id="ni_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p>
-
-                                    <p class="nav-item active">
-
-                                        <span style="color: black;">Celular:</span></a><span id="c_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p>
-
-                                    <!-- <p class="nav-item active">
-
-                                        <span style="color: black;">Senha:</span></a><span id="s_usuario"
-                                            style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                    </p> -->
-
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChartRAM" style="height: 100%; width:100%;"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <!-- DataTales Example -->
-
                     </div>
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4" style="height: 300px; width: 1135px;" >
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3" style="width: 1135px;">
-                                <h6 class="m-0 font-weight-bold text-primary-dash">Informações contratuais:</h6>
-
-                            </div>
-                            <div class="card-body" style="height: 450px; width: 900px;">
-
-                                <p class="nav-item active">
-                                    <span style="color: black;">Data de Início de Contrato:</span><span id="inicio_usuario"
-                                        style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                </p>
-
-                                <p class="nav-item active">
-
-                                    <span style="color: black;">Data de Fim de Contrato:</span></a><span id="fim_usuario"
-                                        style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                </p>
-
-                                <p class="nav-item active">
-
-                                    <span style="color: black;">Plano: </span></a><span id="plano_usuario"
-                                        style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                </p>
-
-                                <p class="nav-item active">
-
-                                    <span style="color: black;">Valor por Mês:</span></a><span id="valor_usuario"
-                                        style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                </p>
-
-
-                                <p class="nav-item active">
-
-                                    <span style="color: black;">Quantidade de Máquinas:</span></a><span id="maquinas_usuario"
-                                        style="text-transform: uppercase; color: #2e59d9; font-size: 15px; font-weight: bold; margin-left: 2%;"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- End of Main Content -->
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white" style="margin-top: 7%;">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; NOCLINE 2023</span>
+                <!-- Content Row -->
+                <div class="row">
+
+                    <!-- Content Column -->
+                    <div class="col-lg-6 mb-4">
+
+                        <!-- Project Card Example -->
+                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Visualização de Desempenho Completo
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <!--
+                                <h4 class="small font-weight-bold">Porcentagem de Perda de Pacotes<span class="float-right" id="perda_pacotes">10%</span></h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"
+                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="bar_perda_pacotes"></div>
+                                </div>-->
+                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Disco Rígido <span
+                                        class="float-right" id="disco_rigido">40%</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="bar_disco_rigido">
+                                    </div>
+                                </div>
+                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Memória RAM<span
+                                        class="float-right" id="uso_memoria_ram">80%</span></h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                        id="bar_uso_memoria_ram"></div>
+                                </div>
+                                <h4 class="small font-weight-bold"> Porcentagem de Uso de CPU <span class="float-right"
+                                        id="porcentagem_cpu">60%</span></h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                        id="bar_porcentagem_cpu"></div>
+                                </div>
+                            </div>
                         </div>
+
+
+                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Janelas Abertas</h6>
+                            </div>
+                            <div class="card-body" id="lista_janela">
+                                <!--  <h1 class="small font-weight-bold">XXX</h1>-->
+                            </div>
+                        </div>
+
+
                     </div>
-                </footer>
-                <!-- End of Footer -->
+
+                </div>
+
+            </div>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; NOCLINE 2023</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
 
 
-                <!-- End of Content Wrapper -->
+    </div>
 
 
-                <!-- End of Page Wrapper -->
 
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fas fa-angle-up"></i>
-                </a>
+    <!-- End of Main Content -->
 
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Footer -->
+
+
+    <!-- End of Footer -->
+
+
+    <!-- End of Content Wrapper -->
+
+
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -578,23 +597,74 @@
         </div>
     </div>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-                <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/datatables-demo.js"></script>
-                <script src="js/sessao.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-line-cpu.js"></script>
+    <script src="js/demo/chart-line-ram.js"></script>
+    <script src="js/demo/chart-line-rede.js"></script>
+    <script src="js/demo/janelas.js"></script>
+    <script src="js/demo/desempenho.js"></script>
+    <script src="js/sessao.js"></script>
 </body>
+
 </html>
+<script>
+    window.onload = async function () {
+        try {
+            await validarSessao();
+            exibirMaquinas();
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            await obterDadosCPU(idMaquina);
+            // await obterDadosDisco(idMaquina);
+            await obterDadosDesempenhoTemp(idMaquina);
+            await obterDadosJanela(idMaquina);
+            // await obterDadosRede(idMaquina);
+            await obterDadosRAM(idMaquina);
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    };
+
+    var seletor = document.getElementById("select_maquina");
+
+    seletor.addEventListener("change", function () {
+        mudarId()
+    });
+
+
+    async function mudarId() {
+        try {
+            limparCPU()
+            limparDisco()
+            limparRAM()
+            limparJanela()
+            limparDesempenho()
+            limparRede()
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            console.log(idMaquina)
+            await obterDadosCPU(idMaquina);
+            await obterDadosJanela(idMaquina);
+            await obterDadosRAM(idMaquina);
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    }
+
+
+</script>
