@@ -127,11 +127,12 @@ function obterDadosDesempenhoTemp(idMaquina) {
 function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
-        if (registro.recurso = "CPU") {
-            valores[0].innerHTML = (registro.uso) + "%";
-            valores_Bar[0].style.width = (registro.uso) + "%";
-            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
-        } if (registro.recurso = "RAM") {
+        // if (registro.recurso = "CPU") {
+        //     valores[0].innerHTML = (registro.uso) + "%";
+        //     valores_Bar[0].style.width = (registro.uso) + "%";
+        //     valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
+        // } 
+        if (registro.recurso = "RAM") {
             valores[1].innerHTML = (registro.uso) + "%";
             valores_Bar[1].style.width = (registro.uso) + "%";
             valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";

@@ -41,8 +41,8 @@
                 <div class="sidebar-brand-text mx-3"></div>
             </a>
 
-            <li class="nav-item active" style="height: 2%;">
-                <i style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px;">Código
+            <li class="nav-item active" style="height: 5%;">
+                <i style="color: white; margin-left: 15%; margin-top: 22%; font-weight: 800; font-size: 13px;">Código
                     Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
             </li>
 
@@ -389,57 +389,36 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard Temperatura da CPU
                             <select name="selMachine" id="select_maquina"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                style="margin-left: 0%;">
+                                style="margin-left: 186%;">
                             </select>
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-4 col-md-6 mb-4">
+                   <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
-                                                style=" margin-top: -6%;">
-                                                JANELAS ABERTAS</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
+                                                style=" margin-top: -6%; color: #170b2a;" >
+                                                TEMPERATURA</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
                                                 style=" margin-top: 2%;">X</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-file fa-2x text-gray-300"></i>
+                                            <i class="fas fa-thermometer fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- KPI USO DE RAM -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                RAM</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- KPI USO DE CPU -->
-                        <div class="col-xl-4 col-md-6 mb-4">
+<!-- KPI USO DE CPU -->
+                        <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">CPU
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style="color: #2510a3;">CPU
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -456,10 +435,75 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- KPI USO DE RAM -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="color: #338dff;">
+                                                RAM</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        
+
+                             <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-dark shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                            style="color:#87CEFA; margin-top: -6%;" >
+                                                JANELAS ABERTAS</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
+                                                style=" margin-top: 2%;">X</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
+
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <div class="card mb-3 py-3 border-bottom-primary">
+                            <div class="card-body" style="height: 6px;" >
+                                <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                style="color:	#4682B4; margin-top: -7%;">
+                                    DATA DO ÚLTIMO DESLIGAMENTO</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
+                                    >X</div>
+                            </div>
+                                                  
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="card mb-3 py-3 border-bottom-primary">
+                            <div class="card-body" style="height: 6px;" >
+                                <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                style="color:#87CEFA; margin-top: -7%;">
+                                    JANELAS ABERTAS</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
+                                    >X</div>
+                            </div>
+                                                  
+                        </div>
+                    </div>
+                </div>
+               
 
                     
                     
@@ -491,7 +535,7 @@
                     <div class="col-lg-6 mb-4">
 
                         <!-- Project Card Example -->
-                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
+                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px; display: none;">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary-dash">Visualização de Desempenho Completo
                                 </h6>
@@ -529,7 +573,7 @@
                         </div>
 
 
-                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
+                        <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px; display: none;">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary-dash">Janelas Abertas</h6>
                             </div>
@@ -630,13 +674,14 @@
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
+            await obterDadosRAM(idMaquina);
             await obterDadosCPU(idMaquina);
             await obterDadosTemp(idMaquina);
             // await obterDadosDisco(idMaquina);
             await obterDadosDesempenhoTemp(idMaquina);
             await obterDadosJanela(idMaquina);
             // await obterDadosRede(idMaquina);
-            await obterDadosRAM(idMaquina);
+            
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

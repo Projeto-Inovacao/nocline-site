@@ -10761,7 +10761,7 @@ button.bg-dark:hover {
 }
 
 .text-primary-dash {
-    color: #2e59d9!important;
+    color: #2e59d9;
     position: relative;
     left: 0vw;
     white-space: pre-line;
@@ -11256,11 +11256,11 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: .25rem solid #0711fa !important
+    border-left: .25rem solid #170b2a !important
 }
 
 .border-bottom-primary {
-    border-bottom: .25rem solid #4e73df !important
+    border-bottom: .25rem solid #4682B4!important
 }
 
 .border-left-secondary {
@@ -11280,7 +11280,7 @@ a:focus {
 }
 
 .border-left-info {
-    border-left: .25rem solid #042f75 !important
+    border-left: .25rem solid #2510a3 !important
 }
 
 .border-bottom-info {
@@ -11312,7 +11312,7 @@ a:focus {
 }
 
 .border-left-dark {
-    border-left: .25rem solid #5a5c69 !important
+    border-left: .25rem solid #87CEFA !important
 }
 
 .border-bottom-dark {
