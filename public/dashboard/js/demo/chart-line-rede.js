@@ -46,18 +46,20 @@ function plotarGraficoRede(resposta, idMaquina) {
       datasets: [{
           label: 'MegaBytes Enviados',
           data: [],
-          backgroundColor: ['#00FF7F'],
-          borderColor: ['#00FF7F'],
+          backgroundColor: [],
+          borderColor: [],
           tension: 0.1,
-          fill: false
+          fill: false,
+          pointRadius: 6
       },
       {
         label: 'MegaBytes Recebidos',
         data: [],
-        backgroundColor: ['#8A2BE2'],
-        borderColor: ['#8A2BE2'],
+        backgroundColor: [],
+        borderColor: [],
         tension: 0.1,
-        fill: false
+        fill: false,
+        pointRadius: 6
     },
   ]
   };
@@ -68,7 +70,7 @@ function plotarGraficoRede(resposta, idMaquina) {
   console.log(resposta)
 
   // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (i = 0; i < resposta.length; i++) {
+  for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
       var byte = [registro.enviados, registro.recebidos]
       dados.datasets[0].data.push(registro.enviados);
@@ -79,6 +81,23 @@ function plotarGraficoRede(resposta, idMaquina) {
       }
       if(registro.recebidos != null){
         KPI_BYTE_RECEBIDOS.innerHTML = registro.recebidos
+      }
+
+      // Definindo a cor com base nas condições
+      if (registro.enviados < 7.67) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+      } else if (registro.enviados <= 25.36) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
+      } else {
+        dados.datasets[0].backgroundColor.push('#FF0000');
+      }
+
+      if (registro.recebidos < 81.05) {
+        dados.datasets[1].backgroundColor.push('#00FF00');
+      } else if (registro.recebidos <= 176.45) {
+        dados.datasets[1].backgroundColor.push('#f6ff00');
+      } else {
+        dados.datasets[1].backgroundColor.push('#FF0000');
       }
   }
 
@@ -117,6 +136,7 @@ function plotarGraficoRede(resposta, idMaquina) {
 
   setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRede), 5000);
 }
+
 
 function atualizarGraficoRede(idMaquina, dados, chartRede) {
 

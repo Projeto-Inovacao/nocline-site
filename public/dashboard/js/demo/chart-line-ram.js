@@ -41,19 +41,21 @@ function plotarGraficoRAM(resposta, idMaquina) {
         datasets: [{
             label: 'Usada',
             data: [],
-            backgroundColor: ['#8A2BE2'],
-            borderColor: ['#8A2BE2'],
-            tension: 0.1,
-            fill: false
-        },
-        {
-            label: 'Livre',
-            data: [],
-            backgroundColor: ['#00FF7F'],
-            borderColor: ['#00FF7F'],
-            tension: 0.1,
-            fill: false
-        },
+            backgroundColor: [],
+            borderColor: [],
+            tension: 0.3,
+            fill: false, 
+            pointRadius: 6
+        }
+        // ,
+        // {
+        //     label: 'Livre',
+        //     data: [],
+        //     backgroundColor: ['#00FF7F'],
+        //     borderColor: ['#00FF7F'],
+        //     tension: 0.1,
+        //     fill: false
+        // },
         ]
     };
 
@@ -66,8 +68,20 @@ function plotarGraficoRAM(resposta, idMaquina) {
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         dados.datasets[0].data.push(registro.usado);
-        dados.datasets[1].data.push(registro.livre);
+        // dados.datasets[1].data.push(registro.livre);
         labels.push(registro.data_hora);
+
+         // Definindo a cor com base nas condições
+      if (registro.usado <= 80) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+        dados.datasets[0].borderColor.push('#00FF00');
+      } else if (registro.usado <= 90) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
+        dados.datasets[0].borderColor.push('#f6ff00');
+      } else {
+        dados.datasets[0].backgroundColor.push('#FF0000');
+        dados.datasets[0].borderColor.push('#FF0000');
+      }
     }
 
     console.log('----------------------------------------------')
@@ -123,8 +137,8 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
                     dados.datasets[0].data.shift();  // apagar o primeira medida
                     dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
 
-                    dados.datasets[1].data.shift();  // apagar o primeira medida
-                    dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
+                    // dados.datasets[1].data.shift();  // apagar o primeira medida
+                    // dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
 
                     chartRAM.update();
                 }

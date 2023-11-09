@@ -42,14 +42,14 @@ function plotarGraficoDisco(resposta, idMaquina) {
   let dados = {
     labels: labels,
     datasets: [{
-      label: 'Livre',
+      label: 'Usado',
       data: [],
-      backgroundColor: ['#00FF7F', '#8A2BE2'],
-      borderColor: ['#00FF7F','#8A2BE2'],
+      backgroundColor: [],
+      borderColor: [],
       tension: 0.1
     },
     {
-      label: 'Usado',
+      label: 'Livre',
       data: []
     }]
   };
@@ -61,8 +61,21 @@ function plotarGraficoDisco(resposta, idMaquina) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
-    dados.datasets[0].data.push(registro.livre);
     dados.datasets[0].data.push(registro.usado);
+    dados.datasets[0].data.push(registro.livre);
+
+
+     // Definindo a cor com base nas condições
+     if (registro.livre <= 50.93) {
+      dados.datasets[0].backgroundColor.push('#00FF00');
+      dados.datasets[0].borderColor.push('#00FF00');
+    } else if (registro.livre <= 50.96) {
+      dados.datasets[0].backgroundColor.push('#f6ff00');
+      dados.datasets[0].borderColor.push('#f6ff00');
+    } else {
+      dados.datasets[0].backgroundColor.push('#FF0000');
+      dados.datasets[0].borderColor.push('#FF0000');
+    }
   }
 
   console.log('----------------------------------------------')
@@ -106,6 +119,8 @@ function plotarGraficoDisco(resposta, idMaquina) {
 
   setTimeout(() => atualizarGraficoDisco(idMaquina, dados, chartDisco), 5000);
 }
+
+
 function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
 
   fetch(`/medidas/tempo-realDisco/${idMaquina}`, { cache: 'no-store' }).then(function (response) {

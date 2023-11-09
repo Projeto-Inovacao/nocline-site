@@ -33,69 +33,72 @@ function obterDadosCPU(idMaquina) {
 
 function plotarGraficoCPU(resposta, idMaquina) {
 
-  console.log('iniciando plotagem do gráfico...');
-
-  // Criando estrutura para plotar gráfico - labels
-  let labels = [];
-
-  // Criando estrutura para plotar gráfico - dados
-  let dados = {
-      labels: labels,
-      datasets: [{
-          label: 'Usada',
-          data: [],
-          backgroundColor: ['#808080'],
-          borderColor: ['#808080 '],
-          tension: 0.3,
-          fill: false, 
-          pointRadius: 6
-      }]
-  };
-
-  console.log('----------------------------------------------')
-  console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-  console.log(resposta)
-  // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (i = 0; i < resposta.length; i++) {
-    var registro = resposta[i];
-    dados.datasets[0].data.push(registro.dado_coletado);
-    labels.push(registro.data_hora);
-
-    // Definindo a cor com base nas condições
-    if (registro.dado_coletado <= 1.4) {
-      dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.dado_coletado <= 4.04) {
-      dados.datasets[0].backgroundColor.push('#f6ff00');
-    } else if (registro.dado_coletado > 4.05) {
-      dados.datasets[0].backgroundColor.push('red');
-    } else {
-      dados.datasets[0].backgroundColor.push('#8A2BE2'); // Cor padrão
+    console.log('iniciando plotagem do gráfico...');
+  
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+  
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Usada',
+            data: [],
+            backgroundColor: [],
+            borderColor: [],
+            tension: 0.3,
+            fill: false, 
+            pointRadius: 6
+        }]
+    };
+  
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = resposta.length - 1; i >= 0; i--) {
+      var registro = resposta[i];
+      dados.datasets[0].data.push(registro.dado_coletado);
+      labels.push(registro.data_hora);
+  
+      // Definindo a cor com base nas condições
+      if (registro.dado_coletado <= 30) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+        dados.datasets[0].borderColor.push('#00FF00');
+      } else if (registro.dado_coletado <= 60) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
+        dados.datasets[0].borderColor.push('#f6ff00');
+      } else {
+        dados.datasets[0].backgroundColor.push('#FF0000');
+        dados.datasets[0].borderColor.push('#FF0000');
+      }
     }
+  
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+  
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: 'line',
+      data: dados,
+      fill: false,
+    }
+  
+    // Adicionando gráfico criado em div na tela
+    let chartCPU = new Chart(
+      document.getElementById(`myAreaChartCPU`),
+      config
+    );
+  
+    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
   }
-
-  console.log('----------------------------------------------')
-  console.log('O gráfico será plotado com os respectivos valores:')
-  console.log('Labels:')
-  console.log(labels)
-  console.log('Dados:')
-  console.log(dados.datasets)
-  console.log('----------------------------------------------')
-
-  // Criando estrutura para plotar gráfico - config
-  const config = {
-    type: 'line',
-    data: dados,
-    fill: false,
-  }
-
-  // Adicionando gráfico criado em div na tela
-  let chartCPU = new Chart(
-    document.getElementById(`myAreaChartCPU`),
-    config
-  );
-
-  setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
-}
+  
+  
 
 function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
 

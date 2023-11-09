@@ -426,7 +426,10 @@
                                                 style=" margin-top: -6%;">
                                                 Disco</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="disco_kpi"
-                                                style=" margin-top: 2%;">X%</div>
+                                                style=" margin-top: 2%;">X%</div> 
+                                                <span class="mr-2">
+                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                </span>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hdd fa-2x text-gray-300"></i>
@@ -885,6 +888,22 @@
             console.error("Erro no carregamento da página: " + error.message);
         }
     }
+
+    function metricas() {
+  const discoKpi = document.getElementById('disco_kpi');
+  const metricaDisco = document.getElementById('metrica_disco');
+
+  const discoKpiValue = parseInt(discoKpi.textContent);
+  if (discoKpiValue < 50) {
+    metricaDisco.style.color = 'red';
+  } else if (discoKpiValue < 75) {
+    metricaDisco.style.color = 'yellow';
+  } else {
+    metricaDisco.style.color = 'green';
+  }
+}
+
+window.addEventListener('load', metricas);
 
 
 </script>
