@@ -495,7 +495,7 @@
                             <div class="card-body" style="height: 6px;" >
                                 <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                 style="color:#87CEFA; margin-top: -7%;">
-                                    JANELAS ABERTAS</div>
+                                    ESCOLHER KPI</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
                                     >X</div>
                             </div>
@@ -511,9 +511,9 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-6 col-lg-7">
                             
-                            <div class="card shadow mb-4" style="margin-left: 5px; width: 543px; height: 500px;">
+                            <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Temperatura (°C)</h6>
                                 </div>
@@ -522,12 +522,75 @@
                                         <canvas id="myAreaChartTemp" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
+                                <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                        Risco
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    <div class="card shadow mb-4" style="width: 570px;">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable"  cellspacing="0">
+                                    <thead id="tabela_titulo_maquina">
+                                        <tr>
+                                            <th>Código da Máquina</th>
+                                            <th>Hostname</th>
+                                            <th>Temperatura</th>
+                                            <th>CPU</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela_maquinas">
+                                        <tr>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
 
                 </div>
+</div>
 
+
+
+        <div class="row">
+            <div class="card shadow mb-4" style="width: 1145px; margin-left: 26px;">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary-dash">Previsões de Temperatura</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Temperatura Atual</th>
+                                    <th>Probabilidade Positiva</th>
+                                    <th>Probabilidade Negativa</th>
+                              
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_funcionarios">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
                 <!-- Content Row -->
                 <div class="row">
 
