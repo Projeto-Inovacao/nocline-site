@@ -426,7 +426,7 @@
                                                 style=" margin-top: -6%;">
                                                 Disco</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="disco_kpi"
-                                                style=" margin-top: 2%;">X%</div> 
+                                                style=" margin-top: 2%;" > X%</div> 
                                                 <span class="mr-2">
                                                     <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
                                                 </span>
@@ -449,6 +449,9 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 RAM</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" id="metrica_ram"  style="border-radius: 300px;" onload="metricas()"></i>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-memory fa-2x text-gray-300"></i>
@@ -470,7 +473,10 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                        id="uso_cpu_kpi">X</div>
+                                                        id="uso_cpu_kpi">X%</div>
+                                                        <span class="mr-2">
+                                                            <i class="fas fa-circle" id="metrica_cpu"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                        </span>
                                                 </div>
 
                                             </div>
@@ -494,6 +500,9 @@
                                                 JANELAS ABERTAS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
                                                 style=" margin-top: 2%;">X</div>
+                                                <!-- <span class="mr-2">
+                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                </span> -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -514,6 +523,9 @@
                                                 MegaBytes Enviados</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
                                                 X</div>
+                                                <!-- <span class="mr-2">
+                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                </span> -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-file-upload fa-2x text-gray-300"></i>
@@ -538,6 +550,9 @@
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                                                         id="bytes_recebidos_kpi">X</div>
+                                                        <!-- <span class="mr-2">
+                                                            <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                        </span> -->
                                                 </div>
 
                                             </div>
@@ -699,7 +714,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                 </div>
@@ -889,21 +904,23 @@
         }
     }
 
-    function metricas() {
-  const discoKpi = document.getElementById('disco_kpi');
-  const metricaDisco = document.getElementById('metrica_disco');
+//     function metricas() {
+//     var discoKpi = parseFloat(document.getElementById('disco_kpi').innerText.trim());
+//     var metricaDisco = document.getElementById('metrica_disco');
 
-  const discoKpiValue = parseInt(discoKpi.textContent);
-  if (discoKpiValue < 50) {
-    metricaDisco.style.color = 'red';
-  } else if (discoKpiValue < 75) {
-    metricaDisco.style.color = 'yellow';
-  } else {
-    metricaDisco.style.color = 'green';
-  }
-}
+//     if (discoKpi < 50) {
+//         metricaDisco.style.color = 'green';
+//     } else if (discoKpi >= 50 && discoKpi < 80) {
+//         metricaDisco.style.color = 'yellow';
+//     } else {
+//         metricaDisco.style.color = 'red';
+//     }
+// }
 
-window.addEventListener('load', metricas);
+
+
+
+// window.addEventListener('load', metricas);
 
 
 </script>
