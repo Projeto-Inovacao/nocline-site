@@ -45,7 +45,7 @@ function plotarGraficoCPU(resposta, idMaquina) {
             label: 'Usada',
             data: [],
             backgroundColor: [],
-            borderColor: [],
+            borderColor: ['#393d42'],
             tension: 0.3,
             fill: false, 
             pointRadius: 6
@@ -64,13 +64,13 @@ function plotarGraficoCPU(resposta, idMaquina) {
       // Definindo a cor com base nas condições
       if (registro.dado_coletado <= 15) {
         dados.datasets[0].backgroundColor.push('#00FF00');
-        dados.datasets[0].borderColor.push('#00FF00');
+        // dados.datasets[0].borderColor.push('#00FF00');
       } else if (registro.dado_coletado <= 30) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
-        dados.datasets[0].borderColor.push('#f6ff00');
+        // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
         dados.datasets[0].backgroundColor.push('#FF0000');
-        dados.datasets[0].borderColor.push('#FF0000');
+        // dados.datasets[0].borderColor.push('#FF0000');
       }
     }
   
