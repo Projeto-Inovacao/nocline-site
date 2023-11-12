@@ -64,7 +64,29 @@ function buscarMaquinasPorEmpresa(id) {
   return database.executar(instrucao);
 }
 
-module.exports = { 
+
+function listarMaqTemp(idEmpresa, idMaquina) {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+  var instrucao = `SELECT 
+  maquina.id_maquina, 
+  maquina.hostname,
+  monitoramento.dado_coletado 
+FROM 
+  maquina 
+JOIN 
+  monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+WHERE 
+  maquina.fk_empresaM = ${idEmpresa}
+  AND maquina.id_maquina = ${idMaquina}
+  AND monitoramento.descricao = 'temperatura'
+  order by data_hora desc limit 5;
+
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+module.exports = {
   buscarPorCnpj,
   buscarPorId,
   cadastrar,
@@ -73,5 +95,6 @@ module.exports = {
   listarFuncionarioPorId,
   listarMaquinas,
   listarMaquinasPorId,
-  buscarMaquinasPorEmpresa
+  buscarMaquinasPorEmpresa,
+  listarMaqTemp
 };

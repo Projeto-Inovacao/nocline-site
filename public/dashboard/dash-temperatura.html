@@ -550,10 +550,10 @@
                                             <th>Código da Máquina</th>
                                             <th>Hostname</th>
                                             <th>Temperatura</th>
-                                            <th>CPU</th>
+                                            
                                         </tr>
                                     </thead>
-                                    <tbody id="tabela_maquinas">
+                                    <tbody id="tabela_maquinas_temp">
                                         <tr>
                                         </tr>
 
@@ -584,8 +584,8 @@
                               
                                 </tr>
                             </thead>
-                            <tbody id="tabela_funcionarios">
-                            </tbody>
+                            <!-- <tbody id="tabela_maquinas_temp">
+                            </tbody> -->
                         </table>
                     </div>
                 </div>
@@ -735,6 +735,11 @@
     <script src="js/demo/janelas.js"></script>
     <script src="js/demo/desempenho.js"></script>
     <script src="js/sessao.js"></script>
+
+
+
+    <script src="js/tabelas/maqTemp.js"></script>
+  
 </body>
 
 </html>
@@ -748,10 +753,8 @@
             await obterDadosRAM(idMaquina);
             await obterDadosCPU(idMaquina);
             await obterDadosTemp(idMaquina);
-            // await obterDadosDisco(idMaquina);
+            await atualizarFeed(idMaquina)
             await obterDadosDesempenhoTemp(idMaquina);
-            await obterDadosJanela(idMaquina);
-            // await obterDadosRede(idMaquina);
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
