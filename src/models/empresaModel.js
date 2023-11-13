@@ -78,7 +78,7 @@ JOIN
 WHERE 
   maquina.fk_empresaM = ${idEmpresa}
   AND maquina.id_maquina = ${idMaquina}
-  AND monitoramento.descricao = 'temperatura'
+  AND monitoramento.descricao = 'temperatura cpu'
   order by data_hora desc limit 5;
 
   `;
