@@ -536,8 +536,35 @@
                                 </div>
                             </div>
                         </div>
-                    
 
+
+                        <div class="col-xl-6 col-lg-7">
+                            
+                            <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary-dash"> CPU usada (%)</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChartTempXCpu" style="height: 100%; width:100%;"></canvas>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                        Risco
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    
+<!-- 
                     <div class="card shadow mb-4" style="width: 570px;">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros</h6>
@@ -561,15 +588,46 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 </div>
 
 
 
+
+
         <div class="row">
-            <div class="card shadow mb-4" style="width: 1145px; margin-left: 26px;">
+
+            <div class="card shadow mb-4" style="width: 570px; margin-left: 26px;">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable"  cellspacing="0">
+                            <thead id="tabela_titulo_maquina">
+                                <tr>
+                                    <th>Código da Máquina</th>
+                                    <th>Hostname</th>
+                                    <th>Temperatura</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_maquinas_temp">
+                                <tr>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="card shadow mb-4" style="width: 570px; margin-left: 8px;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary-dash">Previsões de Temperatura</h6>
                 </div>
@@ -730,6 +788,7 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-line-cpu.js"></script>
     <script src="js/demo/chart-line-temp.js"></script>
+    <script src="js/demo/chart-line-cpu-temp.js"></script>
     <script src="js/demo/chart-line-ram.js"></script>
     <script src="js/demo/chart-line-rede.js"></script>
     <script src="js/demo/janelas.js"></script>
@@ -753,8 +812,10 @@
             await obterDadosRAM(idMaquina);
             await obterDadosCPU(idMaquina);
             await obterDadosTemp(idMaquina);
-            await atualizarFeed(idMaquina)
+            await obterDadosJanela (idMaquina);
+            await atualizarFeed(idMaquina);
             await obterDadosDesempenhoTemp(idMaquina);
+            await obterDadosTempXCPU(idMaquina);
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
