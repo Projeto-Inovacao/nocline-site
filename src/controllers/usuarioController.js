@@ -258,6 +258,32 @@ function cadastrarColaborador(req, res) {
     }
 }
 
+function cadastrarLinha(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller maqqqq")
+
+    var codEmpresa = req.body.codEmpServer;
+    var nome = req.body.nomeLinhaServer;
+    var numero = req.body.numeroLinhaServer;
+
+    // Faça as validações dos valores
+    if (codEmpresa == undefined) {
+        res.status(400).send("Seu codigo está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Seu numero está undefined!");
+    }
+    else {
+        usuarioModel.cadastrarLinha(codEmpresa, nome, numero)
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o cadastro de Linhas! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 function cadastrarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller maqqqq")
@@ -491,6 +517,7 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarEndereco,
     cadastrarColaborador,
+    cadastrarLinha,
     cadastrarMaquina,
     alterarMaquina,
     excluirMaquina,

@@ -24,6 +24,10 @@ router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 })
 
+router.post("/cadastrarLinha", function (req, res) {
+    usuarioController.cadastrarLinha(req, res);
+})
+
 router.post("/alterarMaquina", function (req, res) {
     usuarioController.alterarMaquina(req, res);
 });

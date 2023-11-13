@@ -47,7 +47,7 @@
                                     <input type="name" class="form-control form-control-user" id="input_cod_empresa"
                                         placeholder="Código da Empresa" readonly="true">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <h8 style="font-size: 15px; margin-left: 16px;">Setor</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
                                         <input id="input_setor1" type="radio" name="opcao" value="CCO">
@@ -55,20 +55,20 @@
                                         <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao"
                                             value="SSO">
                                         <h8 style="font-size: 13px;">SSO</h8>
-                                    </div>
+                                    </div> -->
 
-                                </div>
+                                <!-- </div> -->
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_maquina_ip"
-                                        placeholder="IP da máquina">
-                                    <span style="font-size: 12px; margin-left: 12px;">Qual IP da minha máquina? Acesse
-                                        http://www.meuip.com/</span>
+                                    <input type="name" class="form-control form-control-user" id="input_nome_linha"
+                                        placeholder="Nome da Linha">
+                                    <!-- <span style="font-size: 12px; margin-left: 12px;">Qual IP da minha máquina? Acesse
+                                        http://www.meuip.com/</span> -->
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user"
-                                        id="input_maquina_hostname" placeholder="Hostname">
+                                        id="input_numero_linha" placeholder="Numero da Linha">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <h8 style="font-size: 15px; margin-left: 16px;">Sistema Operacional</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
                                         <input id="input_so1" type="radio" name="opcao" value="Linux">
@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_maquina_modelo"
                                         placeholder="Modelo">
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-group" >
                                     <h8 style="font-size: 15px; margin-left: 16px;">Escolha os componentes que você deseja monitorar:</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
@@ -97,7 +97,7 @@
                               
                                 </div> -->
 
-                                <a class="btn btn-primary btn-user btn-block" onclick="cadastrarMaquina()">
+                                <a class="btn btn-primary btn-user btn-block" onclick="cadastrarLinha()">
                                     Confirmar Cadastro de Nova Máquina
                                 </a>
 
@@ -133,24 +133,16 @@
 
     input_cod_empresa.value = sessionStorage.ID_EMPRESA
 
-    function cadastrarMaquina() {
+    function cadastrarLinha() {
 
         var codEmpresaMVar = input_cod_empresa.value;
-        var maquinaModeloMVar = input_maquina_modelo.value;
-        var maquinaIPMVar = input_maquina_ip.value;
-        var maquinaHostnameVar = input_maquina_hostname.value;
-        var setorMVar = "CCO"
-        if (input_setor2.checked) {
-            setorMVar = "SSO"
-        }
-        var soMVar = "Linux"
-        if (input_so2.checked) {
-            soMVar = "Windows"
-        }
+        var nomeLinhaVar = input_nome_linha.value;
+        var numeroLinhaVar = input_numero_linha.value;
+        
 
 
 
-        fetch("/usuarios/cadastrarMaquina", {
+        fetch("/usuarios/cadastrarLinha", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -159,11 +151,9 @@
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
                 codEmpServer: codEmpresaMVar,
-                maquinaModeloServer: maquinaModeloMVar,
-                maquinaIPServer: maquinaIPMVar,
-                maquinaHostnameServer: maquinaHostnameVar,
-                setorMServer: setorMVar,
-                soMServer: soMVar
+                nomeLinhaServer: nomeLinhaVar,
+                numeroLinhaServer: numeroLinhaVar,
+                
             })
         }).then(function (resposta) {
 
@@ -173,18 +163,18 @@
 
                 resposta.json().then(json => {
                     console.log(JSON.stringify(json));
-                    sessionStorage.MAQUINAS = JSON.stringify(json.maquina)
+                    sessionStorage.Linhas = JSON.stringify(json.linha)
                 });
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Cadastro de uma nova maquina realizado com sucesso!',
+                    title: 'Cadastro de uma nova linha realizado com sucesso!',
                     showConfirmButton: false,
                     timer: 2000
                 })
 
                 setTimeout(() => {
-                    window.location = "tables-machines.html";
+                    window.location = "tables-linhas.html";
                 }, "2000")
 
             } else {

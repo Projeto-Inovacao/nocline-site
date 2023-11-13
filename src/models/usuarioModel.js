@@ -68,6 +68,18 @@ function cadastrarColaborador1(nome,cpf, email, senha, celular, codigo, setor) {
 
 }
 
+function cadastrarLinha(codEmpresa,nome, numero) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarLinha():", codEmpresa,nome, numero);
+
+    var instrucao = `
+        INSERT INTO linha (nome, numero,fk_empresa, fk_nivel_acesso) VALUES ( '${nome}', '${numero}', 1, (select id_empresa from empresa where id_empresa = '${codigo}'), (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'));
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+
+}
+
 function cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname) {
 
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEndereco():",     //  e na ordem de inserção dos dados.
@@ -145,6 +157,7 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarEndereco,
     cadastrarColaborador,
+    cadastrarLinha,
     cadastrarMaquina, 
     excluirMaquina,
     alterarMaquina,
