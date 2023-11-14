@@ -80,7 +80,6 @@
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
                         <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="">miguel</a>
                         <a class="collapse-item" href="">rita</a>
                         <a class="collapse-item" href="">marcos</a>
                     </div>
@@ -89,12 +88,31 @@
 
             <hr class="sidebar-divider my-0">
 
-            <!-- Divider -->
+            <!-- Nav Item - Dashboard -->
 
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Interface
-            </div> -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesJanela"
+                    aria-expanded="true" aria-controls="collapsePagesJanela">
+                    <img id="icons" src="img/windows-close.png">
+                    <span style="color: white;"><b>Janelas</b></span>
+                </a>
+                <div id="collapsePagesJanela" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Você pode visualizar:</h6>
+                        <a class="collapse-item" href="" id="cadastro_colab">Cadastrar
+                            Janelas</a>
+                        <a class="collapse-item" href="tables-janelas.html">Visualizar Janelas</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+            <!-- Divider -->
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -116,13 +134,10 @@
             </li>
 
             <hr class="sidebar-divider my-0">
-            <!-- Divider -->
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-
                     <img id="icons" src="img/icon-maquina.png">
                     <span style="color: white;"><b>Máquinas</b></span>
                 </a>
@@ -143,11 +158,11 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
                     aria-expanded="true" aria-controls="collapsePages">
-
                     <img id="icons" src="img/icon-linhas.png">
                     <span style="color: white;"><b>Linhas</b></span>
                 </a>
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
                         <a class="collapse-item" href="register-linhas.html" id="cadastro_maq">Cadastrar Linhas</a>
@@ -158,7 +173,7 @@
             </li>
 
             <hr class="sidebar-divider my-0">
-            
+
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="chat.html">
@@ -431,10 +446,11 @@
                                                 style=" margin-top: -6%;">
                                                 Disco</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="disco_kpi"
-                                                style=" margin-top: 2%;" > X%</div> 
-                                                <span class="mr-2">
-                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                </span>
+                                                style=" margin-top: 2%;"> X%</div>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" id="metrica_disco"
+                                                    style="border-radius: 300px;" onload="metricas()"></i>
+                                            </span>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hdd fa-2x text-gray-300"></i>
@@ -455,7 +471,8 @@
                                                 RAM</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
                                             <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_ram"  style="border-radius: 300px;" onload="metricas()"></i>
+                                                <i class="fas fa-circle" id="metrica_ram" style="border-radius: 300px;"
+                                                    onload="metricas()"></i>
                                             </span>
                                         </div>
                                         <div class="col-auto">
@@ -479,9 +496,10 @@
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                                                         id="uso_cpu_kpi">X%</div>
-                                                        <span class="mr-2">
-                                                            <i class="fas fa-circle" id="metrica_cpu"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                        </span>
+                                                    <span class="mr-2">
+                                                        <i class="fas fa-circle" id="metrica_cpu"
+                                                            style="border-radius: 300px;" onload="metricas()"></i>
+                                                    </span>
                                                 </div>
 
                                             </div>
@@ -505,7 +523,7 @@
                                                 JANELAS ABERTAS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
                                                 style=" margin-top: 2%;">X</div>
-                                                <!-- <span class="mr-2">
+                                            <!-- <span class="mr-2">
                                                     <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
                                                 </span> -->
                                         </div>
@@ -528,7 +546,7 @@
                                                 MegaBytes Enviados</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
                                                 X</div>
-                                                <!-- <span class="mr-2">
+                                            <!-- <span class="mr-2">
                                                     <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
                                                 </span> -->
                                         </div>
@@ -555,7 +573,7 @@
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                                                         id="bytes_recebidos_kpi">X</div>
-                                                        <!-- <span class="mr-2">
+                                                    <!-- <span class="mr-2">
                                                             <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
                                                         </span> -->
                                                 </div>
@@ -608,14 +626,14 @@
                                     </span> -->
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body"  style=" padding: 0.5rem;">
+                                <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
                                         <canvas id="myAreaChartRede" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
                                     <span class="mr-2">
-                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
@@ -632,14 +650,14 @@
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash"> CPU (%)</h6>
                                 </div>
-                                <div class="card-body"  style=" padding: 0.5rem;">
+                                <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
                                         <canvas id="myAreaChartCPU" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
                                     <span class="mr-2">
-                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
@@ -650,7 +668,7 @@
                                     </span>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <!-- Pie Chart -->
@@ -674,7 +692,7 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </div>
-                            
+
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body" style="height: 360px; padding: 0.6rem; ">
@@ -682,33 +700,34 @@
                                         <canvas id="myPieChart" class="graphPie"
                                             style="height: 100%; width:100%;"></canvas>
                                     </div>
- </div>
-                                    <div class="mt-4 text-center small" style="height: 40px; margin-top: 10%;">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
-                                            Risco
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
-                                        </span>
-                                    </div>
-                               
+                                </div>
+                                <div class="mt-4 text-center small" style="height: 40px; margin-top: 10%;">
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                        Risco
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="card shadow mb-4" style="margin-left: -165px; width: 543px; height: 500px; margin-top: 6%;">
+                            <div class="card shadow mb-4"
+                                style="margin-left: -165px; width: 543px; height: 500px; margin-top: 6%;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Memória RAM (%)</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
-                                    <div class="chart-area" >
+                                    <div class="chart-area">
                                         <canvas id="myAreaChartRAM" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
                                     <span class="mr-2">
-                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável 
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
@@ -719,7 +738,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
 
                 </div>
@@ -909,23 +928,23 @@
         }
     }
 
-//     function metricas() {
-//     var discoKpi = parseFloat(document.getElementById('disco_kpi').innerText.trim());
-//     var metricaDisco = document.getElementById('metrica_disco');
+    //     function metricas() {
+    //     var discoKpi = parseFloat(document.getElementById('disco_kpi').innerText.trim());
+    //     var metricaDisco = document.getElementById('metrica_disco');
 
-//     if (discoKpi < 50) {
-//         metricaDisco.style.color = 'green';
-//     } else if (discoKpi >= 50 && discoKpi < 80) {
-//         metricaDisco.style.color = 'yellow';
-//     } else {
-//         metricaDisco.style.color = 'red';
-//     }
-// }
-
-
+    //     if (discoKpi < 50) {
+    //         metricaDisco.style.color = 'green';
+    //     } else if (discoKpi >= 50 && discoKpi < 80) {
+    //         metricaDisco.style.color = 'yellow';
+    //     } else {
+    //         metricaDisco.style.color = 'red';
+    //     }
+    // }
 
 
-// window.addEventListener('load', metricas);
+
+
+    // window.addEventListener('load', metricas);
 
 
 </script>
