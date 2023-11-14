@@ -625,23 +625,43 @@
 
             <div class="card shadow mb-4" style="width: 570px; margin-left: 26px;">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros</h6>
+                    <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros de Temperatura</h6>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body" >
+                    <div class="table-responsive" style="width: 400px;">
                         <table class="table table-bordered" id="dataTable"  cellspacing="0">
                             <thead id="tabela_titulo_maquina">
                                 <tr>
-                                    <th>Código da Máquina</th>
-                                    <th>Hostname</th>
-                                    <th>Temperatura</th>
-                                    
+                                    <th >Máquina</th>
+                                    <th >Horário</th>
+                                    <th >Temperatura</th>
+                                    <!-- <th id="cpu_coluna">CPU</th> -->
+                                  
                                 </tr>
                             </thead>
-                            <tbody id="tabela_maquinas_temp">
+                            <tbody id="tabela_maquinas_temp" style="font-size: 15px;">
                                 <tr>
                                 </tr>
-
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" style="width: 90px; margin-top: -352px; margin-left: 400px; height: 350px;">
+                        <table class="table table-bordered" id="dataTable"  cellspacing="0">
+                            <thead id="tabela_titulo_maquina">
+                                <tr>
+                                    <th>CPU</th>
+                                
+                                    <!-- <th id="cpu_coluna">CPU</th> -->
+                                  
+                                </tr>
+                            </thead>
+                            <tbody id="cpu_coluna" >
+                                <tr >
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -663,7 +683,7 @@
                                     <th>Temperatura Atual</th>
                                     <th>Probabilidade Positiva</th>
                                     <th>Probabilidade Negativa</th>
-                              
+    
                                 </tr>
                             </thead>
                             <!-- <tbody id="tabela_maquinas_temp">
@@ -822,6 +842,7 @@
 
 
     <script src="js/tabelas/maqTemp.js"></script>
+    <script src="js/tabelas/maqCPU.js"></script>
   
 </body>
 
@@ -840,6 +861,7 @@
             await atualizarFeed(idMaquina);
             await obterDadosDesempenhoTemp(idMaquina);
             await obterDadosTempXCPU(idMaquina);
+            await atualizarFeedCPU(idMaquina);
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);

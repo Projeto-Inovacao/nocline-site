@@ -69,7 +69,7 @@ function listarMaqTemp(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
   var instrucao = `SELECT 
   maquina.id_maquina, 
-  maquina.hostname,
+  DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
   monitoramento.dado_coletado 
 FROM 
   maquina 
@@ -79,7 +79,19 @@ WHERE
   maquina.fk_empresaM = ${idEmpresa}
   AND maquina.id_maquina = ${idMaquina}
   AND monitoramento.descricao = 'temperatura cpu'
-  order by data_hora desc limit 5;
+ORDER BY 
+  monitoramento.data_hora DESC 
+LIMIT 5;
+
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function listarMaqCPU(idEmpresa, idMaquina) {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+  var instrucao = `select dado_coletado from VW_CPU_KOTLIN_CHART where id_maquina = ${idMaquina} and id_empresa = ${idEmpresa} order by data_hora desc limit 5;
+
 
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
@@ -96,5 +108,6 @@ module.exports = {
   listarMaquinas,
   listarMaquinasPorId,
   buscarMaquinasPorEmpresa,
-  listarMaqTemp
+  listarMaqTemp, 
+  listarMaqCPU
 };

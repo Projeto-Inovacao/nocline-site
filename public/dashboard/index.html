@@ -882,7 +882,7 @@
 
 </html>
 <script>
-    window.onload = async function () {
+    window.onload = async function carregarDados() {
         try {
             await validarSessao();
             exibirMaquinas();
@@ -914,15 +914,7 @@
             limparJanela()
             limparDesempenho()
             limparRede()
-            var elemento_maquina = document.getElementById("select_maquina");
-            var idMaquina = elemento_maquina.value;
-            console.log(idMaquina)
-            await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
-            await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
-            await obterDadosRAM(idMaquina);
+            carregarDados()
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
