@@ -32,6 +32,12 @@ router.get("/listarMaquinasPorId/:idEmpresa/:idMaquina", function (req, res) {
   empresaController.listarMaquinasPorId(req, res);
 });
 
+
+router.get("/listarLinhasPorId/:idEmpresa/:idLinha", function (req, res) {
+  empresaController.listarLinhasPorId(req, res);
+});
+
+
 router.get("/listarMaqTemp/:idEmpresa/:idMaquina", function (req, res) {
   empresaController.listarMaqTemp(req, res);
 });
@@ -39,6 +45,7 @@ router.get("/listarMaqTemp/:idEmpresa/:idMaquina", function (req, res) {
 router.get("/listarMaqCPU/:idEmpresa/:idMaquina", function (req, res) {
   empresaController.listarMaqCPU(req, res);
 });
+
 
 
 router.get("/listarFuncionario/:idEmpresa", function (req, res) {
