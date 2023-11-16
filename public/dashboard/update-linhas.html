@@ -35,7 +35,7 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-machines-image">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-linhas-image">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
@@ -52,12 +52,12 @@
                                         placeholder="Código da Linha" oninput="pesquisarLinha()">
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control form-control-user" id="input_nome_linha
-                                        placeholder="IP da máquina">
+                                    <input type="name" class="form-control form-control-user" id="input_nome_linha"
+                                        placeholder="Nome da linha">
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control form-control-user" id="input_numero_linha"
-                                        placeholder="Hostname da máquina">
+                                        placeholder="Numero da linha">
                                 </div>
 
                                 <!--
@@ -121,7 +121,7 @@
         idLinha = input_idLinha.value
 
         console.log("teste")
-        fetch(`/empresas/listarLinhaPorId/${idEmpresa}/${idLinha}`).then(function (resposta) {
+        fetch(`/empresas/listarLinhasPorId/${idEmpresa}/${idLinha}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     input_nome_linha.value = "";
@@ -151,7 +151,7 @@
     function alterarLinha() {
 
         var idLinha = input_idLinha.value;
-        var codEmpresaMVar = input_cod_empresa.value;
+        var codEmpresaMVar = input_cdEmp.value;
         var nomeLinhaVar = input_nome_linha.value;
         var numeroLinhaVar = input_numero_linha.value;
 
@@ -178,11 +178,6 @@
 
             if (resposta.ok) {
 
-                resposta.json().then(json => {
-                    console.log(JSON.stringify(json));
-                    sessionStorage.Linhas = JSON.stringify(json.linha)
-                });
-
                 Swal.fire({
                     icon: 'success',
                     title: 'Alterações da Linha realizado com sucesso!',
@@ -191,7 +186,7 @@
                 })
 
                 setTimeout(() => {
-                    window.location = "tables-linhas.html";
+                    window.location = "dash-linhas.html";
                 }, "2000")
 
             } else {

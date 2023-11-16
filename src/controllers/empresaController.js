@@ -117,7 +117,7 @@ function listarLinhasPorId(req, res) {
     var idEmpresa = req.params.idEmpresa;
     var idLinha = req.params.idLinha;
   
-    empresaModel.listarMaquinasPorId(idEmpresa, idLinha)
+    empresaModel.listarLinhasPorId(idEmpresa, idLinha)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {

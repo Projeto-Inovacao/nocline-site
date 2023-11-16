@@ -72,7 +72,7 @@ function cadastrarLinha(codEmpresa,nome, numero) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarLinha():", codEmpresa,nome, numero);
 
     var instrucao = `
-        INSERT INTO linha (nome, numero,fk_empresa, fk_nivel_acesso) VALUES ( '${nome}', '${numero}', 1, (select id_empresa from empresa where id_empresa = '${codigo}'), (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'));
+    INSERT INTO  linha VALUES (null, "${nome}", ${numero}, ${codEmpresa});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -100,6 +100,18 @@ function cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname) {
     console.log("Executando a instrução SQL: \n" + instrucao2);
     database.executar(instrucao);
     return database.executar(instrucao2);
+}
+
+function alterarLinha(codEmpresa, id, nome, numero) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():");
+
+    var instrucao = `
+    UPDATE linha set nome = '${nome}', numero = ${numero}  where fk_empresaL = ${codEmpresa} and id_linha = ${id};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+
 }
 
 function alterarMaquina(codEmpresa, id, so, ip, hostname, modelo, setor, status) {
@@ -158,6 +170,7 @@ module.exports = {
     cadastrarEndereco,
     cadastrarColaborador,
     cadastrarLinha,
+    alterarLinha,
     cadastrarMaquina, 
     excluirMaquina,
     alterarMaquina,

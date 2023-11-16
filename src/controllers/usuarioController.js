@@ -337,6 +337,40 @@ function cadastrarMaquina(req, res) {
     }
 }
 
+function alterarLinha(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("entrei validacao controller da Linha")
+
+    var codEmpresa = req.body.codEmpServer;
+    console.log(codEmpresa)
+    var id = req.body.idLinhaServer;
+    console.log(id)
+    var nome = req.body.nomeLinhaServer;
+    console.log(nome)
+    var numero = req.body.numeroLinhaServer;
+    console.log(numero)
+    
+
+    // Faça as validações dos valores
+    if (codEmpresa == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (id == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("Seu CNPJ de senha está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Sua email de senha está undefined!");
+    }
+    else {
+        usuarioModel.alterarLinha(codEmpresa, id, nome, numero)
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o cadastro de Linha! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 function alterarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     console.log("entrei validacao controller da maquina")
@@ -518,6 +552,7 @@ module.exports = {
     cadastrarEndereco,
     cadastrarColaborador,
     cadastrarLinha,
+    alterarLinha,
     cadastrarMaquina,
     alterarMaquina,
     excluirMaquina,
