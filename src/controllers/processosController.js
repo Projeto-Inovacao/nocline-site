@@ -27,10 +27,11 @@ function listarProcessos(req, res) {
 }
 
 
-function listarColab(req, res) {
+function listarJanelas(req, res) {
+    var idMaquina = req.params.idMaquina;
     var idEmpresa = req.params.idEmpresa;
 
-    avisoModelModel.listarColab(idEmpresa)
+    avisoModel.listarJanelas(idEmpresa, idMaquina)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -54,5 +55,5 @@ function listarColab(req, res) {
 
 module.exports = {
     listarProcessos, 
-    listarColab
+    listarJanelas
 }

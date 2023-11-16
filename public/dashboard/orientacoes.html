@@ -34,47 +34,61 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-           <div class="sidebar-brand-icon" style="margin-bottom: 2%;">
-                    <img id="logoNoc" src="img/logo branca.png">
-                </div>
+            <div class="sidebar-brand-icon" style="margin-bottom: 2%;">
+                <img id="logoNoc" src="img/logo branca.png">
+            </div>
 
             <div class="sidebar-brand-text mx-3"></div>
         </a>
 
-        <li class="nav-item active" style="height: 5%;">
-                <i style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px; margin-bottom: 5%;">Código
-                    Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
-            </li>
-
+        <li class="nav-item active" style="height: 2%;">
+            <i style="color: white; margin-left: 15%; margin-top: 5%; font-weight: 800; font-size: 13px;">Código
+                Empresarial:</i> <span id="b_usuario" style="color: rgb(255, 255, 255); font-weight: 800;"></span>
+        </li>
 
         <!-- Divider -->
+
+        <li class="nav-item" style="margin-top: 10%;">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-desktop" style="color: white;"></i>
+                <span style="color: white;"><b>Perspectiva Geral</b></span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Você pode visualizar:</h6>
+                    <a class="collapse-item" href="">Visão Macro</a>
+                    <a class="collapse-item" href="">Visão Setorial</a>
+                </div>
+            </div>
+        </li>
+
+
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: white;"></i>
+                <span style="color: white;"><b>Perspectiva Específica</b></span>
+            </a>
+            <div id="collapsePages2" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Você pode visualizar:</h6>
+                    <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
+                    <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
+                    <a class="collapse-item" href="">miguel</a>
+                    <a class="collapse-item" href="">rita</a>
+                    <a class="collapse-item" href="">marcos</a>
+                </div>
+            </div>
         </li>
 
         <hr class="sidebar-divider my-0">
-<!-- 
-        <li class="nav-item active">
-            <a class="nav-link" href="orientacoes.html">
-                <img id="icons" src="img/icon-orientacoes.png">
-                <span>Orientações</span></a>
-        </li> -->
 
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="tabela-processos.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Processos</span></a>
-        </li>
-
-        <hr class="sidebar-divider my-0">
         <!-- Divider -->
 
         <!-- Heading -->
@@ -87,14 +101,16 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <img id="icons" src="img/icon-colaboradores.png">
-                <span><b>Colaboradores</b></span>
+                <span style="color: white;"><b>Colaboradores</b></span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Você pode:</h6>
-                    <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar Colaboradores</a>
+                    <a class="collapse-item" href="register-employees.html" id="cadastro_colab">Cadastrar
+                        Colaboradores</a>
                     <a class="collapse-item" href="tables-employees.html">Visualizar Colaboradores</a>
-                    <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar Colaboradores</a>
+                    <a class="collapse-item" href="update-employees.html" id="atualizar_colab"> Atualizar
+                        Colaboradores</a>
                 </div>
             </div>
         </li>
@@ -107,20 +123,40 @@
                 aria-expanded="true" aria-controls="collapsePages">
 
                 <img id="icons" src="img/icon-maquina.png">
-                <span><b>Máquinas</b></span>
+                <span style="color: white;"><b>Máquinas</b></span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Você Pode:</h6>
-                    <a class="collapse-item" href="register-machines.html" id="cadastro_maq" >Cadastrar Máquinas</a>
+                    <a class="collapse-item" href="register-machines.html" id="cadastro_maq">Cadastrar Máquinas</a>
                     <a class="collapse-item" href="tables-machines.html">Visualizar Máquinas</a>
                     <a class="collapse-item" href="update-machines.html" id="atualizar_maq">Atualizar Máquinas</a>
                 </div>
             </div>
         </li>
+        <!-- Nav Item - Dashboard -->
+        <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-     
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                aria-expanded="true" aria-controls="collapsePages">
+
+                <img id="icons" src="img/icon-linhas.png">
+                <span style="color: white;"><b>Linhas</b></span>
+            </a>
+            <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Você Pode:</h6>
+                    <a class="collapse-item" href="register-linhas.html" id="cadastro_maq">Cadastrar Linhas</a>
+                    <a class="collapse-item" href="tables-linhas.html">Visualizar Linhas</a>
+                    <a class="collapse-item" href="update-linhas.html" id="atualizar_maq">Atualizar Linhas</a>
+                </div>
+            </div>
+        </li>
+
+
 
         <hr class="sidebar-divider my-0">
 
@@ -139,7 +175,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true" aria-controls="collapseUtilities">
                 <img id="icons" src="img/icon-suporte.png">
-                <span><b>Fale Conosco</b></span>
+                <span style="color: white;"><b>Fale Conosco</b></span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
@@ -147,6 +183,7 @@
                     <h6 class="collapse-header">Você pode:</h6>
                     <a class="collapse-item" href="suporte.html">Solicitar Suporte</a>
                     <a class="collapse-item" href="feedback.html">Enviar Avaliação</a>
+                    <a class="collapse-item" href="reuniao.html">Agendar Reunião</a>
                 </div>
             </div>
         </li>

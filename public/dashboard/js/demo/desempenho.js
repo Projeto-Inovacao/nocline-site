@@ -54,9 +54,9 @@ function plotarGraficoDesempenho(resposta, idMaquina) {
         var registro = resposta[i];
 
         if (registro.recurso === "DISCO") {
-            valores[0].innerHTML = (registro.uso) + "°C";
-            valores_Bar[0].style.width = (registro.uso) + "°C";
-            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "°C";
+            valores[0].innerHTML = (registro.uso) + "%";
+            valores_Bar[0].style.width = (registro.uso) + "%";
+            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
         }
         if (registro.recurso === "RAM") {
             valores[1].innerHTML = (registro.uso) + "%";
@@ -175,7 +175,7 @@ function obterDadosDesempenhoTemp(idMaquina) {
     //     clearTimeout(proximaAtualizacao);
     // }
 
-    fetch(`/medidas/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/ultimasDesempenhoTEMP/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
@@ -219,7 +219,7 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
 
 function atualizarGraficoDesempenhoTemp(idMaquina) {
 
-    fetch(`/medidas/tempo-realDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/tempo-realDesempenhoTEMP/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);

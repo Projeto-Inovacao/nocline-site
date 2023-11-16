@@ -27,8 +27,20 @@ router.get("/ultimasREDE/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasRede(req, res);
 });
 
+router.get("/ultimasTempXCpu/:idMaquina", function (req, res) {
+    medidaController.buscarUltimasMedidasTempXCpu(req, res);
+});
+
+router.get("/tempo-realTempXCpu/:idMaquina", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTempXCpu(req, res);
+});
+
 router.get("/ultimasDesempenho/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasDesempenho(req, res);
+});
+
+router.get("/ultimasDesempenhoTEMP/:idMaquina", function (req, res) {
+    medidaController.buscarUltimasMedidasDesempenhoTemp(req, res);
 });
 
 router.get("/ultimasJanelas/:idMaquina", function (req, res) {
@@ -53,6 +65,10 @@ router.get("/tempo-realDisco/:idMaquina", function (req, res) {
 
 router.get("/tempo-realDesempenho/:idMaquina", function (req, res) {
     medidaController.buscarMedidasEmTempoRealDesempenho(req, res);
+})
+
+router.get("/tempo-realDesempenhoTEMP/:idMaquina", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealDesempenhoTemp(req, res);
 })
 
 router.get("/tempo-realJanelas/:idMaquina", function (req, res) {
