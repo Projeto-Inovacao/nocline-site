@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Dashboard</title>
+    <title>NOCLINE - Dashboard Rede</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -80,7 +80,7 @@
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
                         <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
+                        <a class="collapse-item" href="">rita</a>
                         <a class="collapse-item" href="">marcos</a>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesJanela"
                     aria-expanded="true" aria-controls="collapsePagesJanela">
                     <img id="icons" src="img/windows-close.png">
@@ -109,7 +109,7 @@
                         <a class="collapse-item" href="tables-janelas.html">Visualizar Janelas</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
@@ -426,7 +426,7 @@
                     <!-- Page Heading -->
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Principal
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard Rede
                             <select name="selMachine" id="select_maquina"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                 style="margin-left: 260%;">
@@ -436,16 +436,85 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- KPI USO DE DISCO -->
-                        <div class="col-xl-4 col-md-6 mb-4">
+                        <!-- KPI PING-->
+                        <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                                style=" margin-top: -6%;">
+                                                Ping da Rede em Milissegundos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ping_kpi"
+                                                style=" margin-top: 2%;"> X ms</div>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" id="metrica_ping" style="border-radius: 300px;"
+                                                    onload="metricas()"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI Latência -->
+
+                        <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                                 style=" margin-top: -6%;">
-                                                Disco</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="disco_kpi"
+                                                Latência em Milissegundos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="lat_kpi"
+                                                style=" margin-top: 2%;"> X ms</div>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" id="metrica_ping" style="border-radius: 300px;"
+                                                    onload="metricas()"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- KPI VELOCIDADE DE UPLOAD -->
+                        <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                taxa de utilização de upload</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="vel_uplo_kpi">X%
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI VELOCIDADE DE DOWNLOAD -->
+                        <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
+                                                style=" margin-top: -6%;">
+                                                Taxa de Utilização da banda larga</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="vel_down_kpi"
                                                 style=" margin-top: 2%;"> X%</div>
                                             <span class="mr-2">
                                                 <i class="fas fa-circle" id="metrica_disco"
@@ -459,137 +528,10 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- KPI USO DE RAM -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                RAM</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_kpi">X%</div>
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_ram" style="border-radius: 300px;"
-                                                    onload="metricas()"></i>
-                                            </span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- KPI USO DE CPU -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">CPU
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                        id="uso_cpu_kpi">X%</div>
-                                                    <span class="mr-2">
-                                                        <i class="fas fa-circle" id="metrica_cpu"
-                                                            style="border-radius: 300px;" onload="metricas()"></i>
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
-                                                style=" margin-top: -6%;">
-                                                JANELAS ABERTAS</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="janelas_kpi"
-                                                style=" margin-top: 2%;">X</div>
-                                            <!-- <span class="mr-2">
-                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                </span> -->
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- KPI USO DE RAM -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                MegaBytes Enviados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
-                                                X</div>
-                                            <!-- <span class="mr-2">
-                                                    <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                </span> -->
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file-upload fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- KPI USO DE CPU -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                MegaBytes
-                                                Recebidos
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                        id="bytes_recebidos_kpi">X</div>
-                                                    <!-- <span class="mr-2">
-                                                            <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                        </span> -->
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file-download fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Content Row -->
+
 
                     <div class="row">
 
@@ -600,7 +542,8 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Rede</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Estatísticas em tempo real:
+                                        Status x Latência</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -628,30 +571,20 @@
                                 <!-- Card Body -->
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRede" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRedeU" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
-                                <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
-                                        Risco
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
-                                    </span>
-                                </div>
                             </div>
-                            <div class="card shadow mb-4" style="width: 590px;height: 500px;">
+
+
+                            <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash"> CPU (%)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Recebidos x Velocidade
+                                        de Download RAM</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        
-                                        <canvas id="myAreaChartCPU" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRAM" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
@@ -671,36 +604,22 @@
                         </div>
 
                         <!-- Pie Chart -->
+                        <!-- utilização upload-->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash"> Disco Rígido (%) </h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-
+                            </div>
+                            <div class="card shadow mb-4" style="bottom: 25px; height: 350px; ">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Enviados x Velocidade
+                                        de Upload</h6>
                                 </div>
-                                <!-- Card Body -->
-                                <div class="card-body" style="height: 360px; padding: 0.6rem; ">
-                                    <div class="chart-pie pt-4 pb-2" style="height: 100%;">
-                                        <canvas id="myPieChart" class="graphPie"
-                                            style="height: 100%; width:100%;"></canvas>
+                                <div class="card-body" style=" padding: 0.5rem;">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChartRedeU" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
-                                <div class="mt-4 text-center small" style="height: 40px; margin-top: 10%;">
+                                <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
                                     <span class="mr-2">
                                         <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
                                     </span>
@@ -712,16 +631,20 @@
                                         <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
                                     </span>
                                 </div>
-
                             </div>
-                            <div class="card shadow mb-4"
-                                style="margin-left: -165px; width: 543px; height: 500px; margin-top: 6%;">
+
+                            <!-- banda larga-->
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                            </div>
+                            <div class="card shadow mb-4" style="bottom: 55px; height: 350px; ">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Memória RAM (%)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Recebidos x Velocidade
+                                        de Download</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRAM" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
@@ -751,45 +674,17 @@
                         <!-- Project Card Example -->
                         <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary-dash">Visualização de Desempenho Completo
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Visualização de Desempenho
+                                    Completo
                                 </h6>
-                            </div>
-                            <div class="card-body">
-                                <!--
-                                <h4 class="small font-weight-bold">Porcentagem de Perda de Pacotes<span class="float-right" id="perda_pacotes">10%</span></h4>
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"
-                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="bar_perda_pacotes"></div>
-                                </div>-->
-                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Disco Rígido <span
-                                        class="float-right" id="disco_rigido">40%</span>
-                                </h4>
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="bar_disco_rigido">
-                                    </div>
-                                </div>
-                                <h4 class="small font-weight-bold"> Porcentagem de Uso de Memória RAM<span
-                                        class="float-right" id="uso_memoria_ram">80%</span></h4>
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                        id="bar_uso_memoria_ram"></div>
-                                </div>
-                                <h4 class="small font-weight-bold"> Porcentagem de Uso de CPU <span class="float-right"
-                                        id="porcentagem_cpu">60%</span></h4>
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                        id="bar_porcentagem_cpu"></div>
-                                </div>
                             </div>
                         </div>
 
 
                         <div class="card shadow mb-4" style="margin-left: 25px; width: 1152px;">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary-dash">Janelas Abertas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Últimos visualizadores da tela
+                                </h6>
                             </div>
                             <div class="card-body" id="lista_janela">
                                 <!--  <h1 class="small font-weight-bold">XXX</h1>-->
@@ -846,7 +741,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
+                <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" onclick="limparSessao()" href="../login.html">Sair</a>
@@ -870,29 +766,25 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-line-cpu.js"></script>
-    <script src="js/demo/chart-line-ram.js"></script>
+    <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
+    <!-- <script src="js/demo/chart-line-cpu.js"></script>
+    <script src="js/demo/chart-line-ram.js"></script> -->
     <script src="js/demo/chart-line-rede.js"></script>
-    <script src="js/demo/janelas.js"></script>
+    <script src="js/demo/chart-line-rede-utiupload.js"></script>
+    <!-- <script src="js/demo/janelas.js"></script> -->
     <script src="js/demo/desempenho.js"></script>
     <script src="js/sessao.js"></script>
 </body>
 
 </html>
 <script>
-    window.onload = async function () {
+    window.onload = async function carregarDados() {
         try {
             await validarSessao();
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
-            await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
-            await obterDadosJanela(idMaquina);
             await obterDadosRede(idMaquina);
-            await obterDadosRAM(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
@@ -907,43 +799,15 @@
 
     async function mudarId() {
         try {
-            limparCPU()
-            limparDisco()
-            limparRAM()
-            limparJanela()
             limparDesempenho()
             limparRede()
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
             console.log(idMaquina)
-            await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
-            await obterDadosJanela(idMaquina);
             await obterDadosRede(idMaquina);
-            await obterDadosRAM(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
     }
-
-    //     function metricas() {
-    //     var discoKpi = parseFloat(document.getElementById('disco_kpi').innerText.trim());
-    //     var metricaDisco = document.getElementById('metrica_disco');
-
-    //     if (discoKpi < 50) {
-    //         metricaDisco.style.color = 'green';
-    //     } else if (discoKpi >= 50 && discoKpi < 80) {
-    //         metricaDisco.style.color = 'yellow';
-    //     } else {
-    //         metricaDisco.style.color = 'red';
-    //     }
-    // }
-
-
-
-
-    // window.addEventListener('load', metricas);
-
 
 </script>
