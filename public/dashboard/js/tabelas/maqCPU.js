@@ -1,10 +1,10 @@
 idEmpresa = sessionStorage.ID_EMPRESA;
 
-function atualizarFeed(idMaquina) {
-    fetch(`/empresas/listarMaqTemp/${idEmpresa}/${idMaquina}`).then(function (resposta) {
+function atualizarFeedCPU(idMaquina) {
+    fetch(`/empresas/listarMaqCPU/${idEmpresa}/${idMaquina}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
-                var feed = document.getElementById("tabela_maquinas_temp");
+                var feed = document.getElementById("cpu_coluna");
                 mensagem.innerHTML = "Nenhum resultado encontrado."
                 feed.appendChild(mensagem);
                 throw "Nenhum resultado encontrado!!";
@@ -17,22 +17,20 @@ function atualizarFeed(idMaquina) {
                 // t_maquinas_risco = 0
                 // qtd_avisos_mes = 0
 
-                var feed = document.getElementById("tabela_maquinas_temp");
+                var feed = document.getElementById("cpu_coluna");
                 feed.innerHTML = "";
                 for (let i = 0; i < resposta.length; i++) {
-                    var listaTemp = resposta[i];
+                    var listaCPU = resposta[i];
 
                     // Cria uma nova linha na tabela
                     var novaLinha = feed.insertRow();
+                  
+                    
 
                     // Cria células para cada coluna
-                    var id = novaLinha.insertCell(0);
-                    var hostname = novaLinha.insertCell(1);
-                    var dado = novaLinha.insertCell(2);
+                    var dado = novaLinha.insertCell(0);
 
-                    id.innerHTML = listaTemp.id_maquina;
-                    hostname.innerHTML = listaTemp.data_hora;
-                    dado.innerHTML = listaTemp.dado_coletado;
+                    dado.innerHTML = listaCPU.dado_coletado;
                     // if(maquina.status_maquina == 1){
                     //     status.innerHTML = "Ativa"
                     // }else if (maquina.status_maquina == 0){
@@ -53,7 +51,7 @@ function atualizarFeed(idMaquina) {
                     // avisos_mes.innerHTML = qtd_avisos_mes;
                 }
 
-                atualizarFeed(idMaquina)
+                atualizarFeedCPU(idMaquina)
                // finalizarAguardar();
             });
         } else {
