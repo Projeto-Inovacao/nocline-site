@@ -63,8 +63,6 @@ function buscarUltimasMedidasRAM(req, res) {
     });
 }
 
-
-
 function buscarUltimasMedidasRede(req, res) {
 
     const limite_linhas = 7;
@@ -235,6 +233,7 @@ function buscarMedidasEmTempoRealRede(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+
 
 function buscarMedidasEmTempoRealDisco(req, res) {
     var idMaquina = req.params.idMaquina;

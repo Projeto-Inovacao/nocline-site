@@ -1627,6 +1627,12 @@ pre code {
         max-width: 33.33333%
     }
 
+    #kpi_rede {
+        flex: 0 0 24.5%;
+        max-width: 24.5%;
+        padding: 2%;
+    }
+
     .col-xl-5 {
         flex: 0 0 41.66667%;
         max-width: 41.66667%
