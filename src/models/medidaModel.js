@@ -127,6 +127,42 @@ function buscarMedidasEmTempoRealTemp(idMaquina) {
     return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasBoot(idMaquina, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}
+       limit ${limite_linhas}`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}
+        limit ${limite_linhas}`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealBoot(idMaquina) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function buscarUltimasMedidasRede(idMaquina, limite_linhas) {
 
     instrucaoSql = ''
@@ -419,5 +455,7 @@ module.exports = {
     buscarUltimasMedidasTempXCpu, 
     buscarMedidasEmTempoRealTempXCpu, 
     buscarUltimasMedidasDesempenhoTemp, 
-    buscarMedidasEmTempoRealDesempenhoTemp
+    buscarMedidasEmTempoRealDesempenhoTemp,
+    buscarUltimasMedidasBoot,
+    buscarMedidasEmTempoRealBoot
 }

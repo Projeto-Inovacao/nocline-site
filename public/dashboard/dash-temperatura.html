@@ -522,7 +522,7 @@
                                 <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                 style="color:	#4682B4; margin-top: -7%;">
                                     DATA DO ÚLTIMO DESLIGAMENTO</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="kpi_boot"
                                     >X</div>
                             </div>
                                                   
@@ -669,27 +669,27 @@
 
 
 
-            <!-- <div class="card shadow mb-4" style="width: 570px; margin-left: 8px;">
+            <div class="card shadow mb-4" style="width: 570px; margin-left: 8px;">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary-dash">Previsões de Temperatura</h6>
+                    <h6 class="m-0 font-weight-bold text-primary-dash">Últimos 5 registros de CPU em Alerta</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Temperatura Atual</th>
-                                    <th>Probabilidade Positiva</th>
-                                    <th>Probabilidade Negativa</th>
-    
+                                    <th >Máquina</th>
+                                    <th >Horário</th>
+                                    <th >Temperatura</th>
+                                    <th >Alerta</th>
                                 </tr>
                             </thead>
                             <tbody id="tabela_maquinas_temp">
-                            </tbody> -->
-                        <!-- </table>
+                            </tbody> 
+                        </table>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
                 <!-- Content Row -->
                 <div class="row">
@@ -860,6 +860,7 @@
             await obterDadosDesempenhoTemp(idMaquina);
             await obterDadosTempXCPU(idMaquina);
             await atualizarFeedCPU(idMaquina);
+            await atualizarGraficoDesempenhoBoot(idMaquina);
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);

@@ -5,6 +5,7 @@ var KPI_DISCO = document.getElementById("disco_kpi");
 var KPI_TEMP = document.getElementById("temp_kpi");
 var KPI_PING = document.getElementById("ping_kpi");
 var KPI_LAT = document.getElementById("lat_kpi");
+var KPI_BOOT = document.getElementById("kpi_boot");
 
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
@@ -304,4 +305,48 @@ function limparDesempenhoTemp() {
         valores_Bar[i].style.width = "";
         valores_kpi_desempenho[i].innerHTML = "";
     }
+}
+function formatarData(data) {
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    return new Date(data).toLocaleDateString('pt-BR', options);
+}
+
+function atualizarGraficoDesempenhoBoot(idMaquina) {
+
+    fetch(`/medidas/tempo-realBoot/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            console.log("JDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDWEEW3");
+            response.json().then(function (novoRegistro) {
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+
+                var KPI_BOOT = document.getElementById("kpi_boot");
+
+                for (i = 0; i < novoRegistro.length; i++) {
+                    console.log("JDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE22222222222222222222DDDDDDDDDDDDDDDDDWEEW3");
+                    console.log("YYY");
+                    var dados = novoRegistro[i];
+                  
+                    if (KPI_BOOT) {
+                        KPI_BOOT.innerHTML = formatarData(dados.data_hora_inicializacao);
+                    } else {
+                        console.error("Elemento KPI_BOOT não encontrado no DOM.");
+                    }
+                    console.log(dados.data_hora_inicializacao);
+
+                    // ... outras condições para CPU e RAM
+                }
+                
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 5000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 5000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
 }

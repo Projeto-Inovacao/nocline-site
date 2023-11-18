@@ -27,6 +27,14 @@ router.get("/ultimasREDE/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasRede(req, res);
 });
 
+router.get("/ultimasBoot/:idMaquina", function (req, res) {
+    medidaController.buscarUltimasMedidasBoot(req, res);
+});
+
+router.get("/tempo-realBoot/:idMaquina", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealBoot(req, res);
+});
+
 router.get("/ultimasTempXCpu/:idMaquina", function (req, res) {
     medidaController.buscarUltimasMedidasTempXCpu(req, res);
 });
