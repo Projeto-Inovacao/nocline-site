@@ -535,7 +535,7 @@
                             <div class="card-body" style="height: 6px;" >
                                 <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                 style="color:#87CEFA; margin-top: -7%;">
-                                    ESCOLHER KPI</div>
+                                    RESUMO</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
                                     >X</div>
                             </div>
@@ -641,16 +641,17 @@
 
             <div class="card shadow mb-4" style="width: 570px; margin-left: 26px;">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros de Temperatura</h6>
+                    <h6 class="m-0 font-weight-bold text-primary-dash"> Últimos 5 registros de Temperatura em Alerta</h6>
                 </div>
                 <div class="card-body" >
-                    <div class="table-responsive" style="width: 400px;">
+                    <div class="table-responsive" >
                         <table class="table table-bordered" id="dataTable"  cellspacing="0">
                             <thead id="tabela_titulo_maquina">
                                 <tr>
                                     <th >Máquina</th>
                                     <th >Horário</th>
                                     <th >Temperatura</th>
+                                    <th >Alerta</th>
                                     <!-- <th id="cpu_coluna">CPU</th> -->
                                   
                                 </tr>
@@ -663,31 +664,12 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive" style="width: 90px; margin-top: -352px; margin-left: 400px; height: 350px;">
-                        <table class="table table-bordered" id="dataTable"  cellspacing="0">
-                            <thead id="tabela_titulo_maquina">
-                                <tr>
-                                    <th>CPU</th>
-                                
-                                    <!-- <th id="cpu_coluna">CPU</th> -->
-                                  
-                                </tr>
-                            </thead>
-                            <tbody id="cpu_coluna" >
-                                <tr >
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
 
 
 
 
-            <div class="card shadow mb-4" style="width: 570px; margin-left: 8px;">
+            <!-- <div class="card shadow mb-4" style="width: 570px; margin-left: 8px;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary-dash">Previsões de Temperatura</h6>
                 </div>
@@ -702,12 +684,12 @@
     
                                 </tr>
                             </thead>
-                            <!-- <tbody id="tabela_maquinas_temp">
+                            <tbody id="tabela_maquinas_temp">
                             </tbody> -->
-                        </table>
+                        <!-- </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
                 <!-- Content Row -->
                 <div class="row">
@@ -909,6 +891,8 @@
             console.error("Erro no carregamento da página: " + error.message);
         }
     }
+
+
 
 
 </script>

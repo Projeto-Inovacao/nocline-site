@@ -87,6 +87,7 @@ WHERE
   maquina.fk_empresaM = ${idEmpresa}
   AND maquina.id_maquina = ${idMaquina}
   AND monitoramento.descricao = 'temperatura cpu'
+  AND monitoramento.dado_coletado > 50.0
 ORDER BY 
   monitoramento.data_hora DESC 
 LIMIT 5;
