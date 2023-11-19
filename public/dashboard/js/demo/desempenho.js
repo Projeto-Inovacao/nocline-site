@@ -6,6 +6,7 @@ var KPI_TEMP = document.getElementById("temp_kpi");
 var KPI_PING = document.getElementById("ping_kpi");
 var KPI_LAT = document.getElementById("lat_kpi");
 var KPI_BOOT = document.getElementById("kpi_boot");
+var KPI_RESUMO = document.getElementById("kpi_resumo")
 
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
@@ -250,6 +251,7 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         
     }
     
+    
     setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 2000);
 }
 
@@ -349,4 +351,40 @@ function atualizarGraficoDesempenhoBoot(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
+    let temperaturaAtual = 0;
+    let cpuAtual = 0;
+    let mensagem = "";
+
+    for (let i = 0; i < resposta.length; i++) {
+        const registro = resposta[i];
+
+        if (registro.recurso === "TEMPERATURA") {
+            temperaturaAtual = registro.uso;
+            valores[0].innerHTML = temperaturaAtual + "°C";
+            valores_Bar[0].style.width = temperaturaAtual + "°C";
+            valores_kpi_desempenho[0].innerHTML = temperaturaAtual + "°C";
+        }
+        if (registro.recurso === "CPU") {
+            cpuAtual = registro.uso;
+            valores[1].innerHTML = cpuAtual + "%";
+            valores_Bar[1].style.width = cpuAtual + "%";
+            valores_kpi_desempenho[1].innerHTML = cpuAtual + "%";
+        }
+    }
+
+    if (temperaturaAtual > 70 && cpuAtual > 40) {
+        mensagem = "Situação de Perigo! 🆘 <br> Índice de CPU e Temperatura muito acima do normal.";
+    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 69) && (cpuAtual >= 15 && cpuAtual <= 39)) {
+        mensagem = "Situação de Alerta! ⚠️ Índice de CPU e Temperatura em crescimento.";
+    } else {
+        mensagem = "Situação estável.";
+
+    }
+
+    KPI_RESUMO.innerHTML = mensagem;
+
+    setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 2000);
 }

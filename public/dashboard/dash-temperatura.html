@@ -521,9 +521,9 @@
                             <div class="card-body" style="height: 6px;" >
                                 <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                 style="color:	#4682B4; margin-top: -7%;">
-                                    DATA DO ÚLTIMO DESLIGAMENTO</div>
+                                    DATA E HORA DA ÚLTIMA INICIALIZAÇÃO DO SISTEMA OPERACIONAL</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800" id="kpi_boot"
-                                    >X</div>
+                                style="font-size: 14px;">X</div>
                             </div>
                                                   
                         </div>
@@ -536,8 +536,8 @@
                                 <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                 style="color:#87CEFA; margin-top: -7%;">
                                     RESUMO</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="xxx"
-                                    >X</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="kpi_resumo"
+                                   style="font-size: 15px;" >X</div>
                             </div>
                                                   
                         </div>
@@ -680,11 +680,11 @@
                                 <tr>
                                     <th >Máquina</th>
                                     <th >Horário</th>
-                                    <th >Temperatura</th>
+                                    <th >CPU</th>
                                     <th >Alerta</th>
                                 </tr>
                             </thead>
-                            <tbody id="tabela_maquinas_temp">
+                            <tbody id="tabela_maquinas_cpu">
                             </tbody> 
                         </table>
                     </div>
@@ -861,6 +861,7 @@
             await obterDadosTempXCPU(idMaquina);
             await atualizarFeedCPU(idMaquina);
             await atualizarGraficoDesempenhoBoot(idMaquina);
+        
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);

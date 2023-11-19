@@ -99,7 +99,23 @@ LIMIT 5;
 
 function listarMaqCPU(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select dado_coletado from VW_CPU_KOTLIN_CHART where id_maquina = ${idMaquina} and id_empresa = ${idEmpresa} order by data_hora desc limit 5;
+  var instrucao = `
+  SELECT 
+  maquina.id_maquina, 
+  DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+  ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+FROM 
+  maquina 
+JOIN 
+  monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+WHERE 
+  maquina.fk_empresaM = ${idEmpresa}
+  AND maquina.id_maquina = ${idMaquina}
+  AND monitoramento.descricao = 'uso de cpu kt'
+  AND monitoramento.dado_coletado > 40.0
+ORDER BY 
+  monitoramento.data_hora DESC 
+LIMIT 5;
 
 
   `;

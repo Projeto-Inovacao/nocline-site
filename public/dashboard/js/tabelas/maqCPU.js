@@ -4,7 +4,7 @@ function atualizarFeedCPU(idMaquina) {
     fetch(`/empresas/listarMaqCPU/${idEmpresa}/${idMaquina}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
-                var feed = document.getElementById("cpu_coluna");
+                var feed = document.getElementById("tabela_maquinas_cpu");
                 mensagem.innerHTML = "Nenhum resultado encontrado."
                 feed.appendChild(mensagem);
                 throw "Nenhum resultado encontrado!!";
@@ -17,27 +17,42 @@ function atualizarFeedCPU(idMaquina) {
                 // t_maquinas_risco = 0
                 // qtd_avisos_mes = 0
 
-                var feed = document.getElementById("cpu_coluna");
+                var feed = document.getElementById("tabela_maquinas_cpu");
                 feed.innerHTML = "";
                 for (let i = 0; i < resposta.length; i++) {
                     var listaCPU = resposta[i];
 
                     // Cria uma nova linha na tabela
                     var novaLinha = feed.insertRow();
-                  
-                    
+
 
                     // Cria células para cada coluna
-                    var dado = novaLinha.insertCell(0);
+                    var id = novaLinha.insertCell(0);
+                    var hostname = novaLinha.insertCell(1);
+                    var dado = novaLinha.insertCell(2);
+                    var alerta = novaLinha.insertCell(3);
 
+
+                    id.innerHTML = listaCPU.id_maquina;
+                    hostname.innerHTML = listaCPU.data_hora;
                     dado.innerHTML = listaCPU.dado_coletado;
+
+                    if (listaCPU.dado_coletado >= 40 && listaCPU.dado_coletado <= 50) {
+                        alerta.innerHTML = "Risco";
+                        alerta.style.color = "yellow";
+                    } else if (listaCPU.dado_coletado > 50) {
+                        alerta.innerHTML = "Perigo";
+                        alerta.style.color = "red";
+                    } else {
+                        alerta.innerHTML = "";  // Ou você pode definir um valor padrão para outros casos
+                    }
                     // if(maquina.status_maquina == 1){
                     //     status.innerHTML = "Ativa"
                     // }else if (maquina.status_maquina == 0){
                     //     status.innerHTML = "Inativa"
                     // }
                     // qtd_alertas_maquina.innerHTML = maquina.qtd_alerta_maquina;
-                    
+
                     // console.log(maquina.qtd_maquina)
                     // t_maquinas += maquina.qtd_maquina
                     // console.log(t_maquinas)
@@ -52,7 +67,7 @@ function atualizarFeedCPU(idMaquina) {
                 }
 
                 atualizarFeedCPU(idMaquina)
-               // finalizarAguardar();
+                // finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
