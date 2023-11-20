@@ -15,6 +15,7 @@ var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
 var processosRouter = require("./src/routes/processos");
+var processadorRouter = require("./src/routes/processador");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,6 +30,7 @@ app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/processos", processosRouter);
+app.use("/processador", processadorRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
