@@ -38,10 +38,14 @@ function atualizarFeed(idMaquina) {
 
                     if (listaTemp.dado_coletado >= 60 && listaTemp.dado_coletado <= 70) {
                         alerta.innerHTML = "Risco";
-                        alerta.style.color = "yellow";
+                        alerta.style.backgroundColor  = "#f7f6a3";
+                        alerta.style.color = "black"; // Letra preta
+                        alerta.style.fontWeight = "bold"; // Texto em negrito
                     } else if (listaTemp.dado_coletado > 70) {
                         alerta.innerHTML = "Perigo";
-                        alerta.style.color = "red";
+                        alerta.style.backgroundColor  = "#f7a3a3";
+                        alerta.style.color = "black"; // Letra preta
+                        alerta.style.fontWeight = "bold"; // Texto em negrito
                     } else {
                         alerta.innerHTML = "";  // Ou você pode definir um valor padrão para outros casos
                     }

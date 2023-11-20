@@ -39,10 +39,14 @@ function atualizarFeedCPU(idMaquina) {
 
                     if (listaCPU.dado_coletado >= 40 && listaCPU.dado_coletado <= 50) {
                         alerta.innerHTML = "Risco";
-                        alerta.style.color = "yellow";
+                        alerta.style.backgroundColor  = "#f7f6a3";
+                        alerta.style.color = "black"; // Letra preta
+                        alerta.style.fontWeight = "bold"; // Texto em negrito
                     } else if (listaCPU.dado_coletado > 50) {
                         alerta.innerHTML = "Perigo";
-                        alerta.style.color = "red";
+                        alerta.style.backgroundColor  = "#f7a3a3";
+                        alerta.style.color = "black"; // Letra preta
+                        alerta.style.fontWeight = "bold"; // Texto em negrito
                     } else {
                         alerta.innerHTML = "";  // Ou você pode definir um valor padrão para outros casos
                     }
