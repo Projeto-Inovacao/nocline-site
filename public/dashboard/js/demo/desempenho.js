@@ -7,7 +7,9 @@ var KPI_PING = document.getElementById("ping_kpi");
 var KPI_LAT = document.getElementById("lat_kpi");
 var KPI_BOOT = document.getElementById("kpi_boot");
 var KPI_RESUMO = document.getElementById("kpi_resumo")
-
+var METRICA_TEMP = document.getElementById("metrica_temp")
+var METRICA_CPU = document.getElementById("metrica_cpu")
+var METRICA_RAM = document.getElementById("metrica_ram")
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
 var CPU = document.getElementById("porcentagem_cpu");
@@ -250,8 +252,8 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         }
         
     }
-    
-    
+
+
     setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 2000);
 }
 
@@ -356,6 +358,7 @@ function atualizarGraficoDesempenhoBoot(idMaquina) {
 function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
     let temperaturaAtual = 0;
     let cpuAtual = 0;
+    let ramAtual = 0;
     let mensagem = "";
 
     for (let i = 0; i < resposta.length; i++) {
@@ -373,16 +376,49 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
             valores_Bar[1].style.width = cpuAtual + "%";
             valores_kpi_desempenho[1].innerHTML = cpuAtual + "%";
         }
+        if (registro.recurso === "RAM") {
+            ramAtual = registro.uso;
+            valores[2].innerHTML = ramAtual + "%";
+            valores_Bar[2].style.width = ramAtual + "%";
+            valores_kpi_desempenho[2].innerHTML =ramAtual + "%";
+        }
     }
 
     if (temperaturaAtual > 70 && cpuAtual > 40) {
-        mensagem = "Situação de Perigo! 🆘 <br> Índice de CPU e Temperatura muito acima do normal.";
+        mensagem = "<b> Situação de Perigo! 🆘 </b> <br> Índices de CPU e Temperatura muito acima do esperado.";
     } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 69) && (cpuAtual >= 15 && cpuAtual <= 39)) {
-        mensagem = "Situação de Alerta! ⚠️ Índice de CPU e Temperatura em crescimento.";
+        mensagem = "Situação de Risco! ⚠️ <br> Índices de CPU e Temperatura em crescimento.";
     } else {
-        mensagem = "Situação estável.";
+        mensagem = "Situação estável! 🆗 <br> Índices de CPU e Temperatura dentro do esperado.";
 
     }
+
+
+    if (temperaturaAtual < 40) {
+        METRICA_TEMP.style.color = '#00FF00';
+    } else if (temperaturaAtual >= 41 && temperaturaAtual < 69) {
+        METRICA_TEMP.style.color = '#f6ff00';
+    } else {
+        METRICA_TEMP.style.color = '#FF0000';
+    }
+
+    if (cpuAtual < 14) {
+        METRICA_CPU.style.color = '#00FF00';
+    } else if (cpuAtual >= 15 && cpuAtual < 39) {
+        METRICA_CPU.style.color = '#f6ff00';
+    } else {
+        METRICA_CPU.style.color = '#FF0000';
+    }
+
+    if (ramAtual < 75) {
+        METRICA_RAM.style.color = '#00FF00';
+    } else if (ramAtual >= 76 && ramAtual < 89) {
+        METRICA_RAM.style.color = '#f6ff00';
+    } else {
+        METRICA_RAM.style.color = '#FF0000';
+    }
+
+    
 
     KPI_RESUMO.innerHTML = mensagem;
 

@@ -23,7 +23,7 @@ function buscarUltimasMedidasDisco(req, res) {
 
 function buscarUltimasMedidasCPU(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 
@@ -44,7 +44,7 @@ function buscarUltimasMedidasCPU(req, res) {
 
 function buscarUltimasMedidasRAM(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 
@@ -65,7 +65,7 @@ function buscarUltimasMedidasRAM(req, res) {
 
 function buscarUltimasMedidasRede(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 

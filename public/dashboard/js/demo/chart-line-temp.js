@@ -41,10 +41,11 @@ function plotarGraficoTEMP(resposta, idMaquina) {
         datasets: [{
             label: 'Temperatura',
             data: [],
-            backgroundColor: ['#8A2BE2'],
-            borderColor: ['#8A2BE2'],
+            backgroundColor: ['#393d42'],
+            borderColor: ['#393d42'],
             tension: 0.1,
-            fill: false
+            fill: false,
+            pointRadius: 6
         }]
     };
     console.log('----------------------------------------------')
@@ -57,6 +58,20 @@ function plotarGraficoTEMP(resposta, idMaquina) {
         var registro = resposta[i];
         dados.datasets[0].data.push(registro.dado_coletado);
         labels.push(registro.data_hora);
+
+        // Definindo a cor com base nas condições
+      if (registro.dado_coletado <= 40) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+        // dados.datasets[0].borderColor.push('#00FF00');
+      } else if (registro.dado_coletado <= 69) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
+        // dados.datasets[0].borderColor.push('#f6ff00');
+      } else {
+        dados.datasets[0].backgroundColor.push('#FF0000');
+        // dados.datasets[0].borderColor.push('#FF0000');
+      }
+
+
     }
 
     console.log('----------------------------------------------')
