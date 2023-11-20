@@ -1,4 +1,5 @@
 idEmpresa = sessionStorage.ID_EMPRESA
+console.log(idEmpresa)
 let pagina_atual = 1;
 const resultados_por_pagina = 10;
 var totalDados = 0

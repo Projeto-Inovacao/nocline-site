@@ -11,4 +11,8 @@ router.get("/listarJanelas/:idEmpresa/:idMaquina", function (req, res) {
   processosController.listarJanelas(req, res);
 });
 
+router.get("/listarJanelasDistintas/:idEmpresa", function (req, res) {
+  processosController.listarJanelasDistintas(req, res);
+});
+
 module.exports = router;

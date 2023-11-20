@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                <a class="btn btn-primary btn-user btn-block" onclick="alterarColaborador()">
+                                <a class="btn btn-primary btn-user btn-block" onclick="alterarJanela()">
                                     Confirmar Atualização de Valor da Janela
                                 </a>
                                 <hr>
@@ -102,41 +102,32 @@
 
     input_cdEmp.value = sessionStorage.ID_EMPRESA
 
-    function pesquisarColaborador() {
+    function pesquisarJanelas() {
 
         idEmpresa = input_cdEmp.value
-        idColaborador = input_id.value
 
         console.log("teste")
-        fetch(`/empresas/listarFuncionarioPorId/${idEmpresa}/${idColaborador}`).then(function (resposta) {
+        fetch(`/processos/listarJanelasDistintas/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    input_email.value = "";
-                    input_celular.value = "";
-                    input_setor1.checked = false
-                    input_setor2.checked = false
-                    input_status1.checked = false
-                    input_status2.checked = false
+                    console.log("Não há janelas")
                 }
 
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    select = document.getElementById("select_janela");
+                    for (let i = 0; i < resposta.length; i++) {
+                        dados = resposta[i]
+                        console.log(dados.nome_janela)
+                            var opcao = document.createElement('option');
+                            opcao.value = dados.nome_janela;
+                            opcao.innerHTML = dados.nome_janela;
+                            select.appendChild(opcao);
 
-                    dados = resposta[0]
-
-                    input_id.value = dados.id
-                    input_email.value = dados.email;
-                    input_celular.value = dados.celular;
-                    if (dados.setor == "SSO") {
-                        input_setor2.checked = true
-                    } else {
-                        input_setor1.checked = true
-                    }
-                    if (dados.status_colaborador == 1) {
-                        input_status1.checked = true
-                    } else {
-                        input_status2.checked = true
-                    }
+                            if (opcao === 0) {
+                                dados.selected = true;
+                            }
+                        }
 
                     // finalizarAguardar();
                 });
