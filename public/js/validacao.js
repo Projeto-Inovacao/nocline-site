@@ -123,7 +123,7 @@ function isAllValid() {
         isValid = false;
 
     } else if (senhaValue !== confirmarSenhaValue) {
-        setErrorFor(confirmarSenha, 'Senhas não tão iguais')
+        setErrorFor(confirmarSenha, 'Senhas não estão iguais')
         isValid = false;
     } else {
         // adicionar a classe de sucesso

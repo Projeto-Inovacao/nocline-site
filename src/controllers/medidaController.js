@@ -23,7 +23,7 @@ function buscarUltimasMedidasDisco(req, res) {
 
 function buscarUltimasMedidasCPU(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 
@@ -44,7 +44,7 @@ function buscarUltimasMedidasCPU(req, res) {
 
 function buscarUltimasMedidasRAM(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 
@@ -63,11 +63,9 @@ function buscarUltimasMedidasRAM(req, res) {
     });
 }
 
-
-
 function buscarUltimasMedidasRede(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 3;
 
     var idMaquina = req.params.idMaquina;
 
@@ -236,6 +234,7 @@ function buscarMedidasEmTempoRealRede(req, res) {
     });
 }
 
+
 function buscarMedidasEmTempoRealDisco(req, res) {
     var idMaquina = req.params.idMaquina;
 
@@ -312,7 +311,44 @@ function buscarMedidasEmTempoRealTemp(req, res) {
     });
 }
 
+function buscarUltimasMedidasBoot(req, res) {
 
+    const limite_linhas = 1;
+
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMedidasBoot(idMaquina, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarMedidasEmTempoRealBoot(req, res) {
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMedidasEmTempoRealBoot(idMaquina).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 function buscarUltimasMedidasTempXCpu(req, res) {
 
@@ -372,5 +408,7 @@ module.exports = {
     buscarUltimasMedidasTempXCpu, 
     buscarMedidasEmTempoRealTempXCpu, 
     buscarUltimasMedidasDesempenhoTemp, 
-    buscarMedidasEmTempoRealDesempenhoTemp
+    buscarMedidasEmTempoRealDesempenhoTemp,
+    buscarUltimasMedidasBoot,
+    buscarMedidasEmTempoRealBoot
 }

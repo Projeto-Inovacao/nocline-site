@@ -49,16 +49,16 @@
             <!-- Divider -->
 
             <li class="nav-item" style="margin-top: 2%;">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities4"
+                    aria-expanded="true" aria-controls="collapseUtilities4">
                     <i class="fas fa-desktop" style="color: white;"></i>
                     <span style="color: white;"><b>Perspectiva Geral</b></span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities4" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
-                        <a class="collapse-item" href="">Visão Macro</a>
+                        <a class="collapse-item" href="../dashboard/dash-linhas.html">Visão Macro</a>
                         <a class="collapse-item" href="">Visão Setorial</a>
                     </div>
                 </div>
@@ -69,18 +69,18 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
+                    aria-expanded="true" aria-controls="collapsePages4">
                     <i class="fas fa-fw fa-tachometer-alt" style="color: white;"></i>
                     <span style="color: white;"><b>Perspectiva Específica</b></span>
                 </a>
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapsePages4" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
                         <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="">rita</a>
+                        <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
                         <a class="collapse-item" href="">marcos</a>
                     </div>
                 </div>
@@ -88,9 +88,6 @@
 
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-
-            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Pages Collapse Menu -->
 
@@ -107,6 +104,7 @@
                         <a class="collapse-item" href="update-janelas.html" id="cadastro_colab">Cadastrar
                             Janelas</a>
                         <a class="collapse-item" href="tables-janelas.html">Visualizar Janelas</a>
+
                     </div>
                 </div>
             </li>
@@ -166,7 +164,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você Pode:</h6>
                         <a class="collapse-item" href="register-linhas.html" id="cadastro_maq">Cadastrar Linhas</a>
-                        <a class="collapse-item" href="tables-linhas.html">Visualizar Linhas</a>
+                        <a class="collapse-item" href="dash-linhas.html">Visualizar Linhas</a>
                         <a class="collapse-item" href="update-linhas.html" id="atualizar_maq">Atualizar Linhas</a>
                     </div>
                 </div>
@@ -644,14 +642,13 @@
                                     </span>
                                 </div>
                             </div>
-
-
                             <div class="card shadow mb-4" style="width: 590px;height: 500px;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash"> CPU (%)</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
+                                        
                                         <canvas id="myAreaChartCPU" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
@@ -882,7 +879,7 @@
 
 </html>
 <script>
-    window.onload = async function () {
+    window.onload = async function carregarDados() {
         try {
             await validarSessao();
             exibirMaquinas();
@@ -914,15 +911,7 @@
             limparJanela()
             limparDesempenho()
             limparRede()
-            var elemento_maquina = document.getElementById("select_maquina");
-            var idMaquina = elemento_maquina.value;
-            console.log(idMaquina)
-            await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
-            await obterDadosDesempenho(idMaquina);
-            await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
-            await obterDadosRAM(idMaquina);
+            carregarDados()
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

@@ -9,24 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Tabelas de Visualização de Funcionários</title>
+    <title>NOCLINE - Dashboard Temperatura da CPU</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/metro logo.png" type="image/x-icon">
 
 </head>
 
-<body id="page-top" onload="atualizarFeed(), validarSessao()">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -85,7 +82,7 @@
                         <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
                         <a class="collapse-item" href="">miguel</a>
                         <a class="collapse-item" href="">rita</a>
-                        <a class="collapse-item" href="">marcos</a>
+                        <a class="collapse-item" href="../dashboard/dash-rendimento-processador.html">Rendimento do Pocessador</a>
                     </div>
                 </div>
             </li>
@@ -213,6 +210,7 @@
 
 
         </ul>
+
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -225,11 +223,9 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
                     <!-- <form
@@ -335,7 +331,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
-                                    Centro de Mensagens
+                                    Mural de Avisos
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
@@ -424,109 +420,279 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
+
+                <!-- inicio dash -->
+
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tabela dos Funcionários da sua Empresa</h1>
-                    <p class="mb-4">Proporcionamos um elevado nível de controle no que diz respeito aos registros dos
-                        seus funcionários em
-                        nosso sistema de monitoramento.
-                    </p>
 
-                    <!-- DataTales Example -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <select name="selMachine" id="selMachine" onchange="selMachineCorreto()"
+                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 63%;">
+                            <option value=1>Máquina 1</option>
+                            <option value=9>Máquina 2</option>
+                            <option value=10>Máquina 3</option>
+                            <option value=11>Máquina 4</option>
+                            <option value=12>Máquina 5</option>
+                            <option value=12>Máquina 6</option>
+                        </select>
+                    </div>
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary-dash">Funcionários Cadastrados</h6>
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Uso do Processador
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">X%</div>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Código do Colaborador</th>
-                                            <th>Nome</th>
-                                            <th>Setor</th>
-                                            <th>Email</th>
-                                            <th>Celular</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabela_funcionarios">
-                                    </tbody>
-                                </table>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Uso do Processador ao Longo do Tempo
+                                    </h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myChartProceTemp"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card shadow mb-4" style="width: 510px;height: 500px;">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Informações do Processador</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myChartInfProce"></canvas>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card shadow mb-4">
+
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Utilização de CPU por Processo</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Dropdown Header:</div>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myChartCpuTPro"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"> Utilização do Disco por Processo
+                                    </h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body" style="height: 412px;">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myChartDisPro"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"> Frequência do Processador ao Longo do Tempo
+                                    </h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body" style="height: 412px;">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myChartFrequeTemp"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; NOCLINE 2023</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+                <!-- Bootstrap core JavaScript -->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        </div>
-        <!-- End of Content Wrapper -->
+                <!-- Core plugin JavaScript-->
+                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    </div>
-    <!-- End of Page Wrapper -->
+                <!-- Custom scripts for all pages-->
+                <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+                <!-- Page level plugins -->
+                <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deseja Sair?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" onclick="limparSessao()" href="../login.html">Sair</a>
-                </div>
-            </div>
-        </div>
-    </div>
+                <!-- Page level custom scripts -->
+                <script src="js/demo/chart-pie-demo.js"></script>
+                <script src="js/demo/line-processador-temp.js"></script>
+                <script src="js/demo/chart-line-temp.js"></script>
+                <script src="js/demo/line-freq-processador.js"></script>
+                <script src="js/demo/chart-line-ram.js"></script>
+                <script src="js/demo/chart-line-rede.js"></script>
+                <script src="js/demo/janelas.js"></script>
+                <script src="js/demo/desempenho.js"></script>
+                <script src="js/sessao.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/sessao.js"></script>
-    <script src="js/tabelas/funcionarios.js"></script>
-
+                <script src="js/tabelas/maqTemp.js"></script>
+                <script src="js/tabelas/maqCPU.js"></script>
 
 </body>
 
 </html>
+<script>
+    window.onload = async function () {
+        try {
+            await validarSessao();
+            exibirMaquinas();
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            await obterDadosDoPocessadorTemp(idMaquina);
+            await obterDadosDaFrequencia(idMaquina);
+            await obterDadosTemp(idMaquina);
+            await obterDadosJanela (idMaquina);
+            await atualizarFeed(idMaquina);
+            await obterDadosDesempenhoTemp(idMaquina);
+            await obterDadosTempXCPU(idMaquina);
+            await atualizarFeedCPU(idMaquina);
+            
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    };
+
+    var seletor = document.getElementById("select_maquina");
+
+    seletor.addEventListener("change", function () {
+        mudarId()
+    });
+
+
+    async function mudarId() {
+        try {
+            limparPocessadorTemp()
+            limparFrequencia()
+            limparRAM()
+            limparJanela()
+            limparDesempenho()
+            limparRede()
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            console.log(idMaquina)
+            await obterDadosDoPocessadorTemp(idMaquina);
+            await obterDadosJanela(idMaquina);
+            await obterDadosRAM(idMaquina);
+        } catch (error) {
+            console.error("Erro no carregamento da página: " + error.message);
+        }
+    }
+
+
+</script>
