@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NOCLINE - Dashboard Temperatura da CPU</title>
+    <title>NOCLINE - Dashboard Setor CPU e RAM</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -638,13 +638,7 @@
 
             </div>
 
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; NOCLINE 2023</span>
-                    </div>
-                </div>
-            </footer>
+         
         </div>
 
 
@@ -707,6 +701,7 @@
     <!-- Page level custom scripts -->
 
     <script src="js/demo/chart-line-cpu-setor.js"></script>
+    <script src="js/demo/chart-line-ram-setor.js"></script>
     <script src="js/sessao.js"></script>
 
 
@@ -719,12 +714,11 @@
     window.onload = async function () {
         try {
             await validarSessao();
-        
-            
-            // await obterDadosRAM(idMaquina);
             await obterDadosCPU();
-           
-            
+            await obterDadosRAM();
+
+            await atualizarGraficoCPU();
+            await atualizarGraficoRAM();
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

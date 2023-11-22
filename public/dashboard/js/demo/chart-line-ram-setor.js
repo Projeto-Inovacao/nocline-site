@@ -10,7 +10,7 @@ function obterDadosRAM(idMaquina) {
     //     clearTimeout(proximaAtualizacao);
     // }
 
-    fetch(`/setor/ultimasRAM/${resposta}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/ultimasSetorRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
@@ -67,15 +67,15 @@ function plotarGraficoRAM(resposta) {
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
-        dados.datasets[0].data.push(registro.usado);
+        dados.datasets[0].data.push(registro.media_ram);
         // dados.datasets[1].data.push(registro.livre);
-        labels.push(registro.data_hora);
+        labels.push(registro.linha);
 
          // Definindo a cor com base nas condições
-      if (registro.medida_ram <= 80) {
+      if (registro.media_ram <= 80) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.medida_ram <= 90) {
+      } else if (registro.media_ram <= 90) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
@@ -83,7 +83,6 @@ function plotarGraficoRAM(resposta) {
         // dados.datasets[0].borderColor.push('#FF0000');
       }
     }
-
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
     console.log('Labels:')
@@ -96,7 +95,7 @@ function plotarGraficoRAM(resposta) {
     const config = {
         type: 'line',
         data: dados,
-        fill: false
+        fill: true
     }
 
     // Adicionando gráfico criado em div na tela
@@ -105,7 +104,7 @@ function plotarGraficoRAM(resposta) {
         config
     );
 
-    setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
+   // setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
 }
 
 function atualizarGraficoRAM(idMaquina, dados, chartRAM) {

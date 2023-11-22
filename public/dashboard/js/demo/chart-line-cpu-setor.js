@@ -9,6 +9,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 function obterDadosCPU(idMaquina) {
   console.log("CPU")
+  console.log(idMaquina)
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
@@ -59,13 +60,13 @@ function plotarGraficoCPU(resposta, idMaquina) {
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.media_cpu);
-      labels.push(registro.data_hora);
+      labels.push(registro.linha); //nome do lugar que está vindo
   
       // Definindo a cor com base nas condições
-      if (registro.media_cpu <= 15) {
+      if (registro.media_cpu <= 30) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.media_cpu<= 30) {
+      } else if (registro.media_cpu<= 50) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
@@ -102,11 +103,11 @@ function plotarGraficoCPU(resposta, idMaquina) {
 
 function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
 
-    fetch(`/medidas/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                // obterDadosCPU(idMaquina);
+                obterDadosCPU(idMaquina);
                 // // alertar(novoRegistro, idMaquina);
                 // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
@@ -117,14 +118,14 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                     // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                     console.log("Horário do novo dado capturado:")
-                    console.log(novoRegistro[0].data_hora)
+                    console.log(novoRegistro[0].media_cpu)
                     console.log("Horário do último dado capturado:")
                     console.log(dados.labels[dados.labels.length - 1])
                     console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
+                    dados.labels.push(novoRegistro[0].media_cpu); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeira medida
                     dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
