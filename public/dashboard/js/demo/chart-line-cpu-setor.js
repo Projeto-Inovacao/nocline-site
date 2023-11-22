@@ -9,9 +9,14 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 function obterDadosCPU(idMaquina) {
   console.log("CPU")
+<<<<<<< HEAD
   console.log(idMaquina)
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
+=======
+  // if (proximaAtualizacao != undefined) 
+  
+>>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
   // }
 
   fetch(`/setor/ultimasSetorCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
@@ -32,7 +37,7 @@ function obterDadosCPU(idMaquina) {
       });
 }
 
-function plotarGraficoCPU(resposta, idMaquina) {
+function plotarGraficoCPU(resposta) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -96,14 +101,18 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+    setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
   }
   
   
 
-function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
+function atualizarGraficoCPU( dados, chartCPU) {
 
+<<<<<<< HEAD
     fetch(`/setor/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+=======
+    fetch(`/setor/tempo-realCPU`, { cache: 'no-store' }).then(function (response) {
+>>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -134,12 +143,12 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 5000);
         }
     })
         .catch(function (error) {
