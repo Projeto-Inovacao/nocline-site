@@ -15,7 +15,7 @@ var TEMP = document.getElementById("temp_cpu");
 var PING = document.getElementById("ping");
 var LAT = document.getElementById("lat");
 
-// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGUESSO
+// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGRESSO
 var CPU_bar = document.getElementById("bar_porcentagem_cpu");
 var RAM_bar = document.getElementById("bar_uso_memoria_ram");
 var disco_bar = document.getElementById("bar_disco_rigido");
@@ -33,9 +33,9 @@ function obterDadosDesempenho(idMaquina) {
     //     clearTimeout(proximaAtualizacao);
     // }
 
-    valores = [DISCO, RAM, CPU, PING, LAT]
-    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU, KPI_PING, KPI_LAT]
-    valores_Bar = [disco_bar, RAM_bar, CPU_bar, ping_bar, lat_bar]
+    valores = [DISCO, RAM, CPU]
+    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU]
+    valores_Bar = [disco_bar, RAM_bar, CPU_bar]
 
     fetch(`/medidas/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -113,34 +113,6 @@ function plotarGraficoDesempenho(resposta, idMaquina) {
         metricaCpu.style.color = '#FF0000';
     }
 
-    // BOLINHA METRICA DENTRO DA KPI REDE
-
-    //PING
-    var ping_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
-    var metrica_ping = document.getElementById('metrica_ping');
-
-    if (ping_kpi < 200) {
-        metrica_ping.style.color = 'green';
-    } else if (ping_kpi >= 200 && ping_kpi < 450) {
-        metrica_ping.style.color = 'yellow';
-    } else {
-        metrica_ping.style.color = 'red';
-    }
-
-    //LATENCIA
-    var lat_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
-    var metrica_lat = document.getElementById('metrica_ping');
-
-    if (lat_kpi < 100) {
-        metrica_lat.style.color = 'green';
-    } else if (lat_kpi >= 100 && lat_kpi < 280) {
-        metrica_lat.style.color = 'yellow';
-    } else {
-        metrica_lat.style.color = 'red';
-    }
-
-
-
 
     setTimeout(() => atualizarGraficoDesempenho(idMaquina), 2000);
 }
@@ -186,8 +158,7 @@ function atualizarGraficoDesempenho(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-        
-
+    
 }
 
 function limparDesempenho() {
@@ -299,6 +270,128 @@ function atualizarGraficoDesempenhoTemp(idMaquina) {
 }
 
 function limparDesempenhoTemp() {
+    for (i = 0; i <= valores.length; i++) {
+        valores[i].innerHTML = "";
+        valores_Bar[i].style.width = "";
+        valores_kpi_desempenho[i].innerHTML = "";
+    }
+}
+
+function obterDadosDesempenhoRede(idMaquina) {
+    console.log("DesempenhoRede")
+    // if (proximaAtualizacao != undefined) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
+
+    valores = [PING, LAT]
+    valores_kpi_desempenho = [KPI_PING, KPI_LAT]
+    valores_Bar = [ping_bar, lat_bar]
+
+    fetch(`/rede/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos de Desempenho: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                plotarGraficoDesempenho(resposta, idMaquina);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function plotarGraficoDesempenhoRede(resposta, idMaquina) {
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+
+        if (registro.recurso === "PING") {
+            valores[0].innerHTML = (registro.uso) + "%";
+            valores_Bar[0].style.width = (registro.uso) + "%";
+            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
+        }
+        if (registro.recurso === "LAT") {
+            valores[1].innerHTML = (registro.uso) + "%";
+            valores_Bar[1].style.width = (registro.uso) + "%";
+            valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";
+        }
+
+    }
+
+    // BOLINHA METRICA DENTRO DA KPI REDE
+
+    //PING
+    var ping_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
+    var metrica_ping = document.getElementById('metrica_ping');
+
+    if (ping_kpi < 200) {
+        metrica_ping.style.color = 'green';
+    } else if (ping_kpi >= 200 && ping_kpi < 450) {
+        metrica_ping.style.color = 'yellow';
+    } else {
+        metrica_ping.style.color = 'red';
+    }
+
+    //LATENCIA
+    var lat_kpi = parseFloat(document.getElementById('lat_kpi').innerText.trim());
+    var metrica_lat = document.getElementById('metrica_lat');
+
+    if (lat_kpi < 100) {
+        metrica_lat.style.color = 'green';
+    } else if (lat_kpi >= 100 && lat_kpi < 280) {
+        metrica_lat.style.color = 'yellow';
+    } else {
+        metrica_lat.style.color = 'red';
+    }
+
+    setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 2000);
+}
+
+function atualizarGraficoDesempenhoRede(idMaquina) {
+
+    fetch(`/rede/tempo-realDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                valores_kpi_desempenho = [KPI_PING, KPI_LAT]
+                valores_Bar = [ping_bar, lat_bar]
+
+                for (i = 0; i < novoRegistro.length; i++) {
+                    var dados = novoRegistro[i];
+                    if (dados.recurso === "PING") {
+                        valores[0].innerHTML = (dados.uso) + "%";
+                        valores_Bar[0].style.width = (novoRegistro.uso) + "%";
+                        valores_kpi_desempenho[0].innerHTML = (dados.uso) + "%";
+                    }
+                    if (dados.recurso === "LAT") {
+                        valores[1].innerHTML = (dados.uso) +  "%";
+                        valores_Bar[1].style.width = (novoRegistro.uso) +  "%";
+                        valores_kpi_desempenho[1].innerHTML = (dados.uso) +  "%";
+                    }
+
+                }
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacaoDesempenhoRede = setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 5000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacaoDesempenhoRede = setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 5000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        
+
+}
+
+function limparDesempenhoRede() {
     for (i = 0; i <= valores.length; i++) {
         valores[i].innerHTML = "";
         valores_Bar[i].style.width = "";
