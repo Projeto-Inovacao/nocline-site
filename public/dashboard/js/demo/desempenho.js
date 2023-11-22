@@ -5,7 +5,11 @@ var KPI_DISCO = document.getElementById("disco_kpi");
 var KPI_TEMP = document.getElementById("temp_kpi");
 var KPI_PING = document.getElementById("ping_kpi");
 var KPI_LAT = document.getElementById("lat_kpi");
-
+var KPI_BOOT = document.getElementById("kpi_boot");
+var KPI_RESUMO = document.getElementById("kpi_resumo")
+var METRICA_TEMP = document.getElementById("metrica_temp")
+var METRICA_CPU = document.getElementById("metrica_cpu")
+var METRICA_RAM = document.getElementById("metrica_ram")
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
 var CPU = document.getElementById("porcentagem_cpu");
@@ -219,7 +223,8 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         }
         
     }
-    
+
+
     setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 2000);
 }
 
@@ -276,125 +281,117 @@ function limparDesempenhoTemp() {
         valores_kpi_desempenho[i].innerHTML = "";
     }
 }
-
-function obterDadosDesempenhoRede(idMaquina) {
-    console.log("DesempenhoRede")
-    // if (proximaAtualizacao != undefined) {
-    //     clearTimeout(proximaAtualizacao);
-    // }
-
-    valores = [PING, LAT]
-    valores_kpi_desempenho = [KPI_PING, KPI_LAT]
-    valores_Bar = [ping_bar, lat_bar]
-
-    fetch(`/rede/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos de Desempenho: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-
-                plotarGraficoDesempenho(resposta, idMaquina);
-
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+function formatarData(data) {
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    return new Date(data).toLocaleDateString('pt-BR', options);
 }
 
-function plotarGraficoDesempenhoRede(resposta, idMaquina) {
-    for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
+function atualizarGraficoDesempenhoBoot(idMaquina) {
 
-        if (registro.recurso === "PING") {
-            valores[0].innerHTML = (registro.uso) + "%";
-            valores_Bar[0].style.width = (registro.uso) + "%";
-            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
-        }
-        if (registro.recurso === "LAT") {
-            valores[1].innerHTML = (registro.uso) + "%";
-            valores_Bar[1].style.width = (registro.uso) + "%";
-            valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";
-        }
-
-    }
-
-    // BOLINHA METRICA DENTRO DA KPI REDE
-
-    //PING
-    var ping_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
-    var metrica_ping = document.getElementById('metrica_ping');
-
-    if (ping_kpi < 200) {
-        metrica_ping.style.color = 'green';
-    } else if (ping_kpi >= 200 && ping_kpi < 450) {
-        metrica_ping.style.color = 'yellow';
-    } else {
-        metrica_ping.style.color = 'red';
-    }
-
-    //LATENCIA
-    var lat_kpi = parseFloat(document.getElementById('lat_kpi').innerText.trim());
-    var metrica_lat = document.getElementById('metrica_lat');
-
-    if (lat_kpi < 100) {
-        metrica_lat.style.color = 'green';
-    } else if (lat_kpi >= 100 && lat_kpi < 280) {
-        metrica_lat.style.color = 'yellow';
-    } else {
-        metrica_lat.style.color = 'red';
-    }
-
-    setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 2000);
-}
-
-function atualizarGraficoDesempenhoRede(idMaquina) {
-
-    fetch(`/rede/tempo-realDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/tempo-realBoot/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
+            console.log("JDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDWEEW3");
             response.json().then(function (novoRegistro) {
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                valores_kpi_desempenho = [KPI_PING, KPI_LAT]
-                valores_Bar = [ping_bar, lat_bar]
+
+                var KPI_BOOT = document.getElementById("kpi_boot");
 
                 for (i = 0; i < novoRegistro.length; i++) {
+                    console.log("JDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE22222222222222222222DDDDDDDDDDDDDDDDDWEEW3");
+                    console.log("YYY");
                     var dados = novoRegistro[i];
-                    if (dados.recurso === "PING") {
-                        valores[0].innerHTML = (dados.uso) + "%";
-                        valores_Bar[0].style.width = (novoRegistro.uso) + "%";
-                        valores_kpi_desempenho[0].innerHTML = (dados.uso) + "%";
+                  
+                    if (KPI_BOOT) {
+                        KPI_BOOT.innerHTML = formatarData(dados.data_hora_inicializacao);
+                    } else {
+                        console.error("Elemento KPI_BOOT não encontrado no DOM.");
                     }
-                    if (dados.recurso === "LAT") {
-                        valores[1].innerHTML = (dados.uso) +  "%";
-                        valores_Bar[1].style.width = (novoRegistro.uso) +  "%";
-                        valores_kpi_desempenho[1].innerHTML = (dados.uso) +  "%";
-                    }
+                    console.log(dados.data_hora_inicializacao);
 
+                    // ... outras condições para CPU e RAM
                 }
+                
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacaoDesempenhoRede = setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 5000);
+                proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacaoDesempenhoRede = setTimeout(() => atualizarGraficoDesempenhoRede(idMaquina), 5000);
+            proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 5000);
         }
     })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-        
-
 }
 
-function limparDesempenhoRede() {
-    for (i = 0; i <= valores.length; i++) {
-        valores[i].innerHTML = "";
-        valores_Bar[i].style.width = "";
-        valores_kpi_desempenho[i].innerHTML = "";
+function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
+    let temperaturaAtual = 0;
+    let cpuAtual = 0;
+    let ramAtual = 0;
+    let mensagem = "";
+
+    for (let i = 0; i < resposta.length; i++) {
+        const registro = resposta[i];
+
+        if (registro.recurso === "TEMPERATURA") {
+            temperaturaAtual = registro.uso;
+            valores[0].innerHTML = temperaturaAtual + "°C";
+            valores_Bar[0].style.width = temperaturaAtual + "°C";
+            valores_kpi_desempenho[0].innerHTML = temperaturaAtual + "°C";
+        }
+        if (registro.recurso === "CPU") {
+            cpuAtual = registro.uso;
+            valores[1].innerHTML = cpuAtual + "%";
+            valores_Bar[1].style.width = cpuAtual + "%";
+            valores_kpi_desempenho[1].innerHTML = cpuAtual + "%";
+        }
+        if (registro.recurso === "RAM") {
+            ramAtual = registro.uso;
+            valores[2].innerHTML = ramAtual + "%";
+            valores_Bar[2].style.width = ramAtual + "%";
+            valores_kpi_desempenho[2].innerHTML =ramAtual + "%";
+        }
     }
+
+    if (temperaturaAtual > 70 && cpuAtual > 40) {
+        mensagem = "<b> Situação de Perigo! 🆘 </b> <br> Índices de CPU e Temperatura muito acima do esperado.";
+    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 69) && (cpuAtual >= 15 && cpuAtual <= 39)) {
+        mensagem = "Situação de Risco! ⚠️ <br> Índices de CPU e Temperatura em crescimento.";
+    } else {
+        mensagem = "Situação estável! 🆗 <br> Índices de CPU e Temperatura dentro do esperado.";
+
+    }
+
+
+    if (temperaturaAtual < 40) {
+        METRICA_TEMP.style.color = '#00FF00';
+    } else if (temperaturaAtual >= 41 && temperaturaAtual < 69) {
+        METRICA_TEMP.style.color = '#f6ff00';
+    } else {
+        METRICA_TEMP.style.color = '#FF0000';
+    }
+
+    if (cpuAtual < 14) {
+        METRICA_CPU.style.color = '#00FF00';
+    } else if (cpuAtual >= 15 && cpuAtual < 39) {
+        METRICA_CPU.style.color = '#f6ff00';
+    } else {
+        METRICA_CPU.style.color = '#FF0000';
+    }
+
+    if (ramAtual < 75) {
+        METRICA_RAM.style.color = '#00FF00';
+    } else if (ramAtual >= 76 && ramAtual < 89) {
+        METRICA_RAM.style.color = '#f6ff00';
+    } else {
+        METRICA_RAM.style.color = '#FF0000';
+    }
+
+    
+
+    KPI_RESUMO.innerHTML = mensagem;
+
+    setTimeout(() => atualizarGraficoDesempenhoTemp(idMaquina), 2000);
 }
