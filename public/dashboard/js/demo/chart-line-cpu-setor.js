@@ -9,8 +9,8 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 function obterDadosCPU(idMaquina) {
   console.log("CPU")
-  // if (proximaAtualizacao != undefined) {
-  //     clearTimeout(proximaAtualizacao);
+  // if (proximaAtualizacao != undefined) 
+  
   // }
 
   fetch(`/setor/ultimasSetorCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
@@ -31,7 +31,7 @@ function obterDadosCPU(idMaquina) {
       });
 }
 
-function plotarGraficoCPU(resposta, idMaquina) {
+function plotarGraficoCPU(resposta) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -95,14 +95,14 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+    setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
   }
   
   
 
-function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
+function atualizarGraficoCPU( dados, chartCPU) {
 
-    fetch(`/medidas/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realCPU`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -133,12 +133,12 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 5000);
         }
     })
         .catch(function (error) {
