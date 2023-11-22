@@ -58,7 +58,7 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
-      dados.datasets[0].data.push(registro.dado_coletado);
+      dados.datasets[0].data.push(registro.frequencia);
       labels.push(registro.data_hora);
   
       // Definindo a cor com base nas condições

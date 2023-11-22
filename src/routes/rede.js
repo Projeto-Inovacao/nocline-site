@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-var redeController = require("../controllers/redeController");
+var redeController = require("../controllers/RedeController");
 
 
 router.get("/ultimasREDE/:idMaquina", function (req, res) {
