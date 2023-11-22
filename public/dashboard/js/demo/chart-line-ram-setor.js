@@ -13,19 +13,11 @@ function obterDadosRAM(idMaquina) {
   
   // }
 
-<<<<<<< HEAD
     fetch(`/setor/ultimasSetorRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
-=======
-  fetch(`/setor/ultimasSetorRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-          response.json().then(function (resposta) {
-              console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-              resposta.reverse();
->>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
 
               plotarGraficoRAM(resposta, idMaquina);
 
@@ -64,7 +56,6 @@ function plotarGraficoRAM(resposta) {
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-<<<<<<< HEAD
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         dados.datasets[0].data.push(registro.media_ram);
@@ -76,18 +67,6 @@ function plotarGraficoRAM(resposta) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
       } else if (registro.media_ram <= 90) {
-=======
-    for (i = resposta.length - 1; i >= 0; i--) {
-      var registro = resposta[i];
-      dados.datasets[0].data.push(registro.media_ram);
-      labels.push(registro.data_hora);
-  
-      // Definindo a cor com base nas condições
-      if (registro.media_ram <= 15) {
-        dados.datasets[0].backgroundColor.push('#00FF00');
-        // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.media_ram<= 30) {
->>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
@@ -95,10 +74,6 @@ function plotarGraficoRAM(resposta) {
         // dados.datasets[0].borderColor.push('#FF0000');
       }
     }
-<<<<<<< HEAD
-=======
-  
->>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
     console.log('Labels:')
@@ -109,15 +84,9 @@ function plotarGraficoRAM(resposta) {
   
     // Criando estrutura para plotar gráfico - config
     const config = {
-<<<<<<< HEAD
         type: 'line',
         data: dados,
         fill: true
-=======
-      type: 'bar',
-      data: dados,
-      fill: false,
->>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
     }
   
     // Adicionando gráfico criado em div na tela
@@ -125,17 +94,9 @@ function plotarGraficoRAM(resposta) {
       document.getElementById(`myAreaChartSetorRAM`),
       config
     );
-<<<<<<< HEAD
 
    // setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
 }
-=======
-  
-    setTimeout(() => atualizarGraficoRAM( dados, chartRAM), 5000);
-  }
-  
-  
->>>>>>> fd2261a43874ea620bc418c8a4748c7e84db8c4f
 
 function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
 
