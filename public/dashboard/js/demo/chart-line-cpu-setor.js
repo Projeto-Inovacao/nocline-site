@@ -32,7 +32,7 @@ function obterDadosCPU(idMaquina) {
       });
 }
 
-function plotarGraficoCPU(resposta) {
+function plotarGraficoCPU(resposta, idMaquina) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -96,14 +96,14 @@ function plotarGraficoCPU(resposta) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
+    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
   }
   
   
 
-function atualizarGraficoCPU( dados, chartCPU) {
+function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
 
-    fetch(`/setor/tempo-realCPU/${setor}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -134,12 +134,12 @@ function atualizarGraficoCPU( dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 50000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 50000);
         }
     })
         .catch(function (error) {

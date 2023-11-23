@@ -100,43 +100,43 @@ function plotarGraficoRAM(resposta) {
 
 function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
 
-    fetch(`/setor/tempo-realRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realaRAM${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                // obterDadosCPU(idMaquina);
+                obterDadosRAM(idMaquina);
                 // // alertar(novoRegistro, idMaquina);
                 // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
                 // console.log(dados);
 
-                if (novoRegistro[0].data_hora == dados.datasets[0].data.data_hora) {
+                if (novoRegistro[0].media_cpu == dados.datasets[0].data.media_cpu) {
                     console.log("---------------------------------------------------------------")
                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                     // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                     console.log("Horário do novo dado capturado:")
-                    console.log(novoRegistro[0].data_hora)
+                    console.log(novoRegistro[0].media_cpu)
                     console.log("Horário do último dado capturado:")
                     console.log(dados.labels[dados.labels.length - 1])
                     console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
+                    dados.labels.push(novoRegistro[0].media_cpu); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeira medida
                     dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
 
-                    chartRAM.update();
+                    chartCPU.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM( dados, chartRAM), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM( dados, chartRAM), 50000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(dados, chartram), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(dados, chartRAM), 50000);
         }
     })
         .catch(function (error) {

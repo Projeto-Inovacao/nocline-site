@@ -714,11 +714,11 @@
     window.onload = async function () {
         try {
             await validarSessao();
-            await obterDadosCPU();
-            await obterDadosRAM();
-
-            await atualizarGraficoCPU();
-            await atualizarGraficoRAM();
+            exibirMaquinas();
+            var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
+            await obterDadosCPU(idMaquina);
+            await obterDadosRAM(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

@@ -13,11 +13,11 @@ router.get("/ultimasSetorRAM/:idMaquina", function (req, res) {
 });
 
 router.get("/tempo-realCPU/:idMaquina", function (req, res) {
-    medidaController.buscarMedidasEmTempoRealCPU(req, res);
+    setorController.buscarMedidasEmTempoRealCPU(req, res);
 })
 
 router.get("/tempo-realRAM/:idMaquina", function (req, res) {
-    medidaController.buscarMedidasEmTempoRealRAM(req, res);
+    setorController.buscarMedidasEmTempoRealRAM(req, res);
 })
 
 

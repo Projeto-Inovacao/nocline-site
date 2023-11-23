@@ -76,8 +76,8 @@ function buscarMedidasEmTempoRealRAM() {
 }
 module.exports = {
     buscarUltimasMedidasCPU,
-    buscarUltimasMedidasRAM
-    // buscarMedidasEmTempoRealCPU
-
+    buscarUltimasMedidasRAM,
+    buscarMedidasEmTempoRealCPU,
+    buscarMedidasEmTempoRealRAM
 
 }

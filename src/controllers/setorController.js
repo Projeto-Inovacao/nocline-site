@@ -45,11 +45,11 @@ function buscarUltimasMedidasRAM(req, res) {
 
 function buscarMedidasEmTempoRealCPU(req, res) {
 
-    var idMaquina = req.params.setor;
+    var idMaquina = req.params.idMaquina;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoRealCPU(idMaquina).then(function (resultado) {
+    setorModel.buscarMedidasEmTempoRealCPU(idMaquina).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -67,7 +67,7 @@ function buscarMedidasEmTempoRealRAM(req, res) {
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoRealRAM(idMaquina).then(function (resultado) {
+    setorModel.buscarMedidasEmTempoRealRAM(idMaquina).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
