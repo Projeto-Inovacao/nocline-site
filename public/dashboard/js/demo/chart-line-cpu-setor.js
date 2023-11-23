@@ -60,7 +60,7 @@ function plotarGraficoCPU(resposta, idMaquina) {
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.media_cpu);
-      labels.push(registro.linha); //nome do lugar que está vindo
+      labels.push(registro.nome_linha); //nome do lugar que está vindo
   
       // Definindo a cor com base nas condições
       if (registro.media_cpu <= 30) {
@@ -96,7 +96,7 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 5000);
+    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 50000);
   }
   
   
@@ -134,12 +134,12 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 50000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 500000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 50000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 500000);
         }
     })
         .catch(function (error) {
