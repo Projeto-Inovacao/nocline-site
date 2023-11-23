@@ -560,31 +560,23 @@
 
                                     </div>
                                 </div>
-                                <div class="mt-4 text-center small">
-                                    <!-- <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> MegaBytes Enviados
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> Bytes Recebidos
-                                    </span> -->
-                                </div>
                                 <!-- Card Body -->
-                                <div class="card-body" style=" padding: 0.5rem;">
+                                <div class="card-body" style= "padding: 0.5rem; height: 440px" >
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRedeU" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRedeO" style="height: 390px; width:100%;"></canvas>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-4" style = "height: 400px; ">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Recebidos x Velocidade
                                         de Download RAM</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRAM" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
@@ -609,14 +601,14 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                             </div>
-                            <div class="card shadow mb-4" style="bottom: 25px; height: 350px; ">
+                            <div class="card shadow mb-4" style="bottom: 25px; height: 400px; ">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Enviados x Velocidade
                                         de Upload</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartRedeU" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRedeU" style="height: 250px; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
@@ -637,14 +629,14 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                             </div>
-                            <div class="card shadow mb-4" style="bottom: 55px; height: 350px; ">
+                            <div class="card shadow mb-4" style="bottom: 55px; height: 400px; ">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Recebidos x Velocidade
                                         de Download</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myAreaChartRedeD" style="height: 250px; width:100%;"></canvas>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
@@ -771,6 +763,8 @@
     <script src="js/demo/chart-line-ram.js"></script> -->
     <script src="js/demo/chart-line-rede.js"></script>
     <script src="js/demo/chart-line-rede-utiupload.js"></script>
+    <script src="js/demo/chart-line-rede-utidownload.js"></script>
+    <script src="js/demo/chart-line-rede-online.js"></script>
     <!-- <script src="js/demo/janelas.js"></script> -->
     <script src="js/demo/desempenho.js"></script>
     <script src="js/sessao.js"></script>
@@ -784,7 +778,9 @@
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
-            await obterDadosRede(idMaquina);
+            await obterDadosRedeU(idMaquina);
+            await obterDadosRedeD(idMaquina);
+            await obterDadosRedeO(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

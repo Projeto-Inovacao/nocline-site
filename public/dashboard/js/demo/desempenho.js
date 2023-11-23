@@ -19,7 +19,7 @@ var TEMP = document.getElementById("temp_cpu");
 var PING = document.getElementById("ping");
 var LAT = document.getElementById("lat");
 
-// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGUESSO
+// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGRESSO
 var CPU_bar = document.getElementById("bar_porcentagem_cpu");
 var RAM_bar = document.getElementById("bar_uso_memoria_ram");
 var disco_bar = document.getElementById("bar_disco_rigido");
@@ -37,9 +37,9 @@ function obterDadosDesempenho(idMaquina) {
     //     clearTimeout(proximaAtualizacao);
     // }
 
-    valores = [DISCO, RAM, CPU, PING, LAT]
-    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU, KPI_PING, KPI_LAT]
-    valores_Bar = [disco_bar, RAM_bar, CPU_bar, ping_bar, lat_bar]
+    valores = [DISCO, RAM, CPU]
+    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU]
+    valores_Bar = [disco_bar, RAM_bar, CPU_bar]
 
     fetch(`/medidas/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -117,34 +117,6 @@ function plotarGraficoDesempenho(resposta, idMaquina) {
         metricaCpu.style.color = '#FF0000';
     }
 
-    // BOLINHA METRICA DENTRO DA KPI REDE
-
-    //PING
-    var ping_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
-    var metrica_ping = document.getElementById('metrica_ping');
-
-    if (ping_kpi < 200) {
-        metrica_ping.style.color = 'green';
-    } else if (ping_kpi >= 200 && ping_kpi < 450) {
-        metrica_ping.style.color = 'yellow';
-    } else {
-        metrica_ping.style.color = 'red';
-    }
-
-    //LATENCIA
-    var lat_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
-    var metrica_lat = document.getElementById('metrica_ping');
-
-    if (lat_kpi < 100) {
-        metrica_lat.style.color = 'green';
-    } else if (lat_kpi >= 100 && lat_kpi < 280) {
-        metrica_lat.style.color = 'yellow';
-    } else {
-        metrica_lat.style.color = 'red';
-    }
-
-
-
 
     setTimeout(() => atualizarGraficoDesempenho(idMaquina), 2000);
 }
@@ -190,8 +162,7 @@ function atualizarGraficoDesempenho(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-        
-
+    
 }
 
 function limparDesempenho() {
