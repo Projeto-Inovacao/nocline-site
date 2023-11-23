@@ -3,7 +3,6 @@ var router = express.Router();
 
 var RedeController = require("../controllers/RedeController");
 
-
 router.get("/ultimasREDE/:idMaquina", function (req, res) {
     RedeController.buscarUltimasMedidasRede(req, res);
 });
