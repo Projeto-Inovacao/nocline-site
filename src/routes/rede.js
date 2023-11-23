@@ -12,11 +12,11 @@ router.get("/tempo-realRede/:idMaquina", function (req, res) {
 })
 
 router.get("/ultimasDesempenho/:idMaquina", function (req, res) {
-    RedeController.buscarUltimasMedidasDesempenhoR(req, res);
+    redeController.buscarUltimasMedidasDesempenhoR(req, res);
 });
 
 router.get("/tempo-realDesempenho/:idMaquina", function (req, res) {
-    RedeController.buscarMedidasEmTempoRealDesempenhoR(req, res);
+    redeController.buscarMedidasEmTempoRealDesempenhoR(req, res);
 })
 
 module.exports = router;
