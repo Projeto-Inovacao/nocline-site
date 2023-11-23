@@ -23,27 +23,9 @@ function buscarUltimasMedidasRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  SELECT
-        AVG(usado) AS media_ram,
-        setor,
-        linha.nome AS nome_linha
-    FROM
-        VW_RAM_CHART
-    JOIN maquina ON maquina.id_maquina = VW_RAM_CHART.id_maquina
-    JOIN linha ON linha.id_linha = maquina.fk_linhaM
-    GROUP BY
-        setor, linha.nome;`;
+        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_SETOR_E_LINHAS;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT
-        AVG(usado) AS media_ram,
-        setor,
-        linha.nome AS nome_linha
-    FROM
-        VW_RAM_CHART
-    JOIN maquina ON maquina.id_maquina = VW_RAM_CHART.id_maquina
-    JOIN linha ON linha.id_linha = maquina.fk_linhaM
-    GROUP BY
-        setor, linha.nome;`;
+        instrucaoSql = `select *from  VW_MEDIA_RAM_POR_SETOR_E_LINHAS;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -58,11 +40,11 @@ function buscarMedidasEmTempoRealCPU() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select * from VW_MEDIA_CPU_POR_SETOR_E_LINHA
-        ORDER BY data_hora DESC limit 1`;
+        ORDER BY  setor DESC limit 5;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_MEDIA_CPU_POR_SETOR_E_LINHA
-        ORDER BY data_hora DESC limit 1`;
+        ORDER BY  setor DESC limit 5;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -71,17 +53,17 @@ function buscarMedidasEmTempoRealCPU() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function buscarMedidasEmTempoRealCPU(idMaquina) {
 
+function buscarMedidasEmTempoRealRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select * from VW_CPU_CHART
+        instrucaoSql = `select * from VW_RAM_CHART
         where id_maquina = ${idMaquina}
         ORDER BY data_hora DESC limit 1`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_CPU_CHART
+        instrucaoSql = `select * from VW_RAM_CHART
         where id_maquina = ${idMaquina}
         ORDER BY data_hora DESC limit 1`;
     } else {
@@ -95,8 +77,7 @@ function buscarMedidasEmTempoRealCPU(idMaquina) {
 module.exports = {
     buscarUltimasMedidasCPU,
     buscarUltimasMedidasRAM
-    // buscarMedidasEmTempoRealCPU,
-    // buscarMedidasEmTempoRealRAM
+    // buscarMedidasEmTempoRealCPU
 
 
 }

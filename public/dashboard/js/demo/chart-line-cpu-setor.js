@@ -103,7 +103,7 @@ function plotarGraficoCPU(resposta) {
 
 function atualizarGraficoCPU( dados, chartCPU) {
 
-    fetch(`/setor/tempo-realCPU`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realCPU/${setor}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -113,7 +113,7 @@ function atualizarGraficoCPU( dados, chartCPU) {
                 // console.log(`Dados atuais do gráfico:`);
                 // console.log(dados);
 
-                if (novoRegistro[0].data_hora == dados.datasets[0].data.data_hora) {
+                if (novoRegistro[0].media_cpu == dados.datasets[0].data.media_cpu) {
                     console.log("---------------------------------------------------------------")
                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                     // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."

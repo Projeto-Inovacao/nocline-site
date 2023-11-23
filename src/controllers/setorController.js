@@ -45,7 +45,7 @@ function buscarUltimasMedidasRAM(req, res) {
 
 function buscarMedidasEmTempoRealCPU(req, res) {
 
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.setor;
 
     console.log(`Recuperando medidas em tempo real`);
 
@@ -63,7 +63,7 @@ function buscarMedidasEmTempoRealCPU(req, res) {
 }
 
 function buscarMedidasEmTempoRealRAM(req, res) {
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.setor;
 
     console.log(`Recuperando medidas em tempo real`);
 

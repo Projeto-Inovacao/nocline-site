@@ -95,7 +95,7 @@ function plotarGraficoRAM(resposta) {
       config
     );
 
-   // setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
+   setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
 }
 
 function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
