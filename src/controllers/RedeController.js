@@ -41,8 +41,48 @@ function buscarMedidasEmTempoRealRede(req, res) {
 }
 
 
+function buscarUltimasMedidasDesempenhoR(req, res) {
+
+    const limite_linhas = 3;
+
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    redeModel.buscarUltimasMedidasDesempenhoR(idMaquina, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarMedidasEmTempoRealDesempenhoR(req, res) {
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    redeModel.buscarMedidasEmTempoRealDesempenhoR(idMaquina).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
     buscarMedidasEmTempoRealRede,
     buscarUltimasMedidasRede,
+    buscarUltimasMedidasDesempenhoR,
+    buscarMedidasEmTempoRealDesempenhoR
 }
