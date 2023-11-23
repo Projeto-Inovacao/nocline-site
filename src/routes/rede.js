@@ -1,15 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
-var redeController = require("../controllers/redeController");
-
+var RedeController = require("../controllers/RedeController");
 
 router.get("/ultimasREDE/:idMaquina", function (req, res) {
-    redeController.buscarUltimasMedidasRede(req, res);
+    RedeController.buscarUltimasMedidasRede(req, res);
 });
 
 router.get("/tempo-realRede/:idMaquina", function (req, res) {
-    redeController.buscarMedidasEmTempoRealRede(req, res);
+    RedeController.buscarMedidasEmTempoRealRede(req, res);
 })
 
 router.get("/ultimasDesempenho/:idMaquina", function (req, res) {
