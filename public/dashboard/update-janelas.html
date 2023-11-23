@@ -58,10 +58,10 @@
                                     <h8 style="font-size: 15px; margin-left: 16px;">Essa janela agrega valor ao seu
                                         negócio?</h8>
                                     <div class="col-sm-6 mb-3 mb-sm-0" style="margin-left: 16px;">
-                                        <input id="input_setor1" type="radio" name="opcao" value="yes">
+                                        <input id="input_janela1" type="radio" name="opcao" value="1">
                                         <h8 style="font-size: 13px; ">Sim</h8>
-                                        <input id="input_setor2" style="margin-left: 10px;" type="radio" name="opcao"
-                                            value="no">
+                                        <input id="input_janela2" style="margin-left: 10px;" type="radio" name="opcao"
+                                            value="0">
                                         <h8 style="font-size: 13px;">Não</h8>
                                     </div>
                                 </div>
@@ -101,6 +101,7 @@
 <script>
 
     input_cdEmp.value = sessionStorage.ID_EMPRESA
+    window.onload = pesquisarJanelas()
 
     function pesquisarJanelas() {
 
@@ -119,15 +120,15 @@
                     for (let i = 0; i < resposta.length; i++) {
                         dados = resposta[i]
                         console.log(dados.nome_janela)
-                            var opcao = document.createElement('option');
-                            opcao.value = dados.nome_janela;
-                            opcao.innerHTML = dados.nome_janela;
-                            select.appendChild(opcao);
+                        var opcao = document.createElement('option');
+                        opcao.value = dados.nome_janela;
+                        opcao.innerHTML = dados.nome_janela;
+                        select.appendChild(opcao);
 
-                            if (opcao === 0) {
-                                dados.selected = true;
-                            }
+                        if (opcao === 0) {
+                            dados.selected = true;
                         }
+                    }
 
                     // finalizarAguardar();
                 });
@@ -140,48 +141,25 @@
         });
     }
 
-    function alterarColaborador() {
+    function alterarJanela() {
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var id = input_id.value;
         var codigo = input_cdEmp.value;
-        var email = input_email.value;
-        var celular = input_celular.value;
-        var senha = input_senha.value;
-        var setor = "CCO"
-        if (input_setor2.checked) {
-            setorCVar = "SSO"
-        }
-        var status = 1
-        if (input_status2.checked) {
-            status = 0
+        var elemento_janela = document.getElementById("select_janela");
+        var nome_janela = elemento_janela.value;
+        var valor = 1
+        if (input_janela2.checked) {
+            valor = 0
         }
 
-
-
-        // if (nomeCVar == "" || emailCVar == "" || senhaCVar == "" || celularCVar == "" || setorCVar == ""|| cpfVar == "" ) {
-
-        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        //     return false;
-        // }
-
-        fetch("/usuarios/alterarColaborador", {
+        fetch(`/processos/alterarJanela`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                idServer: id,
-                emailServer: email,
-                senhaServer: senha,
-                celularServer: celular,
-                setorServer: setor,
-                statusServer: status,
-                cdEmpServer: codigo
-
+                codEmpServer: codigo,
+                nome_janelaServer: nome_janela,
+                valorNegocioServer: valor
             })
         }).then(function (resposta) {
 
@@ -190,12 +168,12 @@
             if (resposta.ok) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Alterações ao colaborador realizadas com sucesso!',
+                    title: 'Alterações de janela realizadas com sucesso!',
                     showConfirmButton: false,
                     timer: 2000
                 })
                 setTimeout(() => {
-                    window.location = "tables-employees.html";
+                    window.location = "tables-janelas.html";
                 }, "2000")
 
             } else {

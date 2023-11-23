@@ -12667,3 +12667,7 @@ body.sidebar-toggled footer.sticky-footer {
     margin-bottom: 80px;
     border-color: #000;
   }
+
+  #select_janela{
+    height: max-content;
+  }

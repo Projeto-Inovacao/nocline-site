@@ -15,4 +15,9 @@ router.get("/listarJanelasDistintas/:idEmpresa", function (req, res) {
   processosController.listarJanelasDistintas(req, res);
 });
 
+router.post("/alterarJanela", function (req, res) {
+  processosController.alterarJanela(req, res);
+});
+
+
 module.exports = router;

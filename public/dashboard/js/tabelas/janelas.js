@@ -35,7 +35,14 @@ function atualizarFeed(idMaquina) {
                     var ultimo_registro = novaLinha.insertCell(3);
 
                     nome.innerHTML = janela.nome_janela;
-                    valor.innerHTML = "yeppi"
+                    if(janela.valor_negocio == 1){
+                        valor.innerHTML = "Agrega";
+                    } else if (janela.valor_negocio == 0){
+                        valor.innerHTML = "Não agrega";
+                    } else {
+                        valor.innerHTML = "Não registrado";
+                    }
+
                     if(janela.status_abertura == 1){
                         status.innerHTML = "Aberta";
                     } else if (janela.status_abertura == 0){
