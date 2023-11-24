@@ -49,6 +49,9 @@ function exibirMaquinas() {
     console.log(select.value)
 }
 
+
+
+
 function exibirPerfil(){
     var ni = ""
 

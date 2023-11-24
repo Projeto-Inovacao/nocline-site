@@ -63,6 +63,10 @@ function plotarGraficoRAM(resposta, idMaquina) {
         // dados.datasets[1].data.push(registro.livre);
         labels.push(registro.nome_linha);
 
+        console.log("MEDIA ------------------------- ", registro.media_ram);
+
+        document.getElementById("ram_kpi_setor").innerHTML = registro.media_ram.toFixed(2) + "%"
+
          // Definindo a cor com base nas condições
       if (registro.media_ram <= 80) {
         dados.datasets[0].backgroundColor.push('#00FF00');
@@ -96,6 +100,8 @@ function plotarGraficoRAM(resposta, idMaquina) {
       config
     );
 
+    // atualizarGraficoRAM(idMaquina, dados, chartRAM);
+    // setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
    setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
 }
 
@@ -109,7 +115,7 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
                 // // alertar(novoRegistro, idMaquina);
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
-                console.log(dados);
+                console.log("RAAAAAAM --------------------- ", dados);
 
                 if (novoRegistro[0].media_ram == dados.datasets[0].data.media_ram) {
                     console.log("---------------------------------------------------------------")
@@ -132,12 +138,15 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM( idMaquina, dados, chartRAM), 50000);
+                // proximaAtualizacao = setTimeout(() => atualizarGraficoRAM( idMaquina, dados, chartRAM), 50);
+                setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
+            atualizarGraficoRAM(idMaquina, dados, chartRAM)
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+            // proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50);
+            setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
         }
     })
         .catch(function (error) {
