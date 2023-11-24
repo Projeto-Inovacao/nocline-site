@@ -58,14 +58,12 @@ function buscarMedidasEmTempoRealRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select * from VW_RAM_CHART
-        where id_maquina = ${idMaquina}
-        ORDER BY data_hora DESC limit 1`;
+        instrucaoSql = `select * from VW_MEDIA_RAM_POR_SETOR_E_LINHAS
+        ORDER BY  setor DESC limit 5;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_RAM_CHART
-        where id_maquina = ${idMaquina}
-        ORDER BY data_hora DESC limit 1`;
+        instrucaoSql = `select * from VW_MEDIA_RAM_POR_SETOR_E_LINHAS
+        ORDER BY  setor DESC limit 5;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
