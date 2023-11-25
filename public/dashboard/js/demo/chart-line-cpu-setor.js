@@ -60,8 +60,9 @@ function plotarGraficoCPU(resposta, idMaquina) {
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.media_cpu);
-      labels.push(registro.nome_linha); //nome do lugar que está vindo
-  
+      labels.push(registro.linha); //nome do lugar que está vindo
+      document.getElementById("cpu_kpi_setor").innerHTML = registro.media_cpu.toFixed(2) + "%"
+
       // Definindo a cor com base nas condições
       if (registro.media_cpu <= 30) {
         dados.datasets[0].backgroundColor.push('#00FF00');
