@@ -63,6 +63,47 @@ function buscarUltimasMedidasRAM(req, res) {
     });
 }
 
+function buscarUltimasMediasRAM(req, res) {
+
+    const limite_linhas = 3;
+
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMediasRAM(idLinha, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarUltimasMediasCPU(req, res) {
+
+    const limite_linhas = 3;
+
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMediasCPU(idLinha, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 function buscarUltimasMedidasRede(req, res) {
@@ -95,6 +136,27 @@ function buscarUltimasMedidasDesempenho(req, res) {
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
     medidaModel.buscarUltimasMedidasDesempenho(idMaquina, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarUltimasMedidasDesempenhoMedia(req, res) {
+
+    const limite_linhas = 1;
+
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    medidaModel.buscarUltimasMedidasDesempenhoMedia(idLinha, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -182,6 +244,25 @@ function buscarMedidasEmTempoRealCPU(req, res) {
     });
 }
 
+function buscarMediaEmTempoCPU(req, res) {
+
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando as medidas em tempo real`);
+
+    medidaModel.buscarMediaEmTempoCPU(idLinha).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarMedidasEmTempoRealRAM(req, res) {
     var idMaquina = req.params.idMaquina;
 
@@ -200,12 +281,49 @@ function buscarMedidasEmTempoRealRAM(req, res) {
     });
 }
 
+function buscarMediaEmTempoRAM(req, res) {
+
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando as medidas em tempo real`);
+
+    medidaModel.buscarMediaEmTempoRAM(idLinha).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarMedidasEmTempoRealDesempenho(req, res) {
     var idMaquina = req.params.idMaquina;
 
     console.log(`Recuperando medidas em tempo real`);
 
     medidaModel.buscarMedidasEmTempoRealDesempenho(idMaquina).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarMedidasEmTempoRealDesempenhoMedia(req, res) {
+    var idLinha = req.params.idLinha;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMediasEmTempoRealDesempenho(idLinha).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -372,5 +490,11 @@ module.exports = {
     buscarUltimasMedidasTempXCpu, 
     buscarMedidasEmTempoRealTempXCpu, 
     buscarUltimasMedidasDesempenhoTemp, 
-    buscarMedidasEmTempoRealDesempenhoTemp
+    buscarMedidasEmTempoRealDesempenhoTemp,
+    buscarMediaEmTempoCPU,
+    buscarMediaEmTempoRAM,
+    buscarMedidasEmTempoRealDesempenhoMedia,
+    buscarUltimasMediasRAM,
+    buscarUltimasMediasCPU,
+    buscarUltimasMedidasDesempenhoMedia
 }

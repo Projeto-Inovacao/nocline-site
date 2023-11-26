@@ -42,6 +42,10 @@ router.get("/listarMaqTemp/:idEmpresa/:idMaquina", function (req, res) {
   empresaController.listarMaqTemp(req, res);
 });
 
+router.get("/listarMaqMedia/:idEmpresa/:idLinha", function (req, res) {
+  empresaController.listarMaqMedia(req, res);
+});
+
 router.get("/listarMaqCPU/:idEmpresa/:idMaquina", function (req, res) {
   empresaController.listarMaqCPU(req, res);
 });

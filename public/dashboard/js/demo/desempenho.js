@@ -1,6 +1,8 @@
 // VAR PARA KPI
 var KPI_CPU = document.getElementById("uso_cpu_kpi");
+var KPI_MEDIA_CPU = document.getElementById("uso_cpu_media_kpi");
 var KPI_RAM = document.getElementById("ram_kpi");
+var KPI_MEDIA_RAM = document.getElementById("ram_media_kpi");
 var KPI_DISCO = document.getElementById("disco_kpi");
 var KPI_TEMP = document.getElementById("temp_kpi");
 
@@ -267,6 +269,90 @@ function limparDesempenhoTemp() {
     for (i = 0; i <= valores.length; i++) {
         valores[i].innerHTML = "";
         valores_Bar[i].style.width = "";
+        valores_kpi_desempenho[i].innerHTML = "";
+    }
+}
+
+
+function obterDadosDesempenhoMedia(idLinha) {
+
+    valores_kpi_desempenho = [KPI_MEDIA_CPU, KPI_MEDIA_RAM]
+
+    console.log("Desempenho")
+    // if (proximaAtualizacao != undefined) {
+    //     clearTimeout(proximaAtualizacao);
+    // }
+
+    fetch(`/medidas/ultimasDesempenhoMedia/${idLinha}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                plotarGraficoDesempenhoMedia(resposta, idLinha);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function plotarGraficoDesempenhoMedia(resposta, idLinha) {
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        if (registro.recurso === "CPU") {
+            valores_kpi_desempenho[1].innerHTML = (registro.media_uso_cpu) + "%";
+        }
+        if (registro.recurso === "RAM") {
+            valores_kpi_desempenho[2].innerHTML = (registro.media_uso_ram) + "%";
+        }
+        
+    }
+    
+    setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 2000);
+}
+
+function atualizarGraficoDesempenhoMedia(idLinha) {
+
+    fetch(`/medidas/tempo-realDesempenhoMedia/${idLinha}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                valores_kpi_desempenho = [KPI_MEDIA_CPU, KPI_MEDIA_RAM]
+
+                for (i = 0; i < novoRegistro.length; i++) {
+                    var dados = novoRegistro[i];
+                    if (dados.recurso === "CPU") {
+                        valores_kpi_desempenho[1].innerHTML = (dados.media_uso_cpu) +  "%";
+                    }
+                    if (dados.recurso === "RAM") {
+                        valores_kpi_desempenho[2].innerHTML = (dados.media_uso_ram) +  "%";
+                    }
+
+                    // ... outras condições para CPU e RAM
+                }
+                
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+}
+
+function limparDesempenhoMedia() {
+    for (i = 0; i <= valores.length; i++) {
         valores_kpi_desempenho[i].innerHTML = "";
     }
 }
