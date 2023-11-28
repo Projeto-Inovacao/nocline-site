@@ -118,6 +118,7 @@ function plotarGraficoDesempenho(resposta, idMaquina) {
     }
 
 
+
     setTimeout(() => atualizarGraficoDesempenho(idMaquina), 2000);
 }
 

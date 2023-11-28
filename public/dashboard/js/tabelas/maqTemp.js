@@ -37,12 +37,12 @@ function atualizarFeed(idMaquina) {
                     dado.innerHTML = listaTemp.dado_coletado;
                     
 
-                    if (listaTemp.dado_coletado >= 50 && listaTemp.dado_coletado <= 70) {
+                    if (listaTemp.dado_coletado >= 40 && listaTemp.dado_coletado <= 60) {
                         alerta.innerHTML = "Risco";
                         alerta.style.backgroundColor  = "#f7f6a3";
                         alerta.style.color = "black"; // Letra preta
                         alerta.style.fontWeight = "bold"; // Texto em negrito
-                    } else if (listaTemp.dado_coletado > 70) {
+                    } else if (listaTemp.dado_coletado > 60) {
                         alerta.innerHTML = "Perigo";
                         alerta.style.backgroundColor  = "#f7a3a3";
                         alerta.style.color = "black"; // Letra preta
