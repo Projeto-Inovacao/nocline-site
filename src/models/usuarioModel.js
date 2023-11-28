@@ -15,7 +15,7 @@ function entrar(email, senha) {
      left join contrato on fk_empresaCo = id_empresa
      left join plano on fk_plano = id_plano
     WHERE (email = '${email}' AND senha = '${senha}') ;
-    `;
+    `; 
     console.log("Executando a instrução SQL: \n" + instrucao);
     
     return database.executar(instrucao);
