@@ -72,10 +72,37 @@ function buscarMedidasEmTempoRealRAM() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+// function UltimoHorario() {
+
+//     instrucaoSql = ''
+
+//     if (process.env.AMBIENTE_PROCESSO == "producao") {
+//         instrucaoSql = `  SELECT ultima_medida_hora
+//         FROM VW_MEDIA_CPU_POR_LINHA_CCO
+//         ORDER BY ultima_medida_hora DESC
+//         LIMIT 1;`;
+//     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+//         instrucaoSql = `   SELECT ultima_medida_hora
+//         FROM VW_MEDIA_CPU_POR_LINHA_CCO
+//         ORDER BY ultima_medida_hora DESC
+//         LIMIT 1;;`;
+    
+//     } else {
+//         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+//         return
+//     }
+
+//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+//     return database.executar(instrucaoSql);
+// }
+
+
 module.exports = {
     buscarUltimasMedidasCPU,
     buscarUltimasMedidasRAM,
     buscarMedidasEmTempoRealCPU,
     buscarMedidasEmTempoRealRAM
+    // ,
+    // UltimoHorario
 
 }
