@@ -60,7 +60,7 @@ function plotarGraficoCPU(resposta, idMaquina) {
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.media_cpu);
-      labels.push(registro.linha); //nome do lugar que está vindo
+      labels.push(registro.nome_linha); //nome do lugar que está vindo
       document.getElementById("cpu_kpi_setor").innerHTML = registro.media_cpu.toFixed(2) + "%"
 
       // Definindo a cor com base nas condições
@@ -97,7 +97,8 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 20000);
+    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 50000
+    );
   }
   
   
@@ -135,12 +136,14 @@ function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 20000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 50000
+                );
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 20000 );
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 50000
+             );
         }
     })
         .catch(function (error) {

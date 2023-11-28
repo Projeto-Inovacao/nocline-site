@@ -100,9 +100,7 @@ function plotarGraficoRAM(resposta, idMaquina) {
       config
     );
 
-    // atualizarGraficoRAM(idMaquina, dados, chartRAM);
-    // setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
-   setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 5000);
+    proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
 }
 
 function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
@@ -137,28 +135,27 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
                     chartRAM.update();
                 }
 
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                // proximaAtualizacao = setTimeout(() => atualizarGraficoRAM( idMaquina, dados, chartRAM), 50);
-                setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-            atualizarGraficoRAM(idMaquina, dados, chartRAM)
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            // proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50);
-            setInterval(() => obterDadosRAM(idMaquina), 20000); // 20 segundos
-        }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+      });
+  } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+      // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+      proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+  }
+})
+  .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
 
 }
 
-function limparRAM(){
-    let chartRAM = new Chart(
-        document.getElementById(`myAreaChartSetorRAM`),
-    );
 
-    chartRAM.clear()
+function limparRAM(){
+  let chartRAM = new Chart(
+      document.getElementById(`myAreachartSetorRAM`),
+  );
+
+  chartRAM.clear()
 }

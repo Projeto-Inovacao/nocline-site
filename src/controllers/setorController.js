@@ -3,9 +3,9 @@ var setorModel = require("../models/setorModel");
 
 function buscarUltimasMedidasCPU(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 1;
 
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.id_linha;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
@@ -24,9 +24,9 @@ function buscarUltimasMedidasCPU(req, res) {
 
 function buscarUltimasMedidasRAM(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 1;
 
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.id_linha;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
@@ -45,7 +45,7 @@ function buscarUltimasMedidasRAM(req, res) {
 
 function buscarMedidasEmTempoRealCPU(req, res) {
 
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.id_linha;
 
     console.log(`Recuperando medidas em tempo real`);
 
@@ -63,7 +63,7 @@ function buscarMedidasEmTempoRealCPU(req, res) {
 }
 
 function buscarMedidasEmTempoRealRAM(req, res) {
-    var idMaquina = req.params.idMaquina;
+    var idMaquina = req.params.id_linha;
     console.log(idMaquina)
 
     console.log(`Recuperando medidas em tempo real`);

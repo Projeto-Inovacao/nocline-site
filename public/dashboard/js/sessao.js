@@ -48,6 +48,20 @@ function exibirMaquinas() {
     });
     console.log(select.value)
 }
+// function exibirEmpresa() {
+//     select = document.getElementById("select_empresa");
+//     JSON.parse(sessionStorage.NOME_EMPRESA).forEach(item => {
+//         var opcao = document.createElement('option');
+//         opcao.value = item.id_maquina;
+//         opcao.innerHTML = "NOME_EMPRESA: " + item.nivel_acesso;
+//         select.appendChild(opcao);
+
+//         if (item === 0) {
+//             opcao.selected = true;
+//         }
+//     });
+//     console.log(select.value)
+// }
 
 
 
