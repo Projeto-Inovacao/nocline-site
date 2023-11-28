@@ -4,19 +4,19 @@ var router = express.Router();
 var setorController = require("../controllers/setorController");
 
 
-router.get("/ultimasSetorCPU/:idMaquina", function (req, res) {
+router.get("/ultimasSetorCPU/:idEmpresa", function (req, res) {
     setorController.buscarUltimasMedidasCPU(req, res);
 });
 
-router.get("/ultimasSetorRAM/:idMaquina", function (req, res) {
+router.get("/ultimasSetorRAM/:idEmpresa", function (req, res) {
     setorController.buscarUltimasMedidasRAM(req, res);
 });
 
-router.get("/tempo-realCPU/:idMaquina", function (req, res) {
+router.get("/tempo-realCPU/:idEmpresa", function (req, res) {
     setorController.buscarMedidasEmTempoRealCPU(req, res);
 })
 
-router.get("/tempo-realRAM/:idMaquina", function (req, res) {
+router.get("/tempo-realRAM/:idEmpresa", function (req, res) {
     setorController.buscarMedidasEmTempoRealRAM(req, res);
 })
 

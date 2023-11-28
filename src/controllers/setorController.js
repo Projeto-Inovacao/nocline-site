@@ -5,11 +5,11 @@ function buscarUltimasMedidasCPU(req, res) {
 
     const limite_linhas = 1;
 
-    var idMaquina = req.params.id_linha;
+    var idEmpresa = req.params.id_empresa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    setorModel.buscarUltimasMedidasCPU(idMaquina, limite_linhas).then(function (resultado) {
+    setorModel.buscarUltimasMedidasCPU(idEmpresa, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -22,15 +22,35 @@ function buscarUltimasMedidasCPU(req, res) {
     });
 }
 
+
+
+function buscarMedidasEmTempoRealCPU(req, res) {
+
+    var idEmpresa = req.params.id_empresa;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    setorModel.buscarMedidasEmTempoRealCPU(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 function buscarUltimasMedidasRAM(req, res) {
 
     const limite_linhas = 1;
 
-    var idMaquina = req.params.id_linha;
+    var idEmpresa = req.params.id_empresa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    setorModel.buscarUltimasMedidasRAM(idMaquina, limite_linhas).then(function (resultado) {
+    setorModel.buscarUltimasMedidasRAM(idEmpresa, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -42,33 +62,13 @@ function buscarUltimasMedidasRAM(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
-
-function buscarMedidasEmTempoRealCPU(req, res) {
-
-    var idMaquina = req.params.id_linha;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    setorModel.buscarMedidasEmTempoRealCPU(idMaquina).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 function buscarMedidasEmTempoRealRAM(req, res) {
-    var idMaquina = req.params.id_linha;
-    console.log(idMaquina)
+    var idEmpresa = req.params.id_empresa;
+    console.log(idEmpresa)
 
     console.log(`Recuperando medidas em tempo real`);
 
-    setorModel.buscarMedidasEmTempoRealRAM(idMaquina).then(function (resultado) {
+    setorModel.buscarMedidasEmTempoRealRAM(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

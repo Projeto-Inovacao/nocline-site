@@ -5,22 +5,22 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // Pie Chart Example    
 // var ctx = document.getElementById("myAreaChartSetorCPU");
 
-// window.onload = obterDadosCPU(idMaquina);
+// window.onload = obterDadosCPU(idEmpresa);
 
-function obterDadosCPU(idMaquina) {
+function obterDadosCPU(idEmpresa) {
   console.log("CPU")
-  console.log(idMaquina)
+  console.log(idEmpresa)
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
 
-  fetch(`/setor/ultimasSetorCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/setor/ultimasSetorCPU/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
           response.json().then(function (resposta) {
               console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
               resposta.reverse();
 
-              plotarGraficoCPU(resposta, idMaquina);
+              plotarGraficoCPU(resposta, idEmpresa);
 
           });
       } else {
@@ -32,7 +32,7 @@ function obterDadosCPU(idMaquina) {
       });
 }
 
-function plotarGraficoCPU(resposta, idMaquina) {
+function plotarGraficoCPU(resposta, idEmpresa) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -97,20 +97,20 @@ function plotarGraficoCPU(resposta, idMaquina) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idMaquina, dados, chartCPU), 50000
+    setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000
     );
   }
   
   
 
-function atualizarGraficoCPU(idMaquina, dados, chartCPU) {
+function atualizarGraficoCPU(idEmpresa, dados, chartCPU) {
 
-    fetch(`/setor/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realCPU/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                obterDadosCPU(idMaquina);
-                // // alertar(novoRegistro, idMaquina);
+                obterDadosCPU(idEmpresa);
+                // // alertar(novoRegistro, idEmpresa);
                 // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
                 // console.log(dados);

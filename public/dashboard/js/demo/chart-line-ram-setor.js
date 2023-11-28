@@ -5,22 +5,22 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // Pie Chart Example    
 // var ctx = document.getElementById("myAreaChartSetorRAM");
 
-// window.onload = obterDadosCPU(idMaquina);
+// window.onload = obterDadosCPU(idEmpresa);
 
-function obterDadosRAM(idMaquina) {
+function obterDadosRAM(idEmpresa) {
   console.log("RAM")
-  console.log(idMaquina)
+  console.log(idEmpresa)
   // if (proximaAtualizacao != undefined) 
   
   // }
 
-    fetch(`/setor/ultimasSetorRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/ultimasSetorRAM/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-              plotarGraficoRAM(resposta, idMaquina);
+              plotarGraficoRAM(resposta, idEmpresa);
 
           });
       } else {
@@ -32,7 +32,7 @@ function obterDadosRAM(idMaquina) {
       });
 }
 
-function plotarGraficoRAM(resposta, idMaquina) {
+function plotarGraficoRAM(resposta, idEmpresa) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -100,17 +100,17 @@ function plotarGraficoRAM(resposta, idMaquina) {
       config
     );
 
-    proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+    proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
 }
 
-function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
+function atualizarGraficoRAM(idEmpresa, dados, chartRAM) {
 
-    fetch(`/setor/tempo-realRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/setor/tempo-realRAM/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                obterDadosRAM(idMaquina);
-                // // alertar(novoRegistro, idMaquina);
+                obterDadosRAM(idEmpresa);
+                // // alertar(novoRegistro, idEmpresa);
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
                 console.log("RAAAAAAM --------------------- ", dados);
@@ -137,12 +137,12 @@ function atualizarGraficoRAM(idMaquina, dados, chartRAM) {
 
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+          proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
       });
   } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idMaquina, dados, chartRAM), 50000);
+      proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
   }
 })
   .catch(function (error) {
