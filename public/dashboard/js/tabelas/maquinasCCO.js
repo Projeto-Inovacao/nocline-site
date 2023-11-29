@@ -34,6 +34,7 @@ function atualizarFeed() {
                     var setor = novaLinha.insertCell(5);
                     var status = novaLinha.insertCell(6);
                     var qtd_alertas_maquina = novaLinha.insertCell(7);
+                     var qtd_alertas_maquina = novaLinha.insertCell(7);
 
 
                     id.innerHTML = maquina.id_maquina;
@@ -47,19 +48,19 @@ function atualizarFeed() {
                     }else if (maquina.status_maquina == 0){
                         status.innerHTML = "Inativa"
                     }
-                    qtd_alertas_maquina.innerHTML = maquina.qtd_alerta_maquina;
+                     qtd_alertas_maquina.innerHTML = maquina.qtd_alerta_maquina;
                     
-                    console.log(maquina.qtd_maquina)
-                    t_maquinas += maquina.qtd_maquina
-                    console.log(t_maquinas)
-                    t_maquinas_perigo += maquina.qtd_perigo
-                    t_maquinas_risco += maquina.qtd_risco
-                    qtd_avisos_mes += maquina.qtd_alertas_no_mes
+                    //console.log(maquina.qtd_maquina)
+                    //t_maquinas += maquina.qtd_maquina
+                    //console.log(t_maquinas)
+                    //t_maquinas_perigo += maquina.qtd_perigo
+                    //t_maquinas_risco += maquina.qtd_risco
+                    //qtd_avisos_mes += maquina.qtd_alertas_no_mes
 
-                    total_maquinas.innerHTML = t_maquinas;
-                    total_maquinas_perigo.innerHTML = t_maquinas_perigo;
-                    total_maquinas_risco.innerHTML = t_maquinas_risco;
-                    avisos_mes.innerHTML = qtd_avisos_mes;
+                   // total_maquinas.innerHTML = t_maquinas;
+                    //total_maquinas_perigo.innerHTML = t_maquinas_perigo;
+                    //total_maquinas_risco.innerHTML = t_maquinas_risco;
+                    //avisos_mes.innerHTML = qtd_avisos_mes;
                 }
 
                // finalizarAguardar();

@@ -550,10 +550,11 @@
                                                 <th>Setor</th>
                                                 <th>Status</th>
                                                 <th>Quantidade de Alertas</th>
-                                                <th>Linha</th>
+                                                <th>Linhas</th>
+                                         
                                             </tr>
                                         </thead>
-                                        <tbody id="tabela_maquinas_">
+                                        <tbody id="tabela_maquinas">
                                             <tr>
                                             </tr>
     
@@ -749,7 +750,7 @@
             var idEmpresa = sessionStorage.ID_EMPRESA;
             await obterDadosCPU(idEmpresa);
             await obterDadosRAM(idEmpresa);
-             atualizarFeed(idEmpresa);
+            await atualizarFeed(idEmpresa);
             // await atualizaeFeed(idEmpresa)
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);

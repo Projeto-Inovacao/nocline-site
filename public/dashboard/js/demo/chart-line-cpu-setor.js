@@ -6,6 +6,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // var ctx = document.getElementById("myAreaChartSetorCPU");
 
 // window.onload = obterDadosCPU(idEmpresa);
+let proximaAtualizacao
 
 function obterDadosCPU(idEmpresa) {
   console.log("CPU")
@@ -87,8 +88,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
     // Criando estrutura para plotar gráfico - config
     const config = {
       type: 'bar',
-      data: dados,
-      fill: false,
+      data: dados
     }
   
     // Adicionando gráfico criado em div na tela
@@ -97,7 +97,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
       config
     );
   
-    setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000
+    proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 10000
     );
   }
   
@@ -126,24 +126,20 @@ function atualizarGraficoCPU(idEmpresa, dados, chartCPU) {
                     console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].media_cpu); // incluir um novo momento
 
-                    dados.datasets[0].data.shift();  // apagar o primeira medida
+                    dados.datasets[0].data.pop();  // apagar o primeira medida
                     dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
 
                     chartCPU.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU( dados, chartCPU), 50000
-                );
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 10000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(dados, chartCPU), 50000
-             );
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa,dados, chartCPU), 10000);
         }
     })
         .catch(function (error) {
