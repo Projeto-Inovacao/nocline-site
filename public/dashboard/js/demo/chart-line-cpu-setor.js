@@ -97,7 +97,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
       config
     );
   
-    proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 10000
+    proximaAtualizacao =setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000
     );
   }
   
@@ -134,12 +134,12 @@ function atualizarGraficoCPU(idEmpresa, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 10000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa,dados, chartCPU), 10000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa,dados, chartCPU), 50000);
         }
     })
         .catch(function (error) {
