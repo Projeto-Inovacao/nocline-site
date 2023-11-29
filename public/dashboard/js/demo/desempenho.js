@@ -475,6 +475,8 @@ function obterDadosDesempenhoMedia(idLinha) {
         });
 }
 
+
+
 function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
@@ -483,9 +485,32 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
         }
         if (registro.recurso === "RAM") {
             valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";
-        }
-
+        }      
     }
+
+    var ramMediaKpi = parseFloat(document.getElementById('ram_media_kpi').innerText.trim());
+    var metricaMediaRam= document.getElementById('metrica_media_ram');
+
+    if (ramMediaKpi < 80) {
+        metricaMediaRam.style.color = '#00FF00';
+    } else if (ramMediaKpi >= 80 && ramMediaKpi < 90) {
+        metricaMediaRam.style.color = '#f6ff00';
+    } else {
+        metricaMediaRam.style.color = '#FF0000';
+    }
+
+    // BOLINHA METRICA DENTRO DA KPI CPU
+    var cpuMediaKpi = parseFloat(document.getElementById('uso_cpu_media_kpi').innerText.trim());
+    var metricaMediaCpu= document.getElementById('metrica_media_cpu');
+
+    if (cpuMediaKpi < 15) {
+        metricaMediaCpu.style.color = '#00FF00';
+    } else if (cpuMediaKpi >= 15 && cpuMediaKpi < 30) {
+        metricaMediaCpu.style.color = '#f6ff00';
+    } else {
+        metricaMediaCpu.style.color = '#FF0000';
+    }
+
 
     setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 2000);
 }
