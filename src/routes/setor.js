@@ -19,6 +19,10 @@ router.get("/tempo-realCPU/:idEmpresa", function (req, res) {
 router.get("/tempo-realRAM/:idEmpresa", function (req, res) {
     setorController.buscarMedidasEmTempoRealRAM(req, res);
 })
+router.get("/listarMaquinas/:idEmpresa", function (req, res) {
+   setorController.listarMaquinas(req, res);
+  });
+  
 
 
 module.exports = router;
