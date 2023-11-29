@@ -305,10 +305,10 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         if (registro.recurso === "CPU") {
-            valores_kpi_desempenho[1].innerHTML = (registro.media_uso_cpu) + "%";
+            valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
         }
         if (registro.recurso === "RAM") {
-            valores_kpi_desempenho[2].innerHTML = (registro.media_uso_ram) + "%";
+            valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";
         }
         
     }
@@ -327,10 +327,10 @@ function atualizarGraficoDesempenhoMedia(idLinha) {
                 for (i = 0; i < novoRegistro.length; i++) {
                     var dados = novoRegistro[i];
                     if (dados.recurso === "CPU") {
-                        valores_kpi_desempenho[1].innerHTML = (dados.media_uso_cpu) +  "%";
+                        valores_kpi_desempenho[0].innerHTML = (dados.uso) +  "%";
                     }
                     if (dados.recurso === "RAM") {
-                        valores_kpi_desempenho[2].innerHTML = (dados.media_uso_ram) +  "%";
+                        valores_kpi_desempenho[1].innerHTML = (dados.uso) +  "%";
                     }
 
                     // ... outras condições para CPU e RAM

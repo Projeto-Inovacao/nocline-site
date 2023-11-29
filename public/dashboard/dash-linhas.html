@@ -439,7 +439,7 @@
 
                         <!-- KPI USO DE CPU -->
 
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -468,7 +468,7 @@
 
 
                         <!-- KPI USO DE RAM -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -477,7 +477,7 @@
                                                 RAM</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="ram_media_kpi">X%</div>
                                             <span class="mr-2">
-                                                <i class="fas fa-circle" id="ram_media_kpi" style="border-radius: 300px;"
+                                                <i class="fas fa-circle" id="metrica_ram" style="border-radius: 300px;"
                                                     onload="metricas()"></i>
                                             </span>
                                         </div>
@@ -490,56 +490,27 @@
                         </div>
 
                         <!-- KPI USO DE RAM -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                MegaBytes Enviados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_enviados_kpi">
+                                                Total de maquinas dessa Linha</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_maquinas">
                                                 X</div>
                                             <!-- <span class="mr-2">
                                                     <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
                                                 </span> -->
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-file-upload fa-2x text-gray-300"></i>
+                                            <i class="fas fa-laptop fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- KPI USO DE CPU -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                MegaBytes
-                                                Recebidos
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                        id="bytes_recebidos_kpi">X</div>
-                                                    <!-- <span class="mr-2">
-                                                            <i class="fas fa-circle" id="metrica_disco"  style="border-radius: 300px;" onload="metricas()"></i>
-                                                        </span> -->
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-file-download fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
 
                     <div class="row">
@@ -592,6 +563,31 @@
                                 <span class="mr-2">
                                     <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
                                 </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary-dash">Linhas Cadastradas</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead id="tabela_titulo_maquina">
+                                        <tr>
+                                            <th>Código da Linha</th>
+                                            <th>Numero da Linha</th>
+                                            <th>Nome da Linha</th>
+                                            <th>Quantidade de maquinas dessa Linha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela_linhas">
+                                        <tr>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -716,6 +712,7 @@
     <script src="js/demo/janelas.js"></script>
     <script src="js/demo/desempenho.js"></script>
     <script src="js/sessao.js"></script>
+    <script src="js/tabelas/linhas.js"></script>
 </body>
 
 </html>
@@ -724,6 +721,7 @@
         try {
             await validarSessao();
             exibirLinhasDash();
+            atualizarFeed()
             var elemento_linha = document.getElementById("select_linha");
             var idLinha = elemento_linha.value;
             await obterDadosMediaRAM(idLinha);

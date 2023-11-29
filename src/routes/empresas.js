@@ -56,4 +56,8 @@ router.get("/listarFuncionario/:idEmpresa", function (req, res) {
   empresaController.listarFuncionario(req, res);
 });
 
+router.get("/listarMaquinaPorLinha", function (req, res) {
+  empresaController.listarMaqPorLinha(req, res);
+});
+
 module.exports = router;
