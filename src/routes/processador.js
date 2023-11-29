@@ -12,5 +12,8 @@ router.get("/ultimasRAM/:idMaquina", function (req, res) {
     processadorController.buscarUltimasMedidasFrequencia(req, res);
 });
 
+router.get("/kpiUsoProcessador/:idMaquina", function (req, res) {
+    processadorController.buscarMaiorUso(req, res);
+});
 
 module.exports = router;
