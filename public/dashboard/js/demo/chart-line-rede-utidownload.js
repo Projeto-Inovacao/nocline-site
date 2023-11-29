@@ -2,12 +2,8 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-var vel_uplo_kpi = document.getElementById("vel_uplo_kpi");
-var KPI_BYTE_RECEBIDOS = document.getElementById("vel_down_kpi");
-var vel_down_kpi = document.getElementById("download_kpi");
-var KPI_velocidade_upload = document.getElementById("velocidade_upload_kpi");
-var KPI_PING = document.getElementById("ping_kpi");
-var KPI_LAT = document.getElementById("lat_kpi");
+var KPI_BYTE_RECEBIDOS = document.getElementById("byte_recebido_kpi");
+var KPI_VELOCIDADE_DOWNLOAD= document.getElementById("velocidade_download_kpi");
 
 var elemento_maquina = document.getElementById("select_maquina");
 var idMaquina = elemento_maquina.value;
@@ -82,22 +78,21 @@ function obterDadosRedeD(idMaquina) {
   
     for (let i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
-      dados.datasets[0].data.push(registro.recebidos || null);
-      dados.datasets[1].data.push(registro.velocidade_download || null);
+      dados.datasets[0].data.push(registro.recebidos);
+      dados.datasets[1].data.push(registro.velocidade_download);
       labels.push(registro.data_hora);
   
   
       // Definindo a cor com base nas condições
       if (registro.recebidos < 7.67) {
-        dados.datasets[0].backgroundColor.push('#000000');
+        dados.datasets[0].backgroundColor.push('#338dff');
       } else if (registro.recebidos <= 25.36) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
       } else {
         dados.datasets[0].backgroundColor.push('#FF0000');
       }
   
-      // Adicione uma verificação para a velocidade de download
-      if (registro.velocidade_download !== null) {
+    
         if (registro.velocidade_download < 81.05) {
           dados.datasets[1].backgroundColor.push('#00FF00');
         } else if (registro.velocidade_download <= 176.45) {
@@ -106,10 +101,7 @@ function obterDadosRedeD(idMaquina) {
           dados.datasets[1].backgroundColor.push('#FF0000');
         }
   
-      } else {
-        // Adicione um valor padrão ou lógica para lidar com dados de velocidade de upload nulos
-        dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos
-      }
+
     }
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
@@ -148,17 +140,17 @@ function obterDadosRedeD(idMaquina) {
   }
   
   
-  function atualizarGraficoRede(idMaquina, dados, myAreaChartRedeD) {
+  function atualizarGraficoRede(idMaquina, dados, chartRedeD) {
   
     fetch(`/rede/tempo-realRede/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
   
-          // obterDadosCPU(idMaquina);
-          // // alertar(novoRegistro, idMaquina);
-          // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          // console.log(`Dados atuais do gráfico:`);
-          // console.log(dados);
+          obterDadosRedeD(idMaquina);
+          // alertar(novoRegistro, idMaquina);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
   
           if (novoRegistro[0].data_hora == dados.labels[dados.labels.length - 1]) {
             console.log("---------------------------------------------------------------")
@@ -175,28 +167,28 @@ function obterDadosRedeD(idMaquina) {
             dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
   
             dados.datasets[0].data.shift();  // apagar o primeira medida
-            dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
+            dados.datasets[0].data.push(novoRegistro[0].recebidos); // incluir uma nova medida
   
             dados.datasets[1].data.shift();  // apagar o primeira medida
-            dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
+            dados.datasets[1].data.push(novoRegistro[0].velocidade_download); // incluir uma nova medida
   
-            if (novoRegistro.Recebidos != null) {
-              KPI_BYTE_Recebidos.innerHTML = novoRegistro.Recebidos
+            if (novoRegistro.recebidos != null) {
+              KPI_BYTE_RECEBIDOS.innerHTML = novoRegistro.recebidos
             }
             if (novoRegistro.velocidade_download != null) {
-              KPI_velocidade_download.innerHTML = novoRegistro.velocidade_download
+              KPI_VELOCIDADE_DOWNLOAD.innerHTML = novoRegistro.velocidade_download
             }
   
-            chartRedeU.update();
+            chartRedeD.update();
           }
   
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 3000);
+          proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 10000);
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 3000);
+        proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 10000);
       }
     })
       .catch(function (error) {
