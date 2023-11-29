@@ -12,6 +12,7 @@ var KPI_RESUMO = document.getElementById("kpi_resumo")
 var METRICA_TEMP = document.getElementById("metrica_temp")
 var METRICA_CPU = document.getElementById("metrica_cpu")
 var METRICA_RAM = document.getElementById("metrica_ram")
+var KPI_PROC = document.getElementById("KPIprocessadorUso")
 
 // VAR PARA MUDAR O VALOR DO DESEMPENHO
 var CPU = document.getElementById("porcentagem_cpu");
@@ -564,4 +565,5 @@ function limparDesempenhoMedia() {
         valores_kpi_desempenho[i].innerHTML = "";
     }
 }
+
 

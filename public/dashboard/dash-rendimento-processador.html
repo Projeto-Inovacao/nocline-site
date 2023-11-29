@@ -447,7 +447,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">X%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="KPIprocessadorUso">X%</div>
                                                 </div>
                                             
                                             </div>
@@ -500,19 +500,19 @@
                                 <!-- Card Body -->
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChartProXTemp" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myChartProceTemp" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="card shadow mb-4" style="width: 590px;height: 500px;">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary-dash">Informações do Processador</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary-dash">Frequência do Processador ao Longo do Tempo</h6>
                                 </div>
                                 <div class="card-body" style=" padding: 0.5rem;">
                                     <div class="chart-area">
                                         
-                                        <canvas id="myAreaChartCPU" style="height: 100%; width:100%;"></canvas>
+                                        <canvas id="myChartFrequeTemp" style="height: 100%; width:100%;"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -564,17 +564,21 @@
                                 </div>
 
 
-                <div class="card shadow mb-4"
-                style="margin-left: -165px; width: 543px; height: 500px; margin-top: 6%;">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary-dash"> Frequência do Processador ao Longo do Tempo</h6>
-                </div>
-                <div class="card-body" style=" padding: 0.5rem;">
-                    <div class="chart-area">
-                        <canvas id="myChartFreqXTemp" style="height: 100%; width:100%;"></canvas>
-                    </div>
-                </div>
-                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead id="tabela_titulo_maquina">
+                                                <tr>
+                                                    <th>Código da Linha</th>
+                                                    <th>Numero da Linha</th>
+                                                    <th>Nome da Linha</th>
+                                                    <th>Quantidade de maquinas dessa Linha</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tabela_linhas"><tr><td>1</td><td>1</td><td>azul</td><td>1</td></tr><tr><td>2</td><td>1</td><td>azul</td><td>0</td></tr></tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -611,7 +615,7 @@
                 <script src="js/demo/line-processador-temp.js"></script>
                 <script src="js/demo/chart-line-temp.js"></script>
                 <script src="js/demo/line-freq-processador.js"></script>
-                <script src="js/demo/chart-line-ram.js"></script>
+                <script src="js/demo/cha-bar-pro-cpu.js"></script>
                 <script src="js/demo/chart-line-rede.js"></script>
                 <script src="js/demo/janelas.js"></script>
                 <script src="js/demo/desempenho.js"></script>
@@ -634,6 +638,7 @@
             var idMaquina = elemento_maquina.value;
             await obterDadosDoPocessadorTemp(idMaquina);
             await obterDadosDaFrequencia(idMaquina);
+            await obterDadosKPI(idMaquina)
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
