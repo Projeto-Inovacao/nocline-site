@@ -51,24 +51,32 @@ function plotarGraficoRAM(resposta, idEmpresa) {
     console.log(resposta)
     
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (let i = 0; i < resposta.length; i++) {
-        let registro = resposta[i];
-        dados.datasets[0].data.push(registro.media_ram);
-        labels.push(registro.nome_linha);
+    // ...
+for (let i = 0; i < resposta.length; i++) {
+    let registro = resposta[i];
+    dados.datasets[0].data.push(registro.media_ram);
+    
+    // Procurar o índice da linha correspondente no gráfico de CPU
+    let indiceLinhaCPU = labels.indexOf(registro.nome_linha);
+    
+    // Adicionar a linha no mesmo índice no gráfico de RAM
+    labels.splice(indiceLinhaCPU, 0, registro.nome_linha);
 
-        console.log("MEDIA ------------------------- ", registro.media_ram);
+    console.log("MEDIA ------------------------- ", registro.media_ram);
 
-        document.getElementById("ram_kpi_setor").innerHTML = registro.media_ram.toFixed(2) + "%"
+    document.getElementById("ram_kpi_setor").innerHTML = registro.media_ram.toFixed(2) + "%"
 
-        // Definindo a cor com base nas condições
-        if (registro.media_ram <= 80) {
-            dados.datasets[0].backgroundColor.push('#00FF00');
-        } else if (registro.media_ram <= 90) {
-            dados.datasets[0].backgroundColor.push('#f6ff00');
-        } else {
-            dados.datasets[0].backgroundColor.push('#FF0000');
-        }
+    // Definindo a cor com base nas condições
+    if (registro.media_ram <= 80) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+    } else if (registro.media_ram <= 90) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
+    } else {
+        dados.datasets[0].backgroundColor.push('#FF0000');
     }
+}
+// ...
+
 
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
