@@ -12155,7 +12155,7 @@ a:focus {
 }
 
 .bg-register-linhas-image {
-    background: url(../img/mapaMetro.jpg);
+    background: url(../../assets/mapa-metro-1.webp);
     background-position: center;
     background-size: cover
 }
