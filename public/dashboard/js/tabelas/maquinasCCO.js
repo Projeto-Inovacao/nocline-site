@@ -34,7 +34,7 @@ function atualizarFeed() {
                     var setor = novaLinha.insertCell(5);
                     var status = novaLinha.insertCell(6);
                     var qtd_alertas_maquina = novaLinha.insertCell(7);
-                     var qtd_alertas_maquina = novaLinha.insertCell(7);
+                    
 
 
                     id.innerHTML = maquina.id_maquina;

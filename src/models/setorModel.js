@@ -5,9 +5,9 @@ function buscarUltimasMedidasCPU() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select * from VW_MEDIA_CPU_POR_LINHA_CCO;`;
+        instrucaoSql = `  select * from VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `   select * from VW_MEDIA_CPU_POR_LINHA_CCO;`;
+        instrucaoSql = `   select * from VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5;`;
     
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -23,9 +23,9 @@ function buscarUltimasMedidasRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO ;`;
+        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO order by setor desc limit 5; ;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO ;`;
+        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO order by setor desc limit 5; ;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

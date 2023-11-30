@@ -100,7 +100,7 @@ function plotarGraficoRAM(resposta, idEmpresa) {
       config
     );
 
-    proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
+    proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 20000);
 }
 
 function atualizarGraficoRAM(idEmpresa, dados, chartRAM) {
@@ -111,7 +111,7 @@ function atualizarGraficoRAM(idEmpresa, dados, chartRAM) {
 
                 obterDadosRAM(idEmpresa);
                 // // alertar(novoRegistro, idEmpresa);
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
                 console.log("RAAAAAAM --------------------- ", dados);
 
@@ -126,10 +126,9 @@ function atualizarGraficoRAM(idEmpresa, dados, chartRAM) {
                     console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].media_ram); // incluir um novo momento
+                    
 
-                    dados.datasets[0].data.shift();  // apagar o primeira medida
+                    dados.datasets[0].data.pop();  // apagar o primeira medida
                     dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
 
                     chartRAM.update();
@@ -137,12 +136,12 @@ function atualizarGraficoRAM(idEmpresa, dados, chartRAM) {
 
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
+          proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 20000);
       });
   } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 50000);
+      proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(idEmpresa, dados, chartRAM), 20000);
   }
 })
   .catch(function (error) {
