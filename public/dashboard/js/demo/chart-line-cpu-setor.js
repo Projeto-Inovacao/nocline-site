@@ -62,7 +62,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
       var registro = resposta[i];
       dados.datasets[0].data.push(registro.media_cpu);
       labels.push(registro.nome_linha); //nome do lugar que está vindo
-      document.getElementById("cpu_kpi_setor").innerHTML = registro.media_cpu.toFixed(2) + "%"
+    //   document.getElementById("cpu_kpi_setor").innerHTML = registro.media_cpu.toFixed(2) + "%"
 
       // Definindo a cor com base nas condições
       if (registro.media_cpu <= 30) {
@@ -97,7 +97,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
       config
     );
   
-    proximaAtualizacao =setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 30000
+    proximaAtualizacao =setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000
     );
   }
   
@@ -134,12 +134,12 @@ function atualizarGraficoCPU(idEmpresa, dados, chartCPU) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 30000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa, dados, chartCPU), 50000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa,dados, chartCPU), 30000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idEmpresa,dados, chartCPU), 50000);
         }
     })
         .catch(function (error) {

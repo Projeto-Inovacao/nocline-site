@@ -64,7 +64,7 @@ for (let i = 0; i < resposta.length; i++) {
 
     console.log("MEDIA ------------------------- ", registro.media_ram);
 
-    document.getElementById("ram_kpi_setor").innerHTML = registro.media_ram.toFixed(2) + "%"
+    document.getElementById("ram_kpi_setor").innerHTML = registro.ultima_medida_hora
 
     // Definindo a cor com base nas condições
     if (registro.media_ram <= 80) {
