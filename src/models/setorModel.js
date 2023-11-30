@@ -5,9 +5,10 @@ function buscarUltimasMedidasCPU() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select * from VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5;`;
+        instrucaoSql = `  select *from  VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5; `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `   select * from VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5;`;
+        instrucaoSql = `  select *from  VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5; `;
+
     
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -75,7 +76,7 @@ function buscarMedidasEmTempoRealRAM() {
 
 function listarMaquinas(idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-    var instrucao = `select * from VW_ALERTAS_TABLE where fk_empresaM = ${idEmpresa};
+    var instrucao = `select * from VW_LISTAR_CCO where fk_empresaM = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
