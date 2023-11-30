@@ -36,7 +36,7 @@ function plotarGraficoDisco(resposta, idMaquina) {
   console.log('iniciando plotagem do gráfico...');
 
   // Criando estrutura para plotar gráfico - labels
-  let labels = ["Usado", "Livre"];
+  let labels = [];
 
   // Criando estrutura para plotar gráfico - dados
   let dados = {
@@ -61,17 +61,16 @@ function plotarGraficoDisco(resposta, idMaquina) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
-    dados.datasets[0].data.push(registro.usado);
-    dados.datasets[0].data.push(registro.livre);
+    dados.datasets[0].data.push(registro.total_uso_disco);
 
 
      // Definindo a cor com base nas condições
-     if (registro.usado < 50) {
+     if (registro.total_uso_disco < 50) {
       dados.datasets[0].backgroundColor.push('#00FF00');
       dados.datasets[0].borderColor.push('#00FF00');
       
 
-    } else if (registro.usado >= 50 && registro.usado < 80) {
+    } else if (registro.usado >= 50 && registro.total_uso_disco < 80) {
       dados.datasets[0].backgroundColor.push('#f6ff00');
       dados.datasets[0].borderColor.push('#f6ff00');
     } else {

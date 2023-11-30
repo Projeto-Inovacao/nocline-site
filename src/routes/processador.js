@@ -16,4 +16,16 @@ router.get("/kpiUsoProcessador/:idMaquina", function (req, res) {
     processadorController.buscarMaiorUso(req, res);
 });
 
+router.get("/cpuporprocesso/:idMaquina", function (req, res) {
+    processadorController.buscarUltimasCpuporProcessos(req, res);
+});
+
+router.get("/cpupordisco/:idMaquina", function (req, res) {
+    processadorController.buscarUltimasDiscoporProcessos(req, res);
+});
+
+router.get("/lista/:idMaquina", function (req, res) {
+    processadorController.listarProcessador(req, res);
+});
+
 module.exports = router;
