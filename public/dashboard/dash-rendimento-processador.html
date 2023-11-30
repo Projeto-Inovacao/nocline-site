@@ -564,22 +564,34 @@
                                 </div>
 
 
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead id="tabela_titulo_maquina">
-                                                <tr>
-                                                    <th>Código da Linha</th>
-                                                    <th>Numero da Linha</th>
-                                                    <th>Nome da Linha</th>
-                                                    <th>Quantidade de maquinas dessa Linha</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tabela_linhas"><tr><td>1</td><td>1</td><td>azul</td><td>1</td></tr><tr><td>2</td><td>1</td><td>azul</td><td>0</td></tr></tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                             
 
+                            </div>
+                        </div>
+
+                        <h4>Informações do processador</h4>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead id="tabela_titulo_maquina">
+                                        <tr>
+                                            <th>Identificador</th>
+                                            <th>Fabricante</th>
+                                            <th>Microarquitetura</th>
+                                            <th>Indentificação da maquina</th>
+                                            <th>Indentificação da empresa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela_processador">
+                                        <!-- <tr>
+                                            <td></td>
+                                            <td>1</td>
+                                            <td>azul</td>
+                                            <td>1</td>
+                                            <td></td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -613,8 +625,10 @@
                 <!-- Page level custom scripts -->
                 <script src="js/demo/chart-pie-demo.js"></script>
                 <script src="js/demo/line-processador-temp.js"></script>
+                <script src="js/demo/chart-pizaa-pro-disco.js"></script>
                 <script src="js/demo/chart-line-temp.js"></script>
                 <script src="js/demo/line-freq-processador.js"></script>
+                <script src="js/demo/lista-processador.js"></script>
                 <script src="js/demo/cha-bar-pro-cpu.js"></script>
                 <script src="js/demo/chart-line-rede.js"></script>
                 <script src="js/demo/janelas.js"></script>
@@ -629,7 +643,8 @@
 </body>
 
 </html>
-<script>
+<script>    
+
     window.onload = async function () {
         try {
             await validarSessao();
@@ -638,7 +653,10 @@
             var idMaquina = elemento_maquina.value;
             await obterDadosDoPocessadorTemp(idMaquina);
             await obterDadosDaFrequencia(idMaquina);
-            await obterDadosKPI(idMaquina)
+            await ObtergraficoBarra(idMaquina);
+            await obterDadosKPI(idMaquina);
+            await obtergraficoPizza(idMaquina);
+            await listarProcessador(idMaquina);
             
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
