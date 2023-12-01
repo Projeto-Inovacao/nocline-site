@@ -37,7 +37,7 @@ function entrar(email, senha) {
         return
     }
     
-    return database.executar(instrucao);
+    return database.executar(instrucaoSql);
 }
 
 function cadastrarEmpresa(razaoSocial, cnpj) {
