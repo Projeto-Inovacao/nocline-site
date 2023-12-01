@@ -2,25 +2,24 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-
 // Pie Chart Example    
 // var ctx = document.getElementById("myAreaChartCPU");
 
 // window.onload = obterDadosCPU(idMaquina);
 
-function obterDadosDaFrequencia(idMaquina) {
-  console.log("Frequencia-do-Processador ")
+function obterDadosMediaCPU(idLinha) {
+  console.log("CPU")
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
 
-  fetch(`/processador/ultimasRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/medidas/ultimasMediasCPU/${idLinha}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
           response.json().then(function (resposta) {
               console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
               resposta.reverse();
 
-              plotarGraficoFrequencia(resposta, idMaquina);
+              plotarGraficoCPU(resposta, idLinha);
 
           });
       } else {
@@ -32,33 +31,7 @@ function obterDadosDaFrequencia(idMaquina) {
       });
 }
 
-function obterDadosKPI(idMaquina) {
-    console.log("Frequencia-do-Processador ")
-    // if (proximaAtualizacao != undefined) {
-    //     clearTimeout(proximaAtualizacao);
-    // }
-  
-    fetch(`/processador/kpiUsoProcessador/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-  
-            var kpi_proc= document.getElementById("KPIprocessadorUso")
-            console.log(resposta)
-            kpi_proc.innerHTML = resposta[0].porcentagem
-  
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
-  }
-  
-function plotarGraficoFrequencia(resposta, idMaquina) {
+function plotarGraficoCPU(resposta, idLinha) {
 
     console.log('iniciando plotagem do gráfico...');
   
@@ -85,14 +58,14 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
-      dados.datasets[0].data.push(registro.frequencia);
+      dados.datasets[0].data.push(registro.media_uso_cpu);
       labels.push(registro.data_hora);
   
       // Definindo a cor com base nas condições
-      if (registro.dado_coletado <= 15) {
+      if (registro.media_uso_cpu <= 15) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.dado_coletado <= 30) {
+      } else if (registro.media_uso_cpu <= 30) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
@@ -117,19 +90,19 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
     }
   
     // Adicionando gráfico criado em div na tela
-    let chartFrequencia = new Chart(
-      document.getElementById(`myChartFrequeTemp`),
+    let chartMediaCPU = new Chart(
+      document.getElementById(`myAreaChartCPUMedia`),
       config
     );
   
-    setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
+    setTimeout(() => atualizarGraficoMediaCPU(idLinha, dados, chartMediaCPU), 5000);
   }
   
   
 
-function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
+function atualizarGraficoMediaCPU(idLinha, dados, chartMediaCPU) {
 
-    fetch(`/processador/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/tempo-realMediaCPU/${idLinha}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -154,18 +127,18 @@ function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
                     dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeira medida
-                    dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
+                    dados.datasets[0].data.push(novoRegistro[0].media_uso_cpu); // incluir uma nova medida
 
-                    chartFrequencia.update();
+                    chartMediaCPU.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoMediaCPU(idLinha, dados, chartMediaCPU), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
+            proximaAtualizacao = setTimeout(() => atualizarGraficoMediaCPU(idLinha, dados, chartMediaCPU), 5000);
         }
     })
         .catch(function (error) {
@@ -174,11 +147,10 @@ function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
 
 }
 
-function limparFrequencia(){
-    let chartFrequencia = new Chart(
-        document.getElementById(`myChartFrequeTemp`),
+function limparCPU(){
+    let chartMediaCPU = new Chart(
+        document.getElementById(`myAreaChartCPUMedia`),
     );
 
-    chartFrequencia.clear()
+    chartMediaCPU.clear()
 }
-

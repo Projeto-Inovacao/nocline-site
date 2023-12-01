@@ -72,6 +72,14 @@ function buscarMaquinasPorEmpresa(id) {
   return database.executar(instrucao);
 }
 
+function buscarLinhasPorEmpresa() {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+  var instrucao = `select * from linha;
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 
 function listarMaqTemp(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
@@ -123,6 +131,26 @@ LIMIT 5;
   return database.executar(instrucao);
 }
 
+function listarMaqPorLinha() {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+  var instrucao = `SELECT
+  l.id_linha,
+  l.nome AS nome_linha,
+  l.numero AS numero_linha,
+  COUNT(m.id_maquina) AS quantidade_maquinas
+FROM
+  linha l
+LEFT JOIN
+  maquina m ON l.id_linha = m.fk_linhaM
+GROUP BY
+  l.id_linha, l.nome, l.numero;;
+
+
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
@@ -133,7 +161,9 @@ module.exports = {
   listarLinhasPorId,
   listarMaquinas,
   listarMaquinasPorId,
+  buscarLinhasPorEmpresa,
   buscarMaquinasPorEmpresa,
   listarMaqTemp, 
-  listarMaqCPU
+  listarMaqCPU,
+  listarMaqPorLinha
 };

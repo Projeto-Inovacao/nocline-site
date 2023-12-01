@@ -2,52 +2,22 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+// window.onload = obterDadosRAM(idMaquina);
 
-// Pie Chart Example    
-// var ctx = document.getElementById("myAreaChartCPU");
-
-// window.onload = obterDadosCPU(idMaquina);
-
-function obterDadosDaFrequencia(idMaquina) {
-  console.log("Frequencia-do-Processador ")
-  // if (proximaAtualizacao != undefined) {
-  //     clearTimeout(proximaAtualizacao);
-  // }
-
-  fetch(`/processador/ultimasRAM/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-          response.json().then(function (resposta) {
-              console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-              resposta.reverse();
-
-              plotarGraficoFrequencia(resposta, idMaquina);
-
-          });
-      } else {
-          console.error('Nenhum dado encontrado ou erro na API');
-      }
-  })
-      .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
-}
-
-function obterDadosKPI(idMaquina) {
-    console.log("Frequencia-do-Processador ")
+function obterDadosMediaRAM(idLinha) {
+    console.log("RAM")
     // if (proximaAtualizacao != undefined) {
     //     clearTimeout(proximaAtualizacao);
     // }
-  
-    fetch(`/processador/kpiUsoProcessador/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+
+    fetch(`/medidas/ultimasMediasRAM/${idLinha}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                console.log(`Dados recebidos DE RAM: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
-  
-            var kpi_proc= document.getElementById("KPIprocessadorUso")
-            console.log(resposta)
-            kpi_proc.innerHTML = resposta[0].porcentagem
-  
+
+                plotarGraficoRAM(resposta, idLinha);
+
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -56,15 +26,15 @@ function obterDadosKPI(idMaquina) {
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-  }
-  
-function plotarGraficoFrequencia(resposta, idMaquina) {
+}
+
+function plotarGraficoRAM(resposta, idLinha) {
 
     console.log('iniciando plotagem do gráfico...');
-  
+
     // Criando estrutura para plotar gráfico - labels
     let labels = [];
-  
+
     // Criando estrutura para plotar gráfico - dados
     let dados = {
         labels: labels,
@@ -76,23 +46,36 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
             tension: 0.3,
             fill: false, 
             pointRadius: 6
-        }]
+        }
+        // ,
+        // {
+        //     label: 'Livre',
+        //     data: [],
+        //     backgroundColor: ['#00FF7F'],
+        //     borderColor: ['#00FF7F'],
+        //     tension: 0.1,
+        //     fill: false
+        // },
+        ]
     };
-  
+
     console.log('----------------------------------------------')
+    console.log('-------------------PLOT RAM---------------------')
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
+
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = resposta.length - 1; i >= 0; i--) {
-      var registro = resposta[i];
-      dados.datasets[0].data.push(registro.frequencia);
-      labels.push(registro.data_hora);
-  
-      // Definindo a cor com base nas condições
-      if (registro.dado_coletado <= 15) {
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        dados.datasets[0].data.push(registro.media_uso_ram);
+        // dados.datasets[1].data.push(registro.livre);
+        labels.push(registro.data_hora);
+
+         // Definindo a cor com base nas condições
+      if (registro.media_uso_ram <= 80) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.dado_coletado <= 30) {
+      } else if (registro.media_uso_ram <= 90) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
@@ -100,7 +83,7 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
         // dados.datasets[0].borderColor.push('#FF0000');
       }
     }
-  
+
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
     console.log('Labels:')
@@ -108,28 +91,26 @@ function plotarGraficoFrequencia(resposta, idMaquina) {
     console.log('Dados:')
     console.log(dados.datasets)
     console.log('----------------------------------------------')
-  
+
     // Criando estrutura para plotar gráfico - config
     const config = {
-      type: 'line',
-      data: dados,
-      fill: false,
+        type: 'line',
+        data: dados,
+        fill: false
     }
-  
+
     // Adicionando gráfico criado em div na tela
-    let chartFrequencia = new Chart(
-      document.getElementById(`myChartFrequeTemp`),
-      config
+    let chartMediaRAM = new Chart(
+        document.getElementById(`myAreaChartRAMMedia`),
+        config
     );
-  
-    setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
-  }
-  
-  
 
-function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
+    setTimeout(() => atualizarGraficoRAM(idLinha, dados, chartMediaRAM), 5000);
+}
 
-    fetch(`/processador/tempo-realCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+function atualizarGraficoRAM(idLinha, dados, chartMediaRAM) {
+
+    fetch(`/medidas/tempo-realMediaRAM/${idLinha}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -154,18 +135,21 @@ function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
                     dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeira medida
-                    dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
+                    dados.datasets[0].data.push(novoRegistro[0].media_uso_ram); // incluir uma nova medida
 
-                    chartFrequencia.update();
+                    // dados.datasets[1].data.shift();  // apagar o primeira medida
+                    // dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
+
+                    chartMediaRAM.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
+                proximaAtualizacaoRAM = setTimeout(() => atualizarGraficoRAM(idLinha, dados, chartMediaRAM), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia), 5000);
+            proximaAtualizacaoRAM = setTimeout(() => atualizarGraficoRAM(idLinha, dados, chartMediaRAM), 5000);
         }
     })
         .catch(function (error) {
@@ -174,11 +158,10 @@ function atualizarGraficoFrequencia(idMaquina, dados, chartFrequencia) {
 
 }
 
-function limparFrequencia(){
-    let chartFrequencia = new Chart(
-        document.getElementById(`myChartFrequeTemp`),
+function limparRAM(){
+    let chartMediaRAM = new Chart(
+        document.getElementById(`myAreaChartRAMMedia`),
     );
 
-    chartFrequencia.clear()
+    chartMediaRAM.clear()
 }
-
