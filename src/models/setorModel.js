@@ -76,7 +76,11 @@ function buscarMedidasEmTempoRealRAM() {
 
 function listarMaquinas(idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-    var instrucao = `select * from VW_LISTAR_CCO where fk_empresaM = ${idEmpresa};
+    var instrucao = `SELECT *
+    FROM VW_LISTAR_CCO
+    WHERE fk_empresaM = ${idEmpresa}
+    ORDER BY qtd_perigo DESC; -- ou ASC para ordenar em ordem crescente
+    
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -105,13 +109,21 @@ function listarMaquinas(idEmpresa) {
 //     return database.executar(instrucaoSql);
 // }
 
+function listarJanelas(idEmpresa) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+    var instrucao = `select * from VW_JANELAS_CCO ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+  }
 
 module.exports = {
     buscarUltimasMedidasCPU,
     buscarUltimasMedidasRAM,
     buscarMedidasEmTempoRealCPU,
     buscarMedidasEmTempoRealRAM,
-    listarMaquinas
+    listarMaquinas,
+    listarJanelas
     // ,
     // UltimoHorario
 

@@ -36,40 +36,36 @@ function atualizarFeed() {
                     var qtd_alertas_maquina = novaLinha.insertCell(7);
                     var linhas = novaLinha.insertCell(8);
 
-
-                    id.innerHTML = maquina.id_maquina;
-                    ip.innerHTML = maquina.ip;
-                    hostname.innerHTML = maquina.hostname;
-                    so.innerHTML = maquina.so;
-                    modelo.innerHTML = maquina.modelo;
-                    setor.innerHTML = maquina.setor;
-                    if(maquina.status_maquina == 1){
-                        status.innerHTML = "Ativa"
-                    }else if (maquina.status_maquina == 0){
-                        status.innerHTML = "Inativa"
-                    }
-                     qtd_alertas_maquina.innerHTML = maquina.qtd_alerta_maquina;
-                     linhas.innerHTML = maquina.nome_linha;
+                    id.innerHTML = "<b><span style='color: black;'>" + maquina.id_maquina + "</span></b>";
+                    ip.innerHTML = "<b><span style='color: black;'>" + maquina.ip + "</span></b>";
+                    hostname.innerHTML = "<b><span style='color: black;'>" + maquina.hostname + "</span></b>";
+                    so.innerHTML = "<b><span style='color: black;'>" + maquina.so + "</span></b>";
+                    modelo.innerHTML = "<b><span style='color: black;'>" + maquina.modelo + "</span></b>";
+                    setor.innerHTML = "<b><span style='color: black;'>" + maquina.setor + "</span></b>";
                     
-                    //console.log(maquina.qtd_maquina)
-                    //t_maquinas += maquina.qtd_maquina
-                    //console.log(t_maquinas)
-                    //t_maquinas_perigo += maquina.qtd_perigo
-                    //t_maquinas_risco += maquina.qtd_risco
-                    //qtd_avisos_mes += maquina.qtd_alertas_no_mes
+                    
+                    // Adiciona cor ao status com base na quantidade de alertas
+                    if (maquina.qtd_alerta_maquina === 0) {
+                        status.innerHTML = "<b><span style='color: black;'>" + "Ativa" + "</span></b>";
+                        id.style.backgroundColor = " #90ee90";  // Verde para normal
+                    } else if (maquina.qtd_alerta_maquina < 5) {
+                        status.innerHTML = "<b><span style='color: black;'>" + "Preocupante" + "</span></b>"
+                        id.style.backgroundColor = "#F0E68C";  // Amarelo para preocupante
+                    } else {
+                        status.innerHTML = "<b><span style='color: black;'>" + "Critico" + "</span></b>";
+                        id.style.backgroundColor = "#FA8072";  // Vermelho para crítico
+                    }
 
-                   // total_maquinas.innerHTML = t_maquinas;
-                    //total_maquinas_perigo.innerHTML = t_maquinas_perigo;
-                    //total_maquinas_risco.innerHTML = t_maquinas_risco;
-                    //avisos_mes.innerHTML = qtd_avisos_mes;
+                    qtd_alertas_maquina.innerHTML = "<b><span style='color: black;'>" + maquina.qtd_alerta_maquina + "</span></b>";
+                    linhas.innerHTML = "<b><span style='color: black;'>" + maquina.nome_linha + "</span></b>";
                 }
 
-               // finalizarAguardar();
+                // finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
-        tabela_titulo_maquina.innerHTML = "Você não tem nenhuma maquina cadastrada..."
+        tabela_titulo_maquina.innerHTML = "Você não tem nenhuma maquina cadastrada...";
     });
 }
