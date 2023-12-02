@@ -31,7 +31,7 @@ function entrar(email, senha) {
      left join plano on fk_plano = id_plano
     WHERE (email = '${email}' AND senha = '${senha}') ;
     `; 
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
