@@ -1,8 +1,10 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontFamily = 'Nunito, -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-let proximaAtualizacaoCPU;
+// Adicionando gráfico criado em div na tela
+let chartCPU;
+let config; // Adicione esta declaração
 
 function obterDadosCPU(idEmpresa) {
   console.log("CPU");
@@ -28,6 +30,8 @@ function obterDadosCPU(idEmpresa) {
 
 function plotarGraficoCPU(resposta, idEmpresa) {
   console.log('iniciando plotagem do gráfico...');
+  // Ordenar os dados pelo campo 'nome_linha'
+  resposta.sort((a, b) => a.nome_linha.localeCompare(b.nome_linha));
 
   // Criando estrutura para plotar gráfico - labels
   let labels = [];
@@ -51,7 +55,7 @@ function plotarGraficoCPU(resposta, idEmpresa) {
   console.log(resposta)
 
   // Inserindo valores recebidos em estrutura para plotar o gráfico
-  for (i = resposta.length - 1; i >= 0; i--) {
+  for (let i = resposta.length - 1; i >= 0; i--) {
     var registro = resposta[i];
     dados.datasets[0].data.push(registro.media_cpu);
     labels.push(registro.nome_linha);
@@ -75,13 +79,18 @@ function plotarGraficoCPU(resposta, idEmpresa) {
   console.log('----------------------------------------------')
 
   // Criando estrutura para plotar gráfico - config
-  const config = {
+  config = {
     type: 'bar',
     data: dados
   }
 
+  // Destrói o gráfico existente, se houver, antes de criar um novo
+  if (chartCPU) {
+    chartCPU.destroy();
+  }
+
   // Adicionando gráfico criado em div na tela
-  let chartCPU = new Chart(
+  chartCPU = new Chart(
     document.getElementById(`myAreaChartSetorCPU`),
     config
   );
@@ -128,9 +137,14 @@ function atualizarGraficoCPU(idEmpresa, dados, chartCPU) {
 }
 
 function limparCPU() {
-  let chartCPU = new Chart(
-    document.getElementById(`myAreaChartSetorCPU`),
-  );
+  // Verifica se o gráfico já existe e o destrói antes de criar um novo
+  if (chartCPU) {
+    chartCPU.destroy();
+  }
 
-  chartCPU.clear()
+  // Cria um novo gráfico
+  chartCPU = new Chart(document.getElementById(`myAreaChartSetorCPU`), config);
 }
+
+// Chamada inicial para obter dados e plotar o gráfico
+obterDadosCPU(seuIdEmpresa); // Substitua seuIdEmpresa pelo valor desejado

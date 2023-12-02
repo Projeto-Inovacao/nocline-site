@@ -31,7 +31,7 @@ function plotarGraficoRAM(resposta, idEmpresa) {
     console.log('iniciando plotagem do gráfico...');
 
     // Ordenar os dados pelo campo 'nome_linha'
-    resposta.sort((a, b) => a.nome_linha.localeCompare(b.nome_linha));
+    resposta.sort((b, a) => a.nome_linha.localeCompare(b.nome_linha));
 
     // Criando estrutura para plotar gráfico - labels
     let labels = [];
