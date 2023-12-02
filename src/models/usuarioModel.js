@@ -29,8 +29,7 @@ function entrar(email, senha) {
      join empresa on fk_empresa = id_empresa
      left join contrato on fk_empresaCo = id_empresa
      left join plano on fk_plano = id_plano
-    WHERE (email = '${email}' AND senha = '${senha}') ;
-    `; 
+    WHERE (email = '${email}' AND senha = '${senha}') ;`; 
     console.log("Executando a instrução SQL: \n" + instrucao);
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
