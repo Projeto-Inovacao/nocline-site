@@ -17,30 +17,20 @@ function atualizarFeedJanelas() {
                 var feed = document.getElementById("tabela_janelas");
                 feed.innerHTML = "";
                 for (let i = 0; i < resposta.length; i++) {
-                    var janela = resposta[i];
+                    var maquina = resposta[i];
 
                     // Cria uma nova linha na tabela
                     var novaLinha = feed.insertRow();
 
                     // Cria células para cada coluna
-                    var idJanela = novaLinha.insertCell(0);
-                    var nomeJanela = novaLinha.insertCell(1);
-                    var statusAbertura = novaLinha.insertCell(2);
-                    var dataHora = novaLinha.insertCell(3);
-                    var idMaquina = novaLinha.insertCell(4);
-                    var hostname = novaLinha.insertCell(5);
+                    var idMaquina = novaLinha.insertCell(0);
+                    var hostname = novaLinha.insertCell(1);
+                    var qtdJanelasAbertas = novaLinha.insertCell(2);
 
                     // Preenche as células com os dados da API
-                    idJanela.innerHTML = janela.id_janela;
-                    nomeJanela.innerHTML = janela.nome_janela;
-                    statusAbertura.innerHTML = janela.status_abertura ? "Aberta" : "Fechada";
-                    dataHora.innerHTML = janela.ultima_medida_data_hora;
-                    idMaquina.innerHTML = janela.id_maquina;
-                    hostname.innerHTML = janela.hostname;
-
-                    // Adicione mais colunas conforme necessário
-
-                    // Aqui você pode realizar outras operações com os dados
+                    idMaquina.innerHTML = maquina.id_maquina;
+                    hostname.innerHTML = maquina.hostname;
+                    qtdJanelasAbertas.innerHTML = maquina.quantidade_janelas_abertas;
                 }
             });
         } else {

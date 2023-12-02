@@ -23,6 +23,9 @@ router.get("/listarMaquinas/:idEmpresa", function (req, res) {
    setorController.listarMaquinas(req, res);
   });
   
-
-
+  router.get("/listarJanelas/:idEmpresa", function (req, res) {
+    setorController.listarJanelas(req, res);
+   });
+   
+ 
 module.exports = router;

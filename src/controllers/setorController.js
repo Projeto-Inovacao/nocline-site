@@ -107,24 +107,33 @@ function listarMaquinas(req, res) {
         );
   }
   
-// function UltimoHorario(req, res) {
-//     var idEmpresa = req.params.id_empresa;
-//     console.log(idEmpresa)
 
-//     console.log(`Recuperando medidas em tempo real`);
+  function listarJanelas(req, res) {
+    var idMaquina = req.params.idMaquina;
+    var idEmpresa = req.params.idEmpresa;
 
-//     setorModel.UltimoHorario(idEmpresa).then(function (resultado) {
-//         if (resultado.length > 0) {
-//             res.status(200).json(resultado);
-//         } else {
-//             res.status(204).send("Nenhum resultado encontrado!")
-//         }
-//     }).catch(function (erro) {
-//         console.log(erro);
-//         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
-// }
+    setorModel.listarJanelas(idEmpresa, idMaquina)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 
 
@@ -133,7 +142,8 @@ module.exports = {
     buscarUltimasMedidasRAM,
     buscarMedidasEmTempoRealCPU,
     buscarMedidasEmTempoRealRAM,
-    listarMaquinas
+    listarMaquinas,
+    listarJanelas
 
 
 }
