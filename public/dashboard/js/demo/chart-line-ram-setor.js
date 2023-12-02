@@ -16,6 +16,7 @@ function obterDadosRAM(idEmpresa) {
                 resposta.reverse();
 
                 plotarGraficoRAM(resposta, idEmpresa);
+            
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -28,10 +29,13 @@ function obterDadosRAM(idEmpresa) {
 
 function plotarGraficoRAM(resposta, idEmpresa) {
     console.log('iniciando plotagem do gráfico...');
-  
+
+    // Ordenar os dados pelo campo 'nome_linha'
+    resposta.sort((a, b) => a.nome_linha.localeCompare(b.nome_linha));
+
     // Criando estrutura para plotar gráfico - labels
     let labels = [];
-  
+
     // Criando estrutura para plotar gráfico - dados
     let dados = {
         labels: labels,
@@ -41,41 +45,36 @@ function plotarGraficoRAM(resposta, idEmpresa) {
             backgroundColor: [],
             borderColor: ['#393d42'],
             tension: 0.3,
-            fill: false, 
+            fill: false,
             pointRadius: 6
         }]
     };
-  
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela função "obterDadosGrafico" e passados para "plotarGrafico":')
-    console.log(resposta)
-    
+
+    console.log('----------------------------------------------');
+    console.log('Estes dados foram recebidos pela função "obterDadosGrafico" e passados para "plotarGrafico":');
+    console.log(resposta);
+
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    // ...
-for (let i = 0; i < resposta.length; i++) {
-    let registro = resposta[i];
-    dados.datasets[0].data.push(registro.media_ram);
-    
-    // Procurar o índice da linha correspondente no gráfico de CPU
-    let indiceLinhaCPU = labels.indexOf(registro.nome_linha);
-    
-    // Adicionar a linha no mesmo índice no gráfico de RAM
-    labels.splice(indiceLinhaCPU, 0, registro.nome_linha);
+    for (let i = 0; i < resposta.length; i++) {
+        let registro = resposta[i];
 
-    console.log("MEDIA ------------------------- ", registro.media_ram);
+        // Adicionar a linha no mesmo índice no gráfico de RAM
+        labels.push(registro.nome_linha);
 
-    document.getElementById("ram_kpi_setor").innerHTML = registro.ultima_medida_hora
-
-    // Definindo a cor com base nas condições
-    if (registro.media_ram <= 80) {
-        dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.media_ram <= 90) {
-        dados.datasets[0].backgroundColor.push('#f6ff00');
-    } else {
-        dados.datasets[0].backgroundColor.push('#FF0000');
+        // Adicionando valores recebidos em estrutura para plotar o gráfico
+        dados.datasets[0].data.push(registro.media_ram);
+        document.getElementById("ram_kpi_setor").innerHTML = registro.ultima_medida_hora
+        // Definindo a cor com base nas condições
+        if (registro.media_ram <= 80) {
+            dados.datasets[0].backgroundColor.push('#00FF00');
+        } else if (registro.media_ram <= 90) {
+            dados.datasets[0].backgroundColor.push('#f6ff00');
+        } else {
+            dados.datasets[0].backgroundColor.push('#FF0000');
+        }
     }
-}
-// ...
+
+
 
 
     console.log('----------------------------------------------')
