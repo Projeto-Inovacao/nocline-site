@@ -83,10 +83,10 @@ function buscarLinhasPorEmpresa() {
 
 function listarMaqTemp(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `SELECT 
+  var instrucao = `  SELECT TOP 5
   maquina.id_maquina, 
-  DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
-  monitoramento.dado_coletado 
+  FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
+  ROUND(monitoramento.dado_coletado, 2) as dado_coletado
 FROM 
   maquina 
 JOIN 
@@ -95,11 +95,9 @@ WHERE
   maquina.fk_empresaM = ${idEmpresa}
   AND maquina.id_maquina = ${idMaquina}
   AND monitoramento.descricao = 'temperatura cpu'
-  AND monitoramento.dado_coletado > 50.0
+  AND monitoramento.dado_coletado > 46.0
 ORDER BY 
-  monitoramento.data_hora DESC 
-LIMIT 5;
-
+  monitoramento.data_hora DESC;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -108,9 +106,9 @@ LIMIT 5;
 function listarMaqCPU(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
   var instrucao = `
-  SELECT 
+  SELECT TOP 5
   maquina.id_maquina, 
-  DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+  FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
   ROUND(monitoramento.dado_coletado, 2) as dado_coletado
 FROM 
   maquina 
@@ -120,11 +118,9 @@ WHERE
   maquina.fk_empresaM = ${idEmpresa}
   AND maquina.id_maquina = ${idMaquina}
   AND monitoramento.descricao = 'uso de cpu kt'
-  AND monitoramento.dado_coletado > 40.0
+  AND monitoramento.dado_coletado > 8.0
 ORDER BY 
-  monitoramento.data_hora DESC 
-LIMIT 5;
-
+  monitoramento.data_hora DESC;
 
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
