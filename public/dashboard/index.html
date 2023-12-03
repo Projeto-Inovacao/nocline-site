@@ -853,12 +853,12 @@
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
+            await obterDadosRede(idMaquina);
             await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
             await obterDadosDesempenho(idMaquina);
             await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
             await obterDadosRAM(idMaquina);
+            await obterDadosDisco(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
