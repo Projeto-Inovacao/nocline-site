@@ -3,7 +3,7 @@ var redeModel = require("../models/redeModel");
 
 function buscarUltimasMedidasRede(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 14;
 
     var idMaquina = req.params.idMaquina;
 
@@ -44,7 +44,7 @@ function buscarMedidasEmTempoRealRede(req, res) {
 
 function buscarUltimasMedidasRedeP(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 14;
 
     var idMaquina = req.params.idMaquina;
 
@@ -84,7 +84,7 @@ function buscarMedidasEmTempoRealRedeP(req, res) {
 
 function buscarUltimasMedidasDesempenhoR(req, res) {
 
-    const limite_linhas = 3;
+    const limite_linhas = 5;
 
     var idMaquina = req.params.idMaquina;
 
@@ -162,11 +162,11 @@ function buscarMedidasEmTempoRealRedeProcessos(req, res) {
     });
 }
 
-function listarProcessos(req, res) {
+function listarProcessosRede(req, res) {
     var idMaquina = req.params.idMaquina;
     var idEmpresa = req.params.idEmpresa;
 
-    avisoModel.listarProcessos(idEmpresa, idMaquina)
+    redeModel.listarProcessosRede(idMaquina, idEmpresa)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -197,5 +197,5 @@ module.exports = {
     buscarMedidasEmTempoRealDesempenhoR,
     buscarUltimasMedidasRedeProcessos,
     buscarMedidasEmTempoRealRedeProcessos,
-    listarProcessos
+    listarProcessosRede
 }
