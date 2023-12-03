@@ -492,9 +492,9 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     var ramMediaKpi = parseFloat(document.getElementById('ram_media_kpi').innerText.trim());
     var metricaMediaRam= document.getElementById('metrica_media_ram');
 
-    if (ramMediaKpi < 80) {
+    if (ramMediaKpi < 85) {
         metricaMediaRam.style.color = '#00FF00';
-    } else if (ramMediaKpi >= 80 && ramMediaKpi < 90) {
+    } else if (ramMediaKpi >= 85 && ramMediaKpi < 87) {
         metricaMediaRam.style.color = '#f6ff00';
     } else {
         metricaMediaRam.style.color = '#FF0000';
@@ -504,9 +504,9 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     var cpuMediaKpi = parseFloat(document.getElementById('uso_cpu_media_kpi').innerText.trim());
     var metricaMediaCpu= document.getElementById('metrica_media_cpu');
 
-    if (cpuMediaKpi < 15) {
+    if (cpuMediaKpi < 4) {
         metricaMediaCpu.style.color = '#00FF00';
-    } else if (cpuMediaKpi >= 15 && cpuMediaKpi < 30) {
+    } else if (cpuMediaKpi >= 4 && cpuMediaKpi < 8) {
         metricaMediaCpu.style.color = '#f6ff00';
     } else {
         metricaMediaCpu.style.color = '#FF0000';
