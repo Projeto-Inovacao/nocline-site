@@ -435,9 +435,9 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         }
     }
 
-    if (temperaturaAtual > 70 && cpuAtual > 40) {
+    if (temperaturaAtual > 47 && cpuAtual > 12) {
         mensagem = "<b> Situação de Perigo! 🆘 </b> <br> Índices de CPU e Temperatura muito acima do esperado.";
-    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 69) && (cpuAtual >= 15 && cpuAtual <= 39)) {
+    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 47) && (cpuAtual >= 8 && cpuAtual <= 12)) {
         mensagem = "Situação de Risco! ⚠️ <br> Índices de CPU e Temperatura em crescimento.";
     } else {
         mensagem = "Situação estável! 🆗 <br> Índices de CPU e Temperatura dentro do esperado.";
