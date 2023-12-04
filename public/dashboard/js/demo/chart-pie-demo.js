@@ -36,7 +36,7 @@ function plotarGraficoDisco(resposta, idMaquina) {
   console.log('iniciando plotagem do gráfico...');
 
   // Criando estrutura para plotar gráfico - labels
-  let labels = [];
+  let labels = ["Usado", "Livre"];
 
   // Criando estrutura para plotar gráfico - dados
   let dados = {
@@ -61,16 +61,17 @@ function plotarGraficoDisco(resposta, idMaquina) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
-    dados.datasets[0].data.push(registro.total_uso_disco);
+    dados.datasets[0].data.push(registro.usado);
+    dados.datasets[0].data.push(registro.livre);
 
 
      // Definindo a cor com base nas condições
-     if (registro.total_uso_disco < 50) {
+     if (registro.usado < 50) {
       dados.datasets[0].backgroundColor.push('#00FF00');
       dados.datasets[0].borderColor.push('#00FF00');
       
 
-    } else if (registro.usado >= 50 && registro.total_uso_disco < 80) {
+    } else if (registro.usado >= 50 && registro.usado < 80) {
       dados.datasets[0].backgroundColor.push('#f6ff00');
       dados.datasets[0].borderColor.push('#f6ff00');
     } else {
@@ -135,8 +136,9 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
         console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
         console.log(`Dados atuais do gráfico:`);
         console.log(dados);
+        console.log(novoRegistro)
 
-        if ((novoRegistro[1].livre == dados.datasets[1].data.livre) && (novoRegistro[0].usado == dados.datasets[0].data.usado)) {
+        if ((novoRegistro[0].livre == dados.datasets[1].data.livre) && (novoRegistro[0].usado == dados.datasets[0].data.usado)) {
           console.log("---------------------------------------------------------------")
           console.log("Como não houve mudança de armazenamento no disco, o gráfico não atualizará.")
           // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
@@ -149,8 +151,8 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
           dados.datasets[0].data.pop();
           dados.datasets[0].data.pop();
 
-          dados.datasets[0].data.push(novoRegistro[1].livre); // incluir uma nova medida
-          dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[0].livre); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[1].usado); // incluir uma nova medida
 
           chartDisco.update();
         }

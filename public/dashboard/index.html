@@ -79,9 +79,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
-                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
+                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">Temperatura da CPU</a>
                         <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
-                        <a class="collapse-item" href="./dash-rendimento-processador.html">marcos</a>
+                        <a class="collapse-item" href="../dashboard/dash-rendimento-processador.html">Rendimento do Processador</a>
+                        <a class="collapse-item" href="">Miguel</a>
                     </div>
                 </div>
             </li>
@@ -852,12 +853,12 @@
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
+            await obterDadosRede(idMaquina);
             await obterDadosCPU(idMaquina);
-            await obterDadosDisco(idMaquina);
             await obterDadosDesempenho(idMaquina);
             await obterDadosJanela(idMaquina);
-            await obterDadosRede(idMaquina);
             await obterDadosRAM(idMaquina);
+            await obterDadosDisco(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }

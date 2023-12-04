@@ -227,5 +227,3 @@ function limparRede() {
 
   chartRede.clear()
 }
-
-

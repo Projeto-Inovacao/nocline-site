@@ -37,12 +37,12 @@ function atualizarFeedCPU(idMaquina) {
                     hostname.innerHTML = listaCPU.data_hora;
                     dado.innerHTML = listaCPU.dado_coletado;
 
-                    if (listaCPU.dado_coletado >= 15 && listaCPU.dado_coletado <= 30) {
+                    if (listaCPU.dado_coletado >= 8 && listaCPU.dado_coletado <= 12) {
                         alerta.innerHTML = "Risco";
                         alerta.style.backgroundColor  = "#f7f6a3";
                         alerta.style.color = "black"; // Letra preta
                         alerta.style.fontWeight = "bold"; // Texto em negrito
-                    } else if (listaCPU.dado_coletado > 30) {
+                    } else if (listaCPU.dado_coletado > 12) {
                         alerta.innerHTML = "Perigo";
                         alerta.style.backgroundColor  = "#f7a3a3";
                         alerta.style.color = "black"; // Letra preta

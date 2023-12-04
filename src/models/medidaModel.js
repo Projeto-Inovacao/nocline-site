@@ -67,7 +67,8 @@ function buscarUltimasMediasCPU(idLinha, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ` SELECT top ${limite_linhas}
+        instrucaoSql = ` SELECT
+        top ${limite_linhas} 
         AVG(dado_coletado) AS media_uso_cpu,
         data_hora
     FROM
@@ -211,7 +212,7 @@ function buscarUltimasMedidasBoot(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select top ${limite_linhas} data_hora_inicializacao from maquina where id_maquina= ${idMaquina};`;
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina};`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}
         limit ${limite_linhas}`;
@@ -301,7 +302,7 @@ function buscarUltimasMedidasDesempenhoTemp(idMaquina, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimasMedidasDesempenhoMedia(idLinha, limite_linhas) {
+function buscarUltimasMedidasDesempenhoMedia(idLinha) {
 
     instrucaoSql = ''
 
@@ -321,7 +322,7 @@ function buscarUltimasMedidasDesempenhoMedia(idLinha, limite_linhas) {
             SELECT id_maquina
             FROM maquina
             WHERE fk_linhaM = ${idLinha} 
-         );${limite_linhas}`;
+         );`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -657,3 +658,44 @@ module.exports = {
     buscarUltimasMediasCPU,
     buscarUltimasMedidasDesempenhoMedia,
 }
+
+
+
+/*
+
+
+        # CPU
+        cpu_percentual = processador
+        print("Verificando condições de alerta CPU")
+        print("Valor atual de cpu_percentual:", cpu_percentual)
+        if cpu_percentual > 0 and cpu_percentual < 4:
+            print("Condição de alerta CPU atendida (Risco)")
+            mensagem_cpu1 = {"text": f"⚠ Alerta de Risco na CPU da máquina {id_maquina}!"}
+            response = requests.post(webhook_url, data=json.dumps(mensagem_cpu1), headers=headers)
+            print("Resposta da API do Slack:", response.text)
+        elif cpu_percentual > 5:
+            print("Condição de alerta CPU atendida (Perigo)")
+            mensagem_cpu2 = {"text": f"☠️ Alerta de Perigo na CPU da máquina {id_maquina}!"}
+            response = requests.post(webhook_url, data=json.dumps(mensagem_cpu2), headers=headers)
+            print("Resposta da API do Slack:", response.status_code)
+            print("Conteúdo da resposta:", response.text)
+        else:
+            print("Nenhuma condição de alerta CPU atendida")
+
+        # Componente Disco
+        disco_livre = disco.free
+        disco_total = disco.total
+        conta_disco_livre = (disco_livre / disco.total) * 100
+        conta_disco_usado = 100 - conta_disco_livre
+        print("Verificando condições de alerta Disco")
+        print("Valor atual de disco_usado:", round(conta_disco_usado, 2))
+        if round(conta_disco_usado, 2) > 20 and round(conta_disco_usado, 2) < 60:
+            mensagem_disco1 = {"text": f"⚠ Alerta de Risco no Disco da máquina {id_maquina}!"}
+            response = requests.post(webhook_url, data=json.dumps(mensagem_disco1), headers=headers)
+            print("Resposta da API do Slack:", response.text)
+        elif round(conta_disco_usado, 2) > 60:
+            mensagem_disco2 = {"text": f"☠️ Alerta de Perigo no Disco da máquina {id_maquina}, há muito pouco espaço!"}
+            response = requests.post(webhook_url, data=json.dumps(mensagem_disco2), headers=headers)
+            print("Resposta da API do Slack:", response.text)
+        else:
+            print("Nenhuma condição de alerta Disco atendida")*/

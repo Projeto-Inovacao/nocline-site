@@ -22,7 +22,7 @@ var TEMP = document.getElementById("temp_cpu");
 var PING = document.getElementById("ping");
 var LAT = document.getElementById("lat");
 
-// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGRESSO
+// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGUESSO
 var CPU_bar = document.getElementById("bar_porcentagem_cpu");
 var RAM_bar = document.getElementById("bar_uso_memoria_ram");
 var disco_bar = document.getElementById("bar_disco_rigido");
@@ -38,9 +38,9 @@ function obterDadosDesempenho(idMaquina) {
     //     clearTimeout(proximaAtualizacao);
     // }
 
-    valores = [DISCO, RAM, CPU]
-    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU]
-    valores_Bar = [disco_bar, RAM_bar, CPU_bar]
+    valores = [DISCO, RAM, CPU, PING, LAT]
+    valores_kpi_desempenho = [KPI_DISCO, KPI_RAM, KPI_CPU, KPI_PING, KPI_LAT]
+    valores_Bar = [disco_bar, RAM_bar, CPU_bar, ping_bar, lat_bar]
 
     fetch(`/medidas/ultimasDesempenho/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -169,6 +169,34 @@ function plotarGraficoDesempenho(resposta, idMaquina) {
         metricaCpu.style.color = '#FF0000';
     }
 
+    // BOLINHA METRICA DENTRO DA KPI REDE
+
+    //PING
+    var ping_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
+    var metrica_ping = document.getElementById('metrica_ping');
+
+    if (ping_kpi < 200) {
+        metrica_ping.style.color = 'green';
+    } else if (ping_kpi >= 200 && ping_kpi < 450) {
+        metrica_ping.style.color = 'yellow';
+    } else {
+        metrica_ping.style.color = 'red';
+    }
+
+    //LATENCIA
+    var lat_kpi = parseFloat(document.getElementById('ping_kpi').innerText.trim());
+    var metrica_lat = document.getElementById('metrica_ping');
+
+    if (lat_kpi < 100) {
+        metrica_lat.style.color = 'green';
+    } else if (lat_kpi >= 100 && lat_kpi < 280) {
+        metrica_lat.style.color = 'yellow';
+    } else {
+        metrica_lat.style.color = 'red';
+    }
+
+
+
 
 
     setTimeout(() => atualizarGraficoDesempenho(idMaquina), 2000);
@@ -215,7 +243,6 @@ function atualizarGraficoDesempenho(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-   
 }
 
 function limparDesempenho() {
@@ -408,9 +435,9 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         }
     }
 
-    if (temperaturaAtual > 70 && cpuAtual > 40) {
+    if (temperaturaAtual > 47 && cpuAtual > 12) {
         mensagem = "<b> Situação de Perigo! 🆘 </b> <br> Índices de CPU e Temperatura muito acima do esperado.";
-    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 69) && (cpuAtual >= 15 && cpuAtual <= 39)) {
+    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 47) && (cpuAtual >= 8 && cpuAtual <= 12)) {
         mensagem = "Situação de Risco! ⚠️ <br> Índices de CPU e Temperatura em crescimento.";
     } else {
         mensagem = "Situação estável! 🆗 <br> Índices de CPU e Temperatura dentro do esperado.";
@@ -418,25 +445,25 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
     }
 
 
-    if (temperaturaAtual < 40) {
+    if (temperaturaAtual < 43) {
         METRICA_TEMP.style.color = '#00FF00';
-    } else if (temperaturaAtual >= 41 && temperaturaAtual < 69) {
+    } else if (temperaturaAtual >= 43 && temperaturaAtual < 46) {
         METRICA_TEMP.style.color = '#f6ff00';
     } else {
         METRICA_TEMP.style.color = '#FF0000';
     }
 
-    if (cpuAtual < 14) {
+    if (cpuAtual < 4) {
         METRICA_CPU.style.color = '#00FF00';
-    } else if (cpuAtual >= 15 && cpuAtual < 39) {
+    } else if (cpuAtual >= 4 && cpuAtual < 8) {
         METRICA_CPU.style.color = '#f6ff00';
     } else {
         METRICA_CPU.style.color = '#FF0000';
     }
 
-    if (ramAtual < 75) {
+    if (ramAtual < 85) {
         METRICA_RAM.style.color = '#00FF00';
-    } else if (ramAtual >= 76 && ramAtual < 89) {
+    } else if (ramAtual >= 85 && ramAtual < 87) {
         METRICA_RAM.style.color = '#f6ff00';
     } else {
         METRICA_RAM.style.color = '#FF0000';
@@ -492,9 +519,9 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     var ramMediaKpi = parseFloat(document.getElementById('ram_media_kpi').innerText.trim());
     var metricaMediaRam= document.getElementById('metrica_media_ram');
 
-    if (ramMediaKpi < 80) {
+    if (ramMediaKpi < 85) {
         metricaMediaRam.style.color = '#00FF00';
-    } else if (ramMediaKpi >= 80 && ramMediaKpi < 90) {
+    } else if (ramMediaKpi >= 85 && ramMediaKpi < 87) {
         metricaMediaRam.style.color = '#f6ff00';
     } else {
         metricaMediaRam.style.color = '#FF0000';
@@ -504,9 +531,9 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
     var cpuMediaKpi = parseFloat(document.getElementById('uso_cpu_media_kpi').innerText.trim());
     var metricaMediaCpu= document.getElementById('metrica_media_cpu');
 
-    if (cpuMediaKpi < 15) {
+    if (cpuMediaKpi < 4) {
         metricaMediaCpu.style.color = '#00FF00';
-    } else if (cpuMediaKpi >= 15 && cpuMediaKpi < 30) {
+    } else if (cpuMediaKpi >= 4 && cpuMediaKpi < 8) {
         metricaMediaCpu.style.color = '#f6ff00';
     } else {
         metricaMediaCpu.style.color = '#FF0000';

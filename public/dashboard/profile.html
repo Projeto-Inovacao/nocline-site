@@ -72,21 +72,43 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
+                    aria-expanded="true" aria-controls="collapsePages4">
                     <i class="fas fa-fw fa-tachometer-alt" style="color: white;"></i>
                     <span style="color: white;"><b>Perspectiva Específica</b></span>
                 </a>
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapsePages4" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Você pode visualizar:</h6>
+                        <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
+                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">Temperatura da CPU</a>
+                        <a class="collapse-item" href="../dashboard/dash-setor.html">Setor CCO</a>
+                        <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
+                        <a class="collapse-item" href="../dashboard/dash-rendimento-processador.html">Rendimento do Processador</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesJanela"
+                    aria-expanded="true" aria-controls="collapsePagesJanela">
+                    <img id="icons" src="img/windows-close.png">
+                    <span style="color: white;"><b>Janelas</b></span>
+                </a>
+                <div id="collapsePagesJanela" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
 
-                        <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
-                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="">miguel</a>
-                        <a class="collapse-item" href="">rita</a>
-                        <a class="collapse-item" href="">marcos</a>
+                        <a class="collapse-item" href="" id="cadastro_colab">Cadastrar
+                            Janelas</a>
+                        <a class="collapse-item" href="tables-janelas.html">Visualizar Janelas</a>
 
                     </div>
                 </div>

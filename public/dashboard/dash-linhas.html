@@ -80,10 +80,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
-                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="">miguel</a>
-                        <a class="collapse-item" href="">rita</a>
-                        <a class="collapse-item" href="">marcos</a>
+                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">Temperatura da CPU</a>
+                        <a class="collapse-item" href="../dashboard/dash-setor.html">Setor CCO</a>
+                        <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
+                        <a class="collapse-item" href="../dashboard/dash-rendimento-processador.html">Rendimento do Processador</a>
                     </div>
                 </div>
             </li>
@@ -427,11 +427,11 @@
                     <!-- Page Heading -->
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Linhas do metrô
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard de Análise Geral dos Componentes po Linhas Metroviárias
                             <label id="select" for="">Escolha a Linha desejada:</label>
                             <select name="selMachine" id="select_linha"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                style="margin-left: 165%;">
+                                style="margin-left: 119%;">
                             </select>
                     </div>
 
@@ -518,7 +518,7 @@
                         <!-- Area Chart -->
 
                         <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4" style="width: 510px;height: 500px;">
+                            <div class="card shadow mb-4" style="width: 570px;height: 500px;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash"> Média de CPU (%)</h6>
                                 </div>
@@ -543,7 +543,7 @@
 
                         </div>
 
-                        <div class="card shadow mb-4" style=" width: 543px; height: 500px; margin-left: 25vh; ">
+                        <div class="card shadow mb-4" style=" width: 570px; height: 500px; margin-left: 29vh; ">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary-dash"> Média de Memória RAM (%)</h6>
                             </div>
@@ -705,14 +705,15 @@
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-line-cpu-media.js"></script>
-    <script src="js/demo/chart-line-ram-media.js"></script>
-    <script src="js/demo/janelas.js"></script>
-    <script src="js/demo/desempenho.js"></script>
-    <script src="js/sessao.js"></script>
-    <script src="js/tabelas/linhas.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-pie-demo.js"></script>
+        <script src="js/demo/chart-line-cpu.js"></script>
+        <script src="js/demo/chart-line-temp.js"></script>
+        <script src="js/demo/chart-line-ram.js"></script>
+        <script src="js/demo/chart-line-rede.js"></script>
+        <script src="js/demo/janelas.js"></script>
+        <script src="js/demo/desempenho.js"></script>
+        <script src="js/sessao.js"></script>
 </body>
 
 </html>
