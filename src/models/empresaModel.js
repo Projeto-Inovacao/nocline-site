@@ -83,24 +83,50 @@ function buscarLinhasPorEmpresa() {
 
 function listarMaqTemp(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `  SELECT TOP 5
-  maquina.id_maquina, 
-  FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
-  ROUND(monitoramento.dado_coletado, 2) as dado_coletado
-FROM 
-  maquina 
-JOIN 
-  monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
-WHERE 
-  maquina.fk_empresaM = ${idEmpresa}
-  AND maquina.id_maquina = ${idMaquina}
-  AND monitoramento.descricao = 'temperatura cpu'
-  AND monitoramento.dado_coletado > 46.0
-ORDER BY 
-  monitoramento.data_hora DESC;
-  `;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+ 
+  instrucaoSql = ''
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+      instrucaoSql = ` SELECT TOP 5
+      maquina.id_maquina, 
+      FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
+      ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+    FROM 
+      maquina 
+    JOIN 
+      monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+    WHERE 
+      maquina.fk_empresaM = ${idEmpresa}
+      AND maquina.id_maquina = ${idMaquina}
+      AND monitoramento.descricao = 'temperatura cpu'
+      AND monitoramento.dado_coletado > 46.0
+    ORDER BY 
+      monitoramento.data_hora DESC;
+     `
+  } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+      instrucaoSql = ` SELECT 
+      maquina.id_maquina, 
+      DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+      monitoramento.dado_coletado 
+    FROM 
+      maquina 
+    JOIN 
+      monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+    WHERE 
+      maquina.fk_empresaM = ${idEmpresa}
+      AND maquina.id_maquina = ${idMaquina}
+      AND monitoramento.descricao = 'temperatura cpu'
+      AND monitoramento.dado_coletado > 50.0
+    ORDER BY 
+      monitoramento.data_hora DESC 
+    LIMIT 5;`
+  } else {
+      console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+      return
+  }
+
+console.log("Executando a instrução SQL: \n" + instrucaoSql);
+return database.executar(instrucaoSql);
 }
 
 function listarMaqCPU(idEmpresa, idMaquina) {
@@ -125,9 +151,22 @@ function listarMaqCPU(idEmpresa, idMaquina) {
         monitoramento.data_hora DESC;
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_DISCO_CHART
-                    where id_maquina = ${idMaquina}
-                   limit ${limite_linhas}`;
+        instrucaoSql = `  SELECT 
+        maquina.id_maquina, 
+        DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+        ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+      FROM 
+        maquina 
+      JOIN 
+        monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+      WHERE 
+        maquina.fk_empresaM = ${idEmpresa}
+        AND maquina.id_maquina = ${idMaquina}
+        AND monitoramento.descricao = 'uso de cpu kt'
+        AND monitoramento.dado_coletado > 40.0
+      ORDER BY 
+        monitoramento.data_hora DESC 
+      LIMIT 5;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
