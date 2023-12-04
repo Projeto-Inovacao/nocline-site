@@ -943,7 +943,8 @@
             await obterDadosTempXCPU(idMaquina);
             await atualizarFeedCPU(idMaquina);
             await atualizarGraficoDesempenhoBoot(idMaquina);
-            await plotarGraficoDesempenhoTemp(idMaquina)
+            await plotarGraficoDesempenhoTemp(idMaquina);
+            await atualizarGraficoDesempenhoTemp (idMaquina);
 
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
