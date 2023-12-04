@@ -84,21 +84,46 @@ function plotarGraficoRede(resposta, idMaquina) {
     }
 
     // Definindo a cor com base nas condições
-    if (registro.enviados < 7.67) {
+    if (registro.enviados < 10) {
       dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.enviados <= 25.36) {
+    } else if (registro.enviados <= 30) {
       dados.datasets[0].backgroundColor.push('#f6ff00');
     } else {
       dados.datasets[0].backgroundColor.push('#FF0000');
     }
 
-    if (registro.recebidos < 81.05) {
+    if (registro.recebidos < 90) {
       dados.datasets[1].backgroundColor.push('#00FF00');
-    } else if (registro.recebidos <= 176.45) {
+    } else if (registro.recebidos <= 180) {
       dados.datasets[1].backgroundColor.push('#f6ff00');
     } else {
       dados.datasets[1].backgroundColor.push('#FF0000');
     }
+
+      // BOLINHA METRICA DENTRO DA KPI ENVIADOS
+      var enviadosKpi = parseFloat(document.getElementById('bytes_enviados_kpi').innerText.trim());
+      var metricaEnv= document.getElementById('metrica_enviados');
+  
+      if (enviadosKpi < 10) {
+        metricaEnv.style.color = '#00FF00';
+      } else if (enviadosKpi >= 10 && enviadosKpi < 30) {
+        metricaEnv.style.color = '#f6ff00';
+      } else {
+        metricaEnv.style.color = '#FF0000';
+      }
+
+         // BOLINHA METRICA DENTRO DA KPI RECEBIDOS
+         var recebidosKpi = parseFloat(document.getElementById('bytes_recebidos_kpi').innerText.trim());
+         var metricaRec= document.getElementById('metrica_recebidos');
+     
+         if (recebidosKpi < 90) {
+          metricaRec.style.color = '#00FF00';
+         } else if (recebidosKpi >= 90 && recebidosKpi < 180) {
+          metricaRec.style.color = '#f6ff00';
+         } else {
+          metricaRec.style.color = '#FF0000';
+         }
+  
   }
 
   console.log('----------------------------------------------')
@@ -202,5 +227,3 @@ function limparRede() {
 
   chartRede.clear()
 }
-
-

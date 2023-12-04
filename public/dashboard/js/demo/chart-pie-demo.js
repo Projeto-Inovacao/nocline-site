@@ -136,8 +136,9 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
         console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
         console.log(`Dados atuais do gráfico:`);
         console.log(dados);
+        console.log(novoRegistro)
 
-        if ((novoRegistro[1].livre == dados.datasets[1].data.livre) && (novoRegistro[0].usado == dados.datasets[0].data.usado)) {
+        if ((novoRegistro[0].livre == dados.datasets[1].data.livre) && (novoRegistro[0].usado == dados.datasets[0].data.usado)) {
           console.log("---------------------------------------------------------------")
           console.log("Como não houve mudança de armazenamento no disco, o gráfico não atualizará.")
           // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
@@ -150,8 +151,8 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
           dados.datasets[0].data.pop();
           dados.datasets[0].data.pop();
 
-          dados.datasets[0].data.push(novoRegistro[1].livre); // incluir uma nova medida
-          dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[0].livre); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[1].usado); // incluir uma nova medida
 
           chartDisco.update();
         }

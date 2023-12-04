@@ -72,34 +72,123 @@ function buscarMaquinasPorEmpresa(id) {
   return database.executar(instrucao);
 }
 
-
-function listarMaqTemp(idEmpresa, idMaquina) {
+function buscarLinhasPorEmpresa() {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `SELECT 
-  maquina.id_maquina, 
-  DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
-  monitoramento.dado_coletado 
-FROM 
-  maquina 
-JOIN 
-  monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
-WHERE 
-  maquina.fk_empresaM = ${idEmpresa}
-  AND maquina.id_maquina = ${idMaquina}
-  AND monitoramento.descricao = 'temperatura cpu'
-  AND monitoramento.dado_coletado > 50.0
-ORDER BY 
-  monitoramento.data_hora DESC 
-LIMIT 5;
-
+  var instrucao = `select * from linha;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
+
+function listarMaqTemp(idEmpresa, idMaquina) {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+ 
+  instrucaoSql = ''
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+      instrucaoSql = ` SELECT TOP 5
+      maquina.id_maquina, 
+      FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
+      ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+    FROM 
+      maquina 
+    JOIN 
+      monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+    WHERE 
+      maquina.fk_empresaM = ${idEmpresa}
+      AND maquina.id_maquina = ${idMaquina}
+      AND monitoramento.descricao = 'temperatura cpu'
+      AND monitoramento.dado_coletado > 46.0
+    ORDER BY 
+      monitoramento.data_hora DESC;
+     `
+  } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+      instrucaoSql = ` SELECT 
+      maquina.id_maquina, 
+      DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+      monitoramento.dado_coletado 
+    FROM 
+      maquina 
+    JOIN 
+      monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+    WHERE 
+      maquina.fk_empresaM = ${idEmpresa}
+      AND maquina.id_maquina = ${idMaquina}
+      AND monitoramento.descricao = 'temperatura cpu'
+      AND monitoramento.dado_coletado > 50.0
+    ORDER BY 
+      monitoramento.data_hora DESC 
+    LIMIT 5;`
+  } else {
+      console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+      return
+  }
+
+console.log("Executando a instrução SQL: \n" + instrucaoSql);
+return database.executar(instrucaoSql);
+}
+
 function listarMaqCPU(idEmpresa, idMaquina) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-  var instrucao = `select dado_coletado from VW_CPU_KOTLIN_CHART where id_maquina = ${idMaquina} and id_empresa = ${idEmpresa} order by data_hora desc limit 5;
+  instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = ` SELECT TOP 5
+        maquina.id_maquina, 
+        FORMAT(monitoramento.data_hora, 'dd/MM HH:mm') as data_hora,
+        ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+      FROM 
+        maquina 
+      JOIN 
+        monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+      WHERE 
+        maquina.fk_empresaM = ${idEmpresa}
+        AND maquina.id_maquina = ${idMaquina}
+        AND monitoramento.descricao = 'uso de cpu kt'
+        AND monitoramento.dado_coletado > 8.0
+      ORDER BY 
+        monitoramento.data_hora DESC;
+       `;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `  SELECT 
+        maquina.id_maquina, 
+        DATE_FORMAT(monitoramento.data_hora, '%d/%m %H:%i') as data_hora,
+        ROUND(monitoramento.dado_coletado, 2) as dado_coletado
+      FROM 
+        maquina 
+      JOIN 
+        monitoramento ON maquina.id_maquina = monitoramento.fk_maquina_monitoramento
+      WHERE 
+        maquina.fk_empresaM = ${idEmpresa}
+        AND maquina.id_maquina = ${idMaquina}
+        AND monitoramento.descricao = 'uso de cpu kt'
+        AND monitoramento.dado_coletado > 40.0
+      ORDER BY 
+        monitoramento.data_hora DESC 
+      LIMIT 5;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+  
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function listarMaqPorLinha() {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+  var instrucao = `SELECT
+  l.id_linha,
+  l.nome AS nome_linha,
+  l.numero AS numero_linha,
+  COUNT(m.id_maquina) AS quantidade_maquinas
+FROM
+  linha l
+LEFT JOIN
+  maquina m ON l.id_linha = m.fk_linhaM
+GROUP BY
+  l.id_linha, l.nome, l.numero;;
 
 
   `;
@@ -117,7 +206,9 @@ module.exports = {
   listarLinhasPorId,
   listarMaquinas,
   listarMaquinasPorId,
+  buscarLinhasPorEmpresa,
   buscarMaquinasPorEmpresa,
   listarMaqTemp, 
-  listarMaqCPU
+  listarMaqCPU,
+  listarMaqPorLinha
 };

@@ -84,10 +84,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Você pode visualizar:</h6>
                         <a class="collapse-item" href="../dashboard/index.html">Visão Micro</a>
-                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">CPU x Temperatura</a>
-                        <a class="collapse-item" href="">miguel</a>
-                        <a class="collapse-item" href="">rita</a>
-                        <a class="collapse-item" href="">marcos</a>
+                        <a class="collapse-item" href="../dashboard/dash-temperatura.html">Temperatura da CPU</a>
+                        <a class="collapse-item" href="../dashboard/dash-rede.html">Rede</a>
+                        <a class="collapse-item" href="../dashboard/dash-rendimento-processador.html">Rendimento do Processador</a>
+                        <a class="collapse-item" href="">Miguel</a>
                     </div>
                 </div>
             </li>
@@ -430,7 +430,7 @@
                     <!-- Page Heading -->
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-4 text-gray-800">Publicar um Aviso</h1>
+                        <h1 class="h3 mb-4 text-gray-800" style="margin-left: 20px;">Publicar um Aviso</h1>
 
                     </div>
                     <div class="container-fluid">
@@ -453,7 +453,7 @@
                         <div class="avisos">
                             <div class="container">
                                 <div class="div-form">
-                                    <div id="form_postagem" style="margin-left: -27px;">
+                                    <div id="form_postagem" style="margin-left: -27px;"  method="post" onsubmit="return publicar()">
                                         <label>
                                             Título do aviso:
                                             <br>
@@ -472,23 +472,39 @@
                                             style="border-radius: 3px; color: white; background-color: black; ">Enviar</button>
                                     </div>
                                 </div>
-                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -27px;">Mural de
+                                <h1 class="h3 mb-4 text-gray-800" style="margin-top: 40px; margin-left: -29px;">Mural de
                                     Avisos</h1>
 
                                 </div>
-                                <div id="feed_container">
-                                <!-- <div class="div-results" style="margin-top: 40px; margin-left: -27px;">
-                                    </div> -->
-                            </div>
+                                <div class="div-results" style="margin-left: -5px;">
+                                    <div id="feed_container" class="feed-container">
+                                    </div>
+                                </div>
                         </div>
                     </div>
 
 
+                    <div id="popup" style="display: none; position: fixed; top: 50%; left: 58%; transform: translate(-50%, -50%); background-color: rgba(0, 6, 127, 0.697); padding: 20px; border: 1px solid #ccc; z-index: 999; width: 700px; height: 400px;">
+                        <!-- Conteúdo do pop-up (se necessário) -->
+                        <!-- Este exemplo está vazio, você pode adicionar mais conteúdo se necessário -->
+                        <h1 style="color: white; font-size: 24px; font-weight: 600;">Edite o Conteúdo da sua Publicação:</h1>
+                    
+                        <label style="color: white;">
+                            Descrição (máximo de 250 caracteres):
+                            <br>
+                            <textarea id="textarea_descricao" maxlength="250" rows="5" style="width: 600px; height: 200px;"></textarea>
+                        </label>
+                        <br>
+                        <div id="pop" class="pop">
+
+                        </div>
+                    </div>
+                    
 
                 </div>
             </div>
 
-
+        
 
             <!-- End of Main Content -->
 
@@ -562,6 +578,7 @@
     function publicar() {
         var id_colaboradorVar = sessionStorage.ID_USUARIO;
 
+
         var corpo = {
             titulo: titulo_form.value,
             descricao: descricao_form.value,
@@ -599,12 +616,100 @@
 
 
     function editar(id_chat) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = id_chat;
+
         console.log("cliquei em editar - " + id_chat);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + id_chat);
-        // window.location = "/dashboard/edicao-aviso.html"
+        // window.alert("Você será redirecionado à página de edição do aviso de id número: " + id_chat);
+        // window.location = "/dashboard/edicao-chat.html"
+
+        fetch(`/avisos/editar/${id_chat}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                descricao: textarea_descricao.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/chat.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
 
     }
+ 
+    function exibirPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    var btnExibir = document.createElement("button");
+    btnExibir.innerHTML = "Confirmar Edição";
+    btnExibir.style.marginRight = "10px";
+    btnExibir.style.marginLeft = "0px";
+    btnExibir.id = "btnExibir";
+    btnExibir.setAttribute("onclick", "editar(${publicacao.id_chat})");
+
+    var btnFechar = document.createElement("button");
+    btnFechar.innerHTML = "Fechar Edição";
+    btnFechar.style.marginRight = "10px";
+    btnFechar.style.marginLeft = "0px";
+    btnFechar.id = "btnFechar";
+
+
+    fetch("/avisos/listar")
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                throw 'Houve um erro na API!';
+            }
+        })
+        .then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            var feed = document.getElementById("pop");
+            feed.innerHTML = "";
+
+            if (resposta.length === 0) {
+                var mensagem = document.createElement("span");
+                mensagem.innerHTML = "Nenhum resultado encontrado.";
+                feed.appendChild(mensagem);
+            } else {
+                for (let i = 0; i < resposta.length; i++) {
+                    var publicacao = resposta[i];
+
+                    var divButton = document.createElement("div");
+                    divButton.style.marginBottom = "10px";
+                    btnExibir.setAttribute("onclick", `editar(${publicacao.id_chat})`);
+                    btnFechar.setAttribute("onclick", `fecharPopup()`);
+                    divButton.appendChild(btnExibir); // Append the button to the div
+                    divButton.appendChild(btnFechar); // Append the button to the div
+                    feed.appendChild(divButton);
+                }
+            }
+        })
+        .catch(function (resposta) {
+            console.error(resposta);
+        });
+}
+
+
+
+    
+
+    function fecharPopup() {
+    // Ocultar a div de pop-up
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
 
     function deletar(id_chat) {
         console.log("Criar função de apagar post escolhido - ID" + id_chat);
@@ -617,7 +722,7 @@
 
             if (resposta.ok) {
                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                // window.location = "/dashboard/chat.html"
+                window.location = "/dashboard/chat.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -668,6 +773,7 @@
                         var divDescricao = document.createElement("div");
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
+                        var btnExibir = document.createElement("button");
                         var btnDeletar = document.createElement("button");
                         
                         // ATRIBUINDO CLASSES
@@ -679,7 +785,11 @@
                         btnEditar.style.color = "white" 
                         btnEditar.style.backgroundColor = "black" 
                         btnEditar.style.marginRight = "10px" 
-                        btnEditar.style.marginLeft = "5px" 
+                        btnEditar.style.marginLeft = "25px" 
+
+                        btnExibir.style.marginRight = "10px" 
+                        btnExibir.style.marginLeft = "25px" 
+                        btnExibir.style.display = "none" 
                         
                         btnDeletar.style.borderRadius = "3px" 
                         btnDeletar.style.color = "white" 
@@ -697,9 +807,14 @@
                         divDescricao.innerHTML = publicacao.descricao;
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
+                        btnExibir.innerHTML = "Exibir";
+
                         
                         btnEditar.id = "btnEditar" + publicacao.id_chat;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.id_chat})`);
+                        btnEditar.setAttribute("onclick", `exibirPopup(${publicacao.id_chat})`);
+
+                        btnExibir.id = "btnExibir" + publicacao.id_chat;
+                        btnExibir.setAttribute("onclick", `editar(${publicacao.id_chat})`);
 
                         btnDeletar.id = "btnDeletar" + publicacao.id_chat;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.id_chat})`);
@@ -708,9 +823,69 @@
                         // divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(h6Titulo);
                         divPublicacao.appendChild(divDescricao);
-                        // divPublicacao.appendChild(divButtons);
-                        // divButtons.appendChild(btnEditar);
-                        // divButtons.appendChild(btnDeletar);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnExibir);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    //finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            //finalizarAguardar();
+        });
+    }
+
+    function atualizarPop() {
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("pop");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("pop");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                   
+                        var divButtons = document.createElement("div");
+                        var btnExibir = document.createElement("button");
+                  
+                        
+                      
+                        btnExibir.style.marginRight = "10px" 
+                        btnExibir.style.marginLeft = "25px" 
+                        
+                        
+                        divButtons.style.marginBottom = "10px"
+
+                    
+                        btnExibir.innerHTML = "Exibir";
+                        
+                     
+
+                        btnExibir.id = "btnExibir" + publicacao.id_chat;
+                        btnExibir.setAttribute("onclick", `editar(${publicacao.id_chat})`);
+
+
+                        // divPublicacao.appendChild(spanID);
+                        // divPublicacao.appendChild(spanNome);
+                       
+                        divButtons.appendChild(btnExibir);
+                        
                         feed.appendChild(divPublicacao);
                     }
 

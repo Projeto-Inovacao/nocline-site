@@ -64,29 +64,19 @@ function plotarGraficoTempXCPU(resposta, idMaquina) {
     var registro = resposta[i];
     dados.datasets[0].data.push(registro.dado_coletado);
     labels.push(registro.data_hora);
-    //   if(registro.temperatura != null){
-    //     KPI_BYTE_ENVIADOS.innerHTML = registro.enviados
-    //   }
-    //   if(registro.recebidos != null){
-    //     KPI_BYTE_RECEBIDOS.innerHTML = registro.recebidos
-    //   }
 
-      // Definindo a cor com base nas condições
-    //   if (registro.enviados < 7.67) {
-    //     dados.datasets[0].backgroundColor.push('#00FF00');
-    //   } else if (registro.enviados <= 25.36) {
-    //     dados.datasets[0].backgroundColor.push('#f6ff00');
-    //   } else {
-    //     dados.datasets[0].backgroundColor.push('#FF0000');
-    //   }
-
-    //   if (registro.recebidos < 81.05) {
-    //     dados.datasets[1].backgroundColor.push('#00FF00');
-    //   } else if (registro.recebidos <= 176.45) {
-    //     dados.datasets[1].backgroundColor.push('#f6ff00');
-    //   } else {
-    //     dados.datasets[1].backgroundColor.push('#FF0000');
-    //   }
+// Definindo a cor com base nas condições
+if (registro.dado_coletado <= 4) {
+  dados.datasets[0].backgroundColor.push('#00FF00');
+  // dados.datasets[0].borderColor.push('#00FF00');
+} else if (registro.dado_coletado <= 8) {
+  dados.datasets[0].backgroundColor.push('#f6ff00');
+  // dados.datasets[0].borderColor.push('#f6ff00');
+} else {
+  dados.datasets[0].backgroundColor.push('#FF0000');
+  // dados.datasets[0].borderColor.push('#FF0000');
+}
+    
   }
 
   console.log('----------------------------------------------')
