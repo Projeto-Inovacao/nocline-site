@@ -212,7 +212,7 @@ function buscarUltimasMedidasBoot(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select top ${limite_linhas} data_hora_inicializacao from maquina where id_maquina= ${idMaquina};`;
+        instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina};`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `  select data_hora_inicializacao from maquina where id_maquina= ${idMaquina}
         limit ${limite_linhas}`;
