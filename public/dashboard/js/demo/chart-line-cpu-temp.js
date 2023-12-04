@@ -66,10 +66,10 @@ function plotarGraficoTempXCPU(resposta, idMaquina) {
     labels.push(registro.data_hora);
 
 // Definindo a cor com base nas condições
-if (registro.dado_coletado <= 15) {
+if (registro.dado_coletado <= 4) {
   dados.datasets[0].backgroundColor.push('#00FF00');
   // dados.datasets[0].borderColor.push('#00FF00');
-} else if (registro.dado_coletado <= 39) {
+} else if (registro.dado_coletado <= 8) {
   dados.datasets[0].backgroundColor.push('#f6ff00');
   // dados.datasets[0].borderColor.push('#f6ff00');
 } else {

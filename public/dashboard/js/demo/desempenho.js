@@ -445,25 +445,25 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
     }
 
 
-    if (temperaturaAtual < 40) {
+    if (temperaturaAtual < 43) {
         METRICA_TEMP.style.color = '#00FF00';
-    } else if (temperaturaAtual >= 41 && temperaturaAtual < 69) {
+    } else if (temperaturaAtual >= 43 && temperaturaAtual < 46) {
         METRICA_TEMP.style.color = '#f6ff00';
     } else {
         METRICA_TEMP.style.color = '#FF0000';
     }
 
-    if (cpuAtual < 14) {
+    if (cpuAtual < 4) {
         METRICA_CPU.style.color = '#00FF00';
-    } else if (cpuAtual >= 15 && cpuAtual < 39) {
+    } else if (cpuAtual >= 4 && cpuAtual < 8) {
         METRICA_CPU.style.color = '#f6ff00';
     } else {
         METRICA_CPU.style.color = '#FF0000';
     }
 
-    if (ramAtual < 75) {
+    if (ramAtual < 85) {
         METRICA_RAM.style.color = '#00FF00';
-    } else if (ramAtual >= 76 && ramAtual < 89) {
+    } else if (ramAtual >= 85 && ramAtual < 87) {
         METRICA_RAM.style.color = '#f6ff00';
     } else {
         METRICA_RAM.style.color = '#FF0000';

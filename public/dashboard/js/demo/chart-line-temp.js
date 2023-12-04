@@ -60,10 +60,10 @@ function plotarGraficoTEMP(resposta, idMaquina) {
         labels.push(registro.data_hora);
 
         // Definindo a cor com base nas condições
-      if (registro.dado_coletado <= 40) {
+      if (registro.dado_coletado <= 43) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.dado_coletado <= 69) {
+      } else if (registro.dado_coletado <= 46) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
