@@ -19,5 +19,13 @@ router.post("/alterarJanela", function (req, res) {
   processosController.alterarJanela(req, res);
 });
 
+router.post("/listarProcessosJanelas/", function (req, res) {
+  processosController.listarProcessosJanelas(req, res);
+});
+
+router.post("/BuscarDadosProcessos/", function (req, res) {
+  processosController.BuscarDadosProcessos(req, res);
+});
+
 
 module.exports = router;
