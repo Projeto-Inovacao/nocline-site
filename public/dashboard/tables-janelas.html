@@ -480,10 +480,11 @@
 
                     <form style="margin-left: 3%; width: 90%;">
                         <div class="input-group">
-                            <input type="text" class="form-control border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2" style="background-color: white">
+                            <input type="text" id="input_nome_janela" class="form-control border-0 small"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"
+                                style="background-color: white">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="button" onclick="atualizarFeedProcessos()">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -492,21 +493,18 @@
 
                     <div class="card shadow mb-4" style="margin-top: 3%;">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary-dash">Janelas Cadastrados</h6>
+                            <h6 class="m-0 font-weight-bold text-primary-dash">Processos Listados da Janelas <span
+                                    id="nome_janela">X</span></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nome da Janela</th>
-                                            <th>Nome do processo</th>
                                             <th>PID</th>
-                                            <th>Uso de CPU (%)</th>
+                                            <th>Nome do processo</th>
                                             <th>Uso de RAM (%)</th>
-                                            <th>Status Atual</th>
-                                            <th>Último registro de atividade</th>
-                                            <th>Quantidade de tempo em atividade</th>
+                                            <th>Tempo em atividade</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabela_janela_processo">
@@ -515,33 +513,139 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div id="paginacao" style="margin-left: 2%; margin-bottom: 5%;">
-                    <span id="pagina_atual">Página 1</span>
+                <div id="paginacao_processos" style="margin-left: 2%; margin-bottom: 5%;">
+                    <span id="pagina_atual_processos">Página 1</span>
                     <button style="border-radius: 3px; color: white; background-color: black;"
-                        id="pag_anterior">Anterior</button>
+                        id="pag_anterior_processos">Anterior</button>
                     <button style="border-radius: 3px; color: white; background-color: black;"
-                        id="prox_pagina">Próxima</button>
+                        id="prox_pagina_processos">Próxima</button>
                 </div>
 
+                <div class="row" id="graficos" style="display: flex; flex-direction: row;">
 
-            </div>
-            <!-- End of Main Content -->
+                    <!-- Area Chart -->
+                    <!-- <div class="col-xl-6 col-lg-7">
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; NOCLINE 2023</span>
+                        <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Temperatura (°C)</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChartTemp" style="height: 100%; width:100%;"></canvas>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                    Risco
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash"> CPU usada (%)</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChartTempXCpu" style="height: 100%; width:100%;"></canvas>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                    Risco
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-7">
+
+                        <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash">Temperatura (°C)</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChartTemp" style="height: 100%; width:100%;"></canvas>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                    Risco
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4" style="margin-left: 2px; width: 568px; height: 500px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary-dash"> CPU usada (%)</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="myAreaChartTempXCpu" style="height: 100%; width:100%;"></canvas>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                    Risco
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                </span>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; NOCLINE 2023</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -582,8 +686,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/sessao.js"></script>
@@ -599,6 +702,7 @@
             await validarSessao();
             exibirMaquinas();
             var elemento_maquina = document.getElementById("select_maquina");
+            var idMaquina = elemento_maquina.value;
             var idMaquina = elemento_maquina.value;
             await atualizarFeed(idMaquina)
         } catch (error) {

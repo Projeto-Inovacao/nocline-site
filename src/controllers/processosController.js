@@ -53,6 +53,61 @@ function listarJanelas(req, res) {
         );
 }
 
+function listarProcessosJanelas(req, res) {
+    var nome_janela = req.body.nome_janelaServer;
+    var idMaquina = req.body.idMaquinaServer;
+    var idEmpresa = req.body.idEmpresaServer;
+
+    processosModel.listarProcessosJanelas(nome_janela, idEmpresa, idMaquina)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+function BuscarDadosProcessos(req, res) {
+    var nome_janela = req.body.nome_janelaServer;
+    var idMaquina = req.body.idMaquinaServer;
+    var idEmpresa = req.body.idEmpresaServer;
+
+    processosModel.BuscarDadosProcessos(nome_janela, idEmpresa, idMaquina)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listarJanelasDistintas(req, res) {
     var idEmpresa = req.params.idEmpresa;
 
@@ -118,5 +173,7 @@ module.exports = {
     listarProcessos,
     listarJanelas,
     listarJanelasDistintas,
-    alterarJanela
+    alterarJanela,
+    listarProcessosJanelas,
+    BuscarDadosProcessos
 }
