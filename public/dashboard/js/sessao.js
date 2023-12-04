@@ -2,9 +2,11 @@ function validarSessao() {
     var id = sessionStorage.ID_EMPRESA;
     var nome = sessionStorage.NOME_USUARIO;
     var nivel_acesso = sessionStorage.NIVEL_ACESSO;
+    var empresa = sessionStorage.ID_EMPRESA;
     console.log(id)
     console.log(nome)
     console.log(nivel_acesso)
+    console.log( empresa)
     
     if (nivel_acesso == 3) {
         const cco1 = document.getElementById("cadastro_colab")
@@ -48,6 +50,25 @@ function exibirMaquinas() {
     });
     console.log(select.value)
 }
+function exibirEmpresa() { 
+    
+    select = document.getElementById("select_empresa");
+    sessionStorage.ID_EMPRESA
+        var opcao = document.createElement('option');
+        opcao.value = sessionStorage.ID_EMPRESA;
+        opcao.innerHTML = "ID EMPRESA: " + sessionStorage.ID_EMPRESA;
+        select.appendChild(opcao);
+        console.log(ID_EMPRESA)
+
+        if (item === 0) {
+            opcao.selected = true;
+        }
+
+    console.log(select.value)
+}
+
+
+
 
 function exibirLinhas() {
     select = document.getElementById("select_linha");
