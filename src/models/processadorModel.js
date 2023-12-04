@@ -81,7 +81,7 @@ function listarProcessador(idMaquina, limite_linhas) {
 function buscarMaiorUso(idMaquina) {
 
     if(process.env.AMBIENTE_PROCESSO == "producao"){
-        instrucaoSql = `SELECT CONCAT(ROUND((MAX(dado_coletado) / 100) * 100), '%') AS porcentagem FROM monitoramento WHERE descricao = 'cpu individual marcos' AND fk_maquina_monitoramento = ${idMaquina};`;
+        instrucaoSql = `SELECT CONCAT(ROUND(MAX(dado_coletado / 100), 2) * 100, '%') AS porcentagem FROM monitoramento WHERE descricao = 'cpu individual marcos' AND fk_maquina_monitoramento = ${idMaquina};`;
     }else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT CONCAT(ROUND((MAX(dado_coletado) / 100) * 100), '%') AS porcentagem FROM monitoramento WHERE descricao = 'cpu individual marcos'  AND fk_maquina_monitoramento = ${idMaquina};`;
     }else{
