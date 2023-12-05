@@ -74,11 +74,7 @@ FROM (
         ROW_NUMBER() OVER (PARTITION BY p.pid ORDER BY p.data_hora DESC) AS RowNum
     FROM
         processos p
-) AS Ranked
-WHERE nome_processo LIKE '%chrome%' 
-AND status_abertura = 1
-AND fk_maquinaP =  AND fk_empresaP = ${idEmpresa}
-AND RowNum = 1
+) AS Ranked WHERE nome_processo LIKE '%${nome_janela}%' AND status_abertura = 1 AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa} AND RowNum = 1
 	;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
