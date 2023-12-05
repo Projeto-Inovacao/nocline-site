@@ -43,7 +43,7 @@ function BuscarDadosProcessos(nome_janela, idMaquina, idEmpresa) {
 FROM
     processos p
 WHERE
-    nome_processo LIKE '%${nome_janela}%' AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa};'
+    nome_processo LIKE '%${nome_janela}%' AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
