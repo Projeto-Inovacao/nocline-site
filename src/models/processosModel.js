@@ -75,11 +75,11 @@ FROM (
     FROM
         processos p
 ) AS Ranked
-WHERE
-    RowNum = 1
-	AND nome_processo LIKE '%chrome%' 
-    AND status_abertura = 1
-    AND fk_maquinaP =  AND fk_empresaP = ${idEmpresa};
+WHERE nome_processo LIKE '%chrome%' 
+AND status_abertura = 1
+AND fk_maquinaP =  AND fk_empresaP = ${idEmpresa}
+AND RowNum = 1
+	;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
