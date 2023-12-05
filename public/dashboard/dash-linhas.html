@@ -727,7 +727,7 @@
             await atualizarGraficoMediaCPU(idLinha);
             await obterDadosDesempenhoMedia(idLinha);
             await atualizarGraficoDesempenhoMedia(idLinha);
-            await plotarGraficoDesempenhoMedia();
+            await plotarGraficoDesempenhoMedia(idLinha);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
