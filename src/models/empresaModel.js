@@ -30,6 +30,7 @@ function listarFuncionario(idEmpresa) {
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
+  
 }
 
 function listarFuncionarioPorId(idEmpresa, idColaborador) {
