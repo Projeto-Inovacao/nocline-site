@@ -31,9 +31,24 @@ function listarJanelas(idMaquina, idEmpresa) {
 
 function BuscarDadosProcessos(nome_janela, idMaquina, idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n ");
-    var instrucao = ` SELECT * FROM VW_JANELA_PROCESSO WHERE nome_processo LIKE '%${nome_janela}%' 
-    AND status_abertura = 1
-    AND id_maquina = '${idMaquina}' AND fk_empresaP = '${idEmpresa}'
+    var instrucao = ` SELECT
+    p.pid,
+    p.nome_processo,
+    ROUND(p.uso_cpu, 2) AS uso_cpu,
+    ROUND(p.uso_memoria, 2) AS uso_memoria,
+    p.status_abertura,
+    p.fk_maquinaP,
+    p.fk_empresaP,
+    p.data_hora,
+    DATEDIFF(MINUTE, p.data_hora, GETDATE()) AS tempo_atividade
+FROM
+    processos p
+WHERE
+    p.data_hora = (
+        SELECT MAX(data_hora)
+        FROM processos
+        WHERE pid = p.pid
+    );'
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
