@@ -706,12 +706,9 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/chart-pie-demo.js"></script>
-        <script src="js/demo/chart-line-cpu.js"></script>
-        <script src="js/demo/chart-line-temp.js"></script>
-        <script src="js/demo/chart-line-ram.js"></script>
-        <script src="js/demo/chart-line-rede.js"></script>
-        <script src="js/demo/janelas.js"></script>
+        <script src="js/demo/chart-line-ram-media.js"></script>
+        <script src="js/demo/chart-line-cpu-media.js"></script>
+        <script src="js/tabelas/linhas.js"></script>
         <script src="js/demo/desempenho.js"></script>
         <script src="js/sessao.js"></script>
 </body>
@@ -731,7 +728,7 @@
             await atualizarGraficoMediaCPU(idLinha);
             await obterDadosDesempenhoMedia(idLinha);
             await atualizarGraficoDesempenhoMedia(idLinha);
-            await plotarGraficoDesempenhoMedia(idLinha);
+            await plotarGraficoDesempenhoMedia();
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
