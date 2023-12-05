@@ -72,10 +72,10 @@ function plotarGraficoRAM(resposta, idLinha) {
         labels.push(registro.data_hora);
 
          // Definindo a cor com base nas condições
-      if (registro.media_uso_ram <= 84) {
+      if (registro.media_uso_ram <= 85) {
         dados.datasets[0].backgroundColor.push('#00FF00');
         // dados.datasets[0].borderColor.push('#00FF00');
-      } else if (registro.media_uso_ram <= 92) {
+      } else if (registro.media_uso_ram <= 87) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
         // dados.datasets[0].borderColor.push('#f6ff00');
       } else {
