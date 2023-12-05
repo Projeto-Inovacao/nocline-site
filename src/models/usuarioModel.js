@@ -93,7 +93,7 @@ function cadastrarLinha(codEmpresa,nome, numero) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarLinha():", codEmpresa,nome, numero);
 
     var instrucao = `
-    INSERT INTO  linha VALUES (null, "${nome}", ${numero}, ${codEmpresa});
+    INSERT INTO  linha VALUES (null, '${nome}', ${numero}, ${codEmpresa});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
