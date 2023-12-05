@@ -506,6 +506,8 @@ function obterDadosDesempenhoMedia(idLinha) {
 
 
 function plotarGraficoDesempenhoMedia(resposta, idLinha) {
+    console.log(idLinha + "jonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnny666666666666666666")
+    
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         if (registro.recurso === "CPU") {
@@ -544,6 +546,7 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
 }
 
 function atualizarGraficoDesempenhoMedia(idLinha) {
+    
 
     fetch(`/medidas/tempo-realDesempenhoMedia/${idLinha}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -568,14 +571,10 @@ function atualizarGraficoDesempenhoMedia(idLinha) {
 
                 proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
 
-                proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
-
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-
-            proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
 
             proximaAtualizacaoDesempenho = setTimeout(() => atualizarGraficoDesempenhoMedia(idLinha), 5000);
 
@@ -588,9 +587,9 @@ function atualizarGraficoDesempenhoMedia(idLinha) {
 }
 
 function limparDesempenhoMedia() {
-    for (i = 0; i <= valores.length; i++) {
+    valores_kpi_desempenho = [KPI_MEDIA_CPU, KPI_MEDIA_RAM]
+    for( i = 0; i < valores_kpi_desempenho.length; i++){
         valores_kpi_desempenho[i].innerHTML = "";
-    }
 }
-
+}
 

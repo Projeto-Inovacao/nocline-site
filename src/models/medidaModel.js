@@ -131,8 +131,8 @@ function buscarUltimasMediasRAM(idLinha, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `  SELECT top ${limite_linhas}
-        AVG(usado) AS media_uso_ram,
-        data_hora 
+        data_hora,
+        AVG(usado) AS media_uso_ram
     FROM
         VW_RAM_CHART
     WHERE
@@ -307,12 +307,12 @@ function buscarUltimasMedidasDesempenhoMedia(idLinha) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ` SELECT top ${limite_linhas} *
+        instrucaoSql = ` SELECT top 2 *
         FROM VW_DESEMPENHO_CHART_MEDIA
         WHERE id_maquina IN (
             SELECT id_maquina
             FROM maquina
-            WHERE fk_linhaM = ${idLinha} 
+            WHERE fk_linhaM = ${idLinha});
          );
         `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
@@ -401,7 +401,7 @@ function buscarMediaEmTempoCPU(idLinha) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `SELECT top
+        instrucaoSql = `SELECT top 3
         AVG(dado_coletado) AS media_uso_cpu,
         data_hora
     FROM
@@ -440,7 +440,7 @@ function buscarMediaEmTempoRAM(idLinha) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ` SELECT
+        instrucaoSql = ` SELECT top 3
         AVG(usado) AS media_uso_ram,
         data_hora 
     FROM
@@ -523,8 +523,8 @@ function buscarMediasEmTempoRealDesempenho(idLinha) {
         WHERE id_maquina IN (
             SELECT id_maquina
             FROM maquina
-            WHERE fk_linhaM = ${idLinha} 
-         ) ;`;
+            WHERE fk_linhaM = ${idLinha});
+         `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT *
