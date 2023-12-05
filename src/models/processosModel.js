@@ -31,7 +31,7 @@ function listarJanelas(idMaquina, idEmpresa) {
 
 function BuscarDadosProcessos(nome_janela, idMaquina, idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n ");
-    var instrucao = ` SELECT
+    var instrucao = `SELECT
     p.pid,
     p.nome_processo,
     ROUND(p.uso_cpu, 2) AS uso_cpu,
@@ -39,16 +39,11 @@ function BuscarDadosProcessos(nome_janela, idMaquina, idEmpresa) {
     p.status_abertura,
     p.fk_maquinaP,
     p.fk_empresaP,
-    p.data_hora,
-    DATEDIFF(MINUTE, p.data_hora, GETDATE()) AS tempo_atividade
+    p.data_hora
 FROM
     processos p
 WHERE
-    p.data_hora = (
-        SELECT MAX(data_hora)
-        FROM processos
-        WHERE pid = p.pid
-    );'
+    nome_processo LIKE '%${nome_janela}%' AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa};'
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -56,10 +51,35 @@ WHERE
 
 function listarProcessosJanelas(nome_janela, idMaquina, idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n ");
-    var instrucao = `SELECT * FROM VW_TABELA_PROCESSOS 
-    WHERE nome_processo LIKE '%${nome_janela}%' 
+    var instrucao = `SELECT
+    pid,
+    nome_processo,
+    ROUND(uso_cpu, 2) AS uso_cpu,
+    ROUND(uso_memoria, 2) AS uso_memoria,
+    status_abertura,
+    fk_maquinaP,
+    fk_empresaP,
+    data_hora,
+    DATEDIFF(DAY, data_hora, GETDATE()) AS tempo_atividade
+FROM (
+    SELECT
+        p.pid,
+        p.nome_processo,
+        p.uso_cpu,
+        p.uso_memoria,
+        p.status_abertura,
+        p.fk_maquinaP,
+        p.fk_empresaP,
+        p.data_hora,
+        ROW_NUMBER() OVER (PARTITION BY p.pid ORDER BY p.data_hora DESC) AS RowNum
+    FROM
+        processos p
+) AS Ranked
+WHERE
+    RowNum = 1
+	AND nome_processo LIKE '%chrome%' 
     AND status_abertura = 1
-    AND fk_maquinaP = '${idMaquina}' AND fk_empresaP = '${idEmpresa}';
+    AND fk_maquinaP =  AND fk_empresaP = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
