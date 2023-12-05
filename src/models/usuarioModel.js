@@ -111,11 +111,11 @@ function cadastrarMaquina(codEmpresa, setor, so, modelo, ip, hostname, fkLinha) 
     `;
 
     var instrucao2 = `
-    INSERT INTO componente (id_componente, nome_componente, fk_maquina_componente, fk_empresa_componente, fk_metrica_componente) VALUES
-    (null, 'RAM', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 1),
-    (null, 'CPU', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 2),
-    (null, 'DISCO', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 3),
-    (null, 'REDE', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 4);`;
+    INSERT INTO componente (nome_componente, fk_maquina_componente, fk_empresa_componente, fk_metrica_componente) VALUES
+    ('RAM', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 1),
+    ('CPU', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 2),
+    ('DISCO', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 3),
+    ('REDE', (select id_maquina from maquina where ip = '${ip}'), ${codEmpresa}, 4);`;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     console.log("Executando a instrução SQL: \n" + instrucao2);
