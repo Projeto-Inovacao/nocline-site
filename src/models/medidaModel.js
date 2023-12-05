@@ -109,7 +109,7 @@ function buscarUltimasMedidasRAM(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select top ${limite_linhas} from VW_RAM_CHART
+        instrucaoSql = `  select top ${limite_linhas} * from VW_RAM_CHART
         where id_maquina = ${idMaquina};
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
