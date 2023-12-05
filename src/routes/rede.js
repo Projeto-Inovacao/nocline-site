@@ -19,12 +19,12 @@ router.get("/tempo-realRedeP/:idMaquina", function (req, res) {
     RedeController.buscarMedidasEmTempoRealRedeP(req, res);
 });
 
-router.get("/ultimasDesempenho/:idMaquina", function (req, res) {
-    RedeController.buscarUltimasMedidasDesempenhoR(req, res);
+router.get("/ultimasDesempenhoRede/:idMaquina", function (req, res) {
+    RedeController.buscarUltimasMedidasDesempenhoRede(req, res);
 });
 
-router.get("/tempo-realDesempenho/:idMaquina", function (req, res) {
-    RedeController.buscarMedidasEmTempoRealDesempenhoR(req, res);
+router.get("/tempo-realDesempenhoRede/:idMaquina", function (req, res) {
+    RedeController.buscarMedidasEmTempoRealDesempenhoRede(req, res);
 });
 
 router.get("/ultimasRedeProcessos/:idMaquina", function (req, res) {

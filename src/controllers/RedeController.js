@@ -3,7 +3,7 @@ var redeModel = require("../models/redeModel");
 
 function buscarUltimasMedidasRede(req, res) {
 
-    const limite_linhas = 14;
+    const limite_linhas = 9;
 
     var idMaquina = req.params.idMaquina;
 
@@ -44,7 +44,7 @@ function buscarMedidasEmTempoRealRede(req, res) {
 
 function buscarUltimasMedidasRedeP(req, res) {
 
-    const limite_linhas = 14;
+    const limite_linhas = 7;
 
     var idMaquina = req.params.idMaquina;
 
@@ -82,7 +82,7 @@ function buscarMedidasEmTempoRealRedeP(req, res) {
 }
 
 
-function buscarUltimasMedidasDesempenhoR(req, res) {
+function buscarUltimasMedidasDesempenhoRede(req, res) {
 
     const limite_linhas = 5;
 
@@ -90,7 +90,7 @@ function buscarUltimasMedidasDesempenhoR(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    redeModel.buscarUltimasMedidasDesempenhoR(idMaquina, limite_linhas).then(function (resultado) {
+    redeModel.buscarUltimasMedidasDesempenhoRede(idMaquina, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -103,12 +103,12 @@ function buscarUltimasMedidasDesempenhoR(req, res) {
     });
 }
 
-function buscarMedidasEmTempoRealDesempenhoR(req, res) {
+function buscarMedidasEmTempoRealDesempenhoRede(req, res) {
     var idMaquina = req.params.idMaquina;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    redeModel.buscarMedidasEmTempoRealDesempenhoR(idMaquina).then(function (resultado) {
+    redeModel.buscarMedidasEmTempoRealDesempenhoRede(idMaquina).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -125,7 +125,7 @@ function buscarMedidasEmTempoRealDesempenhoR(req, res) {
 
 function buscarUltimasMedidasRedeProcessos(req, res) {
 
-    const limite_linhas = 10;
+    const limite_linhas = 7;
 
     var idMaquina = req.params.idMaquina;
 
@@ -193,8 +193,8 @@ module.exports = {
     buscarUltimasMedidasRede,
     buscarMedidasEmTempoRealRedeP,
     buscarUltimasMedidasRedeP,
-    buscarUltimasMedidasDesempenhoR,
-    buscarMedidasEmTempoRealDesempenhoR,
+    buscarUltimasMedidasDesempenhoRede,
+    buscarMedidasEmTempoRealDesempenhoRede,
     buscarUltimasMedidasRedeProcessos,
     buscarMedidasEmTempoRealRedeProcessos,
     listarProcessosRede

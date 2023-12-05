@@ -86,41 +86,27 @@ function plotarGraficoRedeP(resposta, idMaquina) {
       dados.datasets[1].data.push(registro.recebidos);
       labels.push(registro.data_hora);
 
-    if (i == (resposta.length - 1)) {
-      KPI_PACOTES_RECEBIDOS.innerHTML = registro.pacotes_recebidos
-    }
+      if (registro.pacotes_recebidos !== null && registro.pacotes_enviados !== null) {
+        if (registro.pacotes_recebidos < 81.05) {
+          dados.datasets[1].backgroundColor.push('#00FF00');
+        } else if (registro.pacotes_recebidos <= 176.45) {
+          dados.datasets[1].backgroundColor.push('#f6ff00');
+        } else {
+          dados.datasets[1].backgroundColor.push('#FF0000');
+        }
 
-    }
-
-    // Definindo a cor com base nas condições
-    if (registro.pacotes_enviados < 7.67) {
-      dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.pacotes_enviados <= 25.36) {
-      dados.datasets[0].backgroundColor.push('#f6ff00');
-    } else {
-      dados.datasets[0].backgroundColor.push('#FF0000');
-    }
-
-
-
-    // Adicione uma verificação para a velocidade de upload
-    if (registro.pacotes_recebidos !== null) {
-      if (registro.pacotes_recebidos < 81.05) {
-        dados.datasets[1].backgroundColor.push('#00FF00');
-      } else if (registro.pacotes_recebidos <= 176.45) {
-        dados.datasets[1].backgroundColor.push('#f6ff00');
-      } else {
-        dados.datasets[1].backgroundColor.push('#FF0000');
-      }
-
-
-      if (i == (resposta.length - 1)) {
-        KPI_PACOTES_RECEBIDOS.innerHTML = registro.pacotes_recebidos
+        if (registro.pacotes_enviados < 15.67) {
+          dados.datasets[0].backgroundColor.push('#00FF00');
+        } else if (registro.pacotes_enviados <= 25.36) {
+          dados.datasets[0].backgroundColor.push('#f6ff00');
+        } else {
+          dados.datasets[0].backgroundColor.push('#FF0000');
+        }
       }
 
     } else {
       // Adicione um valor padrão ou lógica para lidar com dados de velocidade de upload nulos
-      dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos
+     // dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos
     }
   }
 
@@ -167,12 +153,6 @@ function atualizarGraficoRedeP(idMaquina, dados, chartRedeP) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {
 
-        obterDadosRedeP(idMaquina);
-        // alertar(novoRegistro, idMaquina);
-        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-        console.log(`Dados atuais do gráfico:`);
-        console.log(dados);
-
         if (novoRegistro[0].data_hora == dados.labels[dados.labels.length - 1]) {
           console.log("---------------------------------------------------------------")
           console.log("Como não há dados novos para captura, o gráfico não atualizará.")
@@ -205,12 +185,12 @@ function atualizarGraficoRedeP(idMaquina, dados, chartRedeP) {
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacaoRedeP = setTimeout(() => atualizarGraficoRedeP(idMaquina, dados, chartRedeP), 10000);
+        proximaAtualizacaoRedeP = setTimeout(() => atualizarGraficoRedeP(idMaquina, dados, chartRedeP), 7000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoRedeP = setTimeout(() => atualizarGraficoRedeP(idMaquina, dados, chartRedeP), 10000);
+      proximaAtualizacaoRedeP = setTimeout(() => atualizarGraficoRedeP(idMaquina, dados, chartRedeP), 7000);
     }
   })
     .catch(function (error) {

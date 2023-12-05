@@ -7,12 +7,12 @@ function buscarMedidasEmTempoRealRede(idMaquina) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select * from VW_REDE_CHARTU
         where id_maquina = ${idMaquina}
-        ORDER BY data_hora DESC limit 1`;
+        ORDER BY data_hora limit 1`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHARTU
         where id_maquina = ${idMaquina}
-        ORDER BY data_hora DESC limit 1`;
+        ORDER BY data_hora limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -23,18 +23,17 @@ function buscarMedidasEmTempoRealRede(idMaquina) {
 }
 
 
-function buscarUltimasMedidasRede(idMaquina, limite_linhas) {
+function buscarUltimasMedidasRede(idMaquina, ) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select * from VW_REDE_CHARTU
-        where id_maquina = ${idMaquina}
-       limit ${limite_linhas}`;
+        where id_maquina = ${idMaquina} order by data_hora 
+       limit 4`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHARTU
-                    where id_maquina = ${idMaquina}
-                   limit ${limite_linhas}`;
+                    where id_maquina = ${idMaquina} order by data_hora limit 4`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -88,16 +87,16 @@ function buscarUltimasMedidasRedeP(idMaquina, limite_linhas) {
 }
 
 
-function buscarUltimasMedidasDesempenhoR(idMaquina, limite_linhas) {
+function buscarUltimasMedidasDesempenhoRede(idMaquina, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select * from VW_DESEMPENHO_CHARTU
+        instrucaoSql = `select * from VW_REDE_CHARTU
         where id_maquina = ${idMaquina}
        limit ${limite_linhas}`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_DESEMPENHO_CHARTU
+        instrucaoSql = `select * from VW_REDE_CHARTU
                     where id_maquina = ${idMaquina}
                    limit ${limite_linhas}`;
     } else {
@@ -109,16 +108,16 @@ function buscarUltimasMedidasDesempenhoR(idMaquina, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoRealDesempenhoR(idMaquina) {
+function buscarMedidasEmTempoRealDesempenhoRede(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select * from VW_DESEMPENHO_CHARTU
+        instrucaoSql = `select * from VW_REDE_CHARTU
         where id_maquina = ${idMaquina}
         ORDER BY data_hora DESC limit 3`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_DESEMPENHO_CHARTU
+        instrucaoSql = `select * from VW_REDE_CHARTU
         where id_maquina = ${idMaquina}
         ORDER BY data_hora DESC limit 3`;
     } else {
@@ -191,8 +190,8 @@ module.exports = {
     buscarUltimasMedidasRede,
     buscarMedidasEmTempoRealRedeP,
     buscarUltimasMedidasRedeP,
-    buscarUltimasMedidasDesempenhoR,
-    buscarMedidasEmTempoRealDesempenhoR,
+    buscarUltimasMedidasDesempenhoRede,
+    buscarMedidasEmTempoRealDesempenhoRede,
     buscarMedidasEmTempoRealRedeProcessos,
     buscarUltimasMedidasRedeProcessos,
     listarProcessosRede

@@ -2,8 +2,8 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-var KPI_BYTE_RECEBIDOS = document.getElementById("byte_recebido_kpi");
-var KPI_VELOCIDADE_DOWNLOAD = document.getElementById("velocidade_download_kpi");
+var KPI_BYTE_RECEBIDOS = document.getElementById("bytes_recebidos_kpi");
+var KPI_VELOCIDADE_DOWNLOAD = document.getElementById("vel_down_kpi");
 
 var elemento_maquina = document.getElementById("select_maquina");
 var idMaquina = elemento_maquina.value;
@@ -87,8 +87,8 @@ function plotarGraficoRedeD(resposta, idMaquina) {
 
 
       // Definindo a cor com base nas condições
-      if (registro.recebidos < 7.67) {
-        dados.datasets[0].backgroundColor.push('#338dff');
+      if (registro.recebidos < 10.67) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
       } else if (registro.recebidos <= 25.36) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
       } else {
@@ -174,24 +174,16 @@ function atualizarGraficoRede(idMaquina, dados, chartRedeD) {
 
           dados.datasets[1].data.shift();  // apagar o primeira medida
           dados.datasets[1].data.push(novoRegistro[0].velocidade_download); // incluir uma nova medida
-
-          if (novoRegistro.recebidos != null) {
-            KPI_BYTE_RECEBIDOS.innerHTML = novoRegistro.recebidos
-          }
-          if (novoRegistro.velocidade_download != null) {
-            KPI_VELOCIDADE_DOWNLOAD.innerHTML = novoRegistro.velocidade_download
-          }
-
           chartRedeD.update();
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 10000);
+        proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 7000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 10000);
+      proximaAtualizacaoRedeD = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeD), 7000);
     }
   })
     .catch(function (error) {
