@@ -19,9 +19,9 @@ function buscarUltimasMedidasFrequencia(idMaquina, limite_linhas) {
 function buscarUltimasMedidasProcessadorTemp(idMaquina, limite_linhas) {
 
     if(process.env.AMBIENTE_PROCESSO == "producao"){
-        instrucaoSql = `SELECT TOP 11 data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora;`;
+        instrucaoSql = `SELECT TOP 20 data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora;`;
     }else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora limit 11;`;
+        instrucaoSql = `SELECT data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora limit 20;`;
     }else{
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
