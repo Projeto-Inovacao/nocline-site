@@ -163,8 +163,16 @@ function alterarColaborador(id, email, celular, senha, setor, status, codigo) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarColaborador():", id, email, celular, senha, setor);
 
     var instrucao = `
-        UPDATE colaborador SET email = '${email}', celular = '${celular}', senha = '${senha}', fk_nivel_acesso= (select id_nivel_acesso from nivel_acesso where sigla = '${setor}'), status_colaborador = ${status} where id_colaborador = '${id}' and (select id_empresa from empresa where id_empresa = '${codigo}');
-    `;
+    UPDATE colaborador 
+    SET 
+        email = '${email}', 
+        celular = '${celular}', 
+        senha = '${senha}', 
+        fk_nivel_acesso = (SELECT id_nivel_acesso FROM nivel_acesso WHERE sigla = '${setor}'), 
+        status_colaborador = ${status}
+    WHERE 
+        id_colaborador = ${id} AND 
+        EXISTS (SELECT 1 FROM empresa WHERE id_empresa = ${codigo} AND id_colaborador = ${id})`;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
