@@ -5,7 +5,10 @@ function buscarUltimasMedidasCPU() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select *from  VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5; `;
+        instrucaoSql = `  SELECT TOP 5 *
+        FROM VW_MEDIA_CPU_POR_LINHA_CCO
+        ORDER BY setor DESC;
+         `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `  select *from  VW_MEDIA_CPU_POR_LINHA_CCO order by setor desc limit 5; `;
 
@@ -24,7 +27,7 @@ function buscarUltimasMedidasRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO order by setor desc limit 5; ;`;
+        instrucaoSql = `SELECT TOP 5 * from  VW_MEDIA_RAM_POR_LINHA_CCO order by setor desc ;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = ` select *from  VW_MEDIA_RAM_POR_LINHA_CCO order by setor desc limit 5; ;`;
     } else {
@@ -40,8 +43,8 @@ function buscarMedidasEmTempoRealCPU() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select * from VW_MEDIA_CPU_POR_LINHA_CCO
-        ORDER BY  setor DESC limit 5;`;
+        instrucaoSql = `SELECT TOP 5 * from VW_MEDIA_CPU_POR_LINHA_CCO
+        ORDER BY  setor DESC;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_MEDIA_CPU_POR_LINHA_CCO
@@ -59,8 +62,8 @@ function buscarMedidasEmTempoRealRAM() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select *from  VW_MEDIA_RAM_POR_LINHA_CCO 
-        ORDER BY  setor DESC limit 5;`;
+        instrucaoSql = `SELECT TOP 5 * from VW_MEDIA_RAM_POR_LINHA_CCO 
+        ORDER BY  setor DESC ;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select *from  VW_MEDIA_RAM_POR_LINHA_CCO S
