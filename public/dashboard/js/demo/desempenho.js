@@ -521,7 +521,7 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
 
     if (ramMediaKpi < 85) {
         metricaMediaRam.style.color = '#00FF00';
-    } else if (ramMediaKpi >= 85 && ramMediaKpi < 87) {
+    } else if (ramMediaKpi > 85 && ramMediaKpi < 87) {
         metricaMediaRam.style.color = '#f6ff00';
     } else {
         metricaMediaRam.style.color = '#FF0000';
@@ -533,7 +533,7 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
 
     if (cpuMediaKpi < 4) {
         metricaMediaCpu.style.color = '#00FF00';
-    } else if (cpuMediaKpi >= 4 && cpuMediaKpi < 8) {
+    } else if (cpuMediaKpi > 4 && cpuMediaKpi < 8) {
         metricaMediaCpu.style.color = '#f6ff00';
     } else {
         metricaMediaCpu.style.color = '#FF0000';
