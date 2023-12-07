@@ -1,5 +1,8 @@
 idEmpresa = sessionStorage.ID_EMPRESA;
 
+var elemento_linha = document.getElementById("select_linha");
+var linhaSelecionada = elemento_linha.value;          
+
 function atualizarFeed() {
     fetch(`/empresas/listarMaquinaPorLinha`).then(function (resposta) {
         if (resposta.ok) {
@@ -34,15 +37,15 @@ function atualizarFeed() {
                     nome.innerHTML = linha.nome_linha;
                     qtd_maquinas.innerHTML = linha.quantidade_maquinas;
                     
-                    
-                    
-                    t_maquinas += linha.quantidade_maquinas
+                    if (linha.id_linha == elemento_linha.value) {
+                        t_maquinas += linha.quantidade_maquinas;
+                    }
 
-                    total_maquinas.innerHTML = t_maquinas;
-                    
                 }
 
-               // finalizarAguardar();
+
+                        total_maquinas.innerHTML = t_maquinas;   
+               
             });
         } else {
             throw ('Houve um erro na API!');
@@ -50,4 +53,10 @@ function atualizarFeed() {
     }).catch(function (resposta) {
         tabela_titulo_maquina.innerHTML = "Você não tem nenhuma maquina cadastrada..."
     });
+}
+
+function limparFeed() {
+  
+    total_maquinas.innerHTML = "";
+
 }

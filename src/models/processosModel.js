@@ -34,16 +34,18 @@ function BuscarDadosProcessos(nome_janela, idMaquina, idEmpresa) {
     var instrucao = `SELECT
     p.pid,
     p.nome_processo,
-    ROUND(p.uso_cpu, 2) AS uso_cpu,
     ROUND(p.uso_memoria, 2) AS uso_memoria,
     p.status_abertura,
     p.fk_maquinaP,
     p.fk_empresaP,
-    p.data_hora
+    FORMAT(p.data_hora, '%d/%M/%y %H:%m:%s') as data_hora,
+    t.usado AS uso_memoria_total
 FROM
     processos p
+JOIN
+    VW_RAM_CHART_KT t ON p.fk_maquinaP = t.id_maquina
 WHERE
-    nome_processo LIKE '%${nome_janela}%' AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa};
+    p.nome_processo LIKE '%${nome_janela}%' AND fk_maquinaP = ${idMaquina} AND fk_empresaP = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

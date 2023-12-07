@@ -217,6 +217,8 @@ function carregarFeedGraficos() {
                 throw "Nenhum resultado encontrado!!";
             }
             resposta.json().then(function (resposta) {
+              var feed = document.getElementById("graficos");
+              feed.innerHTML = ""
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 const dadosAgrupadosPorPID = resposta.reduce((acc, obj) => {
                     const pid = obj.pid;
@@ -361,7 +363,7 @@ function plotarGraficoProcesso(pid, resposta) {
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = resposta.length - 1; i >= 0; i--) {
       var registro = resposta[i];
-      dados.datasets[0].data.push(registro.usado);
+      dados.datasets[0].data.push(registro.uso_memoria_total);
       dados.datasets[1].data.push(registro.uso_memoria);
       labels.push(registro.data_hora);
   

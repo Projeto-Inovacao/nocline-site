@@ -2,17 +2,12 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-// VAR PARA KPI
-var KPI_BYTE_ENVIADOS = document.getElementById("enviados_kpi");
-var KPI_VEL_UPLOAD = document.getElementById("vel_uplo_kpi");
-
-// VAR PARA MUDAR O VALOR DO DESEMPENHO
-var enviados = document.getElementById("enviados");
-var velocidade_upload= document.getElementById("vel_upload");
-
-// // VAR PARA MUDAR O TAMANHO DA BARRA DE PROGRESSO
-// var enviados_bar = document.getElementById("bar_enviados");
-// var vel_upload_bar = document.getElementById("bar_vel_upload");
+var vel_uplo_kpi = document.getElementById("vel_uplo_kpi");
+var KPI_BYTE_RECEBIDOS = document.getElementById("vel_down_kpi");
+var vel_down_kpi = document.getElementById("download_kpi");
+var KPI_velocidade_upload = document.getElementById("velocidade_upload_kpi");
+var KPI_PING = document.getElementById("ping_kpi");
+var KPI_LAT = document.getElementById("lat_kpi");
 
 var elemento_maquina = document.getElementById("select_maquina");
 var idMaquina = elemento_maquina.value;
@@ -24,11 +19,6 @@ function obterDadosRedeU(idMaquina) {
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
-
-  valores_kpi_desempenho = [KPI_BYTE_ENVIADOS, KPI_VEL_UPLOAD]
-  valores = [enviados, velocidade_upload]
- // valores_Bar = [bar_enviados, bar_vel_upload]
-
   fetch(`/rede/ultimasREDE/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (resposta) {
@@ -92,16 +82,15 @@ function plotarGraficoRedeU(resposta, idMaquina) {
 
   for (let i = resposta.length - 1; i >= 0; i--) {
     var registro = resposta[i];
-
-    if (registro.enviados != null && registro.velocidade_upload != null) {
-    dados.datasets[0].data.push(registro.enviados || null);
+    dados.datasets[0].data.push(registro.ping || null);
     dados.datasets[1].data.push(registro.velocidade_upload || null);
     labels.push(registro.data_hora);
 
+
     // Definindo a cor com base nas condições
-    if (registro.enviados < 7.67) {
+    if (registro.ping < 7.67) {
       dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.enviados <= 25.36) {
+    } else if (registro.ping <= 25.36) {
       dados.datasets[0].backgroundColor.push('#f6ff00');
     } else {
       dados.datasets[0].backgroundColor.push('#FF0000');
@@ -117,10 +106,9 @@ function plotarGraficoRedeU(resposta, idMaquina) {
         dados.datasets[1].backgroundColor.push('#FF0000');
       }
 
-      // if (i == (resposta.length - 1)) {
-      //   KPI_BYTE_ENVIADOS.innerHTML = registro.enviados
-      // }
-    }
+      if (i == (resposta.length - 1)) {
+        vel_uplo_kpi.innerHTML = registro.enviados
+      }
     } else {
       // Adicione um valor padrão ou lógica para lidar com dados de velocidade de upload nulos
       dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos
@@ -169,11 +157,11 @@ function atualizarGraficoRede(idMaquina, dados, chartRedeU) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {
 
-        obterDadosRedeU(idMaquina);
-        // alertar(novoRegistro, idMaquina);
-        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-        console.log(`Dados atuais do gráfico:`);
-        console.log(dados);
+        // obterDadosCPU(idMaquina);
+        // // alertar(novoRegistro, idMaquina);
+        // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+        // console.log(`Dados atuais do gráfico:`);
+        // console.log(dados);
 
         if (novoRegistro[0].data_hora == dados.labels[dados.labels.length - 1]) {
           console.log("---------------------------------------------------------------")
@@ -190,29 +178,30 @@ function atualizarGraficoRede(idMaquina, dados, chartRedeU) {
           dados.labels.push(novoRegistro[0].data_hora); // incluir um novo momento
 
           dados.datasets[0].data.shift();  // apagar o primeira medida
-          dados.datasets[0].data.push(novoRegistro[0].enviados); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
 
           dados.datasets[1].data.shift();  // apagar o primeira medida
-          dados.datasets[1].data.push(novoRegistro[0].velocidade_upload); // incluir uma nova medida
+          dados.datasets[1].data.push(novoRegistro[0].livre); // incluir uma nova medida
           
+          vel_uplo_kpi.innerHTML = novoRegistro.enviados
 
           if (novoRegistro.enviados != null) {
             KPI_BYTE_ENVIADOS.innerHTML = novoRegistro.enviados
           }
           if (novoRegistro.velocidade_upload != null) {
-            KPI_VEL_UPLOAD.innerHTML = novoRegistro.velocidade_upload
+            KPI_velocidade_upload.innerHTML = novoRegistro.velocidade_upload
           }
 
           chartRedeU.update();
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 10000);
+        proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 3000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 10000);
+      proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 3000);
     }
   })
     .catch(function (error) {
@@ -228,4 +217,3 @@ function limparRede() {
 
   chartRedeU.clear()
 }
-

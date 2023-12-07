@@ -86,38 +86,26 @@ function plotarGraficoRedeP(resposta, idMaquina) {
       dados.datasets[1].data.push(registro.recebidos);
       labels.push(registro.data_hora);
 
-    if (i == (resposta.length - 1)) {
-      KPI_PACOTES_RECEBIDOS.innerHTML = registro.pacotes_recebidos
-    }
-
-    }
-
-    // Definindo a cor com base nas condições
-    if (registro.pacotes_enviados < 7.67) {
-      dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.pacotes_enviados <= 25.36) {
-      dados.datasets[0].backgroundColor.push('#f6ff00');
-    } else {
-      dados.datasets[0].backgroundColor.push('#FF0000');
-    }
-
-
-
-    // Adicione uma verificação para a velocidade de upload
-    if (registro.pacotes_recebidos !== null) {
-      if (registro.pacotes_recebidos < 81.05) {
-        dados.datasets[1].backgroundColor.push('#00FF00');
-      } else if (registro.pacotes_recebidos <= 176.45) {
-        dados.datasets[1].backgroundColor.push('#f6ff00');
+      // Definindo a cor com base nas condições
+      if (registro.pacotes_enviados < 7.67) {
+        dados.datasets[0].backgroundColor.push('#00FF00');
+      } else if (registro.pacotes_enviados <= 25.36) {
+        dados.datasets[0].backgroundColor.push('#f6ff00');
       } else {
-        dados.datasets[1].backgroundColor.push('#FF0000');
+        dados.datasets[0].backgroundColor.push('#FF0000');
       }
 
+      // Adicione uma verificação para a velocidade de upload
+      if (registro.pacotes_recebidos !== null) {
+        if (registro.pacotes_recebidos < 81.05) {
+          dados.datasets[1].backgroundColor.push('#00FF00');
+        } else if (registro.pacotes_recebidos <= 176.45) {
+          dados.datasets[1].backgroundColor.push('#f6ff00');
+        } else {
+          dados.datasets[1].backgroundColor.push('#FF0000');
+        }
 
-      if (i == (resposta.length - 1)) {
-        KPI_PACOTES_RECEBIDOS.innerHTML = registro.pacotes_recebidos
       }
-
     } else {
       // Adicione um valor padrão ou lógica para lidar com dados de velocidade de upload nulos
       dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos

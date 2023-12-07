@@ -77,6 +77,6 @@ function atualizarFeed(idMaquina) {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
-        tabela_titulo_maquina.innerHTML = "Você não tem nenhuma maquina cadastrada..."
+        tabela_titulo_maquina.innerHTML = ""
     });
 }

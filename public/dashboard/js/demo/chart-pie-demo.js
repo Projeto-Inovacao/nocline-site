@@ -152,7 +152,7 @@ function atualizarGraficoDisco(idMaquina, dados, chartDisco) {
           dados.datasets[0].data.pop();
 
           dados.datasets[0].data.push(novoRegistro[0].livre); // incluir uma nova medida
-          dados.datasets[0].data.push(novoRegistro[1].usado); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[0].usado); // incluir uma nova medida
 
           chartDisco.update();
         }

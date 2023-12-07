@@ -728,8 +728,9 @@
             await obterDadosMediaRAM(idLinha);
             await obterDadosMediaCPU(idLinha);
             await obterDadosDesempenhoMedia(idLinha);
-            await atualizarGraficoDesempenhoMedia(idLinha);
             await plotarGraficoDesempenhoMedia(idLinha);
+            await atualizarGraficoDesempenhoMedia(idLinha);
+            
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
@@ -739,9 +740,11 @@
 
     seletor.addEventListener("change", function () {
         try {
+            clearTimeout(proximaAtualizacaoDesempenhoKpi);
             limparCPU()
             limparRAM()
             limparDesempenhoMedia()
+            limparFeed()
             attGrafico()
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
@@ -749,13 +752,14 @@
     });
 
     function attGrafico() {
+        atualizarFeed()
         elemento_linha = document.getElementById("select_linha");
         var idLinha = elemento_linha.value;
         console.log(idLinha)
         obterDadosMediaRAM(idLinha);
         obterDadosMediaCPU(idLinha);
         obterDadosDesempenhoMedia(idLinha);
-        
+        // atualizarGraficoDesempenhoMedia(idLinha);
         
     }
 </script>

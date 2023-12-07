@@ -189,9 +189,7 @@ FROM
 LEFT JOIN
   maquina m ON l.id_linha = m.fk_linhaM
 GROUP BY
-  l.id_linha, l.nome, l.numero;;
-
-
+  l.id_linha, l.nome, l.numero;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);

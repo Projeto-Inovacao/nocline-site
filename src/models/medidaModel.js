@@ -170,8 +170,8 @@ function buscarUltimasMedidasTemp(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  select top ${limite_linhas} * from VW_TEMP_CHART
-        where id_maquina = ${idMaquina};
+        instrucaoSql = `  select top 4 * from VW_TEMP_CHART
+        where id_maquina = ${idMaquina} order by data_hora desc;
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `  select * from VW_TEMP_CHART
@@ -192,7 +192,7 @@ function buscarMedidasEmTempoRealTemp(idMaquina) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1 * from VW_TEMP_CHART
         where id_maquina = ${idMaquina}
-        ORDER BY data_hora;`;
+        ORDER BY data_hora desc;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_TEMP_CHART
@@ -313,7 +313,6 @@ function buscarUltimasMedidasDesempenhoMedia(idLinha) {
             SELECT id_maquina
             FROM maquina
             WHERE fk_linhaM = ${idLinha});
-         );
         `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT *
@@ -497,9 +496,27 @@ function buscarMedidasEmTempoRealDesempenho(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 3 * from VW_DESEMPENHO_CHART
-        where id_maquina = ${idMaquina}
-        ORDER BY data_hora;`;
+        instrucaoSql = `WITH RankedResults AS (
+            SELECT
+                d.recurso,
+                d.data_hora,
+                d.uso,
+                m.id_maquina,
+                ROW_NUMBER() OVER (PARTITION BY d.recurso, m.id_maquina ORDER BY d.data_hora DESC) as RankOrder
+            FROM
+                VW_DESEMPENHO_CHART d
+                JOIN maquina m ON d.id_maquina = m.id_maquina
+        )
+        SELECT TOP 4
+            recurso,
+            data_hora,
+            uso,
+            id_maquina
+        FROM
+            RankedResults
+        WHERE
+            RankOrder = 1
+            AND id_maquina = ${idMaquina};`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_DESEMPENHO_CHART
@@ -593,8 +610,8 @@ function buscarUltimasMedidasTempXCpu(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas} * from VW_CPU_KOTLIN_CHART
-        where id_maquina = ${idMaquina};
+        instrucaoSql = `select top 4 * from VW_CPU_KOTLIN_CHART
+        where id_maquina = ${idMaquina} order by data_hora asc;
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_CPU_KOTLIN_CHART
@@ -616,7 +633,7 @@ function buscarMedidasEmTempoRealTempXCpu(idMaquina) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1 * from VW_CPU_KOTLIN_CHART
         where id_maquina = ${idMaquina}
-        ORDER BY data_hora`;
+        ORDER BY data_hora desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_CPU_KOTLIN_CHART

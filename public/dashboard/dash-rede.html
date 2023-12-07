@@ -458,6 +458,9 @@
                     <!-- Content Row -->
                     <div class="row">
 
+                    <!-- Content Row -->
+                    <div class="row">
+
                         <!-- KPI PING-->
                         <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -466,11 +469,11 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                                 style=" margin-top: -6%;">
-                                                Ping da Rede em Milissegundos</div>
+                                                PING DE REDE EM MILISSEGUNDOS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="PING_KPI"
                                                 style=" margin-top: 2%;"> X ms</div>
                                             <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_ping" style="border-radius: 300px;"
+                                                <i class="fas fa-circle" id="metricaping" style="border-radius: 300px;"
                                                     onload="metricas()"></i>
                                             </span>
                                         </div>
@@ -491,11 +494,11 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                                 style=" margin-top: -6%;">
-                                                Pacotes de Rede Recebidos</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                                id="pacotes_recebidos_kpi" style=" margin-top: 2%;"> X ms</div>
+                                                MEGABYTES RECEBIDOS DE REDE</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bytes_recebidos_kpi"
+                                                style=" margin-top: 2%;"> X</div>
                                             <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_ping" style="border-radius: 300px;"
+                                                <i class="fas fa-circle" id="metricarec" style="border-radius: 300px;"
                                                     onload="metricas()"></i>
                                             </span>
                                         </div>
@@ -508,6 +511,7 @@
                         </div>
 
 
+
                         <!-- KPI VELOCIDADE DE UPLOAD -->
                         <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -515,14 +519,12 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                s</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                                id="pacotes_enviados_kpi">Xbps
+                                                VELOCIDADE DE DOWNLOAD DE REDE</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="vel_down_kpi">X
                                             </div>
-
                                             <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_disco"
-                                                    style="border-radius: 300px;" onload="metricas()"></i>
+                                                <i class="fas fa-circle" id="metricadown" style="border-radius: 300px;"
+                                                    onload="metricas()"></i>
                                             </span>
                                         </div>
                                         <div class="col-auto">
@@ -541,24 +543,25 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary-dash text-uppercase mb-1"
                                                 style=" margin-top: -6%;">
-                                                Velocidade de Download atual em bytes por segundo</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="vel_down_kpi"
-                                                style=" margin-top: 2%;"> X%</div>
-
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle" id="metrica_disco"
-                                                    style="border-radius: 300px;" onload="metricas()"></i>
-                                            </span>
+                                                VELOCIDADE DE UPLOAD DE REDE</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="vel_upload_kpi"
+                                                style=" margin-top: 2%;"> X</div>
                                         </div>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" id="metricauplo" style="border-radius: 300px;"
+                                                onload="metricas()"></i>
+                                        </span>
                                         <div class="col-auto">
                                             <i class="fas fa-hdd fa-2x text-gray-300"></i>
                                         </div>
+
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                </div>
                     <!-- Content Row -->
 
 
@@ -567,10 +570,9 @@
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
-
+    
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Estatísticas em tempo real:
                                         Status x Latência</h6>
                                 </div>
@@ -580,6 +582,20 @@
                                         <canvas id="myAreaChartRedeO" style="height: 390px; width:100%;"></canvas>
                                     </div>
                                 </div>
+                                <div class="mt-4 text-center small" style="height: 40px; margin-top: -2%;">
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color:#00FF00;"></i> Estável
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle" style="font-size: 14px;color: #f6ff00;"></i>
+                                        Risco
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fa fa-circle" style="font-size:14px;color:#FF0000"></i> Perigo
+                                    </span>
+    
+                                </div>
+                            
                             </div>
 
                             <!-- Pie Chart -->
@@ -841,7 +857,7 @@
         }
     };
 
-    function chamarGraficos(idMaquina){
+    function chamarGraficos(idMaquina) {
         obterDadosRedeU(idMaquina);
         obterDadosRedeD(idMaquina);
         obterDadosRedeO(idMaquina);
@@ -849,6 +865,8 @@
         obterDadosRPE(idMaquina);
         obterDadosRPR(idMaquina);
         atualizarFeed(idMaquina);
+        atualizarGraficoRede(idMaquina)
+        obterDadosDesempenhoRede(idMaquina)
     }
 
     var seletor = document.getElementById("select_maquina");
@@ -860,11 +878,12 @@
 
     async function mudarId() {
         try {
-            limparDesempenho()
+            limparDesempenhoRede()
             limparRede()
             limparRPE()
             limparRPR()
             limparP()
+
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
             console.log(idMaquina)
@@ -876,6 +895,7 @@
             await obterDadosRPR(idMaquina); // Processos e bytes grafico pizza
             await obterDadosP(idMaquina);
             await atualizarFeed(idMaquina);
+            await obterDadosDesempenhoRede(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);
         }
