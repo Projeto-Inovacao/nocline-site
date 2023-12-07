@@ -17,7 +17,6 @@ function obterDadosRPE(idMaquina) {
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        resposta.reverse();
 
         plotarGraficoRPE(resposta, idMaquina);
 
@@ -115,8 +114,6 @@ function atualizarGraficoRPE(idMaquina, dados, chartRPE) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {
 
-        // obterDadosCPU(idMaquina);
-        // alertar(novoRegistro, idMaquina);
         console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
         console.log(`Dados atuais do gráfico:`);
         console.log(dados);
@@ -175,7 +172,6 @@ function obterDadosRPR(idMaquina) {
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        resposta.reverse();
 
         plotarGraficoRPR(resposta, idMaquina);
 

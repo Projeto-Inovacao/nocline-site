@@ -801,14 +801,14 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-line-rede-utiupload.js"></script>
+    <!-- <script src="js/demo/chart-line-rede-utiupload.js"></script>
     <script src="js/demo/chart-line-rede-utidownload.js"></script>
     <script src="js/demo/chart-line-rede-status.js"></script>
     <script src="js/demo/chart-line-rede-pacotes.js"></script>
-    <script src="js/demo/desempenho.js"></script>
     <script src="js/demo/chart-pie-rede-processos.js"></script>
-    <script src="js/tabelas/processosRede.js"></script>
-    <script src="js/sessao.js"></script>
+    <script src="js/tabelas/processosRede.js"></script>-->
+    <script src="js/sessao.js"></script> 
+    <script src="js/demo/desempenho.js"></script>
 </body>
 
 </html>
@@ -830,14 +830,14 @@
     };
 
     function chamarGraficos(idMaquina) {
-        obterDadosRedeU(idMaquina);
-        obterDadosRedeD(idMaquina);
-        obterDadosRedeO(idMaquina);
-        obterDadosRedeP(idMaquina);
-        obterDadosRPE(idMaquina);
-        obterDadosRPR(idMaquina);
-        atualizarFeed(idMaquina);
-        atualizarGraficoRede(idMaquina)
+        // obterDadosRedeU(idMaquina);
+        // obterDadosRedeD(idMaquina);
+        // obterDadosRedeO(idMaquina);
+        // obterDadosRedeP(idMaquina);
+        // obterDadosRPE(idMaquina);
+        // obterDadosRPR(idMaquina);
+        // atualizarFeed(idMaquina);
+        // atualizarGraficoRede(idMaquina)
         obterDadosDesempenhoRede(idMaquina)
     }
 
@@ -851,22 +851,22 @@
     async function mudarId() {
         try {
             limparDesempenhoRede()
-            limparRede()
-            limparRPE()
-            limparRPR()
-            limparP()
+            // limparRede()
+            // limparRPE()
+            // limparRPR()
+            // limparP()
 
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
             console.log(idMaquina)
-            await obterDadosRedeU(idMaquina);
-            await obterDadosRedeD(idMaquina);
-            await obterDadosRede(idMaquina);
-            await obterDadosRedeO(idMaquina);
-            await obterDadosRPE(idMaquina); //Processos e bytes gráfico pizza
-            await obterDadosRPR(idMaquina); // Processos e bytes grafico pizza
-            await obterDadosP(idMaquina);
-            await atualizarFeed(idMaquina);
+            // await obterDadosRedeU(idMaquina);
+            // await obterDadosRedeD(idMaquina);
+            // await obterDadosRede(idMaquina);
+            // await obterDadosRedeO(idMaquina);
+            // await obterDadosRPE(idMaquina); //Processos e bytes gráfico pizza
+            // await obterDadosRPR(idMaquina); // Processos e bytes grafico pizza
+            // await obterDadosP(idMaquina);
+            // await atualizarFeed(idMaquina);
             await obterDadosDesempenhoRede(idMaquina);
         } catch (error) {
             console.error("Erro no carregamento da página: " + error.message);

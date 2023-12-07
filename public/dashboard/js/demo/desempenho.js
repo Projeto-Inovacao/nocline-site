@@ -20,7 +20,7 @@ var DISCO = document.getElementById("disco_rigido");
 var TEMP = document.getElementById("temp_cpu");
 var PING = document.getElementById("ping");
 
-// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGUESSO
+// VAR PARA MUDAR O TAMANHO DA BARRA DE PROGRESSO
 var CPU_bar = document.getElementById("bar_porcentagem_cpu");
 var RAM_bar = document.getElementById("bar_uso_memoria_ram");
 var disco_bar = document.getElementById("bar_disco_rigido");
@@ -730,7 +730,7 @@ function plotarGraficoDesempenhoRede(resposta, idMaquina) {
         metricarec.style.color = '#FF0000';
     }
 
-    // BOLINHA METRICA DENTRO DA KPI CPU
+
     var velocidade_upload = parseFloat(document.getElementById('vel_upload_kpi').innerText.trim());
     var metricauplo = document.getElementById('metricauplo');
 
@@ -742,7 +742,6 @@ function plotarGraficoDesempenhoRede(resposta, idMaquina) {
         metricauplo.style.color = '#FF0000';
     }
 
-    // BOLINHA METRICA DENTRO DA KPI RAM
     var velocidade_download = parseFloat(document.getElementById('vel_down_kpi').innerText.trim());
     var metricadown = document.getElementById('metricadown');
 
