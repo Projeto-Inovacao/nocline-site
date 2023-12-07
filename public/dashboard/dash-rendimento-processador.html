@@ -652,6 +652,7 @@
             var elemento_maquina = document.getElementById("select_maquina");
             var idMaquina = elemento_maquina.value;
             await obterDadosDoPocessadorTemp(idMaquina);
+            await atualizarGraficoPocessadorTemp(idMaquina);
             await obterDadosDaFrequencia(idMaquina);
             await ObtergraficoBarra(idMaquina);
             await obterDadosKPI(idMaquina);

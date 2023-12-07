@@ -4,7 +4,7 @@ var database = require("../database/config");
 function buscarUltimasMedidasFrequencia(idMaquina, limite_linhas) {
 
    if(process.env.AMBIENTE_PROCESSO == "producao"){
-       instrucaoSql = `SELECT TOP 11 data_hora, frequencia FROM especificacao WHERE fk_maquina_especificacao = ${idMaquina} ORDER BY data_hora;`;
+       instrucaoSql = `SELECT TOP 10 FORMAT(data_hora, 'MM-dd HH:mm:ss') AS data_hora, frequencia FROM especificacao WHERE fk_maquina_especificacao = ${idMaquina} ORDER BY data_hora desc;`;
    }else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
        instrucaoSql = `SELECT data_hora, frequencia FROM especificacao WHERE fk_maquina_especificacao = ${idMaquina} ORDER BY data_hora limit 11;`;
    }else{
@@ -19,7 +19,7 @@ function buscarUltimasMedidasFrequencia(idMaquina, limite_linhas) {
 function buscarUltimasMedidasProcessadorTemp(idMaquina, limite_linhas) {
 
     if(process.env.AMBIENTE_PROCESSO == "producao"){
-        instrucaoSql = `SELECT TOP 20 data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora;`;
+        instrucaoSql = `SELECT TOP 10 FORMAT(data_hora, 'MM-dd HH:mm:ss') AS data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora DESC;`;
     }else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT data_hora, uso_cpu FROM processos WHERE fk_maquinaP = ${idMaquina} ORDER BY data_hora limit 20;`;
     }else{
