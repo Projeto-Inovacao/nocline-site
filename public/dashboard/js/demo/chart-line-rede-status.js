@@ -21,6 +21,8 @@ function obterDadosRedeO(idMaquina) {
   valores = [ping, lat]
 
   fetch(`/rede/ultimasREDE/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    console.log("sdfghyujiuytrewwertghj")
+
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos DE REDE: ${JSON.stringify(resposta)}`);
@@ -142,10 +144,10 @@ function plotarGraficoRedeO(resposta, idMaquina) {
     config
   );
 
-  setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeO), 10000);
+  setTimeout(() => atualizarGraficoRedeO(idMaquina, dados, chartRedeO), 10000);
 }
 
-function atualizarGraficoRede(idMaquina, dados, chartRedeO) {
+function atualizarGraficoRedeO(idMaquina, dados, chartRedeO) {
   fetch(`/rede/tempo-realRede/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (novoRegistro) {

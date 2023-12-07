@@ -5,9 +5,7 @@ function buscarMedidasEmTempoRealRede(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1 * from VW_REDE_CHARTU
-        where id_maquina = ${idMaquina}
-        ORDER BY data_hora`;
+        instrucaoSql = `SELECT top 1 * FROM  VW_REDE_CHARTU where fk_maquina_monitoramento= 8 order by data_hora desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHARTU
@@ -22,13 +20,31 @@ function buscarMedidasEmTempoRealRede(idMaquina) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimasMedidasRede(idMaquina, limite_linhas) {
+function buscarUltimasMedidasRedeO(idMaquina, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas} * from VW_REDE_CHARTU
-        where id_maquina = ${idMaquina}`;
+        instrucaoSql = `SELECT top 5 * FROM  VW_REDE_CHARTU where fk_maquina_monitoramento= 8 order by data_hora desc`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_REDE_CHARTU
+                    where id_maquina = ${idMaquina}
+                   limit ${limite_linhas}`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidasRedeU(idMaquina, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `SELECT top 4 * FROM  VW_REDE_CHARTU where fk_maquina_monitoramento= 8 order by data_hora desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHARTU
                     where id_maquina = ${idMaquina}
@@ -46,9 +62,7 @@ function buscarMedidasEmTempoRealRedeP(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1 * from VW_REDE_CHART
-        where id_maquina = ${idMaquina}
-        ORDER BY data_hora 1`;
+        instrucaoSql = `SELECT * FROM  VW_REDE_CHART where fk_maquina_monitoramento= 1 order by data_hora desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHART
@@ -69,11 +83,11 @@ function buscarUltimasMedidasRedeP(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select TOP ${limite_linhas}* from VW_REDE_CHART
-        where id_maquina = ${idMaquina}`;
+        instrucaoSql = `select TOP 4* from VW_REDE_CHART
+        where id_maquina = 1 order by data_hora desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHART
-                    where id_maquina = ${idMaquina}
+                    where id_maquina = 1
                    limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -156,8 +170,8 @@ function buscarUltimasMedidasRedeProcessos(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas} * from processos
-        where fk_maquinaP = ${idMaquina}`;
+        instrucaoSql = `select top 7 * from processos
+        where fk_maquinaP = 1`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from processos
                     where fk_maquinaP = ${idMaquina}
@@ -183,13 +197,14 @@ function listarProcessosRede(idMaquina, idEmpresa) {
 
 module.exports = {
     buscarMedidasEmTempoRealRede,
-    buscarUltimasMedidasRede,
+    buscarUltimasMedidasRedeO,
     buscarMedidasEmTempoRealRedeP,
     buscarUltimasMedidasRedeP,
     buscarUltimasMedidasDesempenhoRede,
     buscarMedidasEmTempoRealDesempenhoRede,
     buscarMedidasEmTempoRealRedeProcessos,
     buscarUltimasMedidasRedeProcessos,
-    listarProcessosRede
+    listarProcessosRede,
+    buscarUltimasMedidasRedeU
 
 }

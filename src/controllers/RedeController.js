@@ -1,7 +1,7 @@
 var redeModel = require("../models/redeModel");
 
 
-function buscarUltimasMedidasRede(req, res) {
+function buscarUltimasMedidasRedeO(req, res) {
 
     const limite_linhas = 9;
 
@@ -9,7 +9,28 @@ function buscarUltimasMedidasRede(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    redeModel.buscarUltimasMedidasRede(idMaquina, limite_linhas).then(function (resultado) {
+    redeModel.buscarUltimasMedidasRedeO(idMaquina, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarUltimasMedidasRedeU(req, res) {
+
+    const limite_linhas = 9;
+
+    var idMaquina = req.params.idMaquina;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+    redeModel.buscarUltimasMedidasRedeU(idMaquina, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -50,7 +71,7 @@ function buscarUltimasMedidasRedeP(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    redeModel.buscarUltimasMedidasRede(idMaquina, limite_linhas).then(function (resultado) {
+    redeModel.buscarUltimasMedidasRedeP(idMaquina, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -190,12 +211,13 @@ function listarProcessosRede(req, res) {
 
 module.exports = {
     buscarMedidasEmTempoRealRede,
-    buscarUltimasMedidasRede,
+    buscarUltimasMedidasRedeO,
     buscarMedidasEmTempoRealRedeP,
     buscarUltimasMedidasRedeP,
     buscarUltimasMedidasDesempenhoRede,
     buscarMedidasEmTempoRealDesempenhoRede,
     buscarUltimasMedidasRedeProcessos,
     buscarMedidasEmTempoRealRedeProcessos,
-    listarProcessosRede
+    listarProcessosRede,
+    buscarUltimasMedidasRedeU
 }

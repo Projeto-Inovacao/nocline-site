@@ -4,7 +4,11 @@ var router = express.Router();
 var RedeController = require("../controllers/RedeController");
 
 router.get("/ultimasREDE/:idMaquina", function (req, res) {
-    RedeController.buscarUltimasMedidasRede(req, res);
+    RedeController.buscarUltimasMedidasRedeO(req, res);
+});
+
+router.get("/ultimasREDEX/:idMaquina", function (req, res) {
+    RedeController.buscarUltimasMedidasRedeU(req, res);
 });
 
 router.get("/tempo-realRede/:idMaquina", function (req, res) {

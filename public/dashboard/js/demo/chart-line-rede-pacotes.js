@@ -80,10 +80,10 @@ function plotarGraficoRedeP(resposta, idMaquina) {
 
   for (let i = resposta.length - 1; i >= 0; i--) {
     var registro = resposta[i];
-    if ((registro.enviados != null) && (registro.recebidos != null)) {
+    if ((registro.pacotes_enviados != null) && (registro.pacotes_recebidos != null)) {
 
-      dados.datasets[0].data.push(registro.enviados);
-      dados.datasets[1].data.push(registro.recebidos);
+      dados.datasets[0].data.push(registro.pacotes_enviados);
+      dados.datasets[1].data.push(registro.pacotes_recebidos);
       labels.push(registro.data_hora);
 
       // Definindo a cor com base nas condições

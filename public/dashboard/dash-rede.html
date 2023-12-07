@@ -859,8 +859,12 @@
 
     function chamarGraficos(idMaquina) {
         obterDadosRedeU(idMaquina);
+        plotarGraficoRedeU(idMaquina);
+        atualizarGraficoRedeU(idMaquina);
         obterDadosRedeD(idMaquina);
         obterDadosRedeO(idMaquina);
+        plotarGraficoRedeO(idMaquina);
+        atualizarGraficoRedeO(idMaquina);
         obterDadosRedeP(idMaquina);
         obterDadosRPE(idMaquina);
         obterDadosRPR(idMaquina);

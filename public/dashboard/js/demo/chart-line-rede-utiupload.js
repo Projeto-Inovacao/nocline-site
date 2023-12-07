@@ -19,7 +19,7 @@ function obterDadosRedeU(idMaquina) {
   // if (proximaAtualizacao != undefined) {
   //     clearTimeout(proximaAtualizacao);
   // }
-  fetch(`/rede/ultimasREDE/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+  fetch(`/rede/ultimasREDEX/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos DE REDE: ${JSON.stringify(resposta)}`);
@@ -106,9 +106,9 @@ function plotarGraficoRedeU(resposta, idMaquina) {
         dados.datasets[1].backgroundColor.push('#FF0000');
       }
 
-      if (i == (resposta.length - 1)) {
-        vel_uplo_kpi.innerHTML = registro.enviados
-      }
+      // if (i == (resposta.length - 1)) {
+      //   vel_uplo_kpi.innerHTML = registro.enviados
+      // }
     } else {
       // Adicione um valor padrão ou lógica para lidar com dados de velocidade de upload nulos
       dados.datasets[1].backgroundColor.push('#CCCCCC'); // Cor padrão para nulos
@@ -147,11 +147,11 @@ function plotarGraficoRedeU(resposta, idMaquina) {
     config
   );
 
-  setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 10000);
+  setTimeout(() => atualizarGraficoRedeU(idMaquina, dados, chartRedeU), 10000);
 }
 
 
-function atualizarGraficoRede(idMaquina, dados, chartRedeU) {
+function atualizarGraficoRedeU(idMaquina, dados, chartRedeU) {
 
   fetch(`/rede/tempo-realRede/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
@@ -196,12 +196,12 @@ function atualizarGraficoRede(idMaquina, dados, chartRedeU) {
         }
 
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 3000);
+        proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRedeU(idMaquina, dados, chartRedeU), 3000);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRede(idMaquina, dados, chartRedeU), 3000);
+      proximaAtualizacaoRedeU = setTimeout(() => atualizarGraficoRedeU(idMaquina, dados, chartRedeU), 3000);
     }
   })
     .catch(function (error) {
