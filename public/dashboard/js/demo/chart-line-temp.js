@@ -54,7 +54,7 @@ function plotarGraficoTEMP(resposta, idMaquina) {
     console.log(resposta)
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
+    for (i = resposta.length - 1; i >= 0; i--) {
         var registro = resposta[i];
         dados.datasets[0].data.push(registro.dado_coletado);
         labels.push(registro.data_hora);

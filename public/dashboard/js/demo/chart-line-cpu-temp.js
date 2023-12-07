@@ -133,16 +133,16 @@ function atualizarGraficoTempXCPU(idMaquina, dados, ChartTempXCpu) {
               dados.datasets[0].data.shift();  // apagar o primeira medida
               dados.datasets[0].data.push(novoRegistro[0].dado_coletado); // incluir uma nova medida
 
-              chartCPU.update();
+              ChartTempXCpu.update();
           }
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, ChartTempXCpu), 5000);
+          proximaAtualizacaoCPUxTEMP = setTimeout(() => atualizarGraficoTempXCPU(idMaquina, dados, ChartTempXCpu), 5000);
       });
   } else {
       console.error('Nenhum dado encontrado ou erro na API');
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(idMaquina, dados, ChartTempXCpu), 5000);
+      proximaAtualizacaoCPUxTEMP = setTimeout(() => atualizarGraficoTempXCPU(idMaquina, dados, ChartTempXCpu), 5000);
   }
 })
   .catch(function (error) {
@@ -153,9 +153,9 @@ function atualizarGraficoTempXCPU(idMaquina, dados, ChartTempXCpu) {
 
 
 function limparRede(){
-  let chartRede = new Chart(
+  let ChartTempXCpu = new Chart(
       document.getElementById(`myAreaChartTempXCpu`),
   );
 
-  chartRede.clear()
+  ChartTempXCpu.clear()
 }

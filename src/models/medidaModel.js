@@ -611,7 +611,7 @@ function buscarUltimasMedidasTempXCpu(idMaquina, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 4 * from VW_CPU_KOTLIN_CHART
-        where id_maquina = ${idMaquina} order by data_hora asc;
+        where id_maquina = ${idMaquina} order by id_monitoramento desc;
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_CPU_KOTLIN_CHART
