@@ -95,7 +95,7 @@ function plotarGraficoRPE(resposta, idMaquina) {
     legend: {
       display: false
     },
-    cutoutPercentage: 50, // Experimente ajustar esse valor conforme necessário
+    cutoutPercentage: 10, // Experimente ajustar esse valor conforme necessário
   }
   
   // Adicionando gráfico criado em div na tela
@@ -134,7 +134,7 @@ function atualizarGraficoRPE(idMaquina, dados, chartRPE) {
         } else {
           dados.datasets[0].data.pop();
 
-          dados.datasets[0].data.push(novoRegistro[0].nome_processo); // incluir uma nova medida
+          dados.datasets[0].data.push(novoRegistro[0].bytes_enviados); // incluir uma nova medida
 
           chartRPE.update();
         }
@@ -158,7 +158,9 @@ function limparRPE(){
   let chartRPE = new Chart(
       document.getElementById(`myPieChartRPE`),
   );
-
+  if (chartRPE) {
+    chartRPE.destroy();
+}
   chartRPE.clear()
 }
 

@@ -85,6 +85,8 @@ function plotarGraficoRedeD(resposta, idMaquina) {
       dados.datasets[1].data.push(registro.velocidade_download);
       labels.push(registro.data_hora);
 
+      document.getElementById("bytes_recebidos_kpi").innerHTML = registro.recebidos
+      document.getElementById("vel_down_kpi").innerHTML = registro.velocidade_download
 
       // Definindo a cor com base nas condições
       if (registro.recebidos < 7.67) {

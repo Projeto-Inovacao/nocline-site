@@ -21,8 +21,6 @@ function obterDadosRedeO(idMaquina) {
   valores = [ping, lat]
 
   fetch(`/rede/ultimasREDE/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-    console.log("sdfghyujiuytrewwertghj")
-
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos DE REDE: ${JSON.stringify(resposta)}`);
@@ -88,6 +86,9 @@ function plotarGraficoRedeO(resposta, idMaquina) {
     dados.datasets[0].data.push(registro.ping);
     dados.datasets[1].data.push(registro.latencia);
     labels.push(registro.data_hora);
+
+    
+    document.getElementById("PING_KPI").innerHTML = registro.ping + " ms"
 
     // Definindo a cor com base nas condições
     if (registro.ping < 7.67) {

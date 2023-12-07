@@ -86,6 +86,7 @@ function plotarGraficoRedeU(resposta, idMaquina) {
     dados.datasets[1].data.push(registro.velocidade_upload || null);
     labels.push(registro.data_hora);
 
+    document.getElementById("vel_upload_kpi").innerHTML = registro.velocidade_upload
 
     // Definindo a cor com base nas condições
     if (registro.ping < 7.67) {
