@@ -27,10 +27,10 @@ function buscarUltimasMedidasRedeO(idMaquina, limite_linhas) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `SELECT top 5 * FROM  VW_REDE_CHARTU where fk_maquina_monitoramento= 8 order by data_hora desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select * from VW_REDE_CHARTU
+        instrucaoSql = `select * from VW_REDE_CHARTU 
                     where id_maquina = ${idMaquina}
                    limit ${limite_linhas}`;
-    } else {
+    } else { //blz eu so queria ver se ntinha algum lugar q n tava chumbeido
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
     }
@@ -105,7 +105,7 @@ function buscarUltimasMedidasDesempenhoRede(idMaquina, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select TOP ${limite_linhas} * from VW_REDE_CHARTU
-        where id_maquina = ${idMaquina}`;
+        where id_maquina = 8`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from VW_REDE_CHARTU
                     where id_maquina = ${idMaquina}
@@ -124,7 +124,7 @@ function buscarMedidasEmTempoRealDesempenhoRede(idMaquina) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 3 * from VW_REDE_CHARTU
-        where id_maquina = ${idMaquina}
+        where id_maquina = 8
         ORDER BY data_hora`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
@@ -149,7 +149,7 @@ function buscarMedidasEmTempoRealRedeProcessos(idMaquina) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1 * from processos
         where fk_maquinaP = ${idMaquina}
-        ORDER BY data_hora`;
+        ORDER BY data_hora`; //quita esse eh o q faz plotar ne? sim
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from processos
@@ -170,8 +170,10 @@ function buscarUltimasMedidasRedeProcessos(idMaquina, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 7 * from processos
-        where fk_maquinaP = 1`;
+        instrucaoSql = `SELECT TOP 7 pid, *
+        FROM processos
+        WHERE fk_maquinaP = 1 AND bytes_enviados IS NOT NULL AND bytes_recebidos IS NOT NULL;
+        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select * from processos
                     where fk_maquinaP = ${idMaquina}

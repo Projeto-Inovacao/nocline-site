@@ -462,7 +462,7 @@
                     <div class="row">
 
                         <!-- KPI PING-->
-                        <div class="col-xl-14 col-md-6 mb-4" id="kpi_rede">
+                        <div class="col-xl-14 col-md-9 mb-4" id="kpi_rede">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -478,7 +478,21 @@
                                             </span>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                                            <div class="dropdown no-arrow">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-comment-dots fa-sm fa-fw text-gray-400" style="margin-left: 80%;"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                    aria-labelledby="dropdownMenuLink">
+                                                    <div class="dropdown-header">Métricas de Ping:</div>
+                                                    <a class="dropdown-item">Ideal: 7</a>
+                                                    <a class="dropdown-item">Risco: 10</a>
+                                                    <a class="dropdown-item">Perigo: 15</a>
+                                                </div>
+        
+                                            </div>
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -528,7 +542,21 @@
                                             </span>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-memory fa-2x text-gray-300"></i>
+                                            <div class="dropdown no-arrow">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-comment-dots fa-sm fa-fw text-gray-400" style="margin-left: 80%;"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                    aria-labelledby="dropdownMenuLink">
+                                                    <div class="dropdown-header">Métricas de Velocidade de Download:</div>
+                                                    <a class="dropdown-item">Ideal: 8</a>
+                                                    <a class="dropdown-item">Risco: 6</a>
+                                                    <a class="dropdown-item">Perigo: 2</a>
+                                                </div>
+        
+                                            </div>
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -552,7 +580,21 @@
                                                 onload="metricas()"></i>
                                         </span>
                                         <div class="col-auto">
-                                            <i class="fas fa-hdd fa-2x text-gray-300"></i>
+                                            <div class="dropdown no-arrow">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-comment-dots fa-sm fa-fw text-gray-400" style="margin-left: 80%;"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                    aria-labelledby="dropdownMenuLink">
+                                                    <div class="dropdown-header">Métricas de Velocidade de Upload:</div>
+                                                    <a class="dropdown-item">Ideal: 8</a>
+                                                    <a class="dropdown-item">Risco: 6</a>
+                                                    <a class="dropdown-item">Perigo: 2</a>
+                                                </div>
+        
+                                            </div>
+                                            <i class="fas fa-file fa-2x text-gray-300"></i>
                                         </div>
 
                                         
@@ -600,31 +642,49 @@
 
                             <!-- Pie Chart -->
                             <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <center>
                                     <h4 class="m-0 font-weight-bold text-primary-dash" style=" width: 100%;">
                                         Rede em Relação aos processos
                                     </h4>
                                 </center>
-                            </div>
+                            </div> -->
                             <!-- Card Body -->
-                            <h9 class="m-0 font-weight-bold text-primary-dash"> Bytes Enviados por processo </h9>
+                           
                             <div class="card-body"
                                 style="height: 400px; padding: 0.3rem; display: flex; justify-content: space-evenly;">
 
+                                <div class="card shadow mb-4" style="bottom: 35px; height: 400px; top: -15px; width: 800px; ">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Enviados por processo 
+                                           </h6>
+                                    </div>
                                 <div class="chart-pie pt-4 pb-2">
                                     <canvas id="myPieChartRPE" class="graphPie chartjs-render-monitor"
                                         style="height: 300px; width: 100%;"></canvas>
                                 </div>
+                                </div>
                             </div>
-                            <h9 class="m-0 font-weight-bold text-primary-dash"> Bytes Recebidos por processo </h9>
+
+                            
+                            
+                            <!-- <h9 class="m-0 font-weight-bold text-primary-dash"> Bytes Recebidos por processo </h9>
                             <div class="card-body"
+                                style="height: 400px; padding: 0.3rem; display: flex; justify-content: space-evenly;"> -->
+                                
+                                <div class="card-body"
                                 style="height: 400px; padding: 0.3rem; display: flex; justify-content: space-evenly;">
+
+                                <div class="card shadow mb-4" style="bottom: 35px; height: 400px; top: -7px; width: 800px;">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Enviados por processo 
+                                           </h6>
+                                    </div>
                                 <div class="chart-pie pt-4 pb-2">
                                     <canvas id="myPieChartRPR" class="graphPie chartjs-render-monitor"
                                         style="height: 300px; width: 100%;"></canvas>
                                 </div>
-
+                                </div>
                             </div>
                         </div>
 
@@ -634,7 +694,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                             </div>
-                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; ">
+                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; top: -25px; ">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Enviados x Velocidade
                                         de Upload</h6>
@@ -662,7 +722,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                             </div>
-                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; ">
+                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; top: 0px;">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Bytes Recebidos x Velocidade
                                         de Download</h6>
@@ -690,7 +750,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                             </div>
-                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; ">
+                            <div class="card shadow mb-4" style="bottom: 35px; height: 400px; top: 52px; ">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary-dash">Pacotes Recebidos e Enviados</h6>
                                 </div>
@@ -721,15 +781,13 @@
                         <!-- Page Heading -->
 
 
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                                    <h1 class="m-0 font-weight-bold text-primary-dash" style="font-size: 33px; ">
-                                        Rede em Relação aos Processos
-                                </div>
-                            </div>
-                        </div>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                            <h1 class="m-0 font-weight-bold text-primary-dash" style="top: 20px; left: 20px;">Rede em Relação aos Processos
+                            </h1></div>
+                     
+                        
+                        
+                    
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

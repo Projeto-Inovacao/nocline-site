@@ -68,7 +68,7 @@ function buscarUltimasMediasCPU(idLinha, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ` SELECT
-        top ${limite_linhas} 
+        top 4
         AVG(dado_coletado) AS media_uso_cpu,
         data_hora
     FROM
@@ -78,8 +78,8 @@ function buscarUltimasMediasCPU(idLinha, limite_linhas) {
             SELECT id_maquina
             FROM maquina
             WHERE fk_linhaM = ${idLinha}
-        )group by data_hora ORDER BY
-        data_hora;
+        )GROUP BY
+        data_hora ORDER BY data_hora desc;
        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = ` SELECT
@@ -130,7 +130,7 @@ function buscarUltimasMediasRAM(idLinha, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `  SELECT top ${limite_linhas}
+        instrucaoSql = `  SELECT top 4
         data_hora,
         AVG(usado) AS media_uso_ram
     FROM
@@ -140,7 +140,8 @@ function buscarUltimasMediasRAM(idLinha, limite_linhas) {
             SELECT id_maquina
             FROM maquina
             WHERE fk_linhaM = ${idLinha}
-        ) group by data_hora;
+        ) GROUP BY
+        data_hora ORDER BY data_hora desc ;
     `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `  SELECT

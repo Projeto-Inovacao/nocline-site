@@ -42,7 +42,14 @@ function plotarGraficodisco(resposta,idMaquina) {
         datasets: [{
             label: 'Grafico',
             data: [],
-            fill: true
+            fill: true,
+            backgroundColor: [      
+                '#2510a3', 'rgb(54, 162, 235)', 
+                '#338dff', '#191970' , '#6495ED', '#483D8B',
+                '#000080' , '#4169E1', '#4682B4', '#87CEFA' ],
+                borderColor: [],
+                tension: 0.1,
+                hoverOffset: 4
         }]
     };
 

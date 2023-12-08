@@ -402,9 +402,9 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         }
     }
 
-    if (temperaturaAtual > 47 && cpuAtual > 12) {
+    if (temperaturaAtual > 47 || cpuAtual > 12) {
         mensagem = "<b> Situação de Perigo! 🆘 </b> <br> Índices de CPU e Temperatura muito acima do esperado.";
-    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 47) && (cpuAtual >= 8 && cpuAtual <= 12)) {
+    } else if ((temperaturaAtual >= 40 && temperaturaAtual <= 47) || (cpuAtual >= 8 && cpuAtual <= 12)) {
         mensagem = "Situação de Risco! ⚠️ <br> Índices de CPU e Temperatura em crescimento.";
     } else {
         mensagem = "Situação estável! 🆗 <br> Índices de CPU e Temperatura dentro do esperado.";
@@ -697,9 +697,9 @@ function plotarGraficoDesempenhoRede(resposta, idMaquina) {
     var ping_kpi = parseFloat(document.getElementById('PING_KPI').innerText.trim());
     var metricaping = document.getElementById('metricaping');
 
-    if (ping_kpi < 200) {
-        metricaping.style.color = 'green';
-    } else if (ping_kpi >= 200 && ping_kpi < 450) {
+    if (ping_kpi < 7) {
+        metricaping.style.color = '#00FF00';
+    } else if (ping_kpi >= 10 && ping_kpi < 15) {
         metricaping.style.color = 'yellow';
     } else {
         metricaping.style.color = 'red';
@@ -721,9 +721,9 @@ function plotarGraficoDesempenhoRede(resposta, idMaquina) {
     var velocidade_upload = parseFloat(document.getElementById('vel_upload_kpi').innerText.trim());
     var metricauplo = document.getElementById('metricauplo');
 
-    if (velocidade_upload < 15) {
+    if (velocidade_upload > 8) {
         metricauplo.style.color = '#00FF00';
-    } else if (velocidade_upload >= 15 && velocidade_upload < 30) {
+    } else if (velocidade_upload > 6 && velocidade_upload <= 8) {
         metricauplo.style.color = '#f6ff00';
     } else {
         metricauplo.style.color = '#FF0000';
@@ -733,9 +733,9 @@ function plotarGraficoDesempenhoRede(resposta, idMaquina) {
     var velocidade_download = parseFloat(document.getElementById('vel_down_kpi').innerText.trim());
     var metricadown = document.getElementById('metricadown');
 
-    if (velocidade_download < 80) {
+    if (velocidade_download > 8) {
         metricadown.style.color = '#00FF00';
-    } else if (velocidade_download >= 80 && velocidade_download < 90) {
+    } else if (velocidade_download > 6 && velocidade_download <= 8) {
         metricadown.style.color = '#f6ff00';
     } else {
         metricadown.style.color = '#FF0000';

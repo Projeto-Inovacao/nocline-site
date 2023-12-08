@@ -44,7 +44,10 @@ function plotarGraficoPocessadorTemp(resposta, idMaquina) {
         datasets: [{
             label: 'Usada',
             data: [],
-            backgroundColor: [],
+            backgroundColor: [     
+                '#2510a3', 'rgb(54, 162, 235)', 
+                '#338dff', '#191970' , '#6495ED', '#483D8B',
+                '#000080' , '#4169E1', '#4682B4', '#87CEFA'],
             borderColor: ['#393d42'],
             tension: 0.3,
             fill: false, 

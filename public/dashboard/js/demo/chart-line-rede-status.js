@@ -91,9 +91,9 @@ function plotarGraficoRedeO(resposta, idMaquina) {
     document.getElementById("PING_KPI").innerHTML = registro.ping + " ms"
 
     // Definindo a cor com base nas condições
-    if (registro.ping < 7.67) {
+    if (registro.ping < 7.00) {
       dados.datasets[0].backgroundColor.push('#00FF00');
-    } else if (registro.ping <= 25.36) {
+    } else if (registro.ping <= 10) {
       dados.datasets[0].backgroundColor.push('#f6ff00');
     } else {
       dados.datasets[0].backgroundColor.push('#FF0000');
