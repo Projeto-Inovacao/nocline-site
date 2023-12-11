@@ -420,9 +420,9 @@ function plotarGraficoDesempenhoTemp(resposta, idMaquina) {
         METRICA_TEMP.style.color = '#FF0000';
     }
 
-    if (cpuAtual < 4) {
+    if (cpuAtual < 8) {
         METRICA_CPU.style.color = '#00FF00';
-    } else if (cpuAtual >= 4 && cpuAtual < 8) {
+    } else if (cpuAtual >= 8 && cpuAtual <= 12) {
         METRICA_CPU.style.color = '#f6ff00';
     } else {
         METRICA_CPU.style.color = '#FF0000';
@@ -483,7 +483,8 @@ function plotarGraficoDesempenhoMedia(resposta, idLinha) {
             valores_kpi_desempenho[0].innerHTML = (registro.uso) + "%";
         }
         if (registro.recurso === "RAM") {
-            valores_kpi_desempenho[1].innerHTML = (registro.uso) + "%";
+            var valor = (registro.uso).toFixed(2)
+            valores_kpi_desempenho[1].innerHTML = (valor) + "%";
         }      
     }
 
@@ -529,7 +530,8 @@ function atualizarGraficoDesempenhoMedia(idLinha) {
                         valores_kpi_desempenho[0].innerHTML = (dados.uso) + "%";
                     }
                     if (dados.recurso === "RAM") {
-                        valores_kpi_desempenho[1].innerHTML = (dados.uso) + "%";
+                        var valor = (registro.uso).toFixed(2)
+            valores_kpi_desempenho[1].innerHTML = (valor) + "%";
                     }
 
 

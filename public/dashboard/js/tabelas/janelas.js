@@ -143,12 +143,12 @@ function atualizarFeedProcessos(idEmpresa, idMaquina) {
                     var pid = novaLinha.insertCell(0);
                     var nome_processo = novaLinha.insertCell(1);
                     var uso_ram = novaLinha.insertCell(2);
-                    var tempo_atividade = novaLinha.insertCell(3);
+                    // var tempo_atividade = novaLinha.insertCell(3);
 
                     pid.innerHTML = processo.pid
                     nome_processo.innerHTML = processo.nome_processo
                     uso_ram.innerHTML = processo.uso_memoria
-                    tempo_atividade.innerHTML = processo.tempo_atividade
+                    // tempo_atividade.innerHTML = processo.tempo_atividade
                 }
                 carregarFeedGraficos()
                 const pagina_atual_processosElement = document.getElementById("pagina_atual_processos");
@@ -336,7 +336,7 @@ function plotarGraficoProcesso(pid, resposta) {
     let dados = {
       labels: labels,
       datasets: [{
-        label: '% de Uso',
+        label: 'Uso (%) Da Maquina',
         data: [],
         backgroundColor: [],
         borderColor: ['#393d42'],
@@ -345,7 +345,7 @@ function plotarGraficoProcesso(pid, resposta) {
         pointRadius: 6
       },
       {
-        label: '% de Uso do processo',
+        label: 'Uso (%) Do processo',
         data: [],
         backgroundColor: [],
         borderColor: ['#c6c6c6'],
@@ -368,21 +368,17 @@ function plotarGraficoProcesso(pid, resposta) {
       labels.push(registro.data_hora);
   
       // Definindo a cor com base nas condições
-      if (registro.enviados < 10) {
+      if (registro.uso_memoria_total < 88) {
         dados.datasets[0].backgroundColor.push('#00FF00');
-      } else if (registro.enviados <= 30) {
+      } else if (registro.uso_memoria_total <= 80) {
         dados.datasets[0].backgroundColor.push('#f6ff00');
       } else {
         dados.datasets[0].backgroundColor.push('#FF0000');
       }
   
-      if (registro.recebidos < 90) {
-        dados.datasets[1].backgroundColor.push('#00FF00');
-      } else if (registro.recebidos <= 180) {
-        dados.datasets[1].backgroundColor.push('#f6ff00');
-      } else {
-        dados.datasets[1].backgroundColor.push('#FF0000');
-      }
+      
+        dados.datasets[1].backgroundColor.push('#c6c6c6');
+      
     
     }
   
