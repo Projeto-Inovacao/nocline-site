@@ -1,6 +1,6 @@
 # Bem-vindo ao Repositório da Noc Line 
 
-<img height="200px" src="site/public/assets/icon/Logo - Reverse.png">
+<img height="200px" src="site-institucional/public/assets/logo preta.png - Reverse.png">
 
 ## Sobre Nós
 
