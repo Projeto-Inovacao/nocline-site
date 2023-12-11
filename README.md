@@ -1,12 +1,12 @@
-# Bem-vindo ao Repositório da Noc Line 
+# Boas-vindas ao Repositório da Noc Line!
 
 <img height="200px" src="public/assets/logo preta.png">
 
-## Sobre Nós
+## Sobre Nós:
 
 Este projeto visa desenvolver uma aplicação de monitoramento de componentes de hardware para o monitoramento de computadores que executam o software CBTC no sistema metroviário paulista, afim de gerar um aumento de eficiência, diminuição de downtimes e ociosidades. O nosso projeto é direcionado aos setores de SSO e CCO do metrô visto à importância destes para um bom funcionamento da cidade e do fluxo da sociedade. 
 
-## Funcionalidades Principais
+## Funcionalidades Principais:
 
 <li>Coleta de dados de máquina.</li>
 <li>Visualização clara de dados por meio de gráficos e KPI´s</li>
@@ -16,7 +16,7 @@ Este projeto visa desenvolver uma aplicação de monitoramento de componentes de
 <li>Áreas para criação, alteração e visualização de máquinas, colaboradoes e linhas da sua empresa.</li>
 
 
-## Desenvolvimento feito em
+## Tecnologias Utilizadas:
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -33,7 +33,7 @@ Este projeto visa desenvolver uma aplicação de monitoramento de componentes de
 ![RStudio](https://img.shields.io/badge/RStudio-75AADB?style=for-the-badge&logo=RStudio&logoColor=white)
 	
 
-## Contato
+## Contato:
 
 Se você tiver alguma dúvida, sugestão ou apenas quiser dizer olá, sinta-se à vontade para entrar em contato conosco:
 
