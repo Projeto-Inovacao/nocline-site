@@ -6,6 +6,15 @@
 
 Este projeto visa desenvolver uma aplicação de monitoramento de componentes de hardware para o monitoramento de computadores que executam o software CBTC no sistema metroviário paulista, afim de gerar um aumento de eficiência, diminuição de downtimes e ociosidades. O nosso projeto é direcionado aos setores de SSO e CCO do metrô visto à importância destes para um bom funcionamento da cidade e do fluxo da sociedade. 
 
+## O que capturamos?
+
+Com a API Kotlin, capturamos Rede, Janelas, Processos e informações sobre o Processador. Já com a API Python capturamos CPU, RAM e Disco. 
+
+## Fluxo de Dados:
+
+Para garantir um bom funcionamento do projeto é essencial executar as API´s tanto em Python quanto em Kotlin, onde, ambos os códigos incorporam loops de execução, quando acionados, a captura de dados ocorrerá a intervalos regulares. Dessa forma, os dados de hardware são capturados e enviados para o SQL Server e para o MySQL como forma de contingência. Esses dados são posteriormente transformados e exibidos nas dashboards do site institucional da Noc Line, acessível também via IP Elástico.
+
+
 ## Funcionalidades Principais:
 
 <li>Coleta de dados de máquina.</li>
